@@ -1,0 +1,59 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-navy: #1b2a4a;
+  --color-navy-dark: #101e35;
+  --color-orange: #e8621a;
+  --color-orange-dark: #c95214;
+  --color-grey-light: #f4f4f4;
+  --color-grey-mid: #cccccc;
+  --color-grey-dark: #888888;
+  --color-body: #3a4a65;
+  --color-white: #ffffff;
+}
+
+@layer base {
+  body {
+    @apply font-sans text-body antialiased;
+    font-size: 16px;
+    line-height: 1.7;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-bold text-navy;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+  }
+}
+
+@layer components {
+  .eyebrow {
+    @apply text-orange uppercase tracking-eyebrow font-bold;
+    font-size: 11px;
+  }
+
+  .btn-primary {
+    @apply bg-orange text-white font-semibold px-6 py-3 rounded transition-colors duration-200 hover:bg-orange-dark inline-flex items-center gap-2;
+  }
+
+  .btn-outline-white {
+    @apply border border-white text-white font-semibold px-6 py-3 rounded transition-colors duration-200 hover:bg-white hover:text-navy inline-flex items-center gap-2;
+  }
+
+  .btn-outline-navy {
+    @apply border border-navy text-navy font-semibold px-6 py-3 rounded transition-colors duration-200 hover:bg-navy hover:text-white inline-flex items-center gap-2;
+  }
+
+  .section-container {
+    @apply max-w-6xl mx-auto px-6 lg:px-8;
+  }
+
+  .grid-overlay {
+    background-image:
+      linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+}
