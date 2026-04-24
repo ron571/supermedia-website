@@ -3,6 +3,7 @@ import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
 import { getArticleBySlug, getArticles } from "@/lib/articles";
+import NewsletterForm from "@/components/NewsletterForm";
 
 interface Props {
   params: { slug: string };
@@ -113,20 +114,7 @@ export default function ArticlePage({ params }: Props) {
                   <p className="text-navy font-semibold mb-4">
                     Get the Super view in your inbox
                   </p>
-                  <form
-                    className="flex gap-2"
-                    onSubmit={(e) => e.preventDefault()}
-                  >
-                    <input
-                      type="email"
-                      required
-                      placeholder="your@email.com"
-                      className="flex-1 px-4 py-2 border border-grey-mid rounded text-sm focus:outline-none focus:border-orange"
-                    />
-                    <button type="submit" className="btn-primary text-sm py-2">
-                      Subscribe
-                    </button>
-                  </form>
+                  <NewsletterForm />
                 </div>
 
                 {/* Superscan CTA */}

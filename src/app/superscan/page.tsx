@@ -1,9 +1,11 @@
 import type { Metadata } from "next";
-import dynamic from "next/dynamic";
+import lazyImport from "next/dynamic";
 import Link from "next/link";
 import Logo from "@/components/Logo";
 
-const SuperscanForm = dynamic(() => import("@/components/SuperscanForm"), {
+export const dynamic = "force-dynamic";
+
+const SuperscanForm = lazyImport(() => import("@/components/SuperscanForm"), {
   loading: () => (
     <div className="bg-white rounded shadow-md p-8 max-w-2xl mx-auto animate-pulse">
       <div className="h-4 bg-grey-mid/40 rounded mb-4 w-3/4" />

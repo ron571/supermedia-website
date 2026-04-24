@@ -1,6 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { getArticles } from "@/lib/articles";
+import NewsletterForm from "@/components/NewsletterForm";
+
+export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Thinking",
@@ -40,9 +43,7 @@ export default function ThinkingPage() {
                   <div className="flex-1">
                     <div className="flex items-center gap-3 mb-2">
                       <span className="eyebrow">{article.tag}</span>
-                      <span className="text-grey-dark text-xs">
-                        {article.date}
-                      </span>
+                      <span className="text-grey-dark text-xs">{article.date}</span>
                     </div>
                     <h2 className="text-navy text-xl font-bold group-hover:text-orange transition-colors mb-1 leading-snug">
                       {article.title}
@@ -73,20 +74,7 @@ export default function ThinkingPage() {
           <p className="text-body mb-6">
             Occasional notes on NZ media. No fluff, no sales emails.
           </p>
-          <form
-            className="flex gap-2 max-w-sm mx-auto"
-            onSubmit={(e) => e.preventDefault()}
-          >
-            <input
-              type="email"
-              required
-              placeholder="your@email.com"
-              className="flex-1 px-4 py-2.5 border border-grey-mid rounded text-sm focus:outline-none focus:border-orange"
-            />
-            <button type="submit" className="btn-primary text-sm py-2.5">
-              Subscribe
-            </button>
-          </form>
+          <NewsletterForm className="max-w-sm mx-auto" />
         </div>
       </section>
     </>
