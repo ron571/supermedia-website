@@ -8,9 +8,7 @@ interface Props {
   params: { slug: string };
 }
 
-export async function generateStaticParams() {
-  return getArticles().map((a) => ({ slug: a.slug }));
-}
+export const dynamic = "force-dynamic";
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = getArticleBySlug(params.slug);

@@ -3,6 +3,8 @@ import Image from "next/image";
 import Link from "next/link";
 import { getArticles } from "@/lib/articles";
 
+export const dynamic = "force-dynamic";
+
 export const metadata: Metadata = {
   title: "Super Media — Independent NZ Media Intelligence",
   description:
