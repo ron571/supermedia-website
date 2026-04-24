@@ -2,7 +2,6 @@ import { NextRequest, NextResponse } from "next/server";
 import { createHash } from "crypto";
 import Anthropic from "@anthropic-ai/sdk";
 import { Resend } from "resend";
-import Airtable from "airtable";
 import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { SuperscanSchema, type SuperscanResult } from "@/lib/schemas";
@@ -93,29 +92,37 @@ function getRateLimiters() {
   return { hour: ratelimitHour, day: ratelimitDay };
 }
 
-async function writeToAirtable(
+async function sendLeadNotification(
   data: { channels: string[]; channelsOther?: string; spendRange: string; audience: string; email: string },
-  resultJson: SuperscanResult
+  result: SuperscanResult
 ): Promise<void> {
-  if (!process.env.AIRTABLE_API_KEY || !process.env.AIRTABLE_BASE_ID) return;
+  if (!process.env.RESEND_API_KEY) return;
 
-  const base = new Airtable({ apiKey: process.env.AIRTABLE_API_KEY }).base(
-    process.env.AIRTABLE_BASE_ID
-  );
+  const resend = new Resend(process.env.RESEND_API_KEY);
+  const scanDate = new Date().toLocaleString("en-NZ", { timeZone: "Pacific/Auckland" });
 
-  await base("Superscan Leads").create([
-    {
-      fields: {
-        Email: data.email,
-        Channels: data.channels.join(", "),
-        "Spend Range": data.spendRange,
-        Audience: data.audience,
-        "Scan Date": new Date().toISOString(),
-        "Result JSON": JSON.stringify(resultJson),
-        "Follow-up Status": "Pending",
-      },
-    },
-  ]);
+  const risksHtml = result.risks.map((r) => `<li>${r}</li>`).join("");
+  const oppsHtml = result.opportunities.map((o) => `<li>${o}</li>`).join("");
+
+  await resend.emails.send({
+    from: process.env.RESEND_FROM_EMAIL ?? "superscan@supermedia.co.nz",
+    to: "ron@supermedia.co.nz",
+    subject: `New Superscan — ${data.email} · ${data.spendRange}`,
+    html: `
+      <h2>New Superscan lead</h2>
+      <p><strong>Date:</strong> ${scanDate}</p>
+      <p><strong>Email:</strong> ${data.email}</p>
+      <p><strong>Channels:</strong> ${data.channels.join(", ")}${data.channelsOther ? ` + ${data.channelsOther}` : ""}</p>
+      <p><strong>Spend range:</strong> ${data.spendRange}</p>
+      <p><strong>Audience:</strong> ${data.audience}</p>
+      <hr/>
+      <h3>Results delivered</h3>
+      <p><strong>Mix summary:</strong> ${result.currentMix}</p>
+      <h4>Risks</h4><ul>${risksHtml}</ul>
+      <h4>Opportunities</h4><ul>${oppsHtml}</ul>
+      <p><strong>Agency question:</strong> ${result.question}</p>
+    `,
+  });
 }
 
 async function sendResultsEmail(
@@ -261,8 +268,8 @@ export async function POST(req: NextRequest) {
 
   // Non-blocking side effects
   Promise.allSettled([
-    writeToAirtable(data, resultJson),
     sendResultsEmail(data.email, resultJson),
+    sendLeadNotification(data, resultJson),
   ]).catch((err) => console.error("Side effect error:", err));
 
   return NextResponse.json(resultJson);
