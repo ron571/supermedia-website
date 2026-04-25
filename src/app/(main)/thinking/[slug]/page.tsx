@@ -9,7 +9,9 @@ interface Props {
   params: { slug: string };
 }
 
-export const dynamic = "force-dynamic";
+export function generateStaticParams() {
+  return getArticles().map((a) => ({ slug: a.slug }));
+}
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const article = getArticleBySlug(params.slug);
@@ -18,6 +20,20 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     title: article.title,
     description: article.description,
     alternates: { canonical: `/thinking/${article.slug}` },
+    openGraph: {
+      title: article.title,
+      description: article.description,
+      type: "article",
+      authors: ["Ron Sneddon"],
+      images: [
+        {
+          url: "/og-default.png",
+          width: 1200,
+          height: 630,
+          alt: article.title,
+        },
+      ],
+    },
   };
 }
 
@@ -56,8 +72,42 @@ export default function ArticlePage({ params }: Props) {
   const calendlyUrl =
     process.env.NEXT_PUBLIC_CALENDLY_URL ?? "/contact";
 
+  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://supermedia.co.nz";
+
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    headline: article.title,
+    description: article.description,
+    url: `${BASE_URL}/thinking/${article.slug}`,
+    datePublished: article.date,
+    author: {
+      "@type": "Person",
+      name: "Ron Sneddon",
+      url: `${BASE_URL}/about`,
+      jobTitle: "Founder & Independent Media Consultant",
+      worksFor: {
+        "@type": "Organization",
+        name: "Super Media",
+        url: BASE_URL,
+      },
+    },
+    publisher: {
+      "@type": "Organization",
+      name: "Super Media",
+      url: BASE_URL,
+    },
+    keywords: article.tag,
+    articleSection: article.tag,
+    inLanguage: "en-NZ",
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* ─── Hero ─── */}
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />

@@ -2,12 +2,11 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "About Ron Sneddon",
+  title: "About Ron Sneddon — Super Media",
   description:
-    "35 years of NZ media experience. Ron Sneddon founded Super Media on one conviction: that independent advice produces better outcomes for advertisers.",
+    "Ron Sneddon spent 35 years buying media, selling it, and running an agency. He watched from the inside how advertising budgets get wasted. Super exists because he decided to stop watching it happen.",
   alternates: { canonical: "/about" },
 };
 
@@ -54,10 +53,11 @@ export default function AboutPage() {
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />
         <div className="section-container relative py-20 lg:py-28">
           <h1 className="text-white text-4xl md:text-5xl font-bold max-w-2xl mb-4">
-            Why Super exists
+            I&apos;ve seen what they do with your money.
           </h1>
           <p className="text-white/70 text-xl max-w-xl" style={{ lineHeight: 1.65 }}>
-            The conviction behind the agency — and the career that built it.
+            35 years inside NZ media — on every side of the table. That&apos;s
+            why Super exists.
           </p>
         </div>
       </section>
@@ -65,45 +65,47 @@ export default function AboutPage() {
       {/* ─── Origin + Photo ─── */}
       <section className="bg-white py-20 lg:py-28">
         <div className="section-container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            <div>
-              <h2 className="text-navy text-3xl md:text-4xl font-bold mb-8">
-                35 years. One conviction.
-              </h2>
-              <p className="text-body mb-5">
-                I started in media buying when it was genuinely complicated —
-                when you had to understand audiences, negotiate rates, and read
-                the market because there were no algorithms to do it for you.
-                Those skills didn&apos;t disappear when digital arrived. They
-                just became rarer.
-              </p>
-              <p className="text-body mb-5">
-                After two decades inside agencies and media companies — buying,
-                selling, owning — I kept seeing the same pattern: clients who
-                were paying for independent advice but getting advice shaped by
-                the agency&apos;s commercial interests. Not through malice, but
-                through structure. The network model is built to generate
-                revenue from media owners as well as advertisers. That creates
-                pressure on every recommendation.
-              </p>
-              <p className="text-body">
-                Super was founded in 2014 on one conviction: that the only way
-                to give genuinely independent advice is to structure your
-                business so there&apos;s no money in giving anything else. No
-                volume rebates. No platform partnerships. No preferred supplier
-                lists. Just a fee from the client, for work done in the
-                client&apos;s interest.
-              </p>
+          <div className="max-w-3xl">
+            <div className="flex items-start gap-6 mb-8">
+              <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0">
+                <Image
+                  src="/assets/headshot-ron.png"
+                  alt="Ron Sneddon, founder of Super Media"
+                  fill
+                  className="object-cover rounded"
+                  sizes="128px"
+                />
+              </div>
+              <div>
+                <h2 className="text-navy text-3xl md:text-4xl font-bold mb-4">
+                  Ron Sneddon
+                </h2>
+                <p className="text-body">
+                  I&apos;ve spent 35 years inside NZ media — buying it for
+                  clients, selling it for broadcasters, and running an agency
+                  that did both. I&apos;ve sat at the table where the rebate
+                  deals get done. I know what the sales pitch sounds like before
+                  you hear it. And I know what it costs the person on the other
+                  side.
+                </p>
+              </div>
             </div>
-            <div className="relative aspect-square max-w-md md:ml-auto">
-              <Image
-                src="/assets/headshot-ron.png"
-                alt="Ron Sneddon, founder of Super Media"
-                fill
-                className="object-cover rounded"
-                sizes="(max-width: 768px) 100vw, 448px"
-              />
-            </div>
+            <p className="text-body mb-5">
+              For most of my career I watched the same pattern repeat. A
+              business would hire an agency expecting independent advice. What
+              they&apos;d get was advice shaped — sometimes unconsciously — by
+              the agency&apos;s commercial relationships. Not dishonesty,
+              exactly. But structure. The way most agencies make money means
+              their best recommendation and their most profitable recommendation
+              aren&apos;t always the same thing. Most clients never find out.
+            </p>
+            <p className="text-body">
+              Super was founded in 2014 because I decided to stop watching it
+              happen. The only way to give genuinely independent advice is to
+              build a business with no financial reason to give anything else.
+              No rebates. No platform deals. No preferred suppliers. One
+              incentive: a client whose advertising works, who stays.
+            </p>
           </div>
         </div>
       </section>
@@ -112,15 +114,19 @@ export default function AboutPage() {
       <section className="bg-grey-light py-20 lg:py-24">
         <div className="section-container">
           <div className="max-w-2xl">
-            <h2 className="text-navy text-3xl md:text-4xl font-bold mb-10">
-              What &ldquo;independent&rdquo; means in practice
+            <h2 className="text-navy text-3xl md:text-4xl font-bold mb-5">
+              What &ldquo;independent&rdquo; actually means
             </h2>
+            <p className="text-body mb-8">
+              A lot of agencies use the word. Very few are structured to back it
+              up. Here is exactly what it means at Super:
+            </p>
             <ul className="space-y-5">
               {[
-                "No holding company relationships",
+                "No holding company — no parent organisation with its own financial relationships to protect",
                 "No volume rebates or investment deals with media owners",
-                "No platform partnerships that incentivise recommendations",
-                "One financial incentive: a client who sees results and stays",
+                "No platform partnerships that create an incentive to recommend one channel over another",
+                "One financial incentive: a client who gets results and stays",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-4">
                   <span
@@ -187,21 +193,29 @@ export default function AboutPage() {
         <div className="section-container">
           <div className="max-w-2xl">
             <h2 className="text-navy text-3xl md:text-4xl font-bold mb-6">
-              AI as leverage, not theatre
+              AI as a real tool, not a talking point
             </h2>
             <p className="text-body mb-5">
-              Most agencies that talk about AI are doing one of two things:
-              using it to write copy faster, or putting it in a pitch deck to
-              look modern. Neither is transformative.
+              Most agencies that mention AI are doing one of two things: using
+              it to produce content faster, or putting it in a pitch deck to
+              sound modern. Neither changes anything for the client.
+            </p>
+            <p className="text-body mb-5">
+              At Super, AI does the analysis work — reading media mixes,
+              benchmarking channel costs against NZ market data, processing
+              audience behaviour at a speed no human analyst can match. That
+              frees the judgement side for me to apply directly: the part that
+              knows when a media plan is technically correct but strategically
+              wrong, or when an audience assumption hasn&apos;t been tested
+              against reality.
             </p>
             <p className="text-body">
-              At Super, AI handles the data analysis — processing audience
-              behaviour, benchmarking channel costs, reading media mixes at
-              speed. That frees the judgement side — the part that understands
-              NZ market dynamics, reads the politics of a client&apos;s situation,
-              and knows when a media plan is technically correct but
-              strategically wrong — for me to apply directly. AI as leverage,
-              not replacement. Old-school discipline, new-school tools.
+              Superscan is the clearest example. What used to take days of
+              senior analyst time now takes 90 seconds — which means independent
+              media analysis is no longer something only large advertisers can
+              justify. That matters. Most of the money getting wasted in NZ
+              advertising isn&apos;t in big corporate budgets. It&apos;s in
+              small ones where nobody&apos;s watching closely enough.
             </p>
           </div>
         </div>

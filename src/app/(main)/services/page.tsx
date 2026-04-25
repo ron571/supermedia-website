@@ -1,13 +1,107 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
-export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Services",
+  title: "Services — NZ Media Strategy, Audit & Advisory",
   description:
     "Six ways to work with Super Media — from full media strategy and independent audits to programmatic buying, web design, social, and retained advisory.",
   alternates: { canonical: "/services" },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "ItemList",
+      name: "Super Media Services",
+      description: "Independent NZ media consultancy services offered by Super Media",
+      url: "https://supermedia.co.nz/services",
+      itemListElement: [
+        {
+          "@type": "ListItem",
+          position: 1,
+          item: {
+            "@type": "Service",
+            name: "Media Strategy & Planning",
+            description: "A complete, independent media plan from scratch or as a second opinion. Every recommendation made on merit, free from agency conflicts of interest.",
+            provider: { "@type": "Organization", name: "Super Media", url: "https://supermedia.co.nz" },
+            areaServed: "New Zealand",
+          },
+        },
+        {
+          "@type": "ListItem",
+          position: 2,
+          item: {
+            "@type": "Service",
+            name: "Media Audit & Review",
+            description: "Independent review of spend, channel mix, buying terms and audience delivery. Most audits find 15–30% savings without any reduction in reach.",
+            provider: { "@type": "Organization", name: "Super Media", url: "https://supermedia.co.nz" },
+            areaServed: "New Zealand",
+          },
+        },
+        {
+          "@type": "ListItem",
+          position: 3,
+          item: {
+            "@type": "Service",
+            name: "Programmatic Buying",
+            description: "AI-driven programmatic buying across display, video, audio and CTV. Precision targeting without platform conflicts.",
+            provider: { "@type": "Organization", name: "Super Media", url: "https://supermedia.co.nz" },
+            areaServed: "New Zealand",
+          },
+        },
+        {
+          "@type": "ListItem",
+          position: 4,
+          item: {
+            "@type": "Service",
+            name: "Retained Advisory",
+            description: "A senior independent brain available monthly. 4–8 hours per month for planning, reviewing agency proposals, and navigating media decisions.",
+            provider: { "@type": "Organization", name: "Super Media", url: "https://supermedia.co.nz" },
+            areaServed: "New Zealand",
+          },
+        },
+      ],
+    },
+    {
+      "@type": "FAQPage",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "What does an independent media consultant do?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "An independent media consultant reviews your media strategy, buying terms, and channel mix without any conflicts of interest from agency relationships, volume rebates, or platform partnerships. They provide objective advice on where your media budget is being spent effectively and where savings can be found.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How much can a media audit save?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Super Media media audits typically identify savings of 15–30% on total media spend without any reduction in audience reach. One retail client reduced spend by 19% while increasing reach by 12%.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What is a volume rebate in media buying?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "A volume rebate is a payment that media owners make to agencies based on the total amount of media the agency buys across all its clients. These rebates create a structural conflict of interest: agencies may be incentivised to recommend media owners that pay them rebates, rather than the best options for the advertiser.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Does Super Media work with small advertisers?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. Super Media works with NZ advertisers across a range of budget sizes. The Superscan tool is free and provides an independent read of your media mix in 90 seconds, making independent advice accessible regardless of spend level.",
+          },
+        },
+      ],
+    },
+  ],
 };
 
 const services = [
@@ -71,6 +165,10 @@ const services = [
 export default function ServicesPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* ─── Hero ─── */}
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />

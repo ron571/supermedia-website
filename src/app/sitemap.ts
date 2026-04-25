@@ -20,7 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
 
   const articleRoutes: MetadataRoute.Sitemap = articles.map((article) => ({
     url: `${BASE_URL}/thinking/${article.slug}`,
-    lastModified: new Date(),
+    lastModified: new Date(article.date),
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));

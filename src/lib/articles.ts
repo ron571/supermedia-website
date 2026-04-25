@@ -10,6 +10,70 @@ export interface Article {
 
 const articles: Article[] = [
   {
+    slug: "why-your-advertising-isnt-working-nz-small-business",
+    title: "Why your advertising isn't working — and why it's probably not your fault",
+    description:
+      "Most NZ small businesses that try advertising and fail aren't bad at business. They've been sold something that was never going to work, by people who weren't going to tell them that.",
+    tag: "Small Business",
+    date: "26 Apr 2026",
+    readTime: "7 min read",
+    body: `If you've spent money on advertising and it didn't work, the most common explanation you'll have been given is some version of this: it takes time, we need more data, the market is tough right now, let's adjust the creative.
+
+What you probably weren't told is this: the campaign may have been the wrong approach from the start, recommended by someone with a financial reason to recommend it, and measured in ways that were never going to tell you whether it actually worked.
+
+That's not a comfortable thing for an agency to say. So most of them don't.
+
+**The five reasons it usually doesn't work**
+
+In 35 years of working in NZ media — buying it, selling it, and watching what happens when the two sides meet — I've seen the same patterns repeat across hundreds of businesses. The money fails for predictable reasons, almost every time.
+
+**1. The media landscape is genuinely confusing — and that confusion is profitable for some people**
+
+Auckland alone now has more advertising channels than any small business could meaningfully use. TV, radio, print, outdoor, Facebook, Instagram, Google Search, Google Display, YouTube, TikTok, Spotify, podcasts, programmatic networks, LinkedIn. Each channel has its own language, its own metrics, its own sales team telling you it's the right choice.
+
+For a business owner without a marketing background — and that's most of them — this is overwhelming by design. When you can't evaluate the options yourself, you rely on whoever is selling them. And the person selling them has a reason to sell them, not to tell you the honest answer.
+
+**2. You're probably spending below the threshold where it works**
+
+This is the part nobody tells you upfront. Spending less than about $2,000 a month on advertising is unlikely to generate meaningful results in most channels. Below a certain level, your ads aren't seen enough to build recognition, your data set isn't large enough to optimise, and your account isn't big enough to attract serious attention from the agency managing it.
+
+The average NZ small business spends between $500 and $5,000 a month across all channels. A significant portion of that is below the threshold where it would be expected to work — even in ideal conditions.
+
+**3. The report looked good because it was designed to**
+
+Agency reporting is built around metrics the agency can control: impressions, reach, clicks, cost per click, frequency. These numbers can look impressive even when your phone isn't ringing and your door isn't opening.
+
+The gap between "the campaign performed well" and "the campaign worked for your business" can be enormous. Most reporting is designed to bridge that gap with language, not with evidence.
+
+Ask yourself: did the report tell you how many of those impressions led to an enquiry, a sale, or a customer? If not, you weren't being told whether your advertising was working. You were being told it was running.
+
+**4. The advice wasn't independent**
+
+Most NZ advertising agencies have financial relationships with the media they buy. These take different forms — volume rebates from broadcasters, margin on programmatic buys, incentive arrangements with platforms — but the effect is similar: the recommendation your agency makes isn't purely about what's best for your campaign. It's also influenced, sometimes unconsciously, by what generates the most return for the agency.
+
+This is structural, not personal. The people involved often genuinely believe they're giving you good advice. But the incentive system creates pressure on every recommendation, in a direction that doesn't always point toward your interests.
+
+**5. You got junior attention on a senior problem**
+
+If you're spending less than $10,000 a month, you are almost certainly being managed by someone junior. Senior account staff are deployed on accounts that generate serious revenue for the agency. Smaller accounts get the graduates — often capable people, but without the experience to question a plan, push back on a media owner, or recognise when something isn't working.
+
+This isn't unique to any particular agency. It's how the economics of the model work.
+
+**What actually helps**
+
+The honest answer is that independent advice is the most reliable way to know whether your advertising is working and why. Not advice from someone who sells the media, or someone who earns more when you spend more. Advice from someone with no financial interest in the outcome other than whether you get results.
+
+That's what Super does. But I'm aware that saying "get independent advice" is easier than finding it — especially if you've already been burned and are cautious about who to trust.
+
+So here's what I'd suggest as a starting point, regardless of whether you work with Super:
+
+Ask your current agency to show you what results look like in terms of enquiries or sales — not just campaign metrics. Ask them to disclose any financial relationships they have with the media they're recommending. Ask who manages your account day to day, and what their experience level is.
+
+The answers you get — and how comfortable or uncomfortable the conversation feels — will tell you a great deal.
+
+If you want a faster read, Superscan will give you an independent analysis of your current media mix in 90 seconds. It's free, it's specific to NZ, and it doesn't end with a sales call. It ends with a question worth asking your agency — and whether they can answer it.`,
+  },
+  {
     slug: "what-volume-rebates-actually-mean-for-your-media-budget",
     title: "What volume rebates actually mean for your media budget",
     description:

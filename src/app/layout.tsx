@@ -23,10 +23,33 @@ export const metadata: Metadata = {
     process.env.NEXT_PUBLIC_SITE_URL ?? "https://supermedia.co.nz"
   ),
   alternates: { canonical: "/" },
+  keywords: [
+    "NZ media consultancy",
+    "independent media consultant New Zealand",
+    "media audit NZ",
+    "media planning New Zealand",
+    "Ron Sneddon",
+    "Super Media",
+    "media buying NZ",
+    "programmatic advertising New Zealand",
+  ],
+  authors: [{ name: "Ron Sneddon", url: "https://supermedia.co.nz/about" }],
   openGraph: {
     siteName: "Super Media",
     locale: "en_NZ",
     type: "website",
+    images: [
+      {
+        url: "/og-default.png",
+        width: 1200,
+        height: 630,
+        alt: "Super Media — Independent NZ Media Intelligence",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    images: ["/og-default.png"],
   },
 };
 

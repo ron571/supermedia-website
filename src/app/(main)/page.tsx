@@ -3,24 +3,71 @@ import Image from "next/image";
 import Link from "next/link";
 import { getArticles } from "@/lib/articles";
 
-export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
-  title: "Super Media — Independent NZ Media Intelligence",
+  title: "Super Media — Independent NZ Media Consultancy",
   description:
-    "Super is an independent NZ media consultancy. No network. No commissions. No conflicts. Senior media judgement from Ron Sneddon — 35 years of NZ experience.",
+    "Your last campaign probably didn't fail because of bad luck. Super Media is an independent NZ media consultancy. Ron Sneddon has 35 years on both sides of the table — and knows exactly where the money gets wasted.",
   alternates: { canonical: "/" },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
-  "@type": "LocalBusiness",
-  name: "Super Media",
-  description: "Independent NZ media consultancy",
-  url: "https://supermedia.co.nz",
-  email: "ron@supermedia.co.nz",
-  founder: { "@type": "Person", name: "Ron Sneddon" },
-  areaServed: "New Zealand",
+  "@graph": [
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://supermedia.co.nz/#business",
+      name: "Super Media",
+      alternateName: "Super Media NZ",
+      description:
+        "Independent NZ media consultancy providing media strategy, media audits, programmatic buying, and retained advisory. No volume rebates, no agency conflicts. Founded by Ron Sneddon with 35 years of New Zealand media experience.",
+      url: "https://supermedia.co.nz",
+      email: "ron@supermedia.co.nz",
+      logo: "https://supermedia.co.nz/assets/og-default.png",
+      image: "https://supermedia.co.nz/assets/headshot-ron.png",
+      founder: {
+        "@type": "Person",
+        "@id": "https://supermedia.co.nz/about#ron",
+        name: "Ron Sneddon",
+        jobTitle: "Founder & Independent Media Consultant",
+        url: "https://supermedia.co.nz/about",
+        sameAs: ["https://linkedin.com/in/ron-sneddon"],
+      },
+      areaServed: {
+        "@type": "Country",
+        name: "New Zealand",
+      },
+      knowsAbout: [
+        "media planning",
+        "media buying",
+        "media audit",
+        "programmatic advertising",
+        "NZ media market",
+        "media agency conflicts of interest",
+        "volume rebates",
+        "independent media consultancy",
+      ],
+      hasOfferCatalog: {
+        "@type": "OfferCatalog",
+        name: "Super Media Services",
+        itemListElement: [
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Media Strategy & Planning" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Media Audit & Review" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Programmatic Buying" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Retained Advisory" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Website Design & Construction" } },
+          { "@type": "Offer", itemOffered: { "@type": "Service", name: "Social Media Strategy & Content" } },
+        ],
+      },
+    },
+    {
+      "@type": "WebSite",
+      "@id": "https://supermedia.co.nz/#website",
+      url: "https://supermedia.co.nz",
+      name: "Super Media",
+      publisher: { "@id": "https://supermedia.co.nz/#business" },
+    },
+  ],
 };
 
 export default function HomePage() {
@@ -37,24 +84,24 @@ export default function HomePage() {
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />
         <div className="section-container relative py-24 lg:py-36">
-          <p className="eyebrow mb-5">Independent NZ Media Intelligence</p>
+          <p className="eyebrow mb-5">Independent NZ Media Consultancy</p>
           <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold max-w-3xl mb-6">
-            Most NZ media budgets are working harder for the agency than the
-            advertiser.
+            Your last campaign probably didn&apos;t fail because of bad luck.
           </h1>
           <p
             className="text-white text-lg max-w-2xl mb-10"
             style={{ opacity: 0.72, lineHeight: 1.65 }}
           >
-            Super is an independent NZ media consultancy. No network. No
-            commissions. No conflicts. Just senior judgement on where your money
-            actually goes.
+            Super Media is an independent NZ media consultancy. Ron Sneddon has
+            spent 35 years on both sides of the table — buying media, selling
+            it, and owning an agency. He knows exactly where the money gets
+            wasted, and why it keeps happening.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link href="/superscan" className="btn-primary">
-              Run your Superscan →
+              Find out where yours went →
             </Link>
-            <a href="#superscan" className="btn-outline-white">
+            <a href="#the-problem" className="btn-outline-white">
               See how it works
             </a>
           </div>
@@ -62,32 +109,40 @@ export default function HomePage() {
       </section>
 
       {/* ─── Section 2: The Problem ─── */}
-      <section className="bg-white py-20 lg:py-28">
+      <section id="the-problem" className="bg-white py-20 lg:py-28">
         <div className="section-container">
+          <div className="max-w-xl mb-12">
+            <h2 className="text-navy text-3xl md:text-4xl font-bold mb-4">
+              What usually happened
+            </h2>
+            <p className="text-body text-lg" style={{ lineHeight: 1.65 }}>
+              Most NZ businesses who&apos;ve been burned by advertising describe
+              the same experience. The details differ. The pattern doesn&apos;t.
+            </p>
+          </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
             {[
               {
                 num: "01",
-                heading: "Your agency has deals you don't know about.",
-                body: "Volume rebates and platform relationships mean recommended buys aren't always the best buys for you.",
+                heading: "The report looked good. The results didn\u2019t.",
+                body: "Agencies measure what they can control — impressions, clicks, reach. Not whether your phone rang or your door opened. A good-looking report can hide a campaign that didn't work.",
               },
               {
                 num: "02",
-                heading:
-                  "The team on your account isn't the team that pitched you.",
-                body: "Most agency relationships are sold by senior people and serviced by juniors.",
+                heading: "You met the boss. You got the graduate.",
+                body: "The pitch team and the service team are rarely the same people. Senior staff win the work. Junior staff run it. That gap is where your budget gets managed by someone who doesn't yet know what to question.",
               },
               {
                 num: "03",
-                heading: "You're probably paying for reach you're not getting.",
-                body: "Audience assumptions drive most media plans — and most assumptions are wrong. Superscan finds out in 90 seconds.",
+                heading: "The advice wasn\u2019t free of strings.",
+                body: "Most agencies have financial relationships with the media they recommend. That doesn't make them dishonest — but it does mean their best recommendation and their most profitable recommendation aren't always the same thing.",
               },
             ].map(({ num, heading, body }) => (
               <div key={num}>
                 <p className="text-orange text-2xl font-bold mb-4">{num}</p>
-                <h2 className="text-navy text-xl font-bold mb-3 leading-snug">
+                <h3 className="text-navy text-xl font-bold mb-3 leading-snug">
                   {heading}
-                </h2>
+                </h3>
                 <p className="text-body text-base">{body}</p>
               </div>
             ))}
@@ -95,7 +150,34 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Section 3: Differentiators ─── */}
+      {/* ─── Section 3: Small Business Entry Point ─── */}
+      <section className="bg-orange py-16 lg:py-20">
+        <div className="section-container">
+          <div className="max-w-3xl">
+            <p className="text-white/80 text-sm font-bold uppercase tracking-eyebrow mb-4">
+              You don&apos;t need a big budget to need independent advice
+            </p>
+            <h2 className="text-white text-2xl md:text-3xl font-bold mb-5 leading-snug">
+              Most of the businesses that come to Super are spending between
+              $2,000 and $20,000 a month on advertising. They&apos;re not big
+              corporates. They&apos;re a retailer, a professional services firm,
+              a trades business — someone who tried advertising, got a glossy
+              report, and is no longer sure the money is working.
+            </h2>
+            <p className="text-white/85 text-lg mb-8" style={{ lineHeight: 1.65 }}>
+              The Superscan tool was built specifically for this situation. It
+              takes 90 seconds, costs nothing, and gives you an independent read
+              on whether your current advertising makes sense — without a sales
+              call, a contract, or any obligation.
+            </p>
+            <Link href="/superscan" className="inline-flex items-center gap-2 bg-white text-orange font-bold px-6 py-3 rounded hover:bg-grey-light transition-colors">
+              Run your free Superscan →
+            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Section 4: Differentiators ─── */}
       <section className="bg-grey-light py-20 lg:py-28">
         <div className="section-container">
           <div className="max-w-xl mb-12">
@@ -139,26 +221,28 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Section 4: Superscan Feature Block ─── */}
+      {/* ─── Section 5: Superscan Feature Block ─── */}
       <section id="superscan" className="bg-navy py-20 lg:py-28">
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
             <div>
               <p className="eyebrow mb-4">Superscan</p>
               <h2 className="text-white text-3xl md:text-4xl font-bold mb-6">
-                Your 90 Second Media Review
+                Find out in 90 seconds if your advertising adds up
               </h2>
               <p className="text-white/75 text-lg mb-8" style={{ lineHeight: 1.65 }}>
-                Drop in your current media mix. Superscan reads it and tells you
-                where the risk is, where the opportunity is, and one question
-                worth asking your agency. Independent. Instant. Free.
+                Tell Superscan what channels you&apos;re running and who
+                you&apos;re trying to reach. It gives you an independent read on
+                where the risk is, where the opportunity is, and one specific
+                question worth putting to your agency. No login. No sales call.
+                Free.
               </p>
               <Link href="/superscan" className="btn-primary mb-8 inline-flex">
-                Start your scan →
+                Run your Superscan →
               </Link>
               <p className="text-white/50 text-sm">
-                Trusted by NZ marketers across retail, FMCG, finance, and
-                property.
+                Used by NZ business owners across retail, trades, professional
+                services, and hospitality.
               </p>
             </div>
 
@@ -173,59 +257,65 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Section 5: About Ron ─── */}
+      {/* ─── Section 6: About Ron ─── */}
       <section className="bg-white py-20 lg:py-28">
         <div className="section-container">
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-12 items-start">
-            <div className="relative aspect-square max-w-md">
-              <Image
-                src="/assets/headshot-ron.png"
-                alt="Ron Sneddon, founder of Super Media"
-                fill
-                className="object-cover rounded"
-                sizes="(max-width: 768px) 100vw, 448px"
-              />
+          <div className="max-w-3xl">
+            <p className="eyebrow mb-4">The person behind the advice</p>
+            <div className="flex items-start gap-6 mb-6">
+              <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0">
+                <Image
+                  src="/assets/headshot-ron.png"
+                  alt="Ron Sneddon, founder of Super Media"
+                  fill
+                  className="object-cover rounded"
+                  sizes="128px"
+                />
+              </div>
+              <div>
+                <h2 className="text-navy text-3xl md:text-4xl font-bold mb-4">
+                  Ron Sneddon
+                </h2>
+                <p className="text-body">
+                  Ron spent 35 years inside NZ media — buying it, selling it,
+                  and running an agency. He has sat at every table in this
+                  industry and watched, from the inside, exactly how advertising
+                  budgets get eroded. Super exists because he decided to stop
+                  watching it happen.
+                </p>
+              </div>
             </div>
-            <div>
-              <p className="eyebrow mb-4">The person behind the advice</p>
-              <h2 className="text-navy text-3xl md:text-4xl font-bold mb-6">
-                Ron Sneddon
-              </h2>
-              <p className="text-body mb-4">
-                Ron has spent 35 years inside NZ media — as a buyer, a seller,
-                an agency owner, and now as an independent consultant. He has
-                sat on both sides of every deal, which is why he understands
-                exactly where the conflicts of interest live.
-              </p>
-              <p className="text-body mb-8">
-                Super was founded on a single conviction: that most NZ
-                advertisers deserve access to the kind of senior, unconflicted
-                media thinking that only the largest corporates can usually
-                afford. Superscan is that thinking, automated.
-              </p>
-              <Link
-                href="/about"
-                className="text-orange font-semibold hover:text-orange-dark transition-colors"
-              >
-                Ron&apos;s full story →
-              </Link>
-            </div>
+            <p className="text-body mb-8">
+              When you work with Super, you&apos;re not getting a junior account
+              manager following a process. You&apos;re getting someone who has
+              seen every version of the sales pitch your current agency gave you
+              — and knows what it looks like when the advice is shaped by
+              someone else&apos;s interests.
+            </p>
+            <Link
+              href="/about"
+              className="text-orange font-semibold hover:text-orange-dark transition-colors"
+            >
+              Ron&apos;s full story →
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* ─── Section 6: Social Proof ─── */}
+      {/* ─── Section 7: Social Proof ─── */}
       <section className="bg-grey-light py-20 lg:py-24">
         <div className="section-container">
           <div className="max-w-3xl mx-auto text-center">
             <blockquote>
               <p className="text-navy text-xl md:text-2xl font-medium mb-6" style={{ lineHeight: 1.5 }}>
-                &ldquo;We reduced our annual media spend by 22% in six months
-                without any measurable drop in reach. I wish we&apos;d found
-                Ron three years earlier.&rdquo;
+                &ldquo;We&apos;d been with the same agency for three years and
+                assumed the results were just what advertising looked like. Ron
+                showed us in one conversation that we&apos;d been paying for
+                reach we weren&apos;t getting. It was embarrassing how
+                straightforward it was once someone independent looked at it.&rdquo;
               </p>
               <footer className="text-grey-dark text-sm">
-                — Marketing Director, NZ Retail{" "}
+                — Owner, Auckland professional services firm{" "}
                 <span className="italic">(name withheld on request)</span>
               </footer>
             </blockquote>
@@ -233,7 +323,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Section 7: Thinking Preview ─── */}
+      {/* ─── Section 8: Thinking Preview ─── */}
       <section className="bg-white py-20 lg:py-28">
         <div className="section-container">
           <div className="flex items-end justify-between mb-10">

@@ -1,0 +1,52 @@
+# Super Media
+
+> Super Media is an independent New Zealand media consultancy founded by Ron Sneddon. We provide media strategy, media audits, programmatic buying, and retained advisory services to NZ advertisers. We have no network relationships, no volume rebates, and no platform partnerships — every recommendation is made on merit.
+
+## About
+
+Super Media was founded in 2014 by Ron Sneddon, who has 35 years of experience inside New Zealand media as a buyer, seller, and agency owner. The business exists to give NZ advertisers access to unconflicted, senior media thinking that is structurally unavailable from network agencies.
+
+**Founder:** Ron Sneddon
+**Contact:** ron@supermedia.co.nz
+**Location:** New Zealand
+**Website:** https://supermedia.co.nz
+
+## Key facts
+
+- Super Media is independent: no holding company, no volume rebates, no preferred supplier deals
+- Ron Sneddon is the sole consultant — clients work directly with him, not a junior team
+- Media audits typically identify savings of 15–30% without reducing audience reach
+- Superscan is a free AI-powered media mix analysis tool built on Claude (Anthropic)
+- Super Media serves NZ advertisers across retail, FMCG, financial services, and property
+
+## Services
+
+- **Media Strategy & Planning** — independent media plans built on merit, not agency incentives
+- **Media Audit & Review** — line-by-line review of spend, buying terms, and audience delivery
+- **Programmatic Buying** — AI-driven display, video, audio, and CTV buying without platform conflicts
+- **Website Design & Construction** — audience-led web design built to convert
+- **Social Media Strategy & Content** — Meta, LinkedIn, and paid social integrated into the broader plan
+- **Retained Advisory** — 4–8 hours/month senior independent media oversight
+
+## Superscan
+
+Superscan is a free, AI-powered tool at https://supermedia.co.nz/superscan. Users enter their current media channel mix, spend range, and target audience. Superscan returns a specific analysis: where the risk is, where the opportunity is, and one question worth asking their agency. It takes 90 seconds.
+
+## Thinking (Articles)
+
+Super Media publishes independent analysis on NZ media at https://supermedia.co.nz/thinking. Topics include:
+- Media agency conflicts of interest and volume rebates
+- How to read a media plan
+- Digital display pricing and the "tech tax" in programmatic buying
+- The senior–junior problem in NZ media agencies
+- The case for independent media oversight
+
+## Key concepts
+
+**Volume rebate:** A payment that media owners make to agencies based on total spend directed to them across all clients. Creates a structural conflict of interest between agency and advertiser.
+
+**Independent media consultancy:** A media advisor with no financial relationships with media owners, platforms, or agency networks. All advice is given in the advertiser's interest only.
+
+**Media audit:** An independent review of an advertiser's media spend, buying terms, audience delivery, and channel mix. Typically identifies material savings and/or reach improvements.
+
+**Programmatic buying:** Automated digital media buying across display, video, audio, and connected TV. Value depends on transparency of the buying stack — margin can be extracted at multiple layers.

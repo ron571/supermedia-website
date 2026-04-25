@@ -3,7 +3,6 @@ import Link from "next/link";
 import { getArticles } from "@/lib/articles";
 import NewsletterForm from "@/components/NewsletterForm";
 
-export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Thinking",

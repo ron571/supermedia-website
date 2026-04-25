@@ -16,27 +16,28 @@ const SuperscanForm = lazyImport(() => import("@/components/SuperscanForm"), {
 });
 
 export const metadata: Metadata = {
-  title: "Superscan — Your 90 Second Media Review",
+  title: "Superscan — Find Out If Your Advertising Is Actually Working",
   description:
-    "Drop in your current media mix. Superscan tells you where the risk is, the opportunity, and one question to ask your agency. Independent, instant, and free.",
+    "Tell Superscan what channels you're running. Get an independent read on where the risk is, where the opportunity is, and one question worth asking your agency. Free, instant, no sales call.",
   alternates: { canonical: "/superscan" },
+  robots: { index: false, follow: false },
 };
 
 const steps = [
   {
     num: "1",
-    label: "Your mix",
-    desc: "Channels, spend range, and target audience",
+    label: "Tell us your mix",
+    desc: "Which channels you're running, your spend range, and who you're trying to reach",
   },
   {
     num: "2",
-    label: "AI analysis",
-    desc: "Superscan reads your inputs against NZ market context",
+    label: "Independent analysis",
+    desc: "Superscan reads your inputs against NZ market context — no templates, no generic advice",
   },
   {
     num: "3",
-    label: "Your results",
-    desc: "Risks, opportunities, and one question for your agency",
+    label: "A straight answer",
+    desc: "Where the risk is, where the opportunity is, and one question to put to your agency",
   },
 ];
 
@@ -62,10 +63,12 @@ export default function SuperscanPage() {
         <div className="section-container relative py-16 lg:py-24 text-center">
           <p className="eyebrow mb-4">Superscan</p>
           <h1 className="text-white text-4xl md:text-5xl font-bold max-w-2xl mx-auto mb-4">
-            Your 90 Second Media Review
+            Find out if your advertising is actually working
           </h1>
           <p className="text-white/70 text-xl max-w-xl mx-auto" style={{ lineHeight: 1.65 }}>
-            Independent. Instant. No sales call required.
+            90 seconds. No login. No sales call. A straight independent read —
+            not a glossy report full of numbers that don&apos;t connect to your
+            business.
           </p>
         </div>
       </section>
@@ -74,7 +77,7 @@ export default function SuperscanPage() {
       <section className="bg-grey-light border-b border-grey-mid py-8">
         <div className="section-container">
           <ol className="flex flex-col sm:flex-row gap-6 sm:gap-0">
-            {steps.map(({ num, label, desc }, i) => (
+            {steps.map(({ num, label, desc }) => (
               <li
                 key={num}
                 className="flex items-start gap-4 sm:flex-1 sm:border-r sm:border-grey-mid sm:last:border-r-0 sm:px-6 first:pl-0 last:pr-0"

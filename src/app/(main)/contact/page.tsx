@@ -1,6 +1,5 @@
 import type { Metadata } from "next";
 
-export const dynamic = "force-dynamic";
 
 export const metadata: Metadata = {
   title: "Contact",
@@ -10,9 +9,6 @@ export const metadata: Metadata = {
 };
 
 export default function ContactPage() {
-  const calendlyUrl =
-    process.env.NEXT_PUBLIC_CALENDLY_URL ?? "https://calendly.com/ron-supermedia";
-
   return (
     <>
       {/* ─── Hero ─── */}
@@ -29,61 +25,22 @@ export default function ContactPage() {
         </div>
       </section>
 
-      {/* ─── 2-col contact ─── */}
+      {/* ─── Contact form ─── */}
       <section className="bg-white py-20 lg:py-28">
         <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
-            {/* Left — Book a call */}
-            <div>
-              <h2 className="text-navy text-2xl font-bold mb-6">
-                Book a call
-              </h2>
-              <p className="text-body mb-6">
-                30 minutes. Ron will ask a few questions, listen hard, and give
-                you an honest read on whether Super is the right fit.
-              </p>
+          <div className="max-w-xl mx-auto">
+            <h2 className="text-navy text-2xl font-bold mb-6">
+              Send a message
+            </h2>
+            <ContactForm />
+            <div className="mt-8 pt-6 border-t border-grey-mid">
+              <p className="text-grey-dark text-sm mb-2">Or email directly:</p>
               <a
-                href={calendlyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn-primary mb-8 inline-flex"
+                href="mailto:ron@supermedia.co.nz"
+                className="text-navy font-semibold hover:text-orange transition-colors"
               >
-                Book via Calendly →
+                ron@supermedia.co.nz
               </a>
-
-              {/* Calendly embed placeholder */}
-              <div
-                className="border border-grey-mid rounded overflow-hidden"
-                style={{ minHeight: 400 }}
-              >
-                <iframe
-                  src={`${calendlyUrl}?embed_type=Inline&hide_landing_page_details=1&hide_gdpr_banner=1`}
-                  width="100%"
-                  height="500"
-                  frameBorder="0"
-                  title="Book a call with Ron Sneddon"
-                  className="w-full"
-                  loading="lazy"
-                />
-              </div>
-
-              <div className="mt-8 pt-6 border-t border-grey-mid">
-                <p className="text-grey-dark text-sm mb-2">Or email directly:</p>
-                <a
-                  href="mailto:ron@supermedia.co.nz"
-                  className="text-navy font-semibold hover:text-orange transition-colors"
-                >
-                  ron@supermedia.co.nz
-                </a>
-              </div>
-            </div>
-
-            {/* Right — Contact form */}
-            <div>
-              <h2 className="text-navy text-2xl font-bold mb-6">
-                Send a message
-              </h2>
-              <ContactForm />
             </div>
           </div>
         </div>
