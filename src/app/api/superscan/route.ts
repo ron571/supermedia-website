@@ -1,4 +1,6 @@
 import { NextRequest, NextResponse } from "next/server";
+
+export const maxDuration = 60;
 import { createHash } from "crypto";
 import Anthropic from "@anthropic-ai/sdk";
 import { Resend } from "resend";
@@ -240,7 +242,7 @@ export async function POST(req: NextRequest) {
 
   try {
     const message = await anthropic.messages.create({
-      model: "claude-sonnet-4-5",
+      model: "claude-sonnet-4-6",
       max_tokens: 1024,
       temperature: 0.4,
       system: SYSTEM_PROMPT,
@@ -259,9 +261,10 @@ export async function POST(req: NextRequest) {
     const cleaned = text.replace(/^```(?:json)?\n?/, "").replace(/\n?```$/, "").trim();
     resultJson = JSON.parse(cleaned) as SuperscanResult;
   } catch (err) {
-    console.error("Claude API error:", err);
+    const message = err instanceof Error ? err.message : String(err);
+    console.error("Claude API error:", message);
     return NextResponse.json(
-      { error: "Analysis failed — please try again" },
+      { error: "Analysis failed — please try again", detail: message },
       { status: 500 }
     );
   }
