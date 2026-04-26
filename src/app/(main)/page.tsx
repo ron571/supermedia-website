@@ -89,16 +89,16 @@ export default function HomePage() {
             Straight answers. Smart strategy. Real results.
           </h1>
           <p
-            className="text-white text-lg max-w-2xl mb-10"
+            className="text-white text-lg max-w-2xl mb-4"
             style={{ opacity: 0.72, lineHeight: 1.65 }}
           >
             Ron Sneddon has spent 35 years on both sides of the table — buying media, selling
             it, and owning an agency. He knows exactly where the money gets
             wasted, and why it keeps happening.
           </p>
-          <span className="text-white text-lg" style={{ opacity: 0.72 }}>
+          <p className="text-white text-lg mb-10" style={{ opacity: 0.72 }}>
             Super Media — your independent NZ media consultancy.
-          </span>
+          </p>
           <div className="flex flex-wrap gap-4">
             <Link href="/superscan" className="btn-primary">
               Find out where yours went →
