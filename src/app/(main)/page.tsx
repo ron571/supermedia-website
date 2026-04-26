@@ -162,7 +162,7 @@ export default function HomePage() {
             </p>
             <p className="text-white/85 text-lg mb-8" style={{ lineHeight: 1.65 }}>
               The Superscan tool was built specifically for this situation. It
-              takes 90 seconds, costs nothing, and gives you an independent read
+              takes 30 seconds, costs nothing, and gives you an independent read
               on whether your current advertising makes sense — without a sales
               call, a contract, or any obligation.
             </p>
@@ -224,7 +224,7 @@ export default function HomePage() {
             <div>
               <p className="eyebrow mb-4">Superscan</p>
               <h2 className="text-white text-3xl md:text-4xl font-bold mb-6">
-                Find out in 90 seconds if your advertising adds up
+                Find out in 30 seconds if your advertising adds up
               </h2>
               <p className="text-white/75 text-lg mb-8" style={{ lineHeight: 1.65 }}>
                 Tell Superscan what channels you&apos;re running and who

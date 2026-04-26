@@ -211,7 +211,7 @@ export default function AboutPage() {
             </p>
             <p className="text-body">
               Superscan is the clearest example. What used to take days of
-              senior analyst time now takes 90 seconds — which means independent
+              senior analyst time now takes 30 seconds — which means independent
               media analysis is no longer something only large advertisers can
               justify. That matters. Most of the money getting wasted in NZ
               advertising isn&apos;t in big corporate budgets. It&apos;s in

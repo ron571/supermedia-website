@@ -66,7 +66,7 @@ export default function SuperscanPage() {
             Find out if your advertising is actually working
           </h1>
           <p className="text-white/70 text-xl max-w-xl mx-auto" style={{ lineHeight: 1.65 }}>
-            90 seconds. No login. No sales call. A straight independent read —
+            30 seconds. No login. No sales call. A straight independent read —
             not a glossy report full of numbers that don&apos;t connect to your
             business.
           </p>
