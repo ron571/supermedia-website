@@ -98,9 +98,6 @@ export default function HomePage() {
             <Link href="/superscan" className="btn-primary">
               Find out if your advertising is actually working →
             </Link>
-            <a href="#the-problem" className="btn-outline-white">
-              See how it works
-            </a>
           </div>
         </div>
       </section>
