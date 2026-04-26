@@ -92,10 +92,9 @@ export default function HomePage() {
             className="text-white text-lg max-w-2xl mb-10"
             style={{ opacity: 0.72, lineHeight: 1.65 }}
           >
-            Super Media is an independent NZ media consultancy. Ron Sneddon has
-            spent 35 years on both sides of the table — buying media, selling
+            Ron Sneddon has spent 35 years on both sides of the table — buying media, selling
             it, and owning an agency. He knows exactly where the money gets
-            wasted, and why it keeps happening.
+            wasted, and why it keeps happening. Super Media — your independent NZ media consultancy.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link href="/superscan" className="btn-primary">
@@ -279,7 +278,7 @@ export default function HomePage() {
                   Ron Sneddon
                 </h2>
                 <p className="text-body">
-                  Ron spent 35 years inside NZ media — buying it, selling it,
+                  Ron spent 35 years inside NZ media ��� buying it, selling it,
                   and running an agency. He has sat at every table in this
                   industry and watched, from the inside, exactly how advertising
                   budgets get eroded. Super exists because he decided to stop
