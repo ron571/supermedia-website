@@ -29,9 +29,9 @@ const jsonLd = {
 const timelineItems = [
   { role: "Founded Super Media" },
   { role: "Co-owner, Mr Smith (Auckland ad agency) — 11 years" },
-  { role: "Senior broadcast roles — Newstalk ZB, 91ZM, Classic Hits" },
   { role: "General Manager, Strategic Media (now Carat)" },
   { role: "Media Director, Spearhead Communications" },
+  { role: "Senior broadcast roles — Newstalk ZB, 91ZM, Classic Hits" },
 ];
 
 export default function AboutPage() {
