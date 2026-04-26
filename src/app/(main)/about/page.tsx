@@ -56,7 +56,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── Origin + Photo ─── */}
+      {/* ─── Ron Sneddon ─── */}
       <section className="bg-white py-20 lg:py-28">
         <div className="section-container">
           <div className="max-w-3xl">
@@ -91,8 +91,38 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ─── Phil Carey ─── */}
+      <section className="bg-grey-light py-20 lg:py-28">
+        <div className="section-container">
+          <div className="max-w-3xl">
+            <div className="flex items-start gap-6 mb-8">
+              <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0">
+                <Image
+                  src="/images/phil-carey.png"
+                  alt="Phil Carey, AI specialist at Super Media"
+                  fill
+                  className="object-cover rounded"
+                  sizes="128px"
+                />
+              </div>
+              <div>
+                <h2 className="text-navy text-3xl md:text-4xl font-bold mb-4">
+                  Phil Carey
+                </h2>
+                <p className="text-body">
+                  Phil is Super&apos;s artificial intelligence specialist with more than 40 years experience in media. Phil is now at the forefront of AI and in particular how AI can influence and improve media campaigns across all media.
+                </p>
+              </div>
+            </div>
+            <p className="text-body">
+              Phil is the author of <em>The Curiosity Advantage: Why Better Questions Achieve Better Results in the Age of AI</em>.
+            </p>
+          </div>
+        </div>
+      </section>
+
       {/* ─── Independence List ─── */}
-      <section className="bg-grey-light py-20 lg:py-24">
+      <section className="bg-white py-20 lg:py-24">
         <div className="section-container">
           <div className="max-w-2xl">
             <h2 className="text-navy text-3xl md:text-4xl font-bold mb-5">
@@ -137,7 +167,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─── Career Timeline ─── */}
-      <section className="bg-white py-20 lg:py-28">
+      <section className="bg-grey-light py-20 lg:py-28">
         <div className="section-container">
           <h2 className="text-navy text-3xl md:text-4xl font-bold mb-12">
             Career
@@ -159,7 +189,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─── AI Section ─── */}
-      <section className="bg-grey-light py-20 lg:py-24">
+      <section className="bg-white py-20 lg:py-24">
         <div className="section-container">
           <div className="max-w-2xl">
             <h2 className="text-navy text-3xl md:text-4xl font-bold mb-6">
