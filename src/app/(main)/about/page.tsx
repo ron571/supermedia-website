@@ -27,17 +27,11 @@ const jsonLd = {
 };
 
 const timelineItems = [
-  { year: "1999", role: "Media Director, Spearhead Communications" },
-  { year: "2001", role: "General Manager, Strategic Media (now Carat)" },
-  {
-    year: "2003",
-    role: "Senior broadcast roles — Newstalk ZB, 91ZM, Classic Hits",
-  },
-  {
-    year: "2003",
-    role: "Co-owner, Mr Smith (Auckland ad agency) — 11 years",
-  },
-  { year: "2014", role: "Founded Super Media" },
+  { role: "Founded Super Media" },
+  { role: "Co-owner, Mr Smith (Auckland ad agency) — 11 years" },
+  { role: "Senior broadcast roles — Newstalk ZB, 91ZM, Classic Hits" },
+  { role: "General Manager, Strategic Media (now Carat)" },
+  { role: "Media Director, Spearhead Communications" },
 ];
 
 export default function AboutPage() {
@@ -112,7 +106,7 @@ export default function AboutPage() {
               {[
                 "No holding company — no parent organisation with its own financial relationships to protect",
                 "No platform partnerships that create an incentive to recommend one channel over another",
-                "One financial incentive: a client who gets results and stays",
+                "One financial incentive: a client who gets results",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-4">
                   <span
@@ -146,27 +140,17 @@ export default function AboutPage() {
       <section className="bg-white py-20 lg:py-28">
         <div className="section-container">
           <h2 className="text-navy text-3xl md:text-4xl font-bold mb-12">
-            Career timeline
+            Career
           </h2>
-          <div className="relative">
-            {/* Vertical line */}
-            <div
-              className="absolute left-0 top-0 bottom-0 w-px bg-grey-mid ml-[52px] hidden sm:block"
-              aria-hidden="true"
-            />
-            <ol className="space-y-8">
-              {timelineItems.map(({ year, role }) => (
-                <li key={year} className="flex items-start gap-6 sm:gap-10">
-                  <div className="flex-shrink-0 w-[52px] text-right sm:text-right">
-                    <span className="text-orange font-bold text-sm">{year}</span>
-                  </div>
-                  <div className="relative">
-                    <span
-                      className="absolute -left-[42px] top-1.5 w-2.5 h-2.5 rounded-full bg-navy hidden sm:block"
-                      aria-hidden="true"
-                    />
-                    <p className="text-body text-lg">{role}</p>
-                  </div>
+          <div>
+            <ol className="space-y-6">
+              {timelineItems.map(({ role }, index) => (
+                <li key={index} className="flex items-center gap-4">
+                  <span
+                    className="flex-shrink-0 w-2.5 h-2.5 rounded-full bg-navy"
+                    aria-hidden="true"
+                  />
+                  <p className="text-body text-lg">{role}</p>
                 </li>
               ))}
             </ol>
@@ -179,7 +163,7 @@ export default function AboutPage() {
         <div className="section-container">
           <div className="max-w-2xl">
             <h2 className="text-navy text-3xl md:text-4xl font-bold mb-6">
-              AI as a real tool, not a talking point
+              How we use AI for your business
             </h2>
             <p className="text-body mb-5">
               Most agencies that mention AI are doing one of two things: using
@@ -211,7 +195,7 @@ export default function AboutPage() {
       <section className="bg-navy py-20 lg:py-28">
         <div className="section-container text-center">
           <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">
-            Not sure if Super is right for you?
+            Find out why Super is right for you
           </h2>
           <p className="text-white/70 text-lg mb-10 max-w-xl mx-auto" style={{ lineHeight: 1.65 }}>
             That&apos;s what the first conversation is for. 30 minutes, no
