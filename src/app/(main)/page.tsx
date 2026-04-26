@@ -94,10 +94,7 @@ export default function HomePage() {
           >
             Super Media has 35 years experience in buying and selling media. We know exactly how to Super charge your media budget.
           </p>
-          <p className="text-white text-lg mb-10" style={{ opacity: 0.72 }}>
-            Super Media — your independent NZ media consultancy.
-          </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mt-10">
             <Link href="/superscan" className="btn-primary">
               Find out where yours went →
             </Link>
