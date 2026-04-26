@@ -92,7 +92,7 @@ export default function HomePage() {
             className="text-white text-lg max-w-2xl mb-4"
             style={{ opacity: 0.72, lineHeight: 1.65 }}
           >
-            Super Media has 35 years experience in buying and selling media. We know exactly how to Super charge your media budget — delivering your business real sales.
+            Super Media has 35 years experience in buying and selling media. We know exactly how to Super charge your media budget — delivering real business results.
           </p>
           <div className="flex flex-wrap gap-4 mt-10">
             <Link href="/superscan" className="btn-primary">
