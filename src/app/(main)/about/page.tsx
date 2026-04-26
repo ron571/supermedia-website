@@ -90,20 +90,8 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <p className="text-body mb-5">
-              For most of my career I watched the same pattern repeat. A
-              business would hire an agency expecting independent advice. What
-              they&apos;d get was advice shaped — sometimes unconsciously — by
-              the agency&apos;s commercial relationships. Not dishonesty,
-              exactly. But structure. The way most agencies make money means
-              their best recommendation and their most profitable recommendation
-              aren&apos;t always the same thing. Most clients never find out.
-            </p>
             <p className="text-body">
-              Super was founded in 2014 because I decided to stop watching it
-              happen. The only way to give genuinely independent advice is to
-              build a business with no financial reason to give anything else.
-              No rebates. No platform deals. No preferred suppliers.
+              Super was founded in 2014 based on my extensive knowledge of the market. I realised that the only way to give genuinely independent advice was to build a business that speaks the truth and always has you, the customer as its core focus.
             </p>
           </div>
         </div>
