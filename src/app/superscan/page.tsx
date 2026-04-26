@@ -63,7 +63,7 @@ export default function SuperscanPage() {
         <div className="section-container relative py-16 lg:py-24 text-center">
           <p className="eyebrow mb-4">Superscan</p>
           <h1 className="text-white text-4xl md:text-5xl font-bold max-w-2xl mx-auto mb-4">
-            Find out if your advertising is actually working
+            Find out in 30 seconds if your media is actually working with our free Superscan tool
           </h1>
           <p className="text-white/70 text-xl max-w-xl mx-auto" style={{ lineHeight: 1.65 }}>
             30 seconds. No login. No sales call. A straight independent read —
