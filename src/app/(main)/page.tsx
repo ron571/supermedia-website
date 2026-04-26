@@ -96,7 +96,7 @@ export default function HomePage() {
           </p>
           <div className="flex flex-wrap gap-4 mt-10">
             <Link href="/superscan" className="btn-primary">
-              Find out where yours went →
+              Find out if your advertising is actually working →
             </Link>
             <a href="#the-problem" className="btn-outline-white">
               See how it works
