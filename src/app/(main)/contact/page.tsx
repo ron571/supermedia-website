@@ -15,13 +15,9 @@ export default function ContactPage() {
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />
         <div className="section-container relative py-20 lg:py-28">
-          <h1 className="text-white text-4xl md:text-5xl font-bold max-w-xl mb-4">
+          <h1 className="text-white text-4xl md:text-5xl font-bold max-w-xl">
             Let&apos;s talk
           </h1>
-          <p className="text-white/70 text-xl max-w-xl" style={{ lineHeight: 1.65 }}>
-            The first conversation costs nothing. If Super isn&apos;t the right
-            fit, Ron will tell you — and might point you somewhere that is.
-          </p>
         </div>
       </section>
 
@@ -91,16 +87,16 @@ function ContactForm() {
         />
       </div>
       <div>
-        <label htmlFor="message" className="block text-navy font-semibold text-sm mb-1">
-          What are you working on? <span className="text-orange" aria-hidden="true">*</span>
+        <label htmlFor="phone" className="block text-navy font-semibold text-sm mb-1">
+          Your phone number <span className="text-orange" aria-hidden="true">*</span>
         </label>
-        <textarea
-          id="message"
-          name="message"
+        <input
+          id="phone"
+          name="phone"
+          type="tel"
           required
-          rows={5}
-          placeholder="A brief description helps Ron prepare for the conversation."
-          className="w-full px-4 py-3 border border-grey-mid rounded text-body text-sm focus:outline-none focus:border-orange resize-none"
+          autoComplete="tel"
+          className="w-full px-4 py-3 border border-grey-mid rounded text-body text-sm focus:outline-none focus:border-orange"
         />
       </div>
       <button type="submit" className="btn-primary w-full justify-center">
