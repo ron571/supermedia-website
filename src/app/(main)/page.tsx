@@ -86,7 +86,7 @@ export default function HomePage() {
         <div className="section-container relative py-24 lg:py-36">
           <p className="eyebrow mb-5">Independent NZ Media Consultancy</p>
           <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold max-w-3xl mb-6">
-            Straight answers. Smart strategy. Real results.
+            Straight answers. Smart Media strategy. Real results.
           </h1>
           <p
             className="text-white text-lg max-w-2xl mb-4"
