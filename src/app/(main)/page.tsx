@@ -94,7 +94,10 @@ export default function HomePage() {
           >
             Ron Sneddon has spent 35 years on both sides of the table — buying media, selling
             it, and owning an agency. He knows exactly where the money gets
-            wasted, and why it keeps happening. Super Media — your independent NZ media consultancy.
+            wasted, and why it keeps happening.
+          </p>
+          <p className="text-white text-2xl md:text-4xl font-semibold max-w-2xl mb-10">
+            Super Media — your independent NZ media consultancy.
           </p>
           <div className="flex flex-wrap gap-4">
             <Link href="/superscan" className="btn-primary">
