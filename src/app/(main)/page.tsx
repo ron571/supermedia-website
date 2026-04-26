@@ -155,11 +155,6 @@ export default function HomePage() {
               Most of the businesses that come to Super are spending between
               $2,000 and $20,000 a month on advertising.
             </h2>
-            <p className="text-white text-xl md:text-2xl font-semibold mb-5 leading-snug">
-              They&apos;re not big corporates. They&apos;re a retailer, a professional services firm,
-              a trades business — someone who tried advertising, got a glossy
-              report, and is no longer sure the money is working.
-            </p>
             <p className="text-white/85 text-lg mb-8" style={{ lineHeight: 1.65 }}>
               The Superscan tool was built specifically for this situation. It
               takes 30 seconds, costs nothing, and gives you an independent read
