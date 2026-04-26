@@ -92,9 +92,7 @@ export default function HomePage() {
             className="text-white text-lg max-w-2xl mb-4"
             style={{ opacity: 0.72, lineHeight: 1.65 }}
           >
-            With 35 years on both sides of the table — buying media, selling
-            it, and owning an agency. We know exactly where the money gets
-            wasted, and why it keeps happening.
+            With 35 years buying media, selling it, and owning an agency. We know exactly where the money gets wasted, and why it keeps happening.
           </p>
           <p className="text-white text-lg mb-10" style={{ opacity: 0.72 }}>
             Super Media — your independent NZ media consultancy.
