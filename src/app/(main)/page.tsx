@@ -84,31 +84,20 @@ export default function HomePage() {
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />
         <div className="section-container relative py-24 lg:py-36">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div>
-              <p className="eyebrow mb-5">Independent NZ Media Consultancy</p>
-              <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold max-w-3xl mb-6">
-                Straight answers. Smart Media strategy. Real results.
-              </h1>
-              <p
-                className="text-white text-lg max-w-2xl mb-4"
-                style={{ opacity: 0.72, lineHeight: 1.65 }}
-              >
-                Super Media has 35 years experience in buying and selling media. We know exactly how to Super charge your media budget — delivering real business results.
-              </p>
-              <div className="flex flex-wrap gap-4 mt-10">
-                <Link href="/superscan" className="btn-primary">
-                  Find out in 30 seconds if your media is working →
-                </Link>
-              </div>
-            </div>
-            {/* Stylised results preview */}
-            <div className="bg-white/5 border border-white/10 rounded p-5 shadow-lg max-w-sm lg:max-w-none lg:ml-auto">
-              <p className="text-white/50 text-xs uppercase tracking-eyebrow mb-3">
-                Sample Superscan Output
-              </p>
-              <BarChartMockup />
-            </div>
+          <p className="eyebrow mb-5">Independent NZ Media Consultancy</p>
+          <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold max-w-3xl mb-6">
+            Straight answers. Smart Media strategy. Real results.
+          </h1>
+          <p
+            className="text-white text-lg max-w-2xl mb-4"
+            style={{ opacity: 0.72, lineHeight: 1.65 }}
+          >
+            Super Media has 35 years experience in buying and selling media. We know exactly how to Super charge your media budget — delivering real business results.
+          </p>
+          <div className="flex flex-wrap gap-4 mt-10">
+            <Link href="/superscan" className="btn-primary">
+              Find out in 30 seconds if your media is working →
+            </Link>
           </div>
         </div>
       </section>
