@@ -96,7 +96,7 @@ export default function HomePage() {
           </p>
           <div className="flex flex-wrap gap-4 mt-10">
             <Link href="/superscan" className="btn-primary">
-              Find out if your advertising is actually working →
+              Find out in 30 seconds if your media is working →
             </Link>
           </div>
         </div>
