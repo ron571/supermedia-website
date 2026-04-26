@@ -110,7 +110,7 @@ export default function HomePage() {
         <div className="section-container">
           <div className="max-w-xl mb-12">
             <h2 className="text-navy text-3xl md:text-4xl font-bold mb-4">
-              What usually happened
+              What usually happens
             </h2>
             <p className="text-body text-lg" style={{ lineHeight: 1.65 }}>
               Most NZ businesses who&apos;ve been burned by advertising describe
