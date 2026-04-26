@@ -92,7 +92,7 @@ export default function HomePage() {
             className="text-white text-lg max-w-2xl mb-4"
             style={{ opacity: 0.72, lineHeight: 1.65 }}
           >
-            Super Media has 35 years experience in buying and selling media. We know exactly how to make your media budget Super Charged.
+            Super Media has 35 years experience in buying and selling media. We know exactly how to Super charge your media budget.
           </p>
           <p className="text-white text-lg mb-10" style={{ opacity: 0.72 }}>
             Super Media — your independent NZ media consultancy.
