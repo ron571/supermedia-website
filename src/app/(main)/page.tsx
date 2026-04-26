@@ -7,7 +7,7 @@ import { getArticles } from "@/lib/articles";
 export const metadata: Metadata = {
   title: "Super Media — Independent NZ Media Consultancy",
   description:
-    "Your last campaign probably didn't fail because of bad luck. Super Media is an independent NZ media consultancy. Ron Sneddon has 35 years on both sides of the table — and knows exactly where the money gets wasted.",
+    "Your next campaign can work harder with the right guidance. Super Media is an independent NZ media consultancy. Ron Sneddon has 35 years on both sides of the table — and knows exactly how to make your budget perform.",
   alternates: { canonical: "/" },
 };
 
@@ -86,7 +86,7 @@ export default function HomePage() {
         <div className="section-container relative py-24 lg:py-36">
           <p className="eyebrow mb-5">Independent NZ Media Consultancy</p>
           <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold max-w-3xl mb-6">
-            Your last campaign probably didn&apos;t fail because of bad luck.
+            Your next campaign can work harder with the right guidance.
           </h1>
           <p
             className="text-white text-lg max-w-2xl mb-10"
