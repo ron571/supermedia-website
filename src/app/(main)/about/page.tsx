@@ -111,7 +111,6 @@ export default function AboutPage() {
             <ul className="space-y-5">
               {[
                 "No holding company — no parent organisation with its own financial relationships to protect",
-                "No volume rebates or investment deals with media owners",
                 "No platform partnerships that create an incentive to recommend one channel over another",
                 "One financial incentive: a client who gets results and stays",
               ].map((item) => (
