@@ -34,6 +34,16 @@ export default function SuperscanResults({ result }: Props) {
             </li>
           ))}
         </ul>
+        <div className="mt-6 pt-4 border-t border-grey-mid">
+          <a
+            href={calendlyUrl}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="btn-primary inline-flex"
+          >
+            Book a call
+          </a>
+        </div>
       </div>
 
       {/* Section 3: Opportunities */}
