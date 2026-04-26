@@ -31,7 +31,7 @@
 @layer components {
   .eyebrow {
     @apply text-orange uppercase tracking-eyebrow font-bold;
-    font-size: 11px;
+    font-size: 22px;
   }
 
   .btn-primary {

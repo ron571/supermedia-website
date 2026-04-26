@@ -96,9 +96,9 @@ export default function HomePage() {
             it, and owning an agency. He knows exactly where the money gets
             wasted, and why it keeps happening.
           </p>
-          <p className="text-white text-2xl md:text-4xl font-semibold max-w-2xl mb-10">
+          <span className="text-white text-lg" style={{ opacity: 0.72 }}>
             Super Media — your independent NZ media consultancy.
-          </p>
+          </span>
           <div className="flex flex-wrap gap-4">
             <Link href="/superscan" className="btn-primary">
               Find out where yours went →
