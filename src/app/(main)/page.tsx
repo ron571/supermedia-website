@@ -189,7 +189,7 @@ export default function HomePage() {
               {
                 icon: <PersonIcon />,
                 heading: "Senior judgement, not junior execution",
-                body: "When you work with Super, you work with Ron — 35 years of NZ media experience, applied directly to your account.",
+                body: "When you work with Super Media you get a team with more than 30 years media experience applied directly to your account.",
               },
               {
                 icon: <PulseIcon />,
