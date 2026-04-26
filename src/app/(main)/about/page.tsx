@@ -103,8 +103,7 @@ export default function AboutPage() {
               Super was founded in 2014 because I decided to stop watching it
               happen. The only way to give genuinely independent advice is to
               build a business with no financial reason to give anything else.
-              No rebates. No platform deals. No preferred suppliers. One
-              incentive: a client whose advertising works, who stays.
+              No rebates. No platform deals. No preferred suppliers.
             </p>
           </div>
         </div>
