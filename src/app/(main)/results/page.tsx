@@ -117,7 +117,7 @@ export default function ResultsPage() {
             Want to know what a review would find in your account?
           </h2>
           <p className="text-white/70 text-lg mb-10 max-w-xl mx-auto">
-            Start with Superscan — a 90-second independent read on your current
+            Start with Superscan — a 30-second independent read on your current
             media mix.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">

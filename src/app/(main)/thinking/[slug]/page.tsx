@@ -171,7 +171,7 @@ export default function ArticlePage({ params }: Props) {
                 <div className="bg-navy rounded p-6">
                   <p className="eyebrow mb-2">Superscan</p>
                   <p className="text-white font-semibold mb-4">
-                    Run your 90-second media review
+                    Run your 30-second media review
                   </p>
                   <Link href="/superscan" className="btn-primary text-sm">
                     Start your scan →
@@ -200,7 +200,7 @@ export default function ArticlePage({ params }: Props) {
                 <div className="bg-navy rounded p-5">
                   <p className="eyebrow mb-2 text-xs">Superscan</p>
                   <p className="text-white text-sm mb-3">
-                    90-second independent media review.
+                    30-second independent media review.
                   </p>
                   <Link href="/superscan" className="btn-primary text-sm py-2">
                     Run your scan →
