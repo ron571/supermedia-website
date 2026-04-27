@@ -1,6 +1,7 @@
 "use client";
 
-import { useState, useCallback } from "react";
+import { useState, useCallback, useEffect, Suspense } from "react";
+import { useSearchParams } from "next/navigation";
 
 // ─── Types ───
 interface BriefData {
@@ -124,12 +125,32 @@ function completionPct(brief: BriefData): number {
 }
 
 // ─── Component ───
-export default function CoworkToolPage() {
+function CoworkTool() {
+  const searchParams = useSearchParams();
+  const loadId = searchParams.get("load");
+
   const [brief, setBrief] = useState<BriefData>(EMPTY_BRIEF);
   const [sessionId] = useState(generateSessionId);
   const [copied, setCopied] = useState(false);
   const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error">("idle");
   const [saveError, setSaveError] = useState<string>("");
+  const [loading, setLoading] = useState(!!loadId);
+
+  // Load a saved brief if ?load=<id> is in the URL
+  useEffect(() => {
+    if (!loadId) return;
+    setLoading(true);
+    fetch(`/api/admin/briefs?id=${encodeURIComponent(loadId)}`)
+      .then(r => r.json())
+      .then(data => {
+        if (data.brief) {
+          const { sessionId: _sid, savedAt: _sa, savedAtNZ: _snz, ...briefFields } = data.brief;
+          setBrief({ ...EMPTY_BRIEF, ...briefFields });
+        }
+      })
+      .catch(() => {})
+      .finally(() => setLoading(false));
+  }, [loadId]);
 
   const prompt = buildPrompt(brief, sessionId);
   const pct = completionPct(brief);
@@ -186,6 +207,14 @@ export default function CoworkToolPage() {
 
   const inputCls = "w-full px-4 py-2.5 border border-grey-mid rounded text-body text-sm focus:outline-none focus:border-orange bg-white";
   const labelCls = "block text-grey-dark text-xs font-semibold uppercase tracking-widest mb-1.5";
+
+  if (loading) {
+    return (
+      <div className="max-w-4xl mx-auto px-6 py-20 text-center text-grey-dark text-sm">
+        Loading brief…
+      </div>
+    );
+  }
 
   return (
     <div className="max-w-4xl mx-auto px-6 py-10 pb-24">
@@ -405,5 +434,13 @@ export default function CoworkToolPage() {
       </div>
 
     </div>
+  );
+}
+
+export default function CoworkToolPage() {
+  return (
+    <Suspense fallback={<div className="max-w-4xl mx-auto px-6 py-20 text-center text-grey-dark text-sm">Loading…</div>}>
+      <CoworkTool />
+    </Suspense>
   );
 }

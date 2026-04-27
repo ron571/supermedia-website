@@ -11,11 +11,26 @@ function getRedis() {
   });
 }
 
-// GET — list all saved briefs (most recent first)
-export async function GET() {
+// GET — list all saved briefs, or fetch a single brief by ?id=
+export async function GET(req: NextRequest) {
   const redis = getRedis();
   if (!redis) {
     return NextResponse.json({ briefs: [], error: "Redis not configured" });
+  }
+
+  // Single brief fetch
+  const { searchParams } = new URL(req.url);
+  const id = searchParams.get("id");
+  if (id) {
+    try {
+      const raw = await redis.get(`sm:brief:${id}`);
+      if (!raw) return NextResponse.json({ error: "Brief not found" }, { status: 404 });
+      const brief = typeof raw === "string" ? JSON.parse(raw) : raw;
+      return NextResponse.json({ brief });
+    } catch (err) {
+      console.error("Redis GET single brief error:", err);
+      return NextResponse.json({ error: "Failed to load brief" }, { status: 500 });
+    }
   }
 
   try {
@@ -26,13 +41,16 @@ export async function GET() {
 
     // Fetch all brief data in one pipeline
     const pipeline = redis.pipeline();
-    for (const id of ids) {
-      pipeline.get(`sm:brief:${id}`);
+    for (const briefId of ids) {
+      pipeline.get(`sm:brief:${briefId}`);
     }
     const results = await pipeline.exec();
 
     const briefs = results
-      .map((r, i) => ({ id: ids[i], ...(r as object) }))
+      .map((r, i) => {
+        const parsed = typeof r === "string" ? JSON.parse(r) : r;
+        return { id: ids[i], ...(parsed as object) };
+      })
       .filter(Boolean);
 
     return NextResponse.json({ briefs });
