@@ -23,24 +23,6 @@ export const metadata: Metadata = {
   robots: { index: false, follow: false },
 };
 
-const steps = [
-  {
-    num: "1",
-    label: "Tell us your mix",
-    desc: "Which channels you're running, your spend range, and who you're trying to reach",
-  },
-  {
-    num: "2",
-    label: "Independent analysis",
-    desc: "Superscan reads your inputs against NZ market context — no templates, no generic advice",
-  },
-  {
-    num: "3",
-    label: "A straight answer",
-    desc: "Where the risk is, where the opportunity is, and one question to put to your agency",
-  },
-];
-
 export default function SuperscanPage() {
   return (
     <div className="min-h-screen flex flex-col">
@@ -70,28 +52,6 @@ export default function SuperscanPage() {
             not a glossy report full of numbers that don&apos;t connect to your
             business.
           </p>
-        </div>
-      </section>
-
-      {/* 3-step explainer */}
-      <section className="bg-grey-light border-b border-grey-mid py-8">
-        <div className="section-container">
-          <ol className="flex flex-col sm:flex-row gap-6 sm:gap-0">
-            {steps.map(({ num, label, desc }) => (
-              <li
-                key={num}
-                className="flex items-start gap-4 sm:flex-1 sm:border-r sm:border-grey-mid sm:last:border-r-0 sm:px-6 first:pl-0 last:pr-0"
-              >
-                <span className="flex-shrink-0 w-7 h-7 rounded-full bg-orange text-white text-sm font-bold flex items-center justify-center">
-                  {num}
-                </span>
-                <div>
-                  <p className="text-navy font-semibold text-sm">{label}</p>
-                  <p className="text-grey-dark text-sm">{desc}</p>
-                </div>
-              </li>
-            ))}
-          </ol>
         </div>
       </section>
 
