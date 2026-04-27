@@ -121,8 +121,35 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ─── Vishal Jasuja ─── */}
+      <section className="bg-white py-20 lg:py-28">
+        <div className="section-container">
+          <div className="max-w-3xl">
+            <div className="flex items-start gap-6">
+              <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0">
+                <Image
+                  src="/images/vishal-jasuja.png"
+                  alt="Vishal Jasuja, Digital Director at Super Media"
+                  fill
+                  className="object-cover rounded"
+                  sizes="128px"
+                />
+              </div>
+              <div>
+                <h2 className="text-navy text-3xl md:text-4xl font-bold mb-4">
+                  Vishal Jasuja
+                </h2>
+                <p className="text-body">
+                  Vishal is our Digital Director responsible for integration of AI into all our digital campaigns including search, display and social media.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── Independence List ─── */}
-      <section className="bg-white py-20 lg:py-24">
+      <section className="bg-grey-light py-20 lg:py-24">
         <div className="section-container">
           <div className="max-w-2xl">
             <h2 className="text-navy text-3xl md:text-4xl font-bold mb-5">
