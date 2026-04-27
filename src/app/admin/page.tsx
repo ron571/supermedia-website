@@ -44,6 +44,23 @@ export default function AdminDashboard() {
           </div>
         </Link>
 
+        {/* Documents */}
+        <Link href="/admin/docs" className="group block">
+          <div className="bg-white border border-grey-mid rounded p-8 hover:border-orange hover:shadow-md transition-all duration-200">
+            <div className="w-10 h-10 bg-navy rounded flex items-center justify-center mb-5 group-hover:bg-orange transition-colors">
+              <span className="text-white text-lg">📄</span>
+            </div>
+            <h2 className="text-navy text-xl font-bold mb-2">Documents &amp; Resources</h2>
+            <p className="text-body text-sm" style={{ lineHeight: 1.6 }}>
+              Company profile, brand guide, marketing strategy, outreach playbook,
+              and research documents — all in one place.
+            </p>
+            <p className="text-orange text-sm font-semibold mt-4 group-hover:underline">
+              View documents →
+            </p>
+          </div>
+        </Link>
+
       </div>
 
       {/* Quick reference */}

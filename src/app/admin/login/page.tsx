@@ -8,20 +8,30 @@ export default function AdminLoginPage() {
   const router = useRouter();
   const [password, setPassword] = useState("");
   const [state, setState] = useState<"idle" | "submitting" | "error">("idle");
+  const [errorMsg, setErrorMsg] = useState("");
 
   async function handleSubmit(e: React.FormEvent) {
     e.preventDefault();
     setState("submitting");
+    setErrorMsg("");
 
-    const res = await fetch("/api/admin/login", {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ password }),
-    });
+    try {
+      const res = await fetch("/api/admin/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ password }),
+      });
 
-    if (res.ok) {
-      router.push("/admin");
-    } else {
+      if (res.ok) {
+        router.push("/admin");
+      } else {
+        const data = await res.json().catch(() => ({}));
+        setErrorMsg(data.error ?? `Error ${res.status}`);
+        setState("error");
+        setPassword("");
+      }
+    } catch (err) {
+      setErrorMsg(err instanceof Error ? err.message : "Network error — please try again");
       setState("error");
       setPassword("");
     }
@@ -57,7 +67,7 @@ export default function AdminLoginPage() {
 
             {state === "error" && (
               <p className="text-sm text-red-600 bg-red-50 border border-red-200 rounded px-3 py-2">
-                Incorrect password.
+                {errorMsg || "Incorrect password."}
               </p>
             )}
 

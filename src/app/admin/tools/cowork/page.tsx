@@ -129,6 +129,7 @@ export default function CoworkToolPage() {
   const [sessionId] = useState(generateSessionId);
   const [copied, setCopied] = useState(false);
   const [saveState, setSaveState] = useState<"idle" | "saving" | "saved" | "error">("idle");
+  const [saveError, setSaveError] = useState<string>("");
 
   const prompt = buildPrompt(brief, sessionId);
   const pct = completionPct(brief);
@@ -156,17 +157,25 @@ export default function CoworkToolPage() {
   async function saveBrief() {
     if (!brief.clientName) return;
     setSaveState("saving");
+    setSaveError("");
     try {
       const res = await fetch("/api/admin/briefs", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ sessionId, brief }),
       });
-      setSaveState(res.ok ? "saved" : "error");
-      setTimeout(() => setSaveState("idle"), 3000);
-    } catch {
+      if (res.ok) {
+        setSaveState("saved");
+      } else {
+        const data = await res.json().catch(() => ({}));
+        setSaveError(data.error ?? `HTTP ${res.status}`);
+        setSaveState("error");
+      }
+      setTimeout(() => setSaveState("idle"), 5000);
+    } catch (err) {
+      setSaveError(err instanceof Error ? err.message : "Network error");
       setSaveState("error");
-      setTimeout(() => setSaveState("idle"), 3000);
+      setTimeout(() => setSaveState("idle"), 5000);
     }
   }
 
@@ -370,13 +379,18 @@ export default function CoworkToolPage() {
         >
           {copied ? "✓ Copied" : "⎘ Copy Prompt"}
         </button>
-        <button
-          onClick={saveBrief}
-          disabled={!brief.clientName || saveState === "saving"}
-          className="bg-navy text-white font-semibold px-6 py-3 rounded hover:bg-navy-dark transition-colors disabled:opacity-40 disabled:cursor-not-allowed inline-flex items-center gap-2"
-        >
-          {saveState === "saving" ? "Saving…" : saveState === "saved" ? "✓ Saved" : saveState === "error" ? "Error — try again" : "↓ Save Brief"}
-        </button>
+        <div className="flex flex-col gap-1">
+          <button
+            onClick={saveBrief}
+            disabled={!brief.clientName || saveState === "saving"}
+            className="bg-navy text-white font-semibold px-6 py-3 rounded hover:bg-navy-dark transition-colors disabled:opacity-40 disabled:cursor-not-allowed inline-flex items-center gap-2"
+          >
+            {saveState === "saving" ? "Saving…" : saveState === "saved" ? "✓ Saved" : saveState === "error" ? "Error — try again" : "↓ Save Brief"}
+          </button>
+          {saveState === "error" && saveError && (
+            <p className="text-red-600 text-xs font-mono">{saveError}</p>
+          )}
+        </div>
         <button
           onClick={clearForm}
           className="border border-grey-mid text-navy font-semibold px-6 py-3 rounded hover:border-navy transition-colors"

@@ -30,6 +30,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               >
                 Saved Briefs
               </Link>
+              <Link
+                href="/admin/docs"
+                className="text-white/70 hover:text-white text-sm font-medium transition-colors"
+              >
+                Documents
+              </Link>
             </nav>
           </div>
           <div className="flex items-center gap-4">
