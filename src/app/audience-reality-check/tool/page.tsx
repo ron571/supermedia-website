@@ -35,14 +35,9 @@ export default function AudienceRealityCheckToolPage() {
   if (checking) return null;
 
   if (unlocked) {
-    return (
-      <iframe
-        src="/arc.html"
-        className="w-full border-0"
-        style={{ height: "100vh", display: "block" }}
-        title="Audience Reality Check — Super Media"
-      />
-    );
+    // Redirect directly to the standalone HTML tool — avoids iframe security restrictions
+    window.location.href = "/arc.html";
+    return null;
   }
 
   return (

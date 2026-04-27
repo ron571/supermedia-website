@@ -1,11 +1,15 @@
+"use client";
+
+import { useEffect } from "react";
+
 export default function AudienceRealityCheckPage() {
+  useEffect(() => {
+    window.location.href = "/audience-reality-check.html";
+  }, []);
+
   return (
-    <div className="flex flex-col" style={{ height: "calc(100vh - 64px)" }}>
-      <iframe
-        src="/audience-reality-check.html"
-        className="flex-1 w-full border-0"
-        title="Audience Reality Check"
-      />
+    <div className="flex items-center justify-center min-h-screen text-grey-dark text-sm">
+      Loading Audience Reality Check…
     </div>
   );
 }
