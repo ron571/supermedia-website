@@ -569,6 +569,10 @@ function getVal(id) { return document.getElementById(id).value; }
 // ═══════════════════════════════════════════════════════════
 let profile = {};
 let chartInst = null;
+let assumed = {};
+let actual = {};
+let score = 0;
+let aiRate = 0;
 
 function collectProfile() {
   const getChecked = (gridId) =>
@@ -949,14 +953,67 @@ async function runAnalysis() {
   await new Promise(r => setTimeout(r, 2800));
   clearInterval(msgInterval);
 
-  const assumed = getAgencyAssumption();
-  const actual = getRealityData();
-  const score = calcScore(assumed, actual);
-  const aiRate = calcAISearch();
+  assumed = getAgencyAssumption();
+  actual = getRealityData();
+  score = calcScore(assumed, actual);
+  aiRate = calcAISearch();
 
   showScreen('s-results');
   renderResults(assumed, actual, score, aiRate);
+  setTimeout(showThankYou, 600);
 }
+
+// ═══════════════════════════════════════════════════════════
+// THANK YOU MODAL
+// ═══════════════════════════════════════════════════════════
+function showThankYou() {
+  document.getElementById('thankyou-overlay').classList.add('open');
+  document.querySelector('#thankyou-overlay .btn-gold').focus();
+  sendSubmission();
+}
+
+function closeThankYou() {
+  document.getElementById('thankyou-overlay').classList.remove('open');
+}
+
+document.getElementById('thankyou-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeThankYou();
+});
+
+// ═══════════════════════════════════════════════════════════
+// SUBMISSION — send profile + results to server
+// ═══════════════════════════════════════════════════════════
+async function sendSubmission() {
+  const payload = {
+    submittedAt: new Date().toISOString(),
+    profile,
+    results: { assumed, actual, score, aiRate }
+  };
+  try {
+    await fetch('/api/reality-check/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch (err) {
+    // Silent fail — thank-you modal still shows regardless
+    console.error('Submission error:', err);
+  }
+}
+
 </script>
+
+<!-- ═══════════════════════════════════════════ THANK YOU ═══ -->
+<div class="admin-overlay" id="thankyou-overlay" role="dialog" aria-modal="true" aria-labelledby="ty-heading">
+  <div class="admin-panel" style="max-width:480px;text-align:center;padding:48px 40px;">
+    <div style="font-size:40px;margin-bottom:20px;">✓</div>
+    <div class="admin-h" id="ty-heading" style="font-size:22px;margin-bottom:12px;">Thanks for filling this out.</div>
+    <p style="color:var(--grey-dark);font-size:15px;line-height:1.7;margin-bottom:32px;">
+      Ron will be in touch shortly with your results.
+    </p>
+    <button class="btn btn-gold" onclick="closeThankYou()">Got it</button>
+  </div>
+</div>
+
 </body>
 </html>

@@ -538,6 +538,13 @@ select:focus{outline:none;border-color:var(--orange);}
       <div class="admin-h">⚙ Super Admin Panel</div>
       <div class="admin-sub">Update NZ media reality data and messaging. Changes apply immediately to all new analyses.</div>
 
+      <div class="admin-sec" id="admin-strategy-sec">
+        <div class="admin-sec-h">Media Strategy Submissions</div>
+        <div id="admin-strategy-list">
+          <p style="color:var(--grey-dark);font-size:13px;font-style:italic;">Loading submissions…</p>
+        </div>
+      </div>
+
       <div class="admin-sec">
         <div class="admin-sec-h">NZ 2026 Weekly Reach % — by Channel (Overall baseline)</div>
         <div class="admin-grid" id="admin-reach-grid"></div>
@@ -645,6 +652,10 @@ function getVal(id) { return document.getElementById(id).value; }
 // ═══════════════════════════════════════════════════════════
 let profile = {};
 let chartInst = null;
+let assumed = {};
+let actual = {};
+let score = 0;
+let aiRate = 0;
 
 function collectProfile() {
   const getChecked = (gridId) =>
@@ -1025,13 +1036,14 @@ async function runAnalysis() {
   await new Promise(r => setTimeout(r, 2800));
   clearInterval(msgInterval);
 
-  const assumed = getAgencyAssumption();
-  const actual = getRealityData();
-  const score = calcScore(assumed, actual);
-  const aiRate = calcAISearch();
+  assumed = getAgencyAssumption();
+  actual = getRealityData();
+  score = calcScore(assumed, actual);
+  aiRate = calcAISearch();
 
   showScreen('s-results');
   renderResults(assumed, actual, score, aiRate);
+  setTimeout(showThankYou, 600);
 }
 
 // ═══════════════════════════════════════════════════════════
@@ -1091,6 +1103,8 @@ function showAdminMain() {
   document.getElementById('adm-super-take').value = DATA.superTakeTemplate;
   document.getElementById('adm-stat1').value = DATA.welcomeStats.misidentify;
   document.getElementById('adm-stat2').value = DATA.welcomeStats.gapMultiple;
+
+  loadMediaStrategy();
 }
 
 function saveAdmin() {
@@ -1125,6 +1139,111 @@ document.getElementById('admin-overlay').addEventListener('click', function(e) {
   if (e.target === this) closeAdmin();
 });
 
+// ═══════════════════════════════════════════════════════════
+// THANK YOU MODAL
+// ═══════════════════════════════════════════════════════════
+function showThankYou() {
+  document.getElementById('thankyou-overlay').classList.add('open');
+  document.querySelector('#thankyou-overlay .btn-gold').focus();
+  sendSubmission();
+}
+
+function closeThankYou() {
+  document.getElementById('thankyou-overlay').classList.remove('open');
+}
+
+document.getElementById('thankyou-overlay').addEventListener('click', function(e) {
+  if (e.target === this) closeThankYou();
+});
+
+// ═══════════════════════════════════════════════════════════
+// SUBMISSION — send profile + results to server
+// ═══════════════════════════════════════════════════════════
+async function sendSubmission() {
+  const payload = {
+    submittedAt: new Date().toISOString(),
+    profile,
+    results: { assumed, actual, score, aiRate }
+  };
+  try {
+    await fetch('/api/reality-check/submit', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload)
+    });
+  } catch (err) {
+    // Silent fail — thank-you modal still shows regardless
+    console.error('Submission error:', err);
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+// MEDIA STRATEGY — load and render submissions in admin panel
+// ═══════════════════════════════════════════════════════════
+async function loadMediaStrategy() {
+  try {
+    const res = await fetch(`/api/reality-check/submissions?key=${ADMIN_PASSWORD}`);
+    const data = await res.json();
+    renderMediaStrategy(data.submissions || []);
+  } catch (err) {
+    renderMediaStrategy([]);
+  }
+}
+
+function renderMediaStrategy(submissions) {
+  const el = document.getElementById('admin-strategy-list');
+  if (!submissions.length) {
+    el.innerHTML = '<p style="color:var(--grey-dark);font-size:13px;font-style:italic;">No submissions yet. They will appear here when users complete the Audience Reality Check.</p>';
+    return;
+  }
+
+  el.innerHTML = submissions.map(sub => {
+    const p = sub.profile || {};
+    const r = sub.results || {};
+    const pill = [p.age, p.gender, p.income, p.region].filter(Boolean).join(' · ');
+    const s = r.score || 0;
+    const scoreColor = s < 45 ? 'var(--red)' : s < 65 ? 'var(--orange)' : 'var(--green)';
+    const statusBg = sub.status === 'contacted' ? 'var(--green)' : 'var(--orange)';
+    const statusLabel = sub.status === 'contacted' ? 'Contacted' : 'Pending';
+    const date = sub.submittedAtNZ || sub.submittedAt || '—';
+    const assessmentText = sub.assessment || (sub.assessmentError ? '⚠ Assessment generation failed — check API key.' : 'Assessment pending…');
+
+    return `<div style="background:var(--grey-light);border-radius:8px;padding:18px;margin-bottom:14px;border:1px solid var(--grey-mid);">
+      <div style="display:flex;justify-content:space-between;align-items:flex-start;gap:12px;margin-bottom:10px;flex-wrap:wrap;">
+        <div>
+          <span style="font-size:11px;color:var(--grey-dark);">${date}</span>
+          ${pill ? `<span style="display:inline-block;margin-left:10px;background:var(--white);border:1px solid var(--grey-mid);border-radius:24px;padding:2px 10px;font-size:12px;color:var(--grey-dark);">${pill}</span>` : ''}
+        </div>
+        <div style="display:flex;align-items:center;gap:10px;flex-shrink:0;">
+          <span style="font-size:24px;font-weight:700;color:${scoreColor};">${s}%</span>
+          <button onclick="toggleStatus('${sub.id}', this)" data-status="${sub.status || 'pending'}"
+            style="background:${statusBg};color:white;border:none;border-radius:4px;padding:2px 8px;font-size:11px;font-weight:700;cursor:pointer;">
+            ${statusLabel}
+          </button>
+        </div>
+      </div>
+      <div style="font-size:13px;color:var(--body);line-height:1.6;white-space:pre-wrap;overflow-y:auto;max-height:220px;background:var(--white);border:1px solid var(--grey-mid);border-radius:6px;padding:12px;font-family:'Courier New',monospace;">${assessmentText}</div>
+    </div>`;
+  }).join('');
+}
+
+async function toggleStatus(id, btn) {
+  const currentStatus = btn.dataset.status;
+  const newStatus = currentStatus === 'contacted' ? 'pending' : 'contacted';
+  try {
+    await fetch(`/api/reality-check/submissions/${id}/status?key=${ADMIN_PASSWORD}`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ status: newStatus })
+    });
+    btn.dataset.status = newStatus;
+    btn.textContent = newStatus === 'contacted' ? 'Contacted' : 'Pending';
+    btn.style.background = newStatus === 'contacted' ? 'var(--green)' : 'var(--orange)';
+  } catch (err) {
+    console.error('Status toggle error:', err);
+  }
+}
+
 // Logo click counter (hidden access method)
 let logoClicks = 0, logoTimer;
 document.getElementById('logo-click').addEventListener('click', () => {
@@ -1134,5 +1253,18 @@ document.getElementById('logo-click').addEventListener('click', () => {
   if (logoClicks >= 5) { logoClicks = 0; openAdmin(); }
 });
 </script>
+
+<!-- ═══════════════════════════════════════════ THANK YOU ═══ -->
+<div class="admin-overlay" id="thankyou-overlay" role="dialog" aria-modal="true" aria-labelledby="ty-heading">
+  <div class="admin-panel" style="max-width:480px;text-align:center;padding:48px 40px;">
+    <div style="font-size:40px;margin-bottom:20px;">✓</div>
+    <div class="admin-h" id="ty-heading" style="font-size:22px;margin-bottom:12px;">Thanks for filling this out.</div>
+    <p style="color:var(--grey-dark);font-size:15px;line-height:1.7;margin-bottom:32px;">
+      Ron will be in touch shortly with your results.
+    </p>
+    <button class="btn btn-gold" onclick="closeThankYou()">Got it</button>
+  </div>
+</div>
+
 </body>
 </html>
