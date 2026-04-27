@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Audience Reality Check — Super Media</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --navy:#1b2a4a;--navy-dark:#101e35;
+  --orange:#e8621a;--orange-dark:#c95214;--orange-dim:rgba(232,98,26,0.09);
+  --grey-light:#f4f4f4;--grey-mid:#cccccc;--grey-dark:#888888;
+  --body:#3a4a65;--white:#ffffff;
+  --red:#d94f3d;--green:#2d8c6e;
+}
+/* Grid texture for navy sections */
+.grid-bg{
+  background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),
+                   linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);
+  background-size:40px 40px;
+}
+body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:var(--body);min-height:100vh;overflow-x:hidden;font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased;}
+.screen{display:none;min-height:100vh;flex-direction:column;}
+.screen.active{display:flex;}
+
+/* Welcome + Loading — navy with grid */
+#s-welcome{background:var(--navy);}
+#s-loading{background:var(--navy);}
+
+/* Form screens — white */
+#s-step1,#s-step2,#s-step3{background:var(--white);}
+
+/* Results — grey-light base */
+#s-results{background:var(--grey-light);}
+
+/* ── HEADER ───────────────────────────────────────── */
+.hdr{padding:20px 32px;display:flex;align-items:center;justify-content:space-between;}
+#s-welcome .hdr,#s-loading .hdr{border-bottom:1px solid rgba(255,255,255,0.1);}
+#s-step1 .hdr,#s-step2 .hdr,#s-step3 .hdr,#s-results .hdr{border-bottom:1px solid var(--grey-mid);background:var(--white);}
+.logo{font-size:17px;font-weight:700;letter-spacing:-0.01em;cursor:pointer;user-select:none;color:var(--white);}
+#s-step1 .logo,#s-step2 .logo,#s-step3 .logo,#s-results .logo{color:var(--navy);}
+.logo-sub{color:rgba(255,255,255,0.45);font-weight:400;font-size:13px;margin-left:8px;}
+#s-step1 .logo-sub,#s-step2 .logo-sub,#s-step3 .logo-sub,#s-results .logo-sub{color:var(--grey-dark);}
+.progress-bar{height:3px;background:linear-gradient(90deg,var(--orange) var(--prog,0%),var(--grey-mid) var(--prog,0%));}
+
+/* ── WELCOME ──────────────────────────────────────── */
+.welcome-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:64px 24px;
+  background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:40px 40px;}
+.welcome-body h1{font-size:clamp(34px,6vw,68px);font-weight:700;line-height:1.05;letter-spacing:-0.02em;margin-bottom:24px;color:var(--white);}
+.welcome-body h1 em{color:var(--orange);font-style:normal;}
+.welcome-body p{font-size:17px;color:rgba(255,255,255,0.65);max-width:520px;line-height:1.65;margin-bottom:48px;}
+.welcome-stats{display:flex;gap:40px;margin-bottom:48px;flex-wrap:wrap;justify-content:center;}
+.ws{text-align:center;}
+.ws-n{font-size:36px;font-weight:700;color:var(--orange);letter-spacing:-0.02em;}
+.ws-l{font-size:11px;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:0.8px;margin-top:6px;line-height:1.5;}
+
+/* ── BUTTONS ──────────────────────────────────────── */
+.btn{border:none;cursor:pointer;font-size:15px;font-weight:600;border-radius:6px;transition:all 0.2s;display:inline-flex;align-items:center;gap:6px;font-family:'DM Sans',system-ui,sans-serif;}
+/* Primary — orange */
+.btn-gold{background:var(--orange);color:var(--white);padding:15px 36px;}
+.btn-gold:hover{background:var(--orange-dark);transform:translateY(-1px);}
+/* Ghost on dark (welcome) */
+.btn-ghost{background:transparent;color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.3);padding:13px 24px;}
+.btn-ghost:hover{border-color:rgba(255,255,255,0.7);color:var(--white);}
+/* Ghost on light (forms/results) */
+#s-step1 .btn-ghost,#s-step2 .btn-ghost,#s-step3 .btn-ghost,#s-results .btn-ghost{color:var(--navy);border-color:var(--navy);background:transparent;}
+#s-step1 .btn-ghost:hover,#s-step2 .btn-ghost:hover,#s-step3 .btn-ghost:hover,#s-results .btn-ghost:hover{background:var(--navy);color:var(--white);}
+.btn-sm{padding:10px 20px;font-size:13px;}
+
+/* ── FORM ─────────────────────────────────────────── */
+.form-wrap{flex:1;max-width:740px;margin:0 auto;padding:44px 28px;width:100%;}
+.step-dots{display:flex;gap:6px;margin-bottom:44px;}
+.sd{height:3px;border-radius:2px;background:var(--grey-mid);flex:1;transition:background 0.3s;}
+.sd.done{background:var(--green);}
+.sd.active{background:var(--orange);}
+.form-h{font-size:26px;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px;color:var(--navy);}
+.form-sub{color:var(--grey-dark);font-size:14px;margin-bottom:36px;line-height:1.5;}
+.field{margin-bottom:24px;}
+.lbl{display:block;font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:9px;}
+.sel-wrap{position:relative;}
+.sel-wrap::after{content:'▾';position:absolute;right:13px;top:50%;transform:translateY(-50%);color:var(--grey-dark);pointer-events:none;font-size:12px;}
+select{width:100%;background:var(--white);border:1px solid var(--grey-mid);color:var(--body);padding:11px 15px;border-radius:6px;font-size:14px;appearance:none;cursor:pointer;transition:border-color 0.2s;font-family:'DM Sans',system-ui,sans-serif;}
+select:focus{outline:none;border-color:var(--orange);}
+.two-col{display:grid;grid-template-columns:1fr 1fr;gap:16px;}
+@media(max-width:560px){.two-col{grid-template-columns:1fr;}}
+.cb-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(190px,1fr));gap:8px;}
+.cb-item{display:flex;align-items:center;gap:9px;background:var(--white);border:1px solid var(--grey-mid);border-radius:6px;padding:10px 13px;cursor:pointer;transition:all 0.15s;font-size:13px;user-select:none;color:var(--body);}
+.cb-item:hover{border-color:var(--orange);}
+.cb-item.on{border-color:var(--orange);background:var(--orange-dim);color:var(--orange);}
+.cb-item input{display:none;}
+.cb-check{width:14px;height:14px;border:1.5px solid var(--grey-mid);border-radius:3px;flex-shrink:0;transition:all 0.15s;display:flex;align-items:center;justify-content:center;font-size:10px;}
+.cb-item.on .cb-check{background:var(--orange);border-color:var(--orange);color:var(--white);}
+.form-nav{display:flex;justify-content:space-between;align-items:center;margin-top:44px;padding-top:28px;border-top:1px solid var(--grey-mid);}
+.step-count{font-size:13px;color:var(--grey-dark);}
+
+/* ── LOADING ──────────────────────────────────────── */
+.load-screen{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
+  background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:40px 40px;}
+.ring{width:56px;height:56px;border:3px solid rgba(255,255,255,0.15);border-top-color:var(--orange);border-radius:50%;animation:spin 0.75s linear infinite;}
+@keyframes spin{to{transform:rotate(360deg);}}
+.load-msg{color:rgba(255,255,255,0.55);font-size:14px;animation:blink 1.8s ease-in-out infinite;}
+@keyframes blink{0%,100%{opacity:0.4;}50%{opacity:1;}}
+
+/* ── RESULTS ──────────────────────────────────────── */
+.results-wrap{max-width:980px;margin:0 auto;padding:44px 28px;width:100%;}
+.results-hdr{text-align:center;margin-bottom:44px;}
+.results-hdr h2{font-size:30px;font-weight:700;letter-spacing:-0.02em;margin-bottom:10px;color:var(--navy);}
+.audience-pill{display:inline-block;background:var(--white);border:1px solid var(--grey-mid);border-radius:24px;padding:5px 16px;font-size:13px;color:var(--grey-dark);}
+
+/* Score card — navy with grid */
+.score-card{background:var(--navy);border-radius:12px;padding:44px 32px;text-align:center;margin-bottom:20px;position:relative;overflow:hidden;
+  background-image:linear-gradient(rgba(255,255,255,0.03) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.03) 1px,transparent 1px);background-size:40px 40px;}
+.score-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px;background:linear-gradient(90deg,var(--red),var(--orange),var(--green));}
+.sc-label{font-size:11px;font-weight:700;color:rgba(255,255,255,0.45);text-transform:uppercase;letter-spacing:1px;margin-bottom:14px;}
+.sc-number{font-size:88px;font-weight:700;line-height:1;letter-spacing:-0.04em;margin-bottom:10px;color:var(--white);}
+.sc-number.low{color:#ff7a6a;}
+.sc-number.mid{color:var(--orange);}
+.sc-number.hi{color:#5cd4a8;}
+.sc-desc{font-size:16px;color:rgba(255,255,255,0.6);max-width:500px;margin:0 auto;line-height:1.6;}
+.sc-desc strong{color:var(--white);}
+
+/* White cards */
+.card{background:var(--white);border-radius:12px;padding:28px;margin-bottom:20px;box-shadow:0 1px 3px rgba(27,42,74,0.07);}
+.card-h{font-size:14px;font-weight:600;margin-bottom:20px;color:var(--navy);}
+.legend{display:flex;gap:20px;margin-bottom:18px;flex-wrap:wrap;}
+.leg{display:flex;align-items:center;gap:7px;font-size:12px;color:var(--grey-dark);}
+.leg-dot{width:12px;height:12px;border-radius:3px;}
+
+/* Gap bars */
+.gap-bars{display:flex;flex-direction:column;gap:14px;}
+.gb{}
+.gb-top{display:flex;justify-content:space-between;margin-bottom:6px;}
+.gb-name{font-size:13px;font-weight:600;color:var(--body);}
+.gb-delta{font-size:12px;font-weight:600;padding:1px 7px;border-radius:4px;}
+.gb-delta.over{background:rgba(217,79,61,0.1);color:var(--red);}
+.gb-delta.under{background:rgba(45,140,110,0.1);color:var(--green);}
+.gb-delta.neutral{background:var(--grey-light);color:var(--grey-dark);}
+.gb-track{height:22px;background:var(--grey-light);border-radius:4px;position:relative;overflow:hidden;}
+.gb-assumed{position:absolute;top:0;left:0;height:100%;background:var(--grey-mid);border-radius:4px;transition:width 1.1s cubic-bezier(0.4,0,0.2,1);}
+.gb-actual{position:absolute;top:0;left:0;height:100%;background:var(--orange);border-radius:4px;transition:width 1.3s cubic-bezier(0.4,0,0.2,1);opacity:0.88;}
+.gb-labels{display:flex;justify-content:space-between;margin-top:5px;font-size:11px;color:var(--grey-dark);}
+
+/* Insight cards */
+.insights-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(270px,1fr));gap:16px;margin-bottom:20px;}
+.ins-card{background:var(--white);border-radius:12px;padding:24px;position:relative;overflow:hidden;box-shadow:0 1px 3px rgba(27,42,74,0.07);}
+.ins-card::before{content:'';position:absolute;top:0;left:0;width:4px;height:100%;background:var(--orange);}
+.ins-icon{font-size:26px;margin-bottom:10px;}
+.ins-stat{font-size:38px;font-weight:700;color:var(--orange);letter-spacing:-0.02em;line-height:1;margin-bottom:6px;}
+.ins-title{font-size:14px;font-weight:600;margin-bottom:6px;color:var(--navy);}
+.ins-text{font-size:13px;color:var(--grey-dark);line-height:1.6;}
+
+/* Device grid */
+.device-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:12px;}
+.dev-item{background:var(--grey-light);border-radius:8px;padding:16px;text-align:center;}
+.dev-icon{font-size:24px;margin-bottom:8px;}
+.dev-pct{font-size:24px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.dev-name{font-size:12px;color:var(--grey-dark);}
+
+/* AI panel — navy */
+.ai-panel{background:var(--navy);border-radius:12px;padding:20px 24px;margin-bottom:20px;display:flex;align-items:center;gap:20px;
+  background-image:linear-gradient(rgba(255,255,255,0.025) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,0.025) 1px,transparent 1px);background-size:40px 40px;}
+.ai-panel .ai-icon{font-size:36px;flex-shrink:0;}
+.ai-panel .ai-text{font-size:13px;color:rgba(255,255,255,0.65);line-height:1.6;}
+.ai-panel .ai-text strong{color:var(--white);}
+.ai-pct{font-size:32px;font-weight:700;color:var(--orange);flex-shrink:0;}
+
+/* Super Take — orange section */
+.super-take{background:var(--orange);border-radius:12px;padding:32px;margin-bottom:20px;}
+.st-label{font-size:11px;font-weight:700;color:rgba(255,255,255,0.65);text-transform:uppercase;letter-spacing:1.5px;margin-bottom:10px;}
+.st-text{font-size:15px;line-height:1.75;color:var(--white);}
+.st-text strong{color:var(--white);font-weight:700;}
+
+/* CTA */
+.results-cta{text-align:center;padding:32px 28px 28px;background:var(--white);border-radius:12px;box-shadow:0 1px 3px rgba(27,42,74,0.07);}
+.results-cta p{color:var(--grey-dark);margin-bottom:18px;font-size:14px;line-height:1.6;}
+.cta-btns{display:flex;gap:12px;justify-content:center;flex-wrap:wrap;}
+
+/* Footer */
+.ftr{padding:16px 32px;display:flex;justify-content:space-between;align-items:center;}
+#s-welcome .ftr,#s-loading .ftr{border-top:1px solid rgba(255,255,255,0.1);}
+#s-step1 .ftr,#s-step2 .ftr,#s-step3 .ftr{border-top:1px solid var(--grey-mid);}
+.ftr-text{font-size:11px;}
+#s-welcome .ftr-text,#s-loading .ftr-text{color:rgba(255,255,255,0.3);}
+#s-step1 .ftr-text,#s-step2 .ftr-text,#s-step3 .ftr-text,#s-results .ftr-text{color:var(--grey-dark);}
+
+
+/* ── ADMIN OVERLAY ────────────────────────────────── */
+.admin-overlay{display:none;position:fixed;inset:0;background:rgba(16,30,53,0.93);z-index:9000;backdrop-filter:blur(4px);align-items:center;justify-content:center;}
+.admin-overlay.open{display:flex;}
+.admin-panel{background:var(--white);border-radius:12px;width:min(860px,92vw);max-height:85vh;overflow-y:auto;padding:32px;position:relative;}
+.admin-close{position:absolute;top:14px;right:14px;background:none;border:none;color:var(--grey-dark);font-size:22px;cursor:pointer;line-height:1;}
+.admin-close:hover{color:var(--navy);}
+.admin-h{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:6px;}
+.admin-sub{color:var(--grey-dark);font-size:13px;margin-bottom:28px;line-height:1.5;}
+.admin-sec{margin-bottom:28px;}
+.admin-sec-h{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.8px;color:var(--orange);border-bottom:1px solid var(--grey-mid);padding-bottom:8px;margin-bottom:16px;}
+.admin-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px;}
+.ag-item label{display:block;font-size:11px;color:var(--grey-dark);margin-bottom:4px;}
+.ag-item input{width:100%;background:var(--grey-light);border:1px solid var(--grey-mid);color:var(--body);padding:8px 10px;border-radius:6px;font-size:13px;font-family:'DM Sans',system-ui,sans-serif;}
+.ag-item input:focus{outline:none;border-color:var(--orange);}
+.admin-textarea{width:100%;background:var(--grey-light);border:1px solid var(--grey-mid);color:var(--body);padding:12px;border-radius:8px;font-size:13px;font-family:'Courier New',monospace;resize:vertical;min-height:110px;margin-top:8px;}
+.admin-textarea:focus{outline:none;border-color:var(--orange);}
+.admin-note{background:var(--orange-dim);border:1px solid rgba(232,98,26,0.2);border-radius:8px;padding:11px 14px;font-size:12px;color:var(--orange-dark);margin-top:14px;}
+.admin-login{padding:48px 32px;text-align:center;}
+.admin-login h2{font-size:20px;font-weight:700;color:var(--navy);margin-bottom:8px;}
+.admin-login p{color:var(--grey-dark);font-size:13px;margin-bottom:24px;}
+.admin-login input{display:block;margin:0 auto 14px;width:220px;background:var(--grey-light);border:1px solid var(--grey-mid);color:var(--body);padding:12px 16px;border-radius:6px;font-size:15px;text-align:center;letter-spacing:3px;font-family:'DM Sans',system-ui,sans-serif;}
+.admin-login input:focus{outline:none;border-color:var(--orange);}
+.err-msg{color:var(--red);font-size:13px;margin-top:10px;min-height:18px;}
+</style>
+</head>
+<body>
+
+<!-- ═══════════════════════════════════════════ WELCOME ═══ -->
+<div class="screen active" id="s-welcome">
+  <div class="hdr">
+    <div class="logo" id="logo-click">Super Media<span class="logo-sub">Audience Intelligence</span></div>
+  </div>
+  <div class="welcome-body">
+    <h1>Your audience<br>assumptions are<br><em>probably wrong.</em></h1>
+    <p>Most NZ media plans are built on who marketers think they're reaching. This tool shows who's actually there — and where the gap is costing you.</p>
+    <div class="welcome-stats">
+      <div class="ws"><div class="ws-n">73%</div><div class="ws-l">of NZ media briefs<br>misidentify primary channel</div></div>
+      <div class="ws"><div class="ws-n">2.4×</div><div class="ws-l">average gap between assumed<br>and actual audience reach</div></div>
+      <div class="ws"><div class="ws-n">2026</div><div class="ws-l">NZ media behaviour<br>data — updated quarterly</div></div>
+    </div>
+    <button class="btn btn-gold" onclick="startForm()">Check Your Audience →</button>
+  </div>
+  <div class="ftr">
+    <div class="ftr-text">Super Media · Independent NZ Media Intelligence · 2026</div>
+    
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ STEP 1 ════ -->
+<div class="screen" id="s-step1">
+  <div class="hdr">
+    <div class="logo">Super Media<span class="logo-sub">Audience Intelligence</span></div>
+    <div class="step-count">Step 1 of 3</div>
+  </div>
+  <div class="progress-bar" id="pb1" style="--prog:33%;"></div>
+  <div class="form-wrap">
+    <div class="step-dots"><div class="sd active"></div><div class="sd"></div><div class="sd"></div></div>
+    <div class="form-h">Who are they?</div>
+    <div class="form-sub">Describe the audience you believe you're targeting.</div>
+
+    <div class="two-col">
+      <div class="field">
+        <label class="lbl">Age range</label>
+        <div class="sel-wrap"><select id="f-age">
+          <option value="">Select age range</option>
+          <option>18–24</option><option>25–34</option><option>35–44</option>
+          <option>45–54</option><option>55–64</option><option>65+</option>
+        </select></div>
+      </div>
+      <div class="field">
+        <label class="lbl">Gender skew</label>
+        <div class="sel-wrap"><select id="f-gender">
+          <option value="">Select gender skew</option>
+          <option value="all">All genders</option>
+          <option value="female">Predominantly female</option>
+          <option value="male">Predominantly male</option>
+        </select></div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="field">
+        <label class="lbl">Household income</label>
+        <div class="sel-wrap"><select id="f-income">
+          <option value="">Select income bracket</option>
+          <option value="low">Under $50k</option>
+          <option value="mid-low">$50k–$75k</option>
+          <option value="mid">$75k–$100k</option>
+          <option value="mid-high">$100k–$150k</option>
+          <option value="high">$150k+</option>
+        </select></div>
+      </div>
+      <div class="field">
+        <label class="lbl">Education level</label>
+        <div class="sel-wrap"><select id="f-education">
+          <option value="">Select education</option>
+          <option value="secondary">Secondary school</option>
+          <option value="vocational">Vocational / trades</option>
+          <option value="degree">University degree</option>
+          <option value="postgrad">Postgraduate</option>
+        </select></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="lbl">Occupation type</label>
+      <div class="sel-wrap"><select id="f-occupation">
+        <option value="">Select occupation type</option>
+        <option value="white_collar">White collar / professional</option>
+        <option value="blue_collar">Blue collar / trades</option>
+        <option value="business_owner">Business owner / entrepreneur</option>
+        <option value="student">Student</option>
+        <option value="retired">Retired / not working</option>
+      </select></div>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn btn-ghost" onclick="showScreen('s-welcome')">← Back</button>
+      <button class="btn btn-gold" onclick="nextStep(1)">Next →</button>
+    </div>
+  </div>
+  <div class="ftr"><div class="ftr-text">Super Media Intelligence</div></div>
+</div>
+
+<!-- ═══════════════════════════════════════════ STEP 2 ════ -->
+<div class="screen" id="s-step2">
+  <div class="hdr">
+    <div class="logo">Super Media<span class="logo-sub">Audience Intelligence</span></div>
+    <div class="step-count">Step 2 of 3</div>
+  </div>
+  <div class="progress-bar" style="--prog:66%;"></div>
+  <div class="form-wrap">
+    <div class="step-dots"><div class="sd done"></div><div class="sd active"></div><div class="sd"></div></div>
+    <div class="form-h">Where do they live — and how?</div>
+    <div class="form-sub">Lifestyle context changes media behaviour dramatically.</div>
+
+    <div class="two-col">
+      <div class="field">
+        <label class="lbl">Primary region</label>
+        <div class="sel-wrap"><select id="f-region">
+          <option value="">Select region</option>
+          <option value="auckland">Auckland</option>
+          <option value="wellington">Wellington</option>
+          <option value="christchurch">Christchurch</option>
+          <option value="north_island">Other North Island</option>
+          <option value="south_island">Other South Island</option>
+          <option value="national">Nationwide</option>
+        </select></div>
+      </div>
+      <div class="field">
+        <label class="lbl">Urban / rural</label>
+        <div class="sel-wrap"><select id="f-urban">
+          <option value="">Select area type</option>
+          <option value="metro">Metro city centre</option>
+          <option value="suburban">Suburban</option>
+          <option value="provincial">Provincial town</option>
+          <option value="rural">Rural</option>
+        </select></div>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="field">
+        <label class="lbl">Has children?</label>
+        <div class="sel-wrap"><select id="f-children">
+          <option value="">Select</option>
+          <option value="none">No children</option>
+          <option value="young">Yes — under 5</option>
+          <option value="primary">Yes — primary school (5–12)</option>
+          <option value="teen">Yes — teenagers (13–18)</option>
+          <option value="mixed">Yes — mixed ages</option>
+          <option value="adult">Yes — adult children</option>
+        </select></div>
+      </div>
+      <div class="field">
+        <label class="lbl">How they commute</label>
+        <div class="sel-wrap"><select id="f-transport">
+          <option value="">Select commute type</option>
+          <option value="drive">Drive alone</option>
+          <option value="carpool">Carpool</option>
+          <option value="public">Public transport</option>
+          <option value="walk_cycle">Walk or cycle</option>
+          <option value="wfh">Work from home</option>
+          <option value="mixed_commute">Mixed / varies</option>
+        </select></div>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="lbl">Home ownership</label>
+      <div class="sel-wrap"><select id="f-housing">
+        <option value="">Select</option>
+        <option value="own">Own their home</option>
+        <option value="rent">Renting</option>
+        <option value="family">Living with family</option>
+      </select></div>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn btn-ghost" onclick="showScreen('s-step1')">← Back</button>
+      <button class="btn btn-gold" onclick="nextStep(2)">Next →</button>
+    </div>
+  </div>
+  <div class="ftr"><div class="ftr-text">Super Media Intelligence</div></div>
+</div>
+
+<!-- ═══════════════════════════════════════════ STEP 3 ════ -->
+<div class="screen" id="s-step3">
+  <div class="hdr">
+    <div class="logo">Super Media<span class="logo-sub">Audience Intelligence</span></div>
+    <div class="step-count">Step 3 of 3</div>
+  </div>
+  <div class="progress-bar" style="--prog:99%;"></div>
+  <div class="form-wrap">
+    <div class="step-dots"><div class="sd done"></div><div class="sd done"></div><div class="sd active"></div></div>
+    <div class="form-h">How do they consume media?</div>
+    <div class="form-sub">Select all that apply to your assumed audience.</div>
+
+    <div class="field">
+      <label class="lbl">Their favourite media channels</label>
+      <div class="cb-grid" id="cb-media">
+        <label class="cb-item"><input type="checkbox" value="tv"><span class="cb-check">✓</span>Linear TV</label>
+        <label class="cb-item"><input type="checkbox" value="youtube"><span class="cb-check">✓</span>YouTube</label>
+        <label class="cb-item"><input type="checkbox" value="facebook"><span class="cb-check">✓</span>Facebook</label>
+        <label class="cb-item"><input type="checkbox" value="instagram"><span class="cb-check">✓</span>Instagram</label>
+        <label class="cb-item"><input type="checkbox" value="tiktok"><span class="cb-check">✓</span>TikTok</label>
+        <label class="cb-item"><input type="checkbox" value="linkedin"><span class="cb-check">✓</span>LinkedIn</label>
+        <label class="cb-item"><input type="checkbox" value="podcasts"><span class="cb-check">✓</span>Podcasts</label>
+        <label class="cb-item"><input type="checkbox" value="streaming"><span class="cb-check">✓</span>Streaming (Netflix/Prime)</label>
+        <label class="cb-item"><input type="checkbox" value="radio"><span class="cb-check">✓</span>Radio</label>
+        <label class="cb-item"><input type="checkbox" value="online_news"><span class="cb-check">✓</span>Online news</label>
+        <label class="cb-item"><input type="checkbox" value="print"><span class="cb-check">✓</span>Print / magazines</label>
+        <label class="cb-item"><input type="checkbox" value="outdoor"><span class="cb-check">✓</span>Outdoor / OOH</label>
+      </div>
+    </div>
+
+    <div class="field">
+      <label class="lbl">How they research products / services</label>
+      <div class="cb-grid" id="cb-research">
+        <label class="cb-item"><input type="checkbox" value="google"><span class="cb-check">✓</span>Google Search</label>
+        <label class="cb-item"><input type="checkbox" value="ai_search"><span class="cb-check">✓</span>AI (ChatGPT / Copilot)</label>
+        <label class="cb-item"><input type="checkbox" value="social_research"><span class="cb-check">✓</span>Social media browsing</label>
+        <label class="cb-item"><input type="checkbox" value="friends"><span class="cb-check">✓</span>Ask friends / family</label>
+        <label class="cb-item"><input type="checkbox" value="reviews"><span class="cb-check">✓</span>Online reviews</label>
+        <label class="cb-item"><input type="checkbox" value="in_store"><span class="cb-check">✓</span>Browse in store</label>
+      </div>
+    </div>
+
+    <div class="two-col">
+      <div class="field">
+        <label class="lbl">Daily social media time</label>
+        <div class="sel-wrap"><select id="f-social-time">
+          <option value="">Select</option>
+          <option value="none">I don't use social media</option>
+          <option value="light">Under 30 minutes</option>
+          <option value="moderate">30–60 minutes</option>
+          <option value="heavy">1–2 hours</option>
+          <option value="very_heavy">2+ hours</option>
+        </select></div>
+      </div>
+      <div class="field">
+        <label class="lbl">Primary device</label>
+        <div class="sel-wrap"><select id="f-device">
+          <option value="">Select</option>
+          <option value="mobile">Smartphone first</option>
+          <option value="desktop">Desktop / laptop first</option>
+          <option value="smart_tv">Smart TV first</option>
+          <option value="tablet">Tablet first</option>
+        </select></div>
+      </div>
+    </div>
+
+    <div class="form-nav">
+      <button class="btn btn-ghost" onclick="showScreen('s-step2')">← Back</button>
+      <button class="btn btn-gold" onclick="runAnalysis()">Run Reality Check →</button>
+    </div>
+  </div>
+  <div class="ftr"><div class="ftr-text">Super Media Intelligence</div></div>
+</div>
+
+<!-- ═══════════════════════════════════════════ LOADING ═══ -->
+<div class="screen" id="s-loading">
+  <div class="hdr"><div class="logo">Super Media<span class="logo-sub">Audience Intelligence</span></div></div>
+  <div class="load-screen">
+    <div class="ring"></div>
+    <div class="load-msg" id="load-msg">Mapping your audience against NZ 2026 data…</div>
+  </div>
+</div>
+
+<!-- ═══════════════════════════════════════════ RESULTS ═══ -->
+<div class="screen" id="s-results">
+  <div class="hdr">
+    <div class="logo">Super Media<span class="logo-sub">Audience Intelligence</span></div>
+    <button class="btn btn-ghost btn-sm" onclick="startForm()" style="font-size:13px;">← Start Over</button>
+  </div>
+  <div class="results-wrap">
+    <div class="results-hdr">
+      <h2>Your Audience Reality Check</h2>
+      <div class="audience-pill" id="r-pill">Loading…</div>
+    </div>
+
+    <!-- Score -->
+    <div class="score-card">
+      <div class="sc-label">Assumption Alignment Score</div>
+      <div class="sc-number" id="r-score">—</div>
+      <div class="sc-desc" id="r-score-desc">Calculating…</div>
+    </div>
+
+    <!-- Gap bars -->
+    <div class="card">
+      <div class="card-h">Channel Reality vs. What Agencies Typically Recommend</div>
+      <div class="legend">
+        <div class="leg"><div class="leg-dot" style="background:var(--grey-mid);"></div>Agency assumption</div>
+        <div class="leg"><div class="leg-dot" style="background:var(--orange);opacity:0.88;"></div>NZ 2026 actual</div>
+      </div>
+      <div class="gap-bars" id="r-bars"></div>
+    </div>
+
+    <!-- AI Search panel -->
+    <div class="ai-panel" id="r-ai">
+      <div class="ai-icon">🤖</div>
+      <div style="flex:1;" class="ai-text" id="r-ai-text">Loading AI insights…</div>
+      <div class="ai-pct" id="r-ai-pct">—</div>
+    </div>
+
+    <!-- Insights -->
+    <div class="insights-grid" id="r-insights"></div>
+
+    <!-- Device reality -->
+    <div class="card">
+      <div class="card-h">Device Reality for This Audience</div>
+      <div class="device-grid" id="r-devices"></div>
+    </div>
+
+    <!-- The Super Take -->
+    <div class="super-take">
+      <div class="st-label">The Super Take</div>
+      <div class="st-text" id="r-super-take">Loading…</div>
+    </div>
+
+    <!-- CTA -->
+    <div class="results-cta">
+      <p>Every Super engagement starts with closing this gap. Independent intelligence, no agency agenda.</p>
+      <div class="cta-btns">
+        <button class="btn btn-gold" onclick="window.print()">Download Report</button>
+        <button class="btn btn-ghost" onclick="startForm()">Check Another Audience</button>
+      </div>
+    </div>
+  </div>
+  <div class="ftr">
+    <div class="ftr-text">Super Media · Independent NZ Media Intelligence · Data updated quarterly</div>
+    
+  </div>
+</div>
+
+<script>
+// ═══════════════════════════════════════════════════════════
+// EDITABLE DATA STORE (Admin can update these)
+// ═══════════════════════════════════════════════════════════
+let DATA = {
+  // Weekly reach % by channel (NZ 2026 baseline, all adults)
+  reach: {
+    'Linear TV':        52,
+    'YouTube':          84,
+    'Facebook':         69,
+    'Instagram / TikTok': 56,
+    'Podcasts':         43,
+    'Streaming (Netflix/Prime)': 80,
+    'Online News':      67,
+    'LinkedIn':         29,
+    'Radio':            54,
+    'Print / Magazines': 19
+  },
+  // Age modifiers (index: 0=18-24, 1=25-34, 2=35-44, 3=45-54, 4=55-64, 5=65+)
+  ageModifiers: {
+    'Linear TV':        [-30,-18,-8,+8,+20,+28],
+    'YouTube':          [+12,+8,+4,-8,-26,-44],
+    'Facebook':         [-24,-12,+0,+6,+2,-4],
+    'Instagram / TikTok': [+34,+22,+4,-16,-32,-42],
+    'Podcasts':         [-4,+10,+6,+2,-12,-26],
+    'Streaming (Netflix/Prime)': [+14,+10,+5,-2,-18,-36],
+    'Online News':      [-10,-2,+5,+5,+4,+2],
+    'LinkedIn':         [-6,+16,+20,+18,+4,-16],
+    'Radio':            [-16,-8,+0,+6,+10,+12],
+    'Print / Magazines': [-10,-6,-2,+6,+18,+30]
+  },
+  ai: { overall: 33, wcMultiplier: 1.55, pgMultiplier: 1.4, youngMultiplier: 1.35 },
+  superTakeTemplate: `{audience} are not where most NZ agencies are putting the money. <strong>This audience scores {score}% alignment</strong> between typical media recommendations and where they actually spend their attention. The biggest single gap is {biggest_gap_channel} — agencies over-recommend it by {biggest_gap_pct} percentage points relative to actual NZ 2026 consumption data. That's not a rounding error. It's a structural problem that independent intelligence is designed to fix.`,
+  welcomeStats: { misidentify: 73, gapMultiple: 2.4 }
+};
+
+const CHANNELS = Object.keys(DATA.reach);
+const AGE_GROUPS = ['18–24','25–34','35–44','45–54','55–64','65+'];
+
+// ═══════════════════════════════════════════════════════════
+// NAVIGATION
+// ═══════════════════════════════════════════════════════════
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0,0);
+}
+function startForm() { showScreen('s-step1'); }
+
+// Checkbox interactions
+document.querySelectorAll('.cb-item').forEach(item => {
+  item.addEventListener('click', () => {
+    item.classList.toggle('on');
+    item.querySelector('input').checked = item.classList.contains('on');
+  });
+});
+
+// ═══════════════════════════════════════════════════════════
+// FORM VALIDATION & NAVIGATION
+// ═══════════════════════════════════════════════════════════
+function getVal(id) { return document.getElementById(id).value; }
+
+function nextStep(step) {
+  if (step === 1) {
+    const required = ['f-age','f-gender','f-income','f-education','f-occupation'];
+    if (required.some(id => !getVal(id))) { alert('Please complete all fields before continuing.'); return; }
+    showScreen('s-step2');
+  } else if (step === 2) {
+    const required = ['f-region','f-urban','f-children','f-transport','f-housing'];
+    if (required.some(id => !getVal(id))) { alert('Please complete all fields before continuing.'); return; }
+    showScreen('s-step3');
+  }
+}
+
+// ═══════════════════════════════════════════════════════════
+// ANALYSIS ENGINE
+// ═══════════════════════════════════════════════════════════
+let profile = {};
+let chartInst = null;
+
+function collectProfile() {
+  const getChecked = (gridId) =>
+    [...document.querySelectorAll(`#${gridId} input:checked`)].map(i => i.value);
+
+  profile = {
+    age: getVal('f-age'),
+    gender: getVal('f-gender'),
+    income: getVal('f-income'),
+    education: getVal('f-education'),
+    occupation: getVal('f-occupation'),
+    region: getVal('f-region'),
+    urban: getVal('f-urban'),
+    children: getVal('f-children'),
+    transport: getVal('f-transport'),
+    housing: getVal('f-housing'),
+    mediaFavs: getChecked('cb-media'),
+    researchHabits: getChecked('cb-research'),
+    socialTime: getVal('f-social-time'),
+    device: getVal('f-device')
+  };
+}
+
+// What a typical NZ agency would recommend (weighted % per channel)
+function getAgencyAssumption() {
+  // Typical agency brief weights (sum to 100)
+  let w = {
+    'Linear TV': 30,
+    'YouTube': 12,
+    'Facebook': 22,
+    'Instagram / TikTok': 8,
+    'Podcasts': 4,
+    'Streaming (Netflix/Prime)': 5,
+    'Online News': 10,
+    'LinkedIn': 4,
+    'Radio': 12,
+    'Print / Magazines': 8
+  };
+
+  const ageIdx = AGE_GROUPS.indexOf(profile.age);
+
+  // Age adjustments to agency assumptions (agencies are even more traditional for older demos)
+  if (ageIdx >= 3) { // 45+
+    w['Linear TV'] += 12; w['Radio'] += 8; w['Print / Magazines'] += 6;
+    w['YouTube'] -= 6; w['Instagram / TikTok'] -= 8; w['Podcasts'] -= 2;
+  } else if (ageIdx <= 1) { // Under 35
+    w['Instagram / TikTok'] += 12; w['YouTube'] += 8;
+    w['Linear TV'] -= 14; w['Print / Magazines'] -= 6; w['Radio'] -= 6;
+  }
+
+  // Gender assumptions agencies make
+  if (profile.gender === 'female') {
+    w['Facebook'] += 8; w['Instagram / TikTok'] += 4;
+    w['Print / Magazines'] += 5; w['LinkedIn'] -= 4;
+  }
+
+  // Occupation (agencies sometimes over-weight LinkedIn for white collar, still under-weight podcasts)
+  if (profile.occupation === 'white_collar' || profile.occupation === 'business_owner') {
+    w['LinkedIn'] += 8; w['Online News'] += 4;
+    w['Facebook'] -= 4;
+  }
+  if (profile.occupation === 'blue_collar') {
+    w['Radio'] += 10; w['Linear TV'] += 6;
+    w['LinkedIn'] -= 4; w['Online News'] -= 4;
+  }
+
+  return normalise(w);
+}
+
+// NZ 2026 actual consumption data
+function getRealityData() {
+  let w = {};
+  const ageIdx = AGE_GROUPS.indexOf(profile.age);
+
+  CHANNELS.forEach(ch => {
+    let base = DATA.reach[ch];
+    let mod = DATA.ageModifiers[ch] ? (DATA.ageModifiers[ch][ageIdx] || 0) : 0;
+    w[ch] = Math.max(2, base + mod);
+  });
+
+  // Income adjustments
+  if (profile.income === 'mid-high' || profile.income === 'high') {
+    w['Podcasts'] *= 1.38; w['Streaming (Netflix/Prime)'] *= 1.12;
+    w['LinkedIn'] *= 1.45; w['Linear TV'] *= 0.72; w['Print / Magazines'] *= 0.8;
+  } else if (profile.income === 'low') {
+    w['Facebook'] *= 1.12; w['Radio'] *= 1.1;
+    w['Streaming (Netflix/Prime)'] *= 0.82; w['LinkedIn'] *= 0.65;
+  }
+
+  // Education adjustments
+  if (profile.education === 'postgrad' || profile.education === 'degree') {
+    w['Podcasts'] *= 1.32; w['Online News'] *= 1.22; w['LinkedIn'] *= 1.28;
+    w['Linear TV'] *= 0.82; w['Print / Magazines'] *= 0.88;
+  }
+  if (profile.education === 'secondary') {
+    w['Facebook'] *= 1.1; w['YouTube'] *= 1.05; w['LinkedIn'] *= 0.55;
+  }
+
+  // Occupation
+  if (profile.occupation === 'white_collar') {
+    w['LinkedIn'] *= 1.55; w['Podcasts'] *= 1.35; w['Online News'] *= 1.15;
+    w['Linear TV'] *= 0.78;
+  }
+  if (profile.occupation === 'blue_collar') {
+    w['Radio'] *= 1.45; w['Linear TV'] *= 1.22; w['Facebook'] *= 1.12;
+    w['LinkedIn'] *= 0.42; w['Podcasts'] *= 0.72;
+  }
+  if (profile.occupation === 'business_owner') {
+    w['LinkedIn'] *= 1.6; w['Podcasts'] *= 1.4; w['Online News'] *= 1.2;
+  }
+
+  // Transport / commute
+  if (profile.transport === 'public') {
+    w['Podcasts'] *= 1.55; w['Online News'] *= 1.35; w['YouTube'] *= 1.1;
+    w['Radio'] *= 0.65;
+  }
+  if (profile.transport === 'drive' || profile.transport === 'carpool') {
+    w['Radio'] *= 1.48; w['Podcasts'] *= 1.15;
+  }
+  if (profile.transport === 'wfh') {
+    w['YouTube'] *= 1.18; w['Podcasts'] *= 1.22;
+    w['Radio'] *= 0.55;
+  }
+  if (profile.transport === 'walk_cycle') {
+    w['Podcasts'] *= 1.42; w['Online News'] *= 1.2;
+    w['Radio'] *= 0.7;
+  }
+
+  // Children
+  if (profile.children === 'young' || profile.children === 'primary') {
+    w['YouTube'] *= 1.18; w['Streaming (Netflix/Prime)'] *= 1.14;
+    w['Linear TV'] *= 0.88; w['Podcasts'] *= 0.82;
+  }
+  if (profile.children === 'teen') {
+    w['Instagram / TikTok'] *= 1.2; w['YouTube'] *= 1.12;
+  }
+
+  // Housing
+  if (profile.housing === 'rent') {
+    w['Instagram / TikTok'] *= 1.1; w['Podcasts'] *= 1.08;
+    w['Print / Magazines'] *= 0.75;
+  }
+
+  // Gender skew
+  if (profile.gender === 'female') {
+    w['Instagram / TikTok'] *= 1.12; w['Facebook'] *= 1.08;
+    w['LinkedIn'] *= 0.88;
+  }
+  if (profile.gender === 'male') {
+    w['YouTube'] *= 1.08; w['LinkedIn'] *= 1.1;
+    w['Instagram / TikTok'] *= 0.92;
+  }
+
+  return normalise(w);
+}
+
+function normalise(w) {
+  const total = Object.values(w).reduce((a,b) => a+b, 0);
+  const out = {};
+  Object.keys(w).forEach(k => { out[k] = Math.round((w[k]/total)*100); });
+  return out;
+}
+
+function calcScore(assumed, actual) {
+  let totalGap = 0;
+  CHANNELS.forEach(ch => { totalGap += Math.abs((assumed[ch]||0) - (actual[ch]||0)); });
+  // Realistic total gap across all channels when badly misaligned ≈ 100+
+  return Math.max(18, Math.min(88, 100 - Math.round(totalGap / 2)));
+}
+
+function calcAISearch() {
+  const ageIdx = AGE_GROUPS.indexOf(profile.age);
+  let rate = DATA.ai.overall;
+  if (ageIdx <= 1) rate *= DATA.ai.youngMultiplier;
+  if (ageIdx >= 4) rate *= 0.55;
+  if (profile.occupation === 'white_collar' || profile.occupation === 'business_owner') rate *= DATA.ai.wcMultiplier;
+  if (profile.education === 'postgrad') rate *= DATA.ai.pgMultiplier;
+  if (profile.education === 'secondary') rate *= 0.62;
+  return Math.min(95, Math.round(rate));
+}
+
+function buildAudiencePill() {
+  const parts = [profile.age];
+  if (profile.gender !== 'all') parts.push(profile.gender === 'female' ? 'female skew' : 'male skew');
+  if (profile.income) parts.push(profile.income.replace('mid-high','$100–150k').replace('mid-low','$50–75k').replace('mid','$75–100k').replace('low','<$50k').replace('high','$150k+'));
+  if (profile.region) parts.push(profile.region.replace('_',' '));
+  return parts.join(' · ');
+}
+
+function biggestGap(assumed, actual) {
+  let biggest = {ch:'', diff:0};
+  CHANNELS.forEach(ch => {
+    const diff = (assumed[ch]||0) - (actual[ch]||0); // positive = over-assumed
+    if (Math.abs(diff) > Math.abs(biggest.diff)) biggest = {ch, diff};
+  });
+  return biggest;
+}
+
+// ═══════════════════════════════════════════════════════════
+// RENDER RESULTS
+// ═══════════════════════════════════════════════════════════
+function renderResults(assumed, actual, score, aiRate) {
+  // Pill
+  document.getElementById('r-pill').textContent = buildAudiencePill();
+
+  // Score
+  const scoreEl = document.getElementById('r-score');
+  scoreEl.textContent = score + '%';
+  scoreEl.className = 'sc-number ' + (score < 45 ? 'low' : score < 65 ? 'mid' : 'hi');
+
+  const verdict = score < 45
+    ? `<strong>Significant misalignment.</strong> The typical media plan for this audience is spending in the wrong places — by a wide margin. This is the gap Super exists to close.`
+    : score < 65
+    ? `<strong>Partial alignment.</strong> Some channels are well-placed, but there are meaningful gaps where media spend is leaking into channels this audience isn't using.`
+    : `<strong>Reasonably aligned.</strong> This audience profile is better served than most by conventional thinking — but specific channel assumptions still warrant scrutiny.`;
+  document.getElementById('r-score-desc').innerHTML = verdict;
+
+  // Gap bars
+  const barsEl = document.getElementById('r-bars');
+  barsEl.innerHTML = '';
+  const maxVal = Math.max(...CHANNELS.map(ch => Math.max(assumed[ch]||0, actual[ch]||0)));
+
+  CHANNELS.forEach(ch => {
+    const a = assumed[ch] || 0, r = actual[ch] || 0;
+    const diff = r - a;
+    const deltaClass = Math.abs(diff) <= 3 ? 'neutral' : diff > 0 ? 'under' : 'over';
+    const deltaLabel = Math.abs(diff) <= 3 ? '≈' : diff > 0 ? `+${diff}pp actual` : `${diff}pp actual`;
+
+    const bar = document.createElement('div');
+    bar.className = 'gb';
+    bar.innerHTML = `
+      <div class="gb-top">
+        <div class="gb-name">${ch}</div>
+        <div class="gb-delta ${deltaClass}">${deltaLabel}</div>
+      </div>
+      <div class="gb-track">
+        <div class="gb-assumed" style="width:0%" data-target="${(a/maxVal*100).toFixed(1)}%"></div>
+        <div class="gb-actual" style="width:0%" data-target="${(r/maxVal*100).toFixed(1)}%"></div>
+      </div>
+      <div class="gb-labels"><span>Assumed: ${a}%</span><span>Actual: ${r}%</span></div>`;
+    barsEl.appendChild(bar);
+  });
+
+  // Animate bars after paint
+  requestAnimationFrame(() => {
+    requestAnimationFrame(() => {
+      document.querySelectorAll('.gb-assumed,.gb-actual').forEach(el => {
+        el.style.width = el.dataset.target;
+      });
+    });
+  });
+
+  // AI Search panel
+  const aiEl = document.getElementById('r-ai');
+  document.getElementById('r-ai-pct').textContent = aiRate + '%';
+  document.getElementById('r-ai-text').innerHTML =
+    `<strong>${aiRate}% of this audience</strong> now use AI assistants (ChatGPT, Copilot, Gemini) instead of — or alongside — Google when researching products and services. Most media plans budget zero for this shift. It is the fastest-growing research behaviour in NZ 2026.`;
+
+  // Insights
+  const bg = biggestGap(assumed, actual);
+  const insightsEl = document.getElementById('r-insights');
+  insightsEl.innerHTML = '';
+  const ageIdx = AGE_GROUPS.indexOf(profile.age);
+
+  const insights = buildInsights(assumed, actual, score, aiRate, bg, ageIdx);
+  insights.forEach(ins => {
+    const div = document.createElement('div');
+    div.className = 'ins-card';
+    div.innerHTML = `
+      <div class="ins-icon">${ins.icon}</div>
+      <div class="ins-stat">${ins.stat}</div>
+      <div class="ins-title">${ins.title}</div>
+      <div class="ins-text">${ins.text}</div>`;
+    insightsEl.appendChild(div);
+  });
+
+  // Devices
+  const devicesEl = document.getElementById('r-devices');
+  devicesEl.innerHTML = '';
+  const devices = calcDevices(ageIdx);
+  devices.forEach(d => {
+    const div = document.createElement('div');
+    div.className = 'dev-item';
+    div.innerHTML = `<div class="dev-icon">${d.icon}</div><div class="dev-pct">${d.pct}%</div><div class="dev-name">${d.name}</div>`;
+    devicesEl.appendChild(div);
+  });
+
+  // Super Take
+  const biggestOver = biggestGap(assumed, actual);
+  const overOrUnder = biggestOver.diff < 0 ? 'over-recommends' : 'under-recommends';
+  const pctDiff = Math.abs(biggestOver.diff);
+  const audience = buildAudiencePill();
+
+  let superTake = DATA.superTakeTemplate
+    .replace('{audience}', audience)
+    .replace('{score}', score)
+    .replace('{biggest_gap_channel}', biggestOver.ch)
+    .replace('{biggest_gap_pct}', pctDiff);
+  document.getElementById('r-super-take').innerHTML = superTake;
+}
+
+function buildInsights(assumed, actual, score, aiRate, bg, ageIdx) {
+  const insights = [];
+
+  // Insight 1: Biggest gap channel
+  const overRecommended = CHANNELS.filter(ch => (assumed[ch]||0) > (actual[ch]||0))
+    .sort((a,b) => ((assumed[b]||0)-(actual[b]||0)) - ((assumed[a]||0)-(actual[a]||0)));
+  const topOver = overRecommended[0];
+  if (topOver) {
+    const diff = (assumed[topOver]||0) - (actual[topOver]||0);
+    insights.push({
+      icon: '📺', stat: `${diff}pp`, title: `${topOver} is over-weighted`,
+      text: `Typical agency plans allocate ${assumed[topOver]}% weight to ${topOver} for this audience. NZ 2026 data puts actual consumption at ${actual[topOver]}%. That gap is ad spend going to an audience who isn't there at the frequency assumed.`
+    });
+  }
+
+  // Insight 2: Most under-recommended channel
+  const underRecommended = CHANNELS.filter(ch => (actual[ch]||0) > (assumed[ch]||0))
+    .sort((a,b) => ((actual[b]||0)-(assumed[b]||0)) - ((actual[a]||0)-(assumed[a]||0)));
+  const topUnder = underRecommended[0];
+  if (topUnder) {
+    const diff = (actual[topUnder]||0) - (assumed[topUnder]||0);
+    insights.push({
+      icon: '🎯', stat: `${diff}pp`, title: `${topUnder} is under-served`,
+      text: `Agencies typically give ${assumed[topUnder]}% weight to ${topUnder} for this profile. Actual consumption is ${actual[topUnder]}%. This is money left on the table — reach that's available but not being bought.`
+    });
+  }
+
+  // Insight 3: AI search
+  insights.push({
+    icon: '🤖', stat: `${aiRate}%`, title: 'Use AI for product research',
+    text: `${aiRate}% of this audience now use AI assistants to research brands, products, and services. This channel has zero line item in most NZ media plans — making it one of the most significant blind spots in 2026 planning.`
+  });
+
+  return insights;
+}
+
+function calcDevices(ageIdx) {
+  // Base NZ device reach, adjusted by age
+  const mobile = Math.max(72, Math.min(98, 96 - ageIdx * 4));
+  const desktop = Math.max(45, Math.min(82, 62 + (ageIdx - 2) * 4));
+  const smartTV = Math.max(28, Math.min(78, 74 - ageIdx * 5));
+  const tablet = Math.max(22, Math.min(55, 40 + ageIdx * 2));
+  return [
+    { icon: '📱', pct: mobile, name: 'Smartphone' },
+    { icon: '💻', pct: desktop, name: 'Desktop / Laptop' },
+    { icon: '📺', pct: smartTV, name: 'Smart TV' },
+    { icon: '⬜', pct: tablet, name: 'Tablet' }
+  ];
+}
+
+// ═══════════════════════════════════════════════════════════
+// RUN ANALYSIS
+// ═══════════════════════════════════════════════════════════
+async function runAnalysis() {
+  collectProfile();
+  showScreen('s-loading');
+
+  const messages = [
+    'Mapping your audience against NZ 2026 data…',
+    'Modelling agency assumption patterns…',
+    'Calculating channel alignment gaps…',
+    'Building your reality report…'
+  ];
+  let mi = 0;
+  const msgEl = document.getElementById('load-msg');
+  const msgInterval = setInterval(() => {
+    mi = (mi + 1) % messages.length;
+    msgEl.textContent = messages[mi];
+  }, 900);
+
+  // Simulate analysis time (replace with real API call if desired)
+  await new Promise(r => setTimeout(r, 2800));
+  clearInterval(msgInterval);
+
+  const assumed = getAgencyAssumption();
+  const actual = getRealityData();
+  const score = calcScore(assumed, actual);
+  const aiRate = calcAISearch();
+
+  showScreen('s-results');
+  renderResults(assumed, actual, score, aiRate);
+}
+

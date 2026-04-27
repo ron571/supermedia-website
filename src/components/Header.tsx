@@ -62,15 +62,6 @@ export default function Header() {
           <Link href="/superscan" className="btn-primary text-sm py-2 px-4">
             Superscan →
           </Link>
-          <Link
-            href="/admin"
-            className="text-sm font-medium text-navy transition-opacity duration-150"
-            style={{ opacity: 0.4 }}
-            onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
-            onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.4")}
-          >
-            Admin
-          </Link>
         </nav>
 
         {/* Mobile hamburger */}
@@ -107,9 +98,6 @@ export default function Header() {
             ))}
             <Link href="/superscan" className="btn-primary text-sm self-start">
               Superscan →
-            </Link>
-            <Link href="/admin" className="text-sm font-medium text-navy opacity-40 hover:opacity-100">
-              Admin
             </Link>
           </nav>
         </div>

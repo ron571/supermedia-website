@@ -347,6 +347,9 @@ export default function HomePage() {
             <Link href="/superscan" className="btn-outline-white">
               Run Superscan first
             </Link>
+            <Link href="/audience-reality-check" className="btn-outline-white">
+              Audience Reality Check
+            </Link>
           </div>
         </div>
       </section>
