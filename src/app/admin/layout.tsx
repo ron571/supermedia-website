@@ -31,6 +31,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 Saved Briefs
               </Link>
               <Link
+                href="/admin/tools/audience-reality-check"
+                className="text-white/70 hover:text-white text-sm font-medium transition-colors"
+              >
+                Audience Check
+              </Link>
+              <Link
                 href="/admin/docs"
                 className="text-white/70 hover:text-white text-sm font-medium transition-colors"
               >
