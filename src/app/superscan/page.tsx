@@ -45,12 +45,10 @@ export default function SuperscanPage() {
         <div className="section-container relative py-16 lg:py-24 text-center">
           <p className="eyebrow mb-4">Superscan</p>
           <h1 className="text-white text-4xl md:text-5xl font-bold max-w-2xl mx-auto mb-4">
-            Find out if your advertising is actually working
+            Is your media actually working?
           </h1>
           <p className="text-white/70 text-xl max-w-xl mx-auto" style={{ lineHeight: 1.65 }}>
-            90 seconds. No login. No sales call. A straight independent read —
-            not a glossy report full of numbers that don&apos;t connect to your
-            business.
+            A straight independent read — not a glossy report full of numbers that don&apos;t connect to your business. Completely confidential.
           </p>
         </div>
       </section>

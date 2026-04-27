@@ -71,7 +71,7 @@ Ask your current agency to show you what results look like in terms of enquiries
 
 The answers you get — and how comfortable or uncomfortable the conversation feels — will tell you a great deal.
 
-If you want a faster read, Superscan will give you an independent analysis of your current media mix in 90 seconds. It's free, it's specific to NZ, and it doesn't end with a sales call. It ends with a question worth asking your agency — and whether they can answer it.`,
+If you want a faster read, Superscan will give you an independent analysis of your current media mix in 30 seconds. It's free, it's specific to NZ, and it doesn't end with a sales call. It ends with a question worth asking your agency — and whether they can answer it.`,
   },
   {
     slug: "what-volume-rebates-actually-mean-for-your-media-budget",
@@ -191,7 +191,7 @@ If there are no guarantees, ask why. If the terms are entirely favourable to the
     readTime: "3 min read",
     body: `Superscan is an AI-powered media analysis tool. You tell it what channels you're running, roughly what you spend, and who you're trying to reach. It returns a specific read on where the risk is, where the opportunity might be, and one question worth asking your agency.
 
-It takes 90 seconds. It's free. And it's genuinely useful.
+It takes 30 seconds. It's free. And it's genuinely useful.
 
 **What's happening under the hood**
 

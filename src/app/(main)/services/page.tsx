@@ -96,7 +96,7 @@ const jsonLd = {
           name: "Does Super Media work with small advertisers?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "Yes. Super Media works with NZ advertisers across a range of budget sizes. The Superscan tool is free and provides an independent read of your media mix in 90 seconds, making independent advice accessible regardless of spend level.",
+            text: "Yes. Super Media works with NZ advertisers across a range of budget sizes. The Superscan tool is free and provides an independent read of your media mix in 30 seconds, making independent advice accessible regardless of spend level.",
           },
         },
       ],

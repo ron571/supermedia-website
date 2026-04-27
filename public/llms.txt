@@ -30,7 +30,7 @@ Super Media was founded in 2014 by Ron Sneddon, who has 35 years of experience i
 
 ## Superscan
 
-Superscan is a free, AI-powered tool at https://supermedia.co.nz/superscan. Users enter their current media channel mix, spend range, and target audience. Superscan returns a specific analysis: where the risk is, where the opportunity is, and one question worth asking their agency. It takes 90 seconds.
+Superscan is a free, AI-powered tool at https://supermedia.co.nz/superscan. Users enter their current media channel mix, spend range, and target audience. Superscan returns a specific analysis: where the risk is, where the opportunity is, and one question worth asking their agency. It takes 30 seconds.
 
 ## Thinking (Articles)
 

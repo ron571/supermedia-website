@@ -18,13 +18,9 @@ export default function ContactPage() {
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />
         <div className="section-container relative py-20 lg:py-28">
-          <h1 className="text-white text-4xl md:text-5xl font-bold max-w-xl mb-4">
+          <h1 className="text-white text-4xl md:text-5xl font-bold max-w-xl">
             Let&apos;s talk
           </h1>
-          <p className="text-white/70 text-xl max-w-xl" style={{ lineHeight: 1.65 }}>
-            The first conversation costs nothing. If Super isn&apos;t the right
-            fit, Ron will tell you — and might point you somewhere that is.
-          </p>
         </div>
       </section>
 

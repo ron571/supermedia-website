@@ -83,21 +83,8 @@ export default function AboutPage() {
                 </p>
               </div>
             </div>
-            <p className="text-body mb-5">
-              For most of my career I watched the same pattern repeat. A
-              business would hire an agency expecting independent advice. What
-              they&apos;d get was advice shaped — sometimes unconsciously — by
-              the agency&apos;s commercial relationships. Not dishonesty,
-              exactly. But structure. The way most agencies make money means
-              their best recommendation and their most profitable recommendation
-              aren&apos;t always the same thing. Most clients never find out.
-            </p>
             <p className="text-body">
-              Super was founded in 2014 because I decided to stop watching it
-              happen. The only way to give genuinely independent advice is to
-              build a business with no financial reason to give anything else.
-              No rebates. No platform deals. No preferred suppliers. One
-              incentive: a client whose advertising works, who stays.
+              Super was founded in 2014 based on my extensive knowledge of the market. I realised that the only way to give genuinely independent advice was to build a business that speaks the truth and always has you, the customer as its core focus.
             </p>
           </div>
         </div>
@@ -187,9 +174,8 @@ export default function AboutPage() {
             <ul className="space-y-5">
               {[
                 "No holding company — no parent organisation with its own financial relationships to protect",
-                "No volume rebates or investment deals with media owners",
                 "No platform partnerships that create an incentive to recommend one channel over another",
-                "One financial incentive: a client who gets results and stays",
+                "One financial incentive: a client who gets results",
               ].map((item) => (
                 <li key={item} className="flex items-start gap-4">
                   <span
@@ -218,7 +204,7 @@ export default function AboutPage() {
       <section className="bg-grey-light py-20 lg:py-28">
         <div className="section-container">
           <h2 className="text-navy text-3xl md:text-4xl font-bold mb-12">
-            Career timeline
+            Career
           </h2>
           <div className="relative">
             <div
@@ -250,7 +236,7 @@ export default function AboutPage() {
         <div className="section-container">
           <div className="max-w-2xl">
             <h2 className="text-navy text-3xl md:text-4xl font-bold mb-6">
-              AI as a real tool, not a talking point
+              How we use AI for your business
             </h2>
             <p className="text-body mb-5">
               Most agencies that mention AI are doing one of two things: using
@@ -282,7 +268,7 @@ export default function AboutPage() {
       <section className="bg-navy py-20 lg:py-28">
         <div className="section-container text-center">
           <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">
-            Not sure if Super is right for you?
+            Find out why Super is right for you
           </h2>
           <p className="text-white/70 text-lg mb-10 max-w-xl mx-auto" style={{ lineHeight: 1.65 }}>
             That&apos;s what the first conversation is for. 30 minutes, no
