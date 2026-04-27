@@ -1,3 +1,14 @@
+import Link from "next/link";
+
+const internalDocs = [
+  {
+    title: "How to Update the Website",
+    description: "Plain-English step-by-step guide for making changes using v0. Start here.",
+    category: "Guide",
+    href: "/admin/docs/website-guide",
+  },
+];
+
 const docs = [
   {
     title: "Company Profile",
@@ -44,6 +55,7 @@ const categoryColour: Record<string, string> = {
   Brand:    "bg-purple-700 text-white",
   Website:  "bg-sky-700 text-white",
   Research: "bg-amber-600 text-white",
+  Guide:    "bg-sky-700 text-white",
 };
 
 export default function DocsPage() {
@@ -53,10 +65,40 @@ export default function DocsPage() {
         <p className="eyebrow mb-1">Admin</p>
         <h1 className="text-navy text-2xl font-bold">Documents &amp; Resources</h1>
         <p className="text-grey-dark text-sm mt-1">
-          Key Super Media documents — opens in Google Docs.
+          Key Super Media documents and guides.
         </p>
       </div>
 
+      {/* Internal guides — shown first, highlighted */}
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5 mb-5">
+        {internalDocs.map((doc) => (
+          <Link
+            key={doc.href}
+            href={doc.href}
+            className="group block bg-white border-2 border-orange rounded p-6 hover:shadow-md transition-all duration-200"
+          >
+            <div className="flex items-start justify-between mb-4">
+              <span className={`text-xs font-semibold px-2 py-0.5 rounded ${categoryColour[doc.category] ?? "bg-grey-mid text-navy"}`}>
+                {doc.category}
+              </span>
+              <svg
+                className="w-4 h-4 text-orange flex-shrink-0 mt-0.5"
+                fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}
+              >
+                <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+              </svg>
+            </div>
+            <h2 className="text-navy font-bold text-base mb-2 group-hover:text-orange transition-colors">
+              {doc.title}
+            </h2>
+            <p className="text-body text-sm" style={{ lineHeight: 1.6 }}>
+              {doc.description}
+            </p>
+          </Link>
+        ))}
+      </div>
+
+      {/* External Google Docs */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-5">
         {docs.map((doc) => (
           <a
