@@ -329,7 +329,7 @@ export default function HomePage() {
       <section className="bg-navy py-20 lg:py-28">
         <div className="section-container text-center">
           <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">
-            Not sure if Super is right for you?
+            Find out why Super is right for you
           </h2>
           <p className="text-white/70 text-lg mb-10 max-w-xl mx-auto" style={{ lineHeight: 1.65 }}>
             That&apos;s what the first conversation is for. 30 minutes, no
