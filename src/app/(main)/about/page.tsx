@@ -112,12 +112,12 @@ export default function AboutPage() {
                     Phil Carey
                   </h2>
                   <p className="text-body text-sm md:text-base">
-                    Phil is Super&apos;s artificial intelligence specialist with more than 40 years experience in media. Phil is now at the forefront of AI and in particular how AI can influence and improve media campaigns across all media.
+                    Phil is Super&apos;s artificial intelligence strategy specialist. With 40 years experience in the media he&apos;s now at the forefront of how AI can be used effectively in business and media campaigns.
                   </p>
                 </div>
               </div>
-              <p className="text-body text-sm md:text-base">
-                Phil is the author of <em>The Curiosity Advantage: Why Better Questions Achieve Better Results in the Age of AI</em>.
+              <p className="text-body text-xs md:text-sm">
+                Phil is the author of <a href="https://www.cornerstonemedia.com.au/book" target="_blank" rel="noopener noreferrer" className="text-orange hover:underline"><em>The Curiosity Advantage: Why Better Questions Achieve Better Results in the Age of AI</em></a>.
               </p>
             </div>
 
