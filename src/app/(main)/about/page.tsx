@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 
-
 export const metadata: Metadata = {
   title: "About Ron Sneddon — Super Media",
   description:
@@ -29,14 +28,8 @@ const jsonLd = {
 const timelineItems = [
   { year: "1999", role: "Media Director, Spearhead Communications" },
   { year: "2001", role: "General Manager, Strategic Media (now Carat)" },
-  {
-    year: "2003",
-    role: "Senior broadcast roles — Newstalk ZB, 91ZM, Classic Hits",
-  },
-  {
-    year: "2003",
-    role: "Co-owner, Mr Smith (Auckland ad agency) — 11 years",
-  },
+  { year: "2003", role: "Senior broadcast roles — Newstalk ZB, 91ZM, Classic Hits" },
+  { year: "2003", role: "Co-owner, Mr Smith (Auckland ad agency) — 11 years" },
   { year: "2014", role: "Founded Super Media" },
 ];
 
@@ -62,7 +55,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── Origin + Photo ─── */}
+      {/* ─── Ron Sneddon ─── */}
       <section className="bg-white py-20 lg:py-28">
         <div className="section-container">
           <div className="max-w-3xl">
@@ -110,8 +103,78 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ─── Phil Carey & Vishal Jasuja ─── */}
+      <section className="bg-grey-light py-20 lg:py-28">
+        <div className="section-container">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+
+            {/* Phil Carey */}
+            <div>
+              <div className="flex items-start gap-6 mb-4">
+                <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0">
+                  <Image
+                    src="/images/phil-carey.png"
+                    alt="Phil Carey, AI specialist at Super Media"
+                    fill
+                    className="object-cover rounded"
+                    sizes="128px"
+                  />
+                </div>
+                <div>
+                  <h2 className="text-navy text-2xl md:text-3xl font-bold mb-3">
+                    Phil Carey
+                  </h2>
+                  <p className="text-body text-sm md:text-base">
+                    Phil is Super&apos;s artificial intelligence strategy specialist.
+                    With 40 years experience in the media he&apos;s now at the forefront
+                    of how AI can be used effectively in business and media campaigns.
+                  </p>
+                </div>
+              </div>
+              <p className="text-body text-sm">
+                Phil is the author of{" "}
+                <a
+                  href="https://www.cornerstonemedia.com.au/book"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-orange hover:underline"
+                >
+                  <em>The Curiosity Advantage: Why Better Questions Achieve Better Results in the Age of AI</em>
+                </a>.
+              </p>
+            </div>
+
+            {/* Vishal Jasuja */}
+            <div>
+              <div className="flex items-start gap-6">
+                <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0">
+                  <Image
+                    src="/images/vishal-jasuja.png"
+                    alt="Vishal Jasuja, Digital Director at Super Media"
+                    fill
+                    className="object-cover rounded"
+                    sizes="128px"
+                  />
+                </div>
+                <div>
+                  <h2 className="text-navy text-2xl md:text-3xl font-bold mb-3">
+                    Vishal Jasuja
+                  </h2>
+                  <p className="text-body text-sm md:text-base">
+                    Vishal is our Digital Director responsible for integration of AI
+                    into all our digital campaigns including search, display and social
+                    media. He also leads our website construction and design arm.
+                  </p>
+                </div>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
       {/* ─── Independence List ─── */}
-      <section className="bg-grey-light py-20 lg:py-24">
+      <section className="bg-white py-20 lg:py-24">
         <div className="section-container">
           <div className="max-w-2xl">
             <h2 className="text-navy text-3xl md:text-4xl font-bold mb-5">
@@ -133,12 +196,7 @@ export default function AboutPage() {
                     className="flex-shrink-0 w-5 h-5 rounded-full bg-orange flex items-center justify-center mt-0.5"
                     aria-hidden="true"
                   >
-                    <svg
-                      width="10"
-                      height="8"
-                      viewBox="0 0 10 8"
-                      fill="none"
-                    >
+                    <svg width="10" height="8" viewBox="0 0 10 8" fill="none">
                       <path
                         d="M1 4L3.5 6.5L9 1"
                         stroke="white"
@@ -157,21 +215,20 @@ export default function AboutPage() {
       </section>
 
       {/* ─── Career Timeline ─── */}
-      <section className="bg-white py-20 lg:py-28">
+      <section className="bg-grey-light py-20 lg:py-28">
         <div className="section-container">
           <h2 className="text-navy text-3xl md:text-4xl font-bold mb-12">
             Career timeline
           </h2>
           <div className="relative">
-            {/* Vertical line */}
             <div
               className="absolute left-0 top-0 bottom-0 w-px bg-grey-mid ml-[52px] hidden sm:block"
               aria-hidden="true"
             />
             <ol className="space-y-8">
               {timelineItems.map(({ year, role }) => (
-                <li key={year} className="flex items-start gap-6 sm:gap-10">
-                  <div className="flex-shrink-0 w-[52px] text-right sm:text-right">
+                <li key={year + role} className="flex items-start gap-6 sm:gap-10">
+                  <div className="flex-shrink-0 w-[52px] text-right">
                     <span className="text-orange font-bold text-sm">{year}</span>
                   </div>
                   <div className="relative">
@@ -189,7 +246,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─── AI Section ─── */}
-      <section className="bg-grey-light py-20 lg:py-24">
+      <section className="bg-white py-20 lg:py-24">
         <div className="section-container">
           <div className="max-w-2xl">
             <h2 className="text-navy text-3xl md:text-4xl font-bold mb-6">
@@ -211,7 +268,7 @@ export default function AboutPage() {
             </p>
             <p className="text-body">
               Superscan is the clearest example. What used to take days of
-              senior analyst time now takes 90 seconds — which means independent
+              senior analyst time now takes 30 seconds — which means independent
               media analysis is no longer something only large advertisers can
               justify. That matters. Most of the money getting wasted in NZ
               advertising isn&apos;t in big corporate budgets. It&apos;s in
