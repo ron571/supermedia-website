@@ -29,8 +29,8 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:va
 #s-welcome{background:var(--navy);}
 #s-loading{background:var(--navy);}
 
-/* Form screens — white */
-#s-step1,#s-step2,#s-step3{background:var(--white);}
+/* Form screen — white */
+#s-form{background:var(--grey-light);}
 
 /* Results — grey-light base */
 #s-results{background:var(--grey-light);}
@@ -38,12 +38,11 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:va
 /* ── HEADER ───────────────────────────────────────── */
 .hdr{padding:20px 32px;display:flex;align-items:center;justify-content:space-between;}
 #s-welcome .hdr,#s-loading .hdr{border-bottom:1px solid rgba(255,255,255,0.1);}
-#s-step1 .hdr,#s-step2 .hdr,#s-step3 .hdr,#s-results .hdr{border-bottom:1px solid var(--grey-mid);background:var(--white);}
+#s-form .hdr,#s-results .hdr{border-bottom:1px solid var(--grey-mid);background:var(--white);position:sticky;top:0;z-index:100;}
 .logo{font-size:17px;font-weight:700;letter-spacing:-0.01em;cursor:pointer;user-select:none;color:var(--white);}
-#s-step1 .logo,#s-step2 .logo,#s-step3 .logo,#s-results .logo{color:var(--navy);}
+#s-form .logo,#s-results .logo{color:var(--navy);}
 .logo-sub{color:rgba(255,255,255,0.45);font-weight:400;font-size:13px;margin-left:8px;}
-#s-step1 .logo-sub,#s-step2 .logo-sub,#s-step3 .logo-sub,#s-results .logo-sub{color:var(--grey-dark);}
-.progress-bar{height:3px;background:linear-gradient(90deg,var(--orange) var(--prog,0%),var(--grey-mid) var(--prog,0%));}
+#s-form .logo-sub,#s-results .logo-sub{color:var(--grey-dark);}
 
 /* ── WELCOME ──────────────────────────────────────── */
 .welcome-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:64px 24px;
@@ -65,19 +64,17 @@ body{font-family:'DM Sans',system-ui,sans-serif;background:var(--white);color:va
 .btn-ghost{background:transparent;color:rgba(255,255,255,0.8);border:1px solid rgba(255,255,255,0.3);padding:13px 24px;}
 .btn-ghost:hover{border-color:rgba(255,255,255,0.7);color:var(--white);}
 /* Ghost on light (forms/results) */
-#s-step1 .btn-ghost,#s-step2 .btn-ghost,#s-step3 .btn-ghost,#s-results .btn-ghost{color:var(--navy);border-color:var(--navy);background:transparent;}
-#s-step1 .btn-ghost:hover,#s-step2 .btn-ghost:hover,#s-step3 .btn-ghost:hover,#s-results .btn-ghost:hover{background:var(--navy);color:var(--white);}
+#s-form .btn-ghost,#s-results .btn-ghost{color:var(--navy);border-color:var(--navy);background:transparent;}
+#s-form .btn-ghost:hover,#s-results .btn-ghost:hover{background:var(--navy);color:var(--white);}
 .btn-sm{padding:10px 20px;font-size:13px;}
 
 /* ── FORM ─────────────────────────────────────────── */
-.form-wrap{flex:1;max-width:740px;margin:0 auto;padding:44px 28px;width:100%;}
-.step-dots{display:flex;gap:6px;margin-bottom:44px;}
-.sd{height:3px;border-radius:2px;background:var(--grey-mid);flex:1;transition:background 0.3s;}
-.sd.done{background:var(--green);}
-.sd.active{background:var(--orange);}
-.form-h{font-size:26px;font-weight:700;letter-spacing:-0.02em;margin-bottom:6px;color:var(--navy);}
-.form-sub{color:var(--grey-dark);font-size:14px;margin-bottom:36px;line-height:1.5;}
-.field{margin-bottom:24px;}
+.form-wrap{max-width:760px;margin:0 auto;padding:44px 28px 64px;width:100%;}
+.form-section{background:var(--white);border-radius:12px;padding:32px;margin-bottom:24px;box-shadow:0 1px 3px rgba(27,42,74,0.07);}
+.form-section-h{font-size:18px;font-weight:700;color:var(--navy);margin-bottom:4px;}
+.form-section-sub{color:var(--grey-dark);font-size:13px;margin-bottom:28px;line-height:1.5;padding-bottom:20px;border-bottom:1px solid var(--grey-light);}
+.field{margin-bottom:20px;}
+.field:last-child{margin-bottom:0;}
 .lbl{display:block;font-size:11px;font-weight:700;color:var(--orange);text-transform:uppercase;letter-spacing:0.8px;margin-bottom:9px;}
 .sel-wrap{position:relative;}
 .sel-wrap::after{content:'▾';position:absolute;right:13px;top:50%;transform:translateY(-50%);color:var(--grey-dark);pointer-events:none;font-size:12px;}
@@ -92,8 +89,7 @@ select:focus{outline:none;border-color:var(--orange);}
 .cb-item input{display:none;}
 .cb-check{width:14px;height:14px;border:1.5px solid var(--grey-mid);border-radius:3px;flex-shrink:0;transition:all 0.15s;display:flex;align-items:center;justify-content:center;font-size:10px;color:transparent;}
 .cb-item.on .cb-check{background:var(--orange);border-color:var(--orange);color:var(--white);}
-.form-nav{display:flex;justify-content:space-between;align-items:center;margin-top:44px;padding-top:28px;border-top:1px solid var(--grey-mid);}
-.step-count{font-size:13px;color:var(--grey-dark);}
+.form-run{text-align:center;margin-top:8px;}
 
 /* ── LOADING ──────────────────────────────────────── */
 .load-screen{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:20px;
@@ -180,10 +176,10 @@ select:focus{outline:none;border-color:var(--orange);}
 /* Footer */
 .ftr{padding:16px 32px;display:flex;justify-content:space-between;align-items:center;}
 #s-welcome .ftr,#s-loading .ftr{border-top:1px solid rgba(255,255,255,0.1);}
-#s-step1 .ftr,#s-step2 .ftr,#s-step3 .ftr{border-top:1px solid var(--grey-mid);}
+#s-results .ftr{border-top:1px solid var(--grey-mid);}
 .ftr-text{font-size:11px;}
 #s-welcome .ftr-text,#s-loading .ftr-text{color:rgba(255,255,255,0.3);}
-#s-step1 .ftr-text,#s-step2 .ftr-text,#s-step3 .ftr-text,#s-results .ftr-text{color:var(--grey-dark);}
+#s-results .ftr-text{color:var(--grey-dark);}
 
 
 /* ── ADMIN OVERLAY ────────────────────────────────── */
@@ -234,236 +230,200 @@ select:focus{outline:none;border-color:var(--orange);}
   </div>
 </div>
 
-<!-- ═══════════════════════════════════════════ STEP 1 ════ -->
-<div class="screen" id="s-step1">
+<!-- ═══════════════════════════════════════════ FORM ════ -->
+<div class="screen" id="s-form">
   <div class="hdr">
     <div class="logo">Super Media<span class="logo-sub">Audience Intelligence</span></div>
-    <div class="step-count">Step 1 of 3</div>
+    <button class="btn btn-ghost btn-sm" onclick="showScreen('s-welcome')">← Back</button>
   </div>
-  <div class="progress-bar" id="pb1" style="--prog:33%;"></div>
   <div class="form-wrap">
-    <div class="step-dots"><div class="sd active"></div><div class="sd"></div><div class="sd"></div></div>
-    <div class="form-h">Who are they?</div>
-    <div class="form-sub">Describe the audience you believe you're targeting.</div>
 
-    <div class="two-col">
-      <div class="field">
-        <label class="lbl">Age range</label>
-        <div class="sel-wrap"><select id="f-age">
-          <option value="">Select age range</option>
-          <option>18–24</option><option>25–34</option><option>35–44</option>
-          <option>45–54</option><option>55–64</option><option>65+</option>
-        </select></div>
+    <!-- Section 1 -->
+    <div class="form-section">
+      <div class="form-section-h">Who are they?</div>
+      <div class="form-section-sub">Describe the audience you believe you're targeting.</div>
+      <div class="two-col">
+        <div class="field">
+          <label class="lbl">Age range</label>
+          <div class="sel-wrap"><select id="f-age">
+            <option value="">Select age range</option>
+            <option>18–24</option><option>25–34</option><option>35–44</option>
+            <option>45–54</option><option>55–64</option><option>65+</option>
+          </select></div>
+        </div>
+        <div class="field">
+          <label class="lbl">Gender skew</label>
+          <div class="sel-wrap"><select id="f-gender">
+            <option value="">Select gender skew</option>
+            <option value="all">All genders</option>
+            <option value="female">Predominantly female</option>
+            <option value="male">Predominantly male</option>
+          </select></div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="field">
+          <label class="lbl">Household income</label>
+          <div class="sel-wrap"><select id="f-income">
+            <option value="">Select income bracket</option>
+            <option value="low">Under $50k</option>
+            <option value="mid-low">$50k–$75k</option>
+            <option value="mid">$75k–$100k</option>
+            <option value="mid-high">$100k–$150k</option>
+            <option value="high">$150k+</option>
+          </select></div>
+        </div>
+        <div class="field">
+          <label class="lbl">Education level</label>
+          <div class="sel-wrap"><select id="f-education">
+            <option value="">Select education</option>
+            <option value="secondary">Secondary school</option>
+            <option value="vocational">Vocational / trades</option>
+            <option value="degree">University degree</option>
+            <option value="postgrad">Postgraduate</option>
+          </select></div>
+        </div>
       </div>
       <div class="field">
-        <label class="lbl">Gender skew</label>
-        <div class="sel-wrap"><select id="f-gender">
-          <option value="">Select gender skew</option>
-          <option value="all">All genders</option>
-          <option value="female">Predominantly female</option>
-          <option value="male">Predominantly male</option>
-        </select></div>
-      </div>
-    </div>
-
-    <div class="two-col">
-      <div class="field">
-        <label class="lbl">Household income</label>
-        <div class="sel-wrap"><select id="f-income">
-          <option value="">Select income bracket</option>
-          <option value="low">Under $50k</option>
-          <option value="mid-low">$50k–$75k</option>
-          <option value="mid">$75k–$100k</option>
-          <option value="mid-high">$100k–$150k</option>
-          <option value="high">$150k+</option>
-        </select></div>
-      </div>
-      <div class="field">
-        <label class="lbl">Education level</label>
-        <div class="sel-wrap"><select id="f-education">
-          <option value="">Select education</option>
-          <option value="secondary">Secondary school</option>
-          <option value="vocational">Vocational / trades</option>
-          <option value="degree">University degree</option>
-          <option value="postgrad">Postgraduate</option>
-        </select></div>
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="lbl">Occupation type</label>
-      <div class="sel-wrap"><select id="f-occupation">
-        <option value="">Select occupation type</option>
-        <option value="white_collar">White collar / professional</option>
-        <option value="blue_collar">Blue collar / trades</option>
-        <option value="business_owner">Business owner / entrepreneur</option>
-        <option value="student">Student</option>
-        <option value="retired">Retired / not working</option>
-      </select></div>
-    </div>
-
-    <div class="form-nav">
-      <button class="btn btn-ghost" onclick="showScreen('s-welcome')">← Back</button>
-      <button class="btn btn-gold" onclick="nextStep(1)">Next →</button>
-    </div>
-  </div>
-  <div class="ftr"><div class="ftr-text">Super Media Intelligence</div></div>
-</div>
-
-<!-- ═══════════════════════════════════════════ STEP 2 ════ -->
-<div class="screen" id="s-step2">
-  <div class="hdr">
-    <div class="logo">Super Media<span class="logo-sub">Audience Intelligence</span></div>
-    <div class="step-count">Step 2 of 3</div>
-  </div>
-  <div class="progress-bar" style="--prog:66%;"></div>
-  <div class="form-wrap">
-    <div class="step-dots"><div class="sd done"></div><div class="sd active"></div><div class="sd"></div></div>
-    <div class="form-h">Where do they live — and how?</div>
-    <div class="form-sub">Lifestyle context changes media behaviour dramatically.</div>
-
-    <div class="two-col">
-      <div class="field">
-        <label class="lbl">Primary region</label>
-        <div class="sel-wrap"><select id="f-region">
-          <option value="">Select region</option>
-          <option value="auckland">Auckland</option>
-          <option value="wellington">Wellington</option>
-          <option value="christchurch">Christchurch</option>
-          <option value="north_island">Other North Island</option>
-          <option value="south_island">Other South Island</option>
-          <option value="national">Nationwide</option>
-        </select></div>
-      </div>
-      <div class="field">
-        <label class="lbl">Urban / rural</label>
-        <div class="sel-wrap"><select id="f-urban">
-          <option value="">Select area type</option>
-          <option value="metro">Metro city centre</option>
-          <option value="suburban">Suburban</option>
-          <option value="provincial">Provincial town</option>
-          <option value="rural">Rural</option>
+        <label class="lbl">Occupation type</label>
+        <div class="sel-wrap"><select id="f-occupation">
+          <option value="">Select occupation type</option>
+          <option value="white_collar">White collar / professional</option>
+          <option value="blue_collar">Blue collar / trades</option>
+          <option value="business_owner">Business owner / entrepreneur</option>
+          <option value="student">Student</option>
+          <option value="retired">Retired / not working</option>
         </select></div>
       </div>
     </div>
 
-    <div class="two-col">
+    <!-- Section 2 -->
+    <div class="form-section">
+      <div class="form-section-h">Where do they live — and how?</div>
+      <div class="form-section-sub">Lifestyle context changes media behaviour dramatically.</div>
+      <div class="two-col">
+        <div class="field">
+          <label class="lbl">Primary region</label>
+          <div class="sel-wrap"><select id="f-region">
+            <option value="">Select region</option>
+            <option value="auckland">Auckland</option>
+            <option value="wellington">Wellington</option>
+            <option value="christchurch">Christchurch</option>
+            <option value="north_island">Other North Island</option>
+            <option value="south_island">Other South Island</option>
+            <option value="national">Nationwide</option>
+          </select></div>
+        </div>
+        <div class="field">
+          <label class="lbl">Urban / rural</label>
+          <div class="sel-wrap"><select id="f-urban">
+            <option value="">Select area type</option>
+            <option value="metro">Metro city centre</option>
+            <option value="suburban">Suburban</option>
+            <option value="provincial">Provincial town</option>
+            <option value="rural">Rural</option>
+          </select></div>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="field">
+          <label class="lbl">Has children?</label>
+          <div class="sel-wrap"><select id="f-children">
+            <option value="">Select</option>
+            <option value="none">No children</option>
+            <option value="young">Yes — under 5</option>
+            <option value="primary">Yes — primary school (5–12)</option>
+            <option value="teen">Yes — teenagers (13–18)</option>
+            <option value="mixed">Yes — mixed ages</option>
+            <option value="adult">Yes — adult children</option>
+          </select></div>
+        </div>
+        <div class="field">
+          <label class="lbl">How they commute</label>
+          <div class="sel-wrap"><select id="f-transport">
+            <option value="">Select commute type</option>
+            <option value="drive">Drive alone</option>
+            <option value="carpool">Carpool</option>
+            <option value="public">Public transport</option>
+            <option value="walk_cycle">Walk or cycle</option>
+            <option value="wfh">Work from home</option>
+            <option value="mixed_commute">Mixed / varies</option>
+          </select></div>
+        </div>
+      </div>
       <div class="field">
-        <label class="lbl">Has children?</label>
-        <div class="sel-wrap"><select id="f-children">
+        <label class="lbl">Home ownership</label>
+        <div class="sel-wrap"><select id="f-housing">
           <option value="">Select</option>
-          <option value="none">No children</option>
-          <option value="young">Yes — under 5</option>
-          <option value="primary">Yes — primary school (5–12)</option>
-          <option value="teen">Yes — teenagers (13–18)</option>
-          <option value="mixed">Yes — mixed ages</option>
-          <option value="adult">Yes — adult children</option>
+          <option value="own">Own their home</option>
+          <option value="rent">Renting</option>
+          <option value="family">Living with family</option>
         </select></div>
+      </div>
+    </div>
+
+    <!-- Section 3 -->
+    <div class="form-section">
+      <div class="form-section-h">How do they consume media?</div>
+      <div class="form-section-sub">Select all that apply. Leave blank if you're unsure — the engine will use baseline data.</div>
+      <div class="field">
+        <label class="lbl">Favourite media channels</label>
+        <div class="cb-grid" id="cb-media">
+          <label class="cb-item"><input type="checkbox" value="tv"><span class="cb-check">✓</span>Linear TV</label>
+          <label class="cb-item"><input type="checkbox" value="youtube"><span class="cb-check">✓</span>YouTube</label>
+          <label class="cb-item"><input type="checkbox" value="facebook"><span class="cb-check">✓</span>Facebook</label>
+          <label class="cb-item"><input type="checkbox" value="instagram"><span class="cb-check">✓</span>Instagram</label>
+          <label class="cb-item"><input type="checkbox" value="tiktok"><span class="cb-check">✓</span>TikTok</label>
+          <label class="cb-item"><input type="checkbox" value="linkedin"><span class="cb-check">✓</span>LinkedIn</label>
+          <label class="cb-item"><input type="checkbox" value="podcasts"><span class="cb-check">✓</span>Podcasts</label>
+          <label class="cb-item"><input type="checkbox" value="streaming"><span class="cb-check">✓</span>Streaming (Netflix/Prime)</label>
+          <label class="cb-item"><input type="checkbox" value="radio"><span class="cb-check">✓</span>Radio</label>
+          <label class="cb-item"><input type="checkbox" value="online_news"><span class="cb-check">✓</span>Online news</label>
+          <label class="cb-item"><input type="checkbox" value="print"><span class="cb-check">✓</span>Print / magazines</label>
+          <label class="cb-item"><input type="checkbox" value="outdoor"><span class="cb-check">✓</span>Outdoor / OOH</label>
+        </div>
       </div>
       <div class="field">
-        <label class="lbl">How they commute</label>
-        <div class="sel-wrap"><select id="f-transport">
-          <option value="">Select commute type</option>
-          <option value="drive">Drive alone</option>
-          <option value="carpool">Carpool</option>
-          <option value="public">Public transport</option>
-          <option value="walk_cycle">Walk or cycle</option>
-          <option value="wfh">Work from home</option>
-          <option value="mixed_commute">Mixed / varies</option>
-        </select></div>
+        <label class="lbl">How they research products / services</label>
+        <div class="cb-grid" id="cb-research">
+          <label class="cb-item"><input type="checkbox" value="google"><span class="cb-check">✓</span>Google Search</label>
+          <label class="cb-item"><input type="checkbox" value="ai_search"><span class="cb-check">✓</span>AI (ChatGPT / Copilot)</label>
+          <label class="cb-item"><input type="checkbox" value="social_research"><span class="cb-check">✓</span>Social media browsing</label>
+          <label class="cb-item"><input type="checkbox" value="friends"><span class="cb-check">✓</span>Ask friends / family</label>
+          <label class="cb-item"><input type="checkbox" value="reviews"><span class="cb-check">✓</span>Online reviews</label>
+          <label class="cb-item"><input type="checkbox" value="in_store"><span class="cb-check">✓</span>Browse in store</label>
+        </div>
+      </div>
+      <div class="two-col">
+        <div class="field">
+          <label class="lbl">Daily social media time</label>
+          <div class="sel-wrap"><select id="f-social-time">
+            <option value="">Select</option>
+            <option value="none">I don't use social media</option>
+            <option value="light">Under 30 minutes</option>
+            <option value="moderate">30–60 minutes</option>
+            <option value="heavy">1–2 hours</option>
+            <option value="very_heavy">2+ hours</option>
+          </select></div>
+        </div>
+        <div class="field">
+          <label class="lbl">Primary device</label>
+          <div class="sel-wrap"><select id="f-device">
+            <option value="">Select</option>
+            <option value="mobile">Smartphone first</option>
+            <option value="desktop">Desktop / laptop first</option>
+            <option value="smart_tv">Smart TV first</option>
+            <option value="tablet">Tablet first</option>
+          </select></div>
+        </div>
       </div>
     </div>
 
-    <div class="field">
-      <label class="lbl">Home ownership</label>
-      <div class="sel-wrap"><select id="f-housing">
-        <option value="">Select</option>
-        <option value="own">Own their home</option>
-        <option value="rent">Renting</option>
-        <option value="family">Living with family</option>
-      </select></div>
+    <div class="form-run">
+      <button class="btn btn-gold" style="padding:16px 48px;font-size:16px;" onclick="runAnalysis()">Run Reality Check →</button>
     </div>
 
-    <div class="form-nav">
-      <button class="btn btn-ghost" onclick="showScreen('s-step1')">← Back</button>
-      <button class="btn btn-gold" onclick="nextStep(2)">Next →</button>
-    </div>
   </div>
-  <div class="ftr"><div class="ftr-text">Super Media Intelligence</div></div>
-</div>
-
-<!-- ═══════════════════════════════════════════ STEP 3 ════ -->
-<div class="screen" id="s-step3">
-  <div class="hdr">
-    <div class="logo">Super Media<span class="logo-sub">Audience Intelligence</span></div>
-    <div class="step-count">Step 3 of 3</div>
-  </div>
-  <div class="progress-bar" style="--prog:99%;"></div>
-  <div class="form-wrap">
-    <div class="step-dots"><div class="sd done"></div><div class="sd done"></div><div class="sd active"></div></div>
-    <div class="form-h">How do they consume media?</div>
-    <div class="form-sub">Select all that apply to your assumed audience.</div>
-
-    <div class="field">
-      <label class="lbl">Their favourite media channels</label>
-      <div class="cb-grid" id="cb-media">
-        <label class="cb-item"><input type="checkbox" value="tv"><span class="cb-check">✓</span>Linear TV</label>
-        <label class="cb-item"><input type="checkbox" value="youtube"><span class="cb-check">✓</span>YouTube</label>
-        <label class="cb-item"><input type="checkbox" value="facebook"><span class="cb-check">✓</span>Facebook</label>
-        <label class="cb-item"><input type="checkbox" value="instagram"><span class="cb-check">✓</span>Instagram</label>
-        <label class="cb-item"><input type="checkbox" value="tiktok"><span class="cb-check">✓</span>TikTok</label>
-        <label class="cb-item"><input type="checkbox" value="linkedin"><span class="cb-check">✓</span>LinkedIn</label>
-        <label class="cb-item"><input type="checkbox" value="podcasts"><span class="cb-check">✓</span>Podcasts</label>
-        <label class="cb-item"><input type="checkbox" value="streaming"><span class="cb-check">✓</span>Streaming (Netflix/Prime)</label>
-        <label class="cb-item"><input type="checkbox" value="radio"><span class="cb-check">✓</span>Radio</label>
-        <label class="cb-item"><input type="checkbox" value="online_news"><span class="cb-check">✓</span>Online news</label>
-        <label class="cb-item"><input type="checkbox" value="print"><span class="cb-check">✓</span>Print / magazines</label>
-        <label class="cb-item"><input type="checkbox" value="outdoor"><span class="cb-check">✓</span>Outdoor / OOH</label>
-      </div>
-    </div>
-
-    <div class="field">
-      <label class="lbl">How they research products / services</label>
-      <div class="cb-grid" id="cb-research">
-        <label class="cb-item"><input type="checkbox" value="google"><span class="cb-check">✓</span>Google Search</label>
-        <label class="cb-item"><input type="checkbox" value="ai_search"><span class="cb-check">✓</span>AI (ChatGPT / Copilot)</label>
-        <label class="cb-item"><input type="checkbox" value="social_research"><span class="cb-check">✓</span>Social media browsing</label>
-        <label class="cb-item"><input type="checkbox" value="friends"><span class="cb-check">✓</span>Ask friends / family</label>
-        <label class="cb-item"><input type="checkbox" value="reviews"><span class="cb-check">✓</span>Online reviews</label>
-        <label class="cb-item"><input type="checkbox" value="in_store"><span class="cb-check">✓</span>Browse in store</label>
-      </div>
-    </div>
-
-    <div class="two-col">
-      <div class="field">
-        <label class="lbl">Daily social media time</label>
-        <div class="sel-wrap"><select id="f-social-time">
-          <option value="">Select</option>
-          <option value="none">I don't use social media</option>
-          <option value="light">Under 30 minutes</option>
-          <option value="moderate">30–60 minutes</option>
-          <option value="heavy">1–2 hours</option>
-          <option value="very_heavy">2+ hours</option>
-        </select></div>
-      </div>
-      <div class="field">
-        <label class="lbl">Primary device</label>
-        <div class="sel-wrap"><select id="f-device">
-          <option value="">Select</option>
-          <option value="mobile">Smartphone first</option>
-          <option value="desktop">Desktop / laptop first</option>
-          <option value="smart_tv">Smart TV first</option>
-          <option value="tablet">Tablet first</option>
-        </select></div>
-      </div>
-    </div>
-
-    <div class="form-nav">
-      <button class="btn btn-ghost" onclick="showScreen('s-step2')">← Back</button>
-      <button class="btn btn-gold" onclick="runAnalysis()">Run Reality Check →</button>
-    </div>
-  </div>
-  <div class="ftr"><div class="ftr-text">Super Media Intelligence</div></div>
 </div>
 
 <!-- ═══════════════════════════════════════════ LOADING ═══ -->
@@ -588,7 +548,7 @@ function showScreen(id) {
   document.getElementById(id).classList.add('active');
   window.scrollTo(0,0);
 }
-function startForm() { showScreen('s-step1'); }
+function startForm() { showScreen('s-form'); }
 
 // Checkbox interactions
 document.querySelectorAll('.cb-item').forEach(item => {
@@ -603,17 +563,6 @@ document.querySelectorAll('.cb-item').forEach(item => {
 // ═══════════════════════════════════════════════════════════
 function getVal(id) { return document.getElementById(id).value; }
 
-function nextStep(step) {
-  if (step === 1) {
-    const required = ['f-age','f-gender','f-income','f-education','f-occupation'];
-    if (required.some(id => !getVal(id))) { alert('Please complete all fields before continuing.'); return; }
-    showScreen('s-step2');
-  } else if (step === 2) {
-    const required = ['f-region','f-urban','f-children','f-transport','f-housing'];
-    if (required.some(id => !getVal(id))) { alert('Please complete all fields before continuing.'); return; }
-    showScreen('s-step3');
-  }
-}
 
 // ═══════════════════════════════════════════════════════════
 // ANALYSIS ENGINE
@@ -975,6 +924,11 @@ function calcDevices(ageIdx) {
 // RUN ANALYSIS
 // ═══════════════════════════════════════════════════════════
 async function runAnalysis() {
+  const required = ['f-age','f-gender','f-income','f-education','f-occupation','f-region','f-urban','f-children','f-transport','f-housing'];
+  if (required.some(id => !getVal(id))) {
+    alert('Please complete all required fields before running the check.');
+    return;
+  }
   collectProfile();
   showScreen('s-loading');
 
