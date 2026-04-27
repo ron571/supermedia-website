@@ -7,7 +7,7 @@ import { getArticles } from "@/lib/articles";
 export const metadata: Metadata = {
   title: "Super Media — Independent NZ Media Consultancy",
   description:
-    "Your last campaign probably didn't fail because of bad luck. Super Media is an independent NZ media consultancy. Ron Sneddon has 35 years on both sides of the table — and knows exactly where the money gets wasted.",
+    "Your next campaign can work harder with the right guidance. Super Media is an independent NZ media consultancy. Ron Sneddon has 35 years on both sides of the table — and knows exactly how to make your budget perform.",
   alternates: { canonical: "/" },
 };
 
@@ -86,24 +86,18 @@ export default function HomePage() {
         <div className="section-container relative py-24 lg:py-36">
           <p className="eyebrow mb-5">Independent NZ Media Consultancy</p>
           <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold max-w-3xl mb-6">
-            Your last campaign probably didn&apos;t fail because of bad luck.
+            Straight answers. Smart Media strategy. Real results.
           </h1>
           <p
-            className="text-white text-lg max-w-2xl mb-10"
+            className="text-white text-lg max-w-2xl mb-4"
             style={{ opacity: 0.72, lineHeight: 1.65 }}
           >
-            Super Media is an independent NZ media consultancy. Ron Sneddon has
-            spent 35 years on both sides of the table — buying media, selling
-            it, and owning an agency. He knows exactly where the money gets
-            wasted, and why it keeps happening.
+            Super Media has 35 years experience in buying and selling media. We know exactly how to Super charge your media budget — delivering real business results.
           </p>
-          <div className="flex flex-wrap gap-4">
+          <div className="flex flex-wrap gap-4 mt-10">
             <Link href="/superscan" className="btn-primary">
-              Find out where yours went →
+              Find out in 30 seconds if your media is working →
             </Link>
-            <a href="#the-problem" className="btn-outline-white">
-              See how it works
-            </a>
           </div>
         </div>
       </section>
@@ -113,7 +107,7 @@ export default function HomePage() {
         <div className="section-container">
           <div className="max-w-xl mb-12">
             <h2 className="text-navy text-3xl md:text-4xl font-bold mb-4">
-              What usually happened
+              What usually happens
             </h2>
             <p className="text-body text-lg" style={{ lineHeight: 1.65 }}>
               Most NZ businesses who&apos;ve been burned by advertising describe
@@ -161,14 +155,9 @@ export default function HomePage() {
               Most of the businesses that come to Super are spending between
               $2,000 and $20,000 a month on advertising.
             </h2>
-            <p className="text-white text-xl md:text-2xl font-semibold mb-5 leading-snug">
-              They&apos;re not big corporates. They&apos;re a retailer, a professional services firm,
-              a trades business — someone who tried advertising, got a glossy
-              report, and is no longer sure the money is working.
-            </p>
             <p className="text-white/85 text-lg mb-8" style={{ lineHeight: 1.65 }}>
               The Superscan tool was built specifically for this situation. It
-              takes 90 seconds, costs nothing, and gives you an independent read
+              takes 30 seconds, costs nothing, and gives you an independent read
               on whether your current advertising makes sense — without a sales
               call, a contract, or any obligation.
             </p>
@@ -200,7 +189,7 @@ export default function HomePage() {
               {
                 icon: <PersonIcon />,
                 heading: "Senior judgement, not junior execution",
-                body: "When you work with Super, you work with Ron — 35 years of NZ media experience, applied directly to your account.",
+                body: "When you work with Super Media you get a team with more than 30 years media experience applied directly to your account.",
               },
               {
                 icon: <PulseIcon />,
@@ -223,41 +212,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Section 5: Superscan Feature Block ─── */}
-      <section id="superscan" className="bg-navy py-20 lg:py-28">
-        <div className="section-container">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-            <div>
-              <p className="eyebrow mb-4">Superscan</p>
-              <h2 className="text-white text-3xl md:text-4xl font-bold mb-6">
-                Find out in 90 seconds if your advertising adds up
-              </h2>
-              <p className="text-white/75 text-lg mb-8" style={{ lineHeight: 1.65 }}>
-                Tell Superscan what channels you&apos;re running and who
-                you&apos;re trying to reach. It gives you an independent read on
-                where the risk is, where the opportunity is, and one specific
-                question worth putting to your agency. No login. No sales call.
-                Free.
-              </p>
-              <Link href="/superscan" className="btn-primary mb-8 inline-flex">
-                Run your Superscan →
-              </Link>
-              <p className="text-white/50 text-sm">
-                Used by NZ business owners across retail, trades, professional
-                services, and hospitality.
-              </p>
-            </div>
-
-            {/* Stylised results preview */}
-            <div className="bg-white/5 border border-white/10 rounded p-6 shadow-lg">
-              <p className="text-white/50 text-xs uppercase tracking-eyebrow mb-4">
-                Sample Superscan Output
-              </p>
-              <BarChartMockup />
-            </div>
-          </div>
-        </div>
-      </section>
+      
 
       {/* ─── Section 6: About Ron ─── */}
       <section className="bg-white py-20 lg:py-28">
@@ -279,7 +234,7 @@ export default function HomePage() {
                   Ron Sneddon
                 </h2>
                 <p className="text-body">
-                  Ron spent 35 years inside NZ media — buying it, selling it,
+                  Ron spent 35 years inside NZ media ��� buying it, selling it,
                   and running an agency. He has sat at every table in this
                   industry and watched, from the inside, exactly how advertising
                   budgets get eroded. Super exists because he decided to stop
