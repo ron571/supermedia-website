@@ -138,7 +138,7 @@ export default function AboutPage() {
                     Vishal Jasuja
                   </h2>
                   <p className="text-body text-sm md:text-base">
-                    Vishal is our Digital Director responsible for integration of AI into all our digital campaigns including search, display and social media. He also leads our website construction and design arm.
+                    Vishal is our Digital Director responsible for integration of AI into all our digital campaigns including search, display and social media.
                   </p>
                 </div>
               </div>
