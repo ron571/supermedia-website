@@ -14,8 +14,9 @@ export function middleware(req: NextRequest) {
   }
 
   const token = req.cookies.get(ADMIN_COOKIE)?.value;
+  const adminToken = (process.env.ADMIN_TOKEN ?? "sm-admin-token-default").trim();
 
-  if (!token || token !== process.env.ADMIN_TOKEN) {
+  if (!token || token !== adminToken) {
     const loginUrl = req.nextUrl.clone();
     loginUrl.pathname = "/admin/login";
     return NextResponse.redirect(loginUrl);
