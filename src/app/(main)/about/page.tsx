@@ -91,57 +91,56 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* ─── Phil Carey ─── */}
+      {/* ─── Phil Carey & Vishal Jasuja ─── */}
       <section className="bg-grey-light py-20 lg:py-28">
         <div className="section-container">
-          <div className="max-w-3xl">
-            <div className="flex items-start gap-6 mb-8">
-              <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0">
-                <Image
-                  src="/images/phil-carey.png"
-                  alt="Phil Carey, AI specialist at Super Media"
-                  fill
-                  className="object-cover rounded"
-                  sizes="128px"
-                />
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16">
+            {/* Phil Carey */}
+            <div>
+              <div className="flex items-start gap-6 mb-4">
+                <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0">
+                  <Image
+                    src="/images/phil-carey.png"
+                    alt="Phil Carey, AI specialist at Super Media"
+                    fill
+                    className="object-cover rounded"
+                    sizes="128px"
+                  />
+                </div>
+                <div>
+                  <h2 className="text-navy text-2xl md:text-3xl font-bold mb-3">
+                    Phil Carey
+                  </h2>
+                  <p className="text-body text-sm md:text-base">
+                    Phil is Super&apos;s artificial intelligence specialist with more than 40 years experience in media. Phil is now at the forefront of AI and in particular how AI can influence and improve media campaigns across all media.
+                  </p>
+                </div>
               </div>
-              <div>
-                <h2 className="text-navy text-3xl md:text-4xl font-bold mb-4">
-                  Phil Carey
-                </h2>
-                <p className="text-body">
-                  Phil is Super&apos;s artificial intelligence specialist with more than 40 years experience in media. Phil is now at the forefront of AI and in particular how AI can influence and improve media campaigns across all media.
-                </p>
-              </div>
+              <p className="text-body text-sm md:text-base">
+                Phil is the author of <em>The Curiosity Advantage: Why Better Questions Achieve Better Results in the Age of AI</em>.
+              </p>
             </div>
-            <p className="text-body">
-              Phil is the author of <em>The Curiosity Advantage: Why Better Questions Achieve Better Results in the Age of AI</em>.
-            </p>
-          </div>
-        </div>
-      </section>
 
-      {/* ─── Vishal Jasuja ─── */}
-      <section className="bg-white py-20 lg:py-28">
-        <div className="section-container">
-          <div className="max-w-3xl">
-            <div className="flex items-start gap-6">
-              <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0">
-                <Image
-                  src="/images/vishal-jasuja.png"
-                  alt="Vishal Jasuja, Digital Director at Super Media"
-                  fill
-                  className="object-cover rounded"
-                  sizes="128px"
-                />
-              </div>
-              <div>
-                <h2 className="text-navy text-3xl md:text-4xl font-bold mb-4">
-                  Vishal Jasuja
-                </h2>
-                <p className="text-body">
-                  Vishal is our Digital Director responsible for integration of AI into all our digital campaigns including search, display and social media.
-                </p>
+            {/* Vishal Jasuja */}
+            <div>
+              <div className="flex items-start gap-6">
+                <div className="relative w-24 h-24 md:w-32 md:h-32 flex-shrink-0">
+                  <Image
+                    src="/images/vishal-jasuja.png"
+                    alt="Vishal Jasuja, Digital Director at Super Media"
+                    fill
+                    className="object-cover rounded"
+                    sizes="128px"
+                  />
+                </div>
+                <div>
+                  <h2 className="text-navy text-2xl md:text-3xl font-bold mb-3">
+                    Vishal Jasuja
+                  </h2>
+                  <p className="text-body text-sm md:text-base">
+                    Vishal is our Digital Director responsible for integration of AI into all our digital campaigns including search, display and social media.
+                  </p>
+                </div>
               </div>
             </div>
           </div>
@@ -149,7 +148,7 @@ export default function AboutPage() {
       </section>
 
       {/* ─── Independence List ─── */}
-      <section className="bg-grey-light py-20 lg:py-24">
+      <section className="bg-white py-20 lg:py-24">
         <div className="section-container">
           <div className="max-w-2xl">
             <h2 className="text-navy text-3xl md:text-4xl font-bold mb-5">
