@@ -120,12 +120,20 @@ export default function Footer() {
           <p className="text-xs text-white/40">
             © 2026 Super Media. All rights reserved.
           </p>
-          <Link
-            href="/privacy"
-            className="text-xs text-white/40 hover:text-white/70 transition-colors"
-          >
-            Privacy Policy
-          </Link>
+          <div className="flex items-center gap-4">
+            <Link
+              href="/privacy"
+              className="text-xs text-white/40 hover:text-white/70 transition-colors"
+            >
+              Privacy Policy
+            </Link>
+            <Link
+              href="/admin"
+              className="text-xs text-white/20 hover:text-white/50 transition-colors"
+            >
+              Admin
+            </Link>
+          </div>
         </div>
       </div>
     </footer>
