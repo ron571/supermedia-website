@@ -253,7 +253,7 @@ export default function HomePage() {
               href="/about"
               className="text-orange font-semibold hover:text-orange-dark transition-colors"
             >
-              Ron&apos;s full story →
+              More about the team →
             </Link>
           </div>
         </div>
