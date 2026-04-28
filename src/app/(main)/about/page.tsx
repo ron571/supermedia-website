@@ -206,28 +206,14 @@ export default function AboutPage() {
           <h2 className="text-navy text-3xl md:text-4xl font-bold mb-12">
             Career
           </h2>
-          <div className="relative">
-            <div
-              className="absolute left-0 top-0 bottom-0 w-px bg-grey-mid ml-[52px] hidden sm:block"
-              aria-hidden="true"
-            />
-            <ol className="space-y-8">
-              {timelineItems.map(({ year, role }) => (
-                <li key={year + role} className="flex items-start gap-6 sm:gap-10">
-                  <div className="flex-shrink-0 w-[52px] text-right">
-                    <span className="text-orange font-bold text-sm">{year}</span>
-                  </div>
-                  <div className="relative">
-                    <span
-                      className="absolute -left-[42px] top-1.5 w-2.5 h-2.5 rounded-full bg-navy hidden sm:block"
-                      aria-hidden="true"
-                    />
-                    <p className="text-body text-lg">{role}</p>
-                  </div>
-                </li>
-              ))}
-            </ol>
-          </div>
+          <ol className="space-y-4">
+            {timelineItems.map(({ year, role }) => (
+              <li key={year + role} className="flex items-start gap-4">
+                <span className="text-orange font-bold text-sm whitespace-nowrap">{year}:</span>
+                <p className="text-body text-lg">{role}</p>
+              </li>
+            ))}
+          </ol>
         </div>
       </section>
 
