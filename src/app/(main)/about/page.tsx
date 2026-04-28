@@ -208,8 +208,8 @@ export default function AboutPage() {
           </h2>
           <ol className="space-y-4">
             {timelineItems.map(({ year, role }) => (
-              <li key={year + role} className="flex items-start gap-4">
-                <span className="text-orange font-bold text-sm whitespace-nowrap">{year}:</span>
+              <li key={year + role} className="flex items-baseline">
+                <span className="text-orange font-bold text-sm w-32 flex-shrink-0">{year}:</span>
                 <p className="text-body text-lg">{role}</p>
               </li>
             ))}
