@@ -234,7 +234,7 @@ export default function HomePage() {
                   Ron Sneddon
                 </h2>
                 <p className="text-body">
-                  Ron spent 35 years inside NZ media ��� buying it, selling it,
+                  Ron spent 35 years inside NZ media: buying it, selling it,
                   and running an agency. He has sat at every table in this
                   industry and watched, from the inside, exactly how advertising
                   budgets get eroded. Super exists because he decided to stop
