@@ -26,11 +26,11 @@ const jsonLd = {
 };
 
 const timelineItems = [
-  { year: "1999", role: "Media Director, Spearhead Communications" },
-  { year: "2001", role: "General Manager, Strategic Media (now Carat)" },
-  { year: "2003", role: "Senior broadcast roles — Newstalk ZB, 91ZM, Classic Hits" },
-  { year: "2003", role: "Co-owner, Mr Smith (Auckland ad agency) — 11 years" },
-  { year: "2014", role: "Founded Super Media" },
+  { year: "2014 - Current", role: "Super Media CEO" },
+  { year: "2001 - 2014", role: "Co Owner Mr Smith Ad Agency" },
+  { year: "1999 - 2001", role: "Media Director Spearhead Communications" },
+  { year: "1993 - 1999", role: "Media Director Strategic Media" },
+  { year: "1983 - 1993", role: "Senior Management Roles Radio New Zealand" },
 ];
 
 export default function AboutPage() {
