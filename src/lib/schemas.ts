@@ -13,19 +13,60 @@ export const CHANNELS = [
   "Other",
 ] as const;
 
-export const SPEND_RANGES = [
-  "Under $50K/year",
-  "$50K–$150K/year",
-  "$150K–$500K/year",
-  "$500K–$1M/year",
-  "Over $1M/year",
-  "Prefer not to say",
+export const SPEND_PERIODS = [
+  "Monthly",
+  "Quarterly",
+  "Annual",
+  "Campaign / one-off",
 ] as const;
+
+export type SpendPeriod = (typeof SPEND_PERIODS)[number];
+
+export const SPEND_RANGES_BY_PERIOD: Record<SpendPeriod, readonly string[]> = {
+  Monthly: [
+    "Under $2K/month",
+    "$2K–$5K/month",
+    "$5K–$15K/month",
+    "$15K–$50K/month",
+    "Over $50K/month",
+    "Prefer not to say",
+  ],
+  Quarterly: [
+    "Under $6K/quarter",
+    "$6K–$15K/quarter",
+    "$15K–$50K/quarter",
+    "$50K–$150K/quarter",
+    "Over $150K/quarter",
+    "Prefer not to say",
+  ],
+  Annual: [
+    "Under $50K/year",
+    "$50K–$150K/year",
+    "$150K–$500K/year",
+    "$500K–$1M/year",
+    "Over $1M/year",
+    "Prefer not to say",
+  ],
+  "Campaign / one-off": [
+    "Under $10K total",
+    "$10K–$30K total",
+    "$30K–$100K total",
+    "$100K–$300K total",
+    "Over $300K total",
+    "Prefer not to say",
+  ],
+};
+
+// Backward-compat alias
+export const SPEND_RANGES = SPEND_RANGES_BY_PERIOD.Annual;
 
 export const SuperscanSchema = z.object({
   channels: z.array(z.enum(CHANNELS)).min(1, "Select at least one channel"),
   channelsOther: z.string().max(200).optional(),
-  spendRange: z.enum(SPEND_RANGES),
+  spendPeriod: z.enum(SPEND_PERIODS, {
+    required_error: "Please select a spend period",
+  }),
+  spendRange: z.string().min(1, "Please select a spend range"),
   audience: z
     .string()
     .min(10, "Please describe your audience (at least 10 characters)")

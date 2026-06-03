@@ -34,6 +34,7 @@ Output format (strict JSON):
 function buildUserPrompt(data: {
   channels: string[];
   channelsOther?: string;
+  spendPeriod: string;
   spendRange: string;
   audience: string;
 }): string {
@@ -42,7 +43,7 @@ function buildUserPrompt(data: {
     data.channelsOther
       ? `Additional channels: ${data.channelsOther}`
       : null,
-    `Annual media spend range: ${data.spendRange}`,
+    `Media spend: ${data.spendRange} (${data.spendPeriod} budget)`,
     `Target audience: ${data.audience}`,
     "",
     "Run the Superscan analysis.",
@@ -95,7 +96,7 @@ function getRateLimiters() {
 }
 
 async function sendLeadNotification(
-  data: { channels: string[]; channelsOther?: string; spendRange: string; audience: string; email: string },
+  data: { channels: string[]; channelsOther?: string; spendPeriod: string; spendRange: string; audience: string; email: string },
   result: SuperscanResult
 ): Promise<void> {
   if (!process.env.RESEND_API_KEY) return;
@@ -109,12 +110,13 @@ async function sendLeadNotification(
   await resend.emails.send({
     from: process.env.RESEND_FROM_EMAIL ?? "superscan@supermedia.co.nz",
     to: "ron@supermedia.co.nz",
-    subject: `New Superscan — ${data.email} · ${data.spendRange}`,
+    subject: `New Superscan — ${data.email} · ${data.spendRange} (${data.spendPeriod})`,
     html: `
       <h2>New Superscan lead</h2>
       <p><strong>Date:</strong> ${scanDate}</p>
       <p><strong>Email:</strong> ${data.email}</p>
       <p><strong>Channels:</strong> ${data.channels.join(", ")}${data.channelsOther ? ` + ${data.channelsOther}` : ""}</p>
+      <p><strong>Spend period:</strong> ${data.spendPeriod}</p>
       <p><strong>Spend range:</strong> ${data.spendRange}</p>
       <p><strong>Audience:</strong> ${data.audience}</p>
       <hr/>

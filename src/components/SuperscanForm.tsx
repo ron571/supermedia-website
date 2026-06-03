@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SuperscanSchema, CHANNELS, SPEND_RANGES, type SuperscanInput } from "@/lib/schemas";
+import { SuperscanSchema, CHANNELS, SPEND_PERIODS, SPEND_RANGES_BY_PERIOD, type SuperscanInput } from "@/lib/schemas";
 import type { SuperscanResult } from "@/lib/schemas";
 import SuperscanResults from "./SuperscanResults";
 
@@ -28,10 +28,12 @@ export default function SuperscanForm() {
 
   const selectedChannels = watch("channels");
   const watchOther = selectedChannels?.includes("Other");
+  const selectedPeriod = watch("spendPeriod");
+  const spendRanges = selectedPeriod ? SPEND_RANGES_BY_PERIOD[selectedPeriod] : [];
 
   const onFormNext = () => {
-    const { channels, spendRange, audience } = getValues();
-    if (!channels?.length || !spendRange || !audience || audience.length < 10) {
+    const { channels, spendPeriod, spendRange, audience } = getValues();
+    if (!channels?.length || !spendPeriod || !spendRange || !audience || audience.length < 10) {
       return;
     }
     setStep("email");
@@ -162,13 +164,49 @@ export default function SuperscanForm() {
             )}
           </fieldset>
 
-          {/* Field 2: Spend range */}
+          {/* Field 2: Spend period */}
+          <fieldset className="mb-6">
+            <legend className="block text-navy font-semibold text-base mb-1">
+              How do you think about your media spend?
+              <span className="text-orange ml-1" aria-hidden="true">*</span>
+            </legend>
+            <p className="text-grey-dark text-sm mb-3">
+              Select the timeframe that best matches how you budget.
+            </p>
+            <div className="grid grid-cols-2 sm:grid-cols-4 gap-2">
+              {SPEND_PERIODS.map((period) => (
+                <label
+                  key={period}
+                  className={`flex items-center justify-center gap-2 p-3 border rounded cursor-pointer transition-colors text-sm font-medium ${
+                    selectedPeriod === period
+                      ? "border-orange bg-orange/5 text-navy"
+                      : "border-grey-mid text-body hover:border-orange"
+                  }`}
+                >
+                  <input
+                    type="radio"
+                    value={period}
+                    {...register("spendPeriod")}
+                    className="sr-only"
+                  />
+                  {period}
+                </label>
+              ))}
+            </div>
+            {errors.spendPeriod && (
+              <p className="text-orange text-sm mt-2" role="alert">
+                {errors.spendPeriod.message}
+              </p>
+            )}
+          </fieldset>
+
+          {/* Field 3: Spend range (dynamic based on period) */}
           <div className="mb-8">
             <label
               htmlFor="spendRange"
               className="block text-navy font-semibold text-base mb-1"
             >
-              Annual media spend
+              {selectedPeriod ? `${selectedPeriod} media spend` : "Media spend range"}
               <span className="text-orange ml-1" aria-hidden="true">*</span>
             </label>
             <p className="text-grey-dark text-sm mb-3">
@@ -177,13 +215,14 @@ export default function SuperscanForm() {
             <select
               id="spendRange"
               {...register("spendRange")}
-              className="w-full px-4 py-3 border border-grey-mid rounded text-body text-sm focus:outline-none focus:border-orange bg-white"
+              className="w-full px-4 py-3 border border-grey-mid rounded text-body text-sm focus:outline-none focus:border-orange bg-white disabled:opacity-40"
               defaultValue=""
+              disabled={!selectedPeriod}
             >
               <option value="" disabled>
-                Select a range…
+                {selectedPeriod ? "Select a range…" : "Select a spend period first…"}
               </option>
-              {SPEND_RANGES.map((range) => (
+              {spendRanges.map((range) => (
                 <option key={range} value={range}>
                   {range}
                 </option>
