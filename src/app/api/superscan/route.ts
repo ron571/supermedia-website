@@ -264,7 +264,9 @@ export async function POST(req: NextRequest) {
     resultJson = JSON.parse(cleaned) as SuperscanResult;
   } catch (err) {
     const message = err instanceof Error ? err.message : String(err);
-    console.error("Claude API error:", message);
+    const cause = err instanceof Error && (err as NodeJS.ErrnoException).cause;
+    const causeMsg = cause instanceof Error ? cause.message : String(cause ?? "");
+    console.error("Claude API error:", message, causeMsg ? `| cause: ${causeMsg}` : "");
     return NextResponse.json(
       { error: "Analysis failed — please try again", detail: message },
       { status: 500 }
