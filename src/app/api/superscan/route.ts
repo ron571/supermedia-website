@@ -219,19 +219,24 @@ export async function POST(req: NextRequest) {
   const { hour, day } = getRateLimiters();
 
   if (hour && day) {
-    const [hourResult, dayResult] = await Promise.all([
-      hour.limit(hashedIp),
-      day.limit(hashedIp),
-    ]);
+    try {
+      const [hourResult, dayResult] = await Promise.all([
+        hour.limit(hashedIp),
+        day.limit(hashedIp),
+      ]);
 
-    if (!hourResult.success || !dayResult.success) {
-      return NextResponse.json(
-        {
-          error:
-            "You've run a few scans already — try again in an hour or email ron@supermedia.co.nz",
-        },
-        { status: 429 }
-      );
+      if (!hourResult.success || !dayResult.success) {
+        return NextResponse.json(
+          {
+            error:
+              "You've run a few scans already — try again in an hour or email ron@supermedia.co.nz",
+          },
+          { status: 429 }
+        );
+      }
+    } catch (err) {
+      console.error("Rate limiter error (skipping):", err instanceof Error ? err.message : String(err));
+      // Fall through — don't block the request if Redis is unavailable
     }
   }
 
