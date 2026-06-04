@@ -273,9 +273,13 @@ export async function POST(req: NextRequest) {
 
   // Non-blocking side effects
   Promise.allSettled([
-    sendResultsEmail(data.email, resultJson),
-    sendLeadNotification(data, resultJson),
-  ]).catch((err) => console.error("Side effect error:", err));
+    sendResultsEmail(data.email, resultJson).catch((err) =>
+      console.error("sendResultsEmail failed:", err instanceof Error ? err.message : String(err))
+    ),
+    sendLeadNotification(data, resultJson).catch((err) =>
+      console.error("sendLeadNotification failed:", err instanceof Error ? err.message : String(err))
+    ),
+  ]);
 
   return NextResponse.json(resultJson);
 }
