@@ -24,8 +24,11 @@ export async function POST(req: NextRequest) {
   }
 
   if (!process.env.RESEND_API_KEY) {
-    console.log("Contact submission (no Resend key):", { name, email, company, message });
-    return NextResponse.json({ ok: true });
+    console.error("RESEND_API_KEY is not set — contact form submission dropped:", { name, email, company });
+    return NextResponse.json(
+      { error: "Email is not configured — please email ron@supermedia.co.nz directly" },
+      { status: 500 }
+    );
   }
 
   const resend = new Resend(process.env.RESEND_API_KEY);
