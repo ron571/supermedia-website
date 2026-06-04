@@ -29,9 +29,9 @@ export default function ContactPage() {
         <div className="section-container">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-16">
 
-            {/* Left — Book a call */}
+            {/* Left — Ring Ron */}
             <div>
-              <p className="eyebrow mb-4">Book a call</p>
+              <p className="eyebrow mb-4">Ring Ron</p>
               <h2 className="text-navy text-2xl font-bold mb-4">
                 30 minutes. No agenda. No obligation.
               </h2>
@@ -40,12 +40,10 @@ export default function ContactPage() {
                 just a direct conversation about your situation.
               </p>
               <a
-                href={calendlyUrl}
-                target="_blank"
-                rel="noopener noreferrer"
+                href="tel:+64212393946"
                 className="btn-primary"
               >
-                Book a call with Ron →
+                Ring Ron on 021 393946 →
               </a>
             </div>
 
