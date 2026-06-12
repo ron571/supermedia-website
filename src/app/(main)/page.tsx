@@ -7,7 +7,7 @@ import { getArticles } from "@/lib/articles";
 export const metadata: Metadata = {
   title: "Super Media — Independent NZ Media Consultancy",
   description:
-    "Your next campaign can work harder with the right guidance. Super Media is an independent NZ media consultancy. Ron Sneddon has 35 years on both sides of the table — and knows exactly how to make your budget perform.",
+    "Super Media is an independent NZ media consultancy. No agency relationships. No commissions. Just an honest read on whether your advertising spend is working — and how to fix it if it isn't.",
   alternates: { canonical: "/" },
 };
 
@@ -86,19 +86,35 @@ export default function HomePage() {
         <div className="section-container relative py-24 lg:py-36">
           <p className="eyebrow mb-5">Independent NZ Media Consultancy</p>
           <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold max-w-3xl mb-6">
-            Straight answers. Smart Media strategy. Real results.
+            Your media budget works harder when someone independent is watching it.
           </h1>
           <p
             className="text-white text-lg max-w-2xl mb-4"
             style={{ opacity: 0.72, lineHeight: 1.65 }}
           >
-            Super Media has 35 years experience in buying and selling media. We know exactly how to Super charge your media budget — delivering real business results.
+            Super Media is an independent NZ media consultancy. Ron Sneddon has spent 35 years on both sides of the table — buying media, selling it, and running an agency. He knows exactly where budgets get eroded, and exactly how to stop it.
           </p>
           <div className="flex flex-wrap gap-4 mt-10">
-            <Link href="/superscan" className="btn-primary">
-              Find out in 30 seconds if your media is working →
+            <Link href="/contact" className="btn-primary">
+              Get a Free Media Audit →
+            </Link>
+            <Link href="/superscan" className="btn-outline-white">
+              Run Superscan — 30 seconds, free →
             </Link>
           </div>
+        </div>
+      </section>
+
+      {/* ─── Trust Bar ─── */}
+      <section className="bg-white border-b border-grey-mid py-5">
+        <div className="section-container">
+          <p className="text-grey-dark text-sm text-center">
+            Trusted by NZ businesses across{" "}
+            <span className="font-semibold text-navy">professional services</span>,{" "}
+            <span className="font-semibold text-navy">retail</span>,{" "}
+            <span className="font-semibold text-navy">financial services</span>, and{" "}
+            <span className="font-semibold text-navy">property</span> — typically spending $2,000–$20,000/month on advertising.
+          </p>
         </div>
       </section>
 
@@ -114,11 +130,11 @@ export default function HomePage() {
               the same experience. The details differ. The pattern doesn&apos;t.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10 lg:gap-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12">
             {[
               {
                 num: "01",
-                heading: "The report looked good. The results didn\u2019t.",
+                heading: "The report looked good. The results didn’t.",
                 body: "Agencies measure what they can control — impressions, clicks, reach. Not whether your phone rang or your door opened. A good-looking report can hide a campaign that didn't work.",
               },
               {
@@ -128,8 +144,13 @@ export default function HomePage() {
               },
               {
                 num: "03",
-                heading: "The advice wasn\u2019t free of strings.",
+                heading: "The advice wasn’t free of strings.",
                 body: "Most agencies have financial relationships with the media they recommend. That doesn't make them dishonest — but it does mean their best recommendation and their most profitable recommendation aren't always the same thing.",
+              },
+              {
+                num: "04",
+                heading: "You were sold AI. You got a dashboard.",
+                body: "AI is being used as a sales tool by every agency in NZ right now. Super Media uses it as a working tool — for audience analysis, channel benchmarking, and campaign diagnosis. There's a difference.",
               },
             ].map(({ num, heading, body }) => (
               <div key={num}>
@@ -179,7 +200,7 @@ export default function HomePage() {
               Not different as a positioning statement. Different by design.
             </p>
           </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-10">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
             {[
               {
                 icon: <ShieldIcon />,
@@ -189,12 +210,17 @@ export default function HomePage() {
               {
                 icon: <PersonIcon />,
                 heading: "Senior judgement, not junior execution",
-                body: "When you work with Super Media you get a team with more than 30 years media experience applied directly to your account.",
+                body: "When you work with Super Media you get 35 years of media experience applied directly to your account — not handed off to a graduate.",
               },
               {
                 icon: <PulseIcon />,
-                heading: "AI as a real tool, not a talking point",
-                body: "Audience analysis in minutes. Continuous channel benchmarking. Every Superscan is a live AI analysis.",
+                heading: "AI that works, not AI that impresses",
+                body: "Audience analysis that used to take a week takes minutes. Every Superscan is a live AI analysis. This isn't a feature — it changes the economics of independent advice.",
+              },
+              {
+                icon: <LockOpenIcon />,
+                heading: "No lock-in",
+                body: "Month-to-month. We stay because the work is good, not because you signed something.",
               },
             ].map(({ icon, heading, body }) => (
               <div key={heading}>
@@ -212,10 +238,63 @@ export default function HomePage() {
         </div>
       </section>
 
-      
+      {/* ─── Section 5: Services ─── */}
+      <section className="bg-white py-20 lg:py-28">
+        <div className="section-container">
+          <div className="max-w-xl mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              What Super Media does
+            </h2>
+            <p className="text-body text-lg" style={{ lineHeight: 1.65 }}>
+              We work across the full media picture — not just one channel.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {[
+              {
+                heading: "Media Strategy & Planning",
+                body: "Where your budget should go, and why. Built from audience behaviour up, not from what a supplier wants to sell.",
+              },
+              {
+                heading: "Media Audit & Review",
+                body: "An independent read on whether your current spend is performing. Most audits identify at least one material issue in the first session.",
+              },
+              {
+                heading: "Programmatic Buying",
+                body: "Precision audience buying without agency markup or preferred supplier relationships shaping the buy.",
+              },
+              {
+                heading: "Social Media Strategy",
+                body: "Channel strategy and audience targeting — not just content scheduling.",
+              },
+              {
+                heading: "Superscan",
+                body: "A free 30-second AI diagnosis of your current media mix. The fastest independent read available to NZ businesses.",
+              },
+              {
+                heading: "Retained Advisory",
+                body: "Ongoing independent guidance for businesses that want a media-literate voice in the room — without replacing their current agency.",
+              },
+            ].map(({ heading, body }) => (
+              <div key={heading} className="border border-grey-mid rounded p-6">
+                <h3 className="text-navy text-lg font-bold mb-2">{heading}</h3>
+                <p className="text-body text-sm" style={{ lineHeight: 1.65 }}>{body}</p>
+              </div>
+            ))}
+          </div>
+          <div className="mt-8">
+            <Link
+              href="/services"
+              className="text-orange font-semibold hover:text-orange-dark transition-colors"
+            >
+              Full service details →
+            </Link>
+          </div>
+        </div>
+      </section>
 
       {/* ─── Section 6: About Ron ─── */}
-      <section className="bg-white py-20 lg:py-28">
+      <section className="bg-grey-light py-20 lg:py-28">
         <div className="section-container">
           <div className="max-w-3xl">
             <p className="eyebrow mb-4">The person behind the advice</p>
@@ -249,6 +328,15 @@ export default function HomePage() {
               — and knows what it looks like when the advice is shaped by
               someone else&apos;s interests.
             </p>
+            <ul className="text-body space-y-2 mb-8 border-l-2 border-orange pl-5">
+              <li>35 years buying and selling NZ media across TV, radio, print, digital, and programmatic</li>
+              <li>Worked with clients across retail, professional services, financial services, and property</li>
+              <li>Founded and ran a media agency before building Super</li>
+              <li>Created Superscan — the only free independent AI media diagnostic available to NZ businesses</li>
+            </ul>
+            <blockquote className="italic text-navy font-medium text-lg mb-8 border-l-4 border-orange pl-4">
+              &ldquo;If the advice would be different depending on who&apos;s paying for it, it&apos;s not independent advice.&rdquo;
+            </blockquote>
             <Link
               href="/about"
               className="text-orange font-semibold hover:text-orange-dark transition-colors"
@@ -259,7 +347,72 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Section 7: Social Proof ─── */}
+      {/* ─── Section 7: Proof ─── */}
+      <section className="bg-white py-20 lg:py-28">
+        <div className="section-container">
+          <div className="max-w-xl mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
+              What independent advice actually changes
+            </h2>
+            <p className="text-body text-lg" style={{ lineHeight: 1.65 }}>
+              Real outcomes from Super Media engagements. Client names withheld on request.
+            </p>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-8">
+            {[
+              {
+                sector: "Retail",
+                service: "Media Audit",
+                outcome1: { stat: "19%", label: "reduction in total media spend" },
+                outcome2: { stat: "+12%", label: "increase in audience reach" },
+                finding: "Digital display was consuming 34% of the media budget and delivering 8% of measurable response. It had never been independently benchmarked.",
+              },
+              {
+                sector: "Financial Services",
+                service: "Media Strategy",
+                outcome1: { stat: "31%", label: "lower CPM vs agency plan" },
+                outcome2: { stat: "2×", label: "qualified enquiry rate" },
+                finding: "The agency plan over-indexed on broadcast for an under-45 audience. The recommended channel mix was rebuilt from NZ audience behaviour up.",
+              },
+              {
+                sector: "Property",
+                service: "Retained Advisory",
+                outcome1: { stat: "$140K", label: "in savings identified, year one" },
+                outcome2: { stat: "Ongoing", label: "retained advisory relationship" },
+                finding: "Overpriced digital inventory had gone undetected for 18 months. Buying terms on radio had not been reviewed or renegotiated in three years.",
+              },
+            ].map(({ sector, service, outcome1, outcome2, finding }) => (
+              <div key={sector} className="border border-grey-mid rounded overflow-hidden">
+                <div className="bg-navy p-6">
+                  <p className="eyebrow mb-1">{service}</p>
+                  <h3 className="text-white text-xl font-bold mb-4">{sector}</h3>
+                  <div className="space-y-3">
+                    <div>
+                      <p className="text-orange text-2xl font-bold">{outcome1.stat}</p>
+                      <p className="text-white/60 text-sm">{outcome1.label}</p>
+                    </div>
+                    <div>
+                      <p className="text-orange text-2xl font-bold">{outcome2.stat}</p>
+                      <p className="text-white/60 text-sm">{outcome2.label}</p>
+                    </div>
+                  </div>
+                </div>
+                <div className="p-6">
+                  <p className="text-body text-sm" style={{ lineHeight: 1.65 }}>{finding}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+          <Link
+            href="/results"
+            className="text-orange font-semibold hover:text-orange-dark transition-colors"
+          >
+            See full case studies →
+          </Link>
+        </div>
+      </section>
+
+      {/* ─── Section 8: Social Proof ─── */}
       <section className="bg-grey-light py-20 lg:py-24">
         <div className="section-container">
           <div className="max-w-3xl mx-auto text-center">
@@ -280,7 +433,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Section 8: Thinking Preview ─── */}
+      {/* ─── Section 9: Thinking Preview ─── */}
       <section className="bg-white py-20 lg:py-28">
         <div className="section-container">
           <div className="flex items-end justify-between mb-10">
@@ -325,15 +478,17 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Section 8: Final CTA ─── */}
+      {/* ─── Section 10: Final CTA ─── */}
       <section className="bg-navy py-20 lg:py-28">
         <div className="section-container text-center">
           <h2 className="text-white text-3xl md:text-4xl font-bold mb-4">
-            Find out why Super is right for you
+            Not sure if your media budget is working?
           </h2>
+          <p className="text-white/70 text-lg mb-4 max-w-xl mx-auto" style={{ lineHeight: 1.65 }}>
+            Most businesses aren&apos;t. That&apos;s the result of an industry that measures what it can control, not what matters to you.
+          </p>
           <p className="text-white/70 text-lg mb-10 max-w-xl mx-auto" style={{ lineHeight: 1.65 }}>
-            That&apos;s what the first conversation is for. 30 minutes, no
-            agenda, no obligation.
+            A free Media Audit gives you a clear answer: where your budget is going, what it&apos;s delivering, and where the waste is. No contract. No obligation. No sales pitch dressed up as advice.
           </p>
           <div className="flex flex-wrap gap-4 justify-center">
             <a
@@ -342,14 +497,51 @@ export default function HomePage() {
               rel="noopener noreferrer"
               className="btn-primary"
             >
-              Book a call with Ron
+              Get a Free Media Audit
             </a>
             <Link href="/superscan" className="btn-outline-white">
-              Run Superscan first
+              Run Superscan first →
             </Link>
-            <Link href="/audience-reality-check" className="btn-outline-white">
-              Audience Reality Check
-            </Link>
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Section 11: FAQ ─── */}
+      <section className="bg-white py-20 lg:py-28">
+        <div className="section-container">
+          <div className="max-w-2xl mx-auto">
+            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-10">
+              Common questions
+            </h2>
+            <div className="space-y-8">
+              {[
+                {
+                  q: "Do you require a long-term contract?",
+                  a: "No. We work month-to-month. If the work is good, clients stay. That's the only retention mechanism we use.",
+                },
+                {
+                  q: "What size businesses do you work with?",
+                  a: "Most clients spend between $2,000 and $20,000 a month on advertising. Big enough to matter, small enough that independent advice changes the economics.",
+                },
+                {
+                  q: "How is this different from working with an agency?",
+                  a: "An agency executes campaigns. Super Media gives you an independent read on whether those campaigns make sense — before, during, or after. We don't take commissions from media owners.",
+                },
+                {
+                  q: "What does a Free Media Audit involve?",
+                  a: "A review of your current channels, spend allocation, and reported results — benchmarked against what the media should be delivering for a business like yours. Most audits identify at least one material issue within the first session.",
+                },
+                {
+                  q: "How quickly will I see value?",
+                  a: "Most clients come away from the first conversation with something actionable. A full audit typically delivers a clear diagnosis within one to two weeks.",
+                },
+              ].map(({ q, a }) => (
+                <div key={q} className="border-b border-grey-mid pb-8">
+                  <h3 className="text-navy font-bold text-lg mb-2">{q}</h3>
+                  <p className="text-body">{a}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -383,39 +575,11 @@ function PulseIcon() {
   );
 }
 
-/* ─── Bar Chart Mockup ─── */
-function BarChartMockup() {
-  const channels = [
-    { label: "TV / BVOD", pct: 38, risk: true },
-    { label: "Social", pct: 27, risk: false },
-    { label: "Search", pct: 16, risk: false },
-    { label: "Display", pct: 12, risk: true },
-    { label: "OOH", pct: 7, risk: false },
-  ];
-
+function LockOpenIcon() {
   return (
-    <div className="space-y-3">
-      {channels.map(({ label, pct, risk }) => (
-        <div key={label}>
-          <div className="flex justify-between text-xs text-white/60 mb-1">
-            <span>{label}</span>
-            <span className={risk ? "text-orange" : "text-white/60"}>{pct}%</span>
-          </div>
-          <div className="h-2 bg-white/10 rounded-full overflow-hidden">
-            <div
-              className="h-full rounded-full transition-all"
-              style={{
-                width: `${pct}%`,
-                backgroundColor: risk ? "#E8621A" : "rgba(255,255,255,0.35)",
-              }}
-            />
-          </div>
-        </div>
-      ))}
-      <div className="mt-4 pt-4 border-t border-white/10">
-        <p className="text-xs text-orange font-medium">⚠ Risk identified in 2 channels</p>
-        <p className="text-xs text-white/50 mt-1">Run your scan for a personalised read →</p>
-      </div>
-    </div>
+    <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+      <rect x="3" y="11" width="18" height="11" rx="2" ry="2" />
+      <path d="M7 11V7a5 5 0 0 1 9.9-1" />
+    </svg>
   );
 }
