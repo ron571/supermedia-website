@@ -418,9 +418,9 @@ export default function HomePage() {
       {/* ─── Section 8: Social Proof ─── */}
       <section className="bg-grey-light py-20 lg:py-24">
         <div className="section-container">
-          <div className="max-w-3xl mx-auto text-center">
-            <blockquote>
-              <p className="text-navy text-xl md:text-2xl font-medium mb-6" style={{ lineHeight: 1.5 }}>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 max-w-5xl mx-auto">
+            <blockquote className="bg-white rounded p-8 border border-grey-mid">
+              <p className="text-navy text-lg font-medium mb-6" style={{ lineHeight: 1.6 }}>
                 &ldquo;We&apos;d been with the same agency for three years and
                 assumed the results were just what advertising looked like. Ron
                 showed us in one conversation that we&apos;d been paying for
@@ -429,6 +429,15 @@ export default function HomePage() {
               </p>
               <footer className="text-grey-dark text-sm">
                 — Owner, Auckland professional services firm{" "}
+                <span className="italic">(name withheld on request)</span>
+              </footer>
+            </blockquote>
+            <blockquote className="bg-white rounded p-8 border border-grey-mid">
+              <p className="text-navy text-lg font-medium mb-6" style={{ lineHeight: 1.6 }}>
+                &ldquo;Super Media were the only agency who actually told me the truth about our digital ad performance which was sub par, as they discovered. Our business has doubled since Ron and his team implemented their strategies and we&apos;re really impressed with the personal service we get.&rdquo;
+              </p>
+              <footer className="text-grey-dark text-sm">
+                — Business owner{" "}
                 <span className="italic">(name withheld on request)</span>
               </footer>
             </blockquote>
