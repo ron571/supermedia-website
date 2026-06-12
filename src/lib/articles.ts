@@ -10,6 +10,36 @@ export interface Article {
 
 const articles: Article[] = [
   {
+    slug: "is-search-advertising-dead",
+    title: "Is Search Advertising Dead?",
+    description:
+      "Every few years someone declares it dead. Every year it generates hundreds of billions. Here's what's actually happening — and what it means for your strategy.",
+    tag: "Search",
+    date: "12 Jun 2026",
+    readTime: "3 min read",
+    body: `Every few years, someone declares search advertising dead. And every year, it quietly generates hundreds of billions of dollars. So what's actually going on?
+
+The short answer: it's not dead. But it's being forced to grow up.
+
+**The Case Against**
+
+Google's results pages have never looked worse. Ads, AI Overviews, shopping carousels, and knowledge panels all compete for space before a single organic result appears. Click-through rates have been declining for years.
+
+Add the rise of ChatGPT and Perplexity. A growing slice of users now start their research in a chat interface, not a search bar — and advertisers have no seat at that table. Meanwhile, younger generations use TikTok, Instagram, and YouTube as discovery engines. When intent forms somewhere else, search's biggest advantage starts to erode.
+
+**Why It's Not Dead**
+
+Search advertising works because it captures demand the moment it exists. Someone types "emergency plumber Auckland" at 11pm — that's not a demographic, it's a hand raised. No social platform or AI chatbot has replicated that.
+
+AI-driven bidding has also made campaigns more efficient for smaller advertisers. And for legal, finance, healthcare, and home services, search remains the highest-converting channel by a wide margin.
+
+**The Real Verdict**
+
+Search advertising isn't dying — it's bifurcating. Commodity clicks are getting squeezed by AI summaries and rising CPCs. But high-intent, high-value searches remain gold. Advertisers who treat it as set-and-forget will struggle. Those who understand audience signals, landing page quality, and where search fits in the broader funnel will keep winning.
+
+The question isn't whether search advertising is dead. It's whether your strategy is.`,
+  },
+  {
     slug: "why-your-advertising-isnt-working-nz-small-business",
     title: "Why your advertising isn't working — and why it's probably not your fault",
     description:
