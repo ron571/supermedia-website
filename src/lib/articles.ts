@@ -10,6 +10,38 @@ export interface Article {
 
 const articles: Article[] = [
   {
+    slug: "outdoor-media-nz-strengths-weaknesses",
+    title: "Outdoor media in NZ: what works, what doesn't, and what to watch",
+    description:
+      "Outdoor is one of the oldest channels in NZ advertising and one of the least rigorously evaluated. Here's an honest read on when it earns its place — and when it doesn't.",
+    tag: "Media Planning",
+    date: "14 Jun 2026",
+    readTime: "3 min read",
+    body: `Outdoor advertising is one of the oldest media channels in New Zealand — and one of the least rigorously evaluated. Most advertisers treat it as a brand-building given. The reality is more nuanced.
+
+**The strengths**
+
+Outdoor is genuinely hard to avoid. Unlike digital, it can't be scrolled past. Unlike radio, it can't be muted. In high-traffic locations — Auckland motorways, Wellington CBD, Christchurch arterials — a well-placed site delivers consistent, repeated exposure to a geographically defined audience.
+
+It's also one of the few channels where reach is genuinely local. If your business serves a specific suburb or catchment, outdoor can be targeted in ways that broadcast media can't match.
+
+Digital out-of-home (DOOH) has added meaningful flexibility. Daypart targeting, short campaign flights, and the ability to change creative without reprinting have made the channel accessible to advertisers who would previously have been locked out by minimum spends and production costs.
+
+**The weaknesses**
+
+Outdoor is a frequency medium, not a response medium. It builds awareness over time — it doesn't drive immediate action. Advertisers expecting direct response from a billboard are almost always disappointed.
+
+Creative is also frequently the problem, not the placement. Outdoor demands simplicity: one message, readable in under three seconds. Most executions try to say too much and land nothing. A seven-word headline on a clean background outperforms a cluttered design every time.
+
+Audience measurement in NZ outdoor is improving but remains imprecise. Eye-tracking and traffic data give directional guidance — they're not the same as verified impressions.
+
+**What works best**
+
+Digital billboards outperform static for flexibility and creative impact. Bus advertising is underused and well-priced for urban reach. Street posters work in specific contexts — events, launches, youth-skewing campaigns — but require volume to work, and volume adds cost quickly.
+
+The best outdoor campaigns do one thing well, in the right location, for long enough to build genuine recognition. The worst ones say six things on a poster no one reads twice.`,
+  },
+  {
     slug: "nz-digital-ad-market-3-billion-what-it-means",
     title: "NZ's digital ad market just hit $3 billion. Here's what the numbers actually mean.",
     description:
