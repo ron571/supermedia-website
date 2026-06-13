@@ -31,7 +31,7 @@ const jsonLd = {
         name: "Ron Sneddon",
         jobTitle: "Founder & Independent Media Consultant",
         url: "https://supermedia.co.nz/about",
-        sameAs: ["https://linkedin.com/in/ron-sneddon"],
+        sameAs: ["https://linkedin.com/in/ron-sneddon", "https://www.facebook.com/supermedialtd/"],
       },
       areaServed: {
         "@type": "Country",
