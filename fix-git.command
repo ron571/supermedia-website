@@ -1,7 +1,7 @@
 #!/bin/bash
 cd ~/supermedia-website
 git add -A
-git commit -m "feat: NZ media rates page, IAB article, LinkedIn share, FAQ schema"
+git commit -m "copy: update hero paragraph to results-focused opening"
 git push origin main
 echo ""
 echo "Done! Press any key to close."

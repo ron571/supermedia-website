@@ -138,7 +138,7 @@ export default function HomePage() {
             className="text-white text-lg max-w-2xl mb-4"
             style={{ opacity: 0.72, lineHeight: 1.65 }}
           >
-            Super Media is an independent NZ media consultancy. Ron Sneddon has spent 35 years on both sides of the table — buying media, selling it, and running an agency. He knows exactly where budgets get eroded, and exactly how to stop it.
+            Most NZ businesses spending on advertising don&apos;t know if it&apos;s working. We do. Independent media consultancy — no agency relationships, no conflicts, just an honest read on your spend and how to get more from it.
           </p>
           <div className="flex flex-wrap gap-4 mt-10">
             <Link href="/contact" className="btn-primary">
