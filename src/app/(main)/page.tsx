@@ -67,6 +67,52 @@ const jsonLd = {
       name: "Super Media",
       publisher: { "@id": "https://supermedia.co.nz/#business" },
     },
+    {
+      "@type": "FAQPage",
+      "@id": "https://supermedia.co.nz/#faq",
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "Do you require a long-term contract?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "No. We work month-to-month. If the work is good, clients stay. That's the only retention mechanism we use.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What size businesses do you work with?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Most clients spend between $2,000 and $20,000 a month on advertising. Big enough to matter, small enough that independent advice changes the economics.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How is this different from working with an agency?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "An agency executes campaigns. Super Media gives you an independent read on whether those campaigns make sense — before, during, or after. We don't take commissions from media owners.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What does a Free Media Audit involve?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "A review of your current channels, spend allocation, and reported results — benchmarked against what the media should be delivering for a business like yours. Most audits identify at least one material issue within the first session.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "How quickly will I see value?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Most clients come away from the first conversation with something actionable. A full audit typically delivers a clear diagnosis within one to two weeks.",
+          },
+        },
+      ],
+    },
   ],
 };
 
