@@ -10,108 +10,48 @@ export interface Article {
 
 const articles: Article[] = [
   {
-    slug: "outdoor-media-nz-strengths-weaknesses",
-    title: "Outdoor media in NZ: what works, what doesn't, and what to watch",
-    description:
-      "Outdoor is one of the oldest channels in NZ advertising and one of the least rigorously evaluated. Here's an honest read on when it earns its place — and when it doesn't.",
-    tag: "Media Planning",
-    date: "14 Jun 2026",
-    readTime: "3 min read",
-    body: `Outdoor advertising is one of the oldest media channels in New Zealand — and one of the least rigorously evaluated. Most advertisers treat it as a brand-building given. The reality is more nuanced.
-
-**The strengths**
-
-Outdoor is genuinely hard to avoid. Unlike digital, it can't be scrolled past. Unlike radio, it can't be muted. In high-traffic locations — Auckland motorways, Wellington CBD, Christchurch arterials — a well-placed site delivers consistent, repeated exposure to a geographically defined audience.
-
-It's also one of the few channels where reach is genuinely local. If your business serves a specific suburb or catchment, outdoor can be targeted in ways that broadcast media can't match.
-
-Digital out-of-home (DOOH) has added meaningful flexibility. Daypart targeting, short campaign flights, and the ability to change creative without reprinting have made the channel accessible to advertisers who would previously have been locked out by minimum spends and production costs.
-
-**The weaknesses**
-
-Outdoor is a frequency medium, not a response medium. It builds awareness over time — it doesn't drive immediate action. Advertisers expecting direct response from a billboard are almost always disappointed.
-
-Creative is also frequently the problem, not the placement. Outdoor demands simplicity: one message, readable in under three seconds. Most executions try to say too much and land nothing. A seven-word headline on a clean background outperforms a cluttered design every time.
-
-Audience measurement in NZ outdoor is improving but remains imprecise. Eye-tracking and traffic data give directional guidance — they're not the same as verified impressions.
-
-**What works best**
-
-Digital billboards outperform static for flexibility and creative impact. Bus advertising is underused and well-priced for urban reach. Street posters work in specific contexts — events, launches, youth-skewing campaigns — but require volume to work, and volume adds cost quickly.
-
-The best outdoor campaigns do one thing well, in the right location, for long enough to build genuine recognition. The worst ones say six things on a poster no one reads twice.`,
-  },
-  {
-    slug: "nz-digital-ad-market-3-billion-what-it-means",
-    title: "NZ's digital ad market just hit $3 billion. Here's what the numbers actually mean.",
-    description:
-      "IAB NZ data puts the digital advertising market at $2.967B in 2025 — up 12% in a year. The growth story is real. But the headline hides some things worth understanding.",
-    tag: "Industry Data",
-    date: "13 Jun 2026",
-    readTime: "4 min read",
-    body: `IAB New Zealand's latest data puts the NZ digital advertising market at $2.967 billion in 2025 — effectively $3 billion, up 12% year-on-year. If you're an advertiser, or advising one, there are a few things in these numbers worth looking at carefully.
-
-**The headline is real — but it's a market, not a result**
-
-$3 billion in digital ad spend is a genuine milestone. It reflects an economy that has substantially shifted its advertising investment from traditional to digital channels over the past decade, and it's a number that will keep growing.
-
-But total market size is a measure of where money is going, not whether it's working. NZ advertisers spending more on digital collectively tells you nothing about whether any individual advertiser is getting a return. In fact, a growing market with growing pressure on returns is exactly the environment where inefficiency tends to expand.
-
-**Video is the story within the story**
-
-The most significant channel movement in the data is video, which grew 27% to $653.8 million. That's a substantial acceleration — faster than the overall market — driven by connected TV, BVOD (broadcast video on demand), and short-form social video formats.
-
-For NZ advertisers, this creates a practical question. Video inventory is more expensive than display, more complex to buy, and currently subject to the most aggressive selling pressure from both local broadcasters (pushing BVOD) and global platforms (pushing YouTube and TikTok). The growth rate is real. Whether each dollar in video is placed well is a different question.
-
-**Search remains the floor, not the ceiling**
-
-Search advertising reached $1.44 billion — 12% growth, in line with the market average. That's a meaningful number: nearly half the total digital market runs through Google's auction.
-
-Search doesn't grow the way video does because it's already mature. But it compounds problems faster than other channels when it's not managed well. CPC inflation, keyword bloat, and poor conversion tracking are still the most common findings in NZ search audits. A growing search market at growing prices is particularly unforgiving of accounts that are coasting.
-
-**What this data doesn't tell you**
-
-IAB data measures investment. It doesn't measure return on investment. It doesn't tell you which advertisers are getting value and which are contributing to the total while getting little back.
-
-It also doesn't segment by advertiser type. The $3 billion includes everything from well-resourced national brands with dedicated media teams to SMEs running campaigns they don't fully understand on platforms they can't fully access. Those experiences are not comparable, and the aggregate number blurs the difference.
-
-**The practical read**
-
-If your business is among the advertisers contributing to this $3 billion, the question worth asking isn't whether the market is healthy. It's whether your specific spend is being managed at a level that reflects what you're paying into it.
-
-In a market that grows 12% per year, it's easy for problems to hide inside growth. Rate increases, audience measurement changes, and new channel launches all create cover for inefficiency that would otherwise be visible.
-
-The number is good news for the industry. Whether it's good news for your budget depends on what's being done with it.`,
-  },
-  {
     slug: "is-search-advertising-dead",
     title: "Is Search Advertising Dead?",
     description:
-      "Every few years someone declares it dead. Every year it generates hundreds of billions. Here's what's actually happening — and what it means for your strategy.",
+      "Not quite. But the search it was built on is disappearing faster than most NZ advertisers are ready for.",
     tag: "Search",
     date: "12 Jun 2026",
-    readTime: "3 min read",
-    body: `Every few years, someone declares search advertising dead. And every year, it quietly generates hundreds of billions of dollars. So what's actually going on?
+    readTime: "4 min read",
+    body: `For two decades, "search advertising" meant one thing: Google. You bid on keywords, your ad appeared above the results, someone clicked. The model was simple, measurable, and — for a long time — remarkably efficient.
 
-The short answer: it's not dead. But it's being forced to grow up.
+That model is under real pressure in 2026. Not from a competitor. From a fundamental shift in how people find things.
 
-**The Case Against**
+**What's actually changing**
 
-Google's results pages have never looked worse. Ads, AI Overviews, shopping carousels, and knowledge panels all compete for space before a single organic result appears. Click-through rates have been declining for years.
+The rise of AI-powered search — ChatGPT, Copilot, Perplexity, Google's own AI Overviews — is quietly reshaping the research journey. When someone asks an AI "what's the best home loan rate right now?" they don't get a page of results to scroll through. They get a synthesised answer. Often, there's no link to click. No ad position to buy.
 
-Add the rise of ChatGPT and Perplexity. A growing slice of users now start their research in a chat interface, not a search bar — and advertisers have no seat at that table. Meanwhile, younger generations use TikTok, Instagram, and YouTube as discovery engines. When intent forms somewhere else, search's biggest advantage starts to erode.
+New Zealand data in 2026 suggests roughly a third of adults now use AI tools regularly for product and service research — and that figure is disproportionately high among white-collar professionals, postgraduates, and under-35s. In other words, the audiences most advertisers want to reach.
 
-**Why It's Not Dead**
+The practical implication: a meaningful slice of your potential customers are forming opinions and making shortlists before they ever generate a keyword that triggers your ad.
 
-Search advertising works because it captures demand the moment it exists. Someone types "emergency plumber Auckland" at 11pm — that's not a demographic, it's a hand raised. No social platform or AI chatbot has replicated that.
+**What isn't dead**
 
-AI-driven bidding has also made campaigns more efficient for smaller advertisers. And for legal, finance, healthcare, and home services, search remains the highest-converting channel by a wide margin.
+Traditional paid search still works. For high-intent, transactional queries — "book a hotel in Queenstown", "plumber Wellington urgent" — Google Ads remains one of the most efficient media tools available. Intent signals are explicit, attribution is clean, and the conversion pipeline is tight.
 
-**The Real Verdict**
+Where it's broken is the earlier stages of the journey. Brand consideration, category exploration, the messy discovery phase where most purchase decisions are actually shaped. That work used to happen on social media, on comparison sites, in editorial content. Now a growing portion of it is happening in AI chat interfaces where paid media has, at present, almost no presence.
 
-Search advertising isn't dying — it's bifurcating. Commodity clicks are getting squeezed by AI summaries and rising CPCs. But high-intent, high-value searches remain gold. Advertisers who treat it as set-and-forget will struggle. Those who understand audience signals, landing page quality, and where search fits in the broader funnel will keep winning.
+**What it means for planning**
 
-The question isn't whether search advertising is dead. It's whether your strategy is.`,
+The honest answer is that no one has cracked AI search advertising yet. Platforms are experimenting with sponsored placements in AI-generated answers, but the formats are nascent and the measurement frameworks barely exist.
+
+What smart advertisers can do right now is two things.
+
+First, protect the assets that influence AI outputs — primarily editorial content, earned media, reviews, and brand mentions across trusted publications. AI models are trained on and cite these signals. A brand that's well-covered in credible New Zealand media is more likely to surface in AI-generated recommendations than one that's only visible in paid results.
+
+Second, stress-test the assumption that search is doing the full job it once did. If your media plan is weighted heavily toward Google Ads with limited investment in the channels your audience is actually using for discovery, there's a structural gap that attribution data won't show you.
+
+**The bigger picture**
+
+Search advertising isn't dead. But "search" as a monolithic, Google-shaped behaviour is fragmenting. The advertisers who recognise that early — and rebalance accordingly — will have a significant advantage over those still optimising for a journey that's changed around them.
+
+The question isn't whether to keep investing in search. It's whether your media plan reflects where your audience is actually going to find you.
+
+If you'd like an honest conversation about where your current search investment sits, get in touch — no agenda, no obligation.`,
   },
   {
     slug: "why-your-advertising-isnt-working-nz-small-business",
