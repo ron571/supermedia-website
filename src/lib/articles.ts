@@ -10,6 +10,80 @@ export interface Article {
 
 const articles: Article[] = [
   {
+    slug: "outdoor-media-nz-strengths-weaknesses",
+    title: "Outdoor media in NZ: what works, what doesn't, and what to watch",
+    description:
+      "Outdoor is one of the oldest channels in NZ advertising and one of the least rigorously evaluated. Here's an honest read on when it earns its place — and when it doesn't.",
+    tag: "Media Planning",
+    date: "14 Jun 2026",
+    readTime: "3 min read",
+    body: `Outdoor advertising is one of the oldest media channels in New Zealand — and one of the least rigorously evaluated. Most advertisers treat it as a brand-building given. The reality is more nuanced.
+
+**The strengths**
+
+Outdoor is genuinely hard to avoid. Unlike digital, it can't be scrolled past. Unlike radio, it can't be muted. In high-traffic locations — Auckland motorways, Wellington CBD, Christchurch arterials — a well-placed site delivers consistent, repeated exposure to a geographically defined audience.
+
+It's also one of the few channels where reach is genuinely local. If your business serves a specific suburb or catchment, outdoor can be targeted in ways that broadcast media can't match.
+
+Digital out-of-home (DOOH) has added meaningful flexibility. Daypart targeting, short campaign flights, and the ability to change creative without reprinting have made the channel accessible to advertisers who would previously have been locked out by minimum spends and production costs.
+
+**The weaknesses**
+
+Outdoor is a frequency medium, not a response medium. It builds awareness over time — it doesn't drive immediate action. Advertisers expecting direct response from a billboard are almost always disappointed.
+
+Creative is also frequently the problem, not the placement. Outdoor demands simplicity: one message, readable in under three seconds. Most executions try to say too much and land nothing. A seven-word headline on a clean background outperforms a cluttered design every time.
+
+Audience measurement in NZ outdoor is improving but remains imprecise. Eye-tracking and traffic data give directional guidance — they're not the same as verified impressions.
+
+**What works best**
+
+Digital billboards outperform static for flexibility and creative impact. Bus advertising is underused and well-priced for urban reach. Street posters work in specific contexts — events, launches, youth-skewing campaigns — but require volume to work, and volume adds cost quickly.
+
+The best outdoor campaigns do one thing well, in the right location, for long enough to build genuine recognition. The worst ones say six things on a poster no one reads twice.`,
+  },
+  {
+    slug: "nz-digital-ad-market-3-billion-what-it-means",
+    title: "NZ's digital ad market just hit $3 billion. Here's what the numbers actually mean.",
+    description:
+      "IAB NZ data puts the digital advertising market at $2.967B in 2025 — up 12% in a year. The growth story is real. But the headline hides some things worth understanding.",
+    tag: "Industry Data",
+    date: "13 Jun 2026",
+    readTime: "4 min read",
+    body: `IAB New Zealand's latest data puts the NZ digital advertising market at $2.967 billion in 2025 — effectively $3 billion, up 12% year-on-year. If you're an advertiser, or advising one, there are a few things in these numbers worth looking at carefully.
+
+**The headline is real — but it's a market, not a result**
+
+$3 billion in digital ad spend is a genuine milestone. It reflects an economy that has substantially shifted its advertising investment from traditional to digital channels over the past decade, and it's a number that will keep growing.
+
+But total market size is a measure of where money is going, not whether it's working. NZ advertisers spending more on digital collectively tells you nothing about whether any individual advertiser is getting a return. In fact, a growing market with growing pressure on returns is exactly the environment where inefficiency tends to expand.
+
+**Video is the story within the story**
+
+The most significant channel movement in the data is video, which grew 27% to $653.8 million. That's a substantial acceleration — faster than the overall market — driven by connected TV, BVOD (broadcast video on demand), and short-form social video formats.
+
+For NZ advertisers, this creates a practical question. Video inventory is more expensive than display, more complex to buy, and currently subject to the most aggressive selling pressure from both local broadcasters (pushing BVOD) and global platforms (pushing YouTube and TikTok). The growth rate is real. Whether each dollar in video is placed well is a different question.
+
+**Search remains the floor, not the ceiling**
+
+Search advertising reached $1.44 billion — 12% growth, in line with the market average. That's a meaningful number: nearly half the total digital market runs through Google's auction.
+
+Search doesn't grow the way video does because it's already mature. But it compounds problems faster than other channels when it's not managed well. CPC inflation, keyword bloat, and poor conversion tracking are still the most common findings in NZ search audits. A growing search market at growing prices is particularly unforgiving of accounts that are coasting.
+
+**What this data doesn't tell you**
+
+IAB data measures investment. It doesn't measure return on investment. It doesn't tell you which advertisers are getting value and which are contributing to the total while getting little back.
+
+It also doesn't segment by advertiser type. The $3 billion includes everything from well-resourced national brands with dedicated media teams to SMEs running campaigns they don't fully understand on platforms they can't fully access. Those experiences are not comparable, and the aggregate number blurs the difference.
+
+**The practical read**
+
+If your business is among the advertisers contributing to this $3 billion, the question worth asking isn't whether the market is healthy. It's whether your specific spend is being managed at a level that reflects what you're paying into it.
+
+In a market that grows 12% per year, it's easy for problems to hide inside growth. Rate increases, audience measurement changes, and new channel launches all create cover for inefficiency that would otherwise be visible.
+
+The number is good news for the industry. Whether it's good news for your budget depends on what's being done with it.`,
+  },
+  {
     slug: "is-search-advertising-dead",
     title: "Is Search Advertising Dead?",
     description:
