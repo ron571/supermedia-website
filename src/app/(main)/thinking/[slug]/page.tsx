@@ -2,7 +2,7 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { getArticleBySlug, getArticles } from "@/lib/articles";
+import { getArticleBySlug, getArticles, getRelatedArticles } from "@/lib/articles";
 import NewsletterForm from "@/components/NewsletterForm";
 
 interface Props {
@@ -37,6 +37,36 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   };
 }
 
+function renderInline(text: string) {
+  // Tokenise **bold** and [text](url)
+  const tokens = text.split(/(\*\*[^*]+\*\*|\[[^\]]+\]\([^)]+\))/g);
+  return tokens.map((token, j) => {
+    if (token.startsWith("**")) {
+      return (
+        <strong key={j} className="font-semibold text-navy">
+          {token.replace(/\*\*/g, "")}
+        </strong>
+      );
+    }
+    const linkMatch = token.match(/^\[([^\]]+)\]\(([^)]+)\)$/);
+    if (linkMatch) {
+      const [, linkText, href] = linkMatch;
+      const isExternal = href.startsWith("http");
+      return (
+        <Link
+          key={j}
+          href={href}
+          className="text-orange font-medium hover:text-orange-dark underline underline-offset-2"
+          {...(isExternal ? { target: "_blank", rel: "noopener noreferrer" } : {})}
+        >
+          {linkText}
+        </Link>
+      );
+    }
+    return token;
+  });
+}
+
 function renderBody(body: string) {
   const paragraphs = body.split("\n\n");
   return paragraphs.map((para, i) => {
@@ -47,19 +77,9 @@ function renderBody(body: string) {
         </h3>
       );
     }
-    // Inline bold
-    const parts = para.split(/(\*\*[^*]+\*\*)/g);
     return (
       <p key={i} className="text-body mb-5" style={{ lineHeight: 1.7 }}>
-        {parts.map((part, j) =>
-          part.startsWith("**") ? (
-            <strong key={j} className="font-semibold text-navy">
-              {part.replace(/\*\*/g, "")}
-            </strong>
-          ) : (
-            part
-          )
-        )}
+        {renderInline(para)}
       </p>
     );
   });
@@ -68,6 +88,7 @@ function renderBody(body: string) {
 export default function ArticlePage({ params }: Props) {
   const article = getArticleBySlug(params.slug);
   if (!article) notFound();
+  const relatedArticles = getRelatedArticles(article.relatedSlugs ?? []);
 
   const calendlyUrl =
     process.env.NEXT_PUBLIC_CALENDLY_URL ?? "/contact";
@@ -197,6 +218,20 @@ export default function ArticlePage({ params }: Props) {
                     Ron&apos;s story →
                   </Link>
                 </div>
+                <div className="border border-grey-mid rounded p-5">
+                  <p className="text-grey-dark text-xs uppercase tracking-eyebrow font-bold mb-3">
+                    NZ Media Rates
+                  </p>
+                  <p className="text-body text-sm mb-3">
+                    What NZ advertisers should be paying — channel by channel.
+                  </p>
+                  <Link
+                    href="/resources/nz-media-rates"
+                    className="text-orange text-sm font-semibold hover:text-orange-dark"
+                  >
+                    View benchmarks →
+                  </Link>
+                </div>
                 <div className="bg-navy rounded p-5">
                   <p className="eyebrow mb-2 text-xs">Superscan</p>
                   <p className="text-white text-sm mb-3">
@@ -225,6 +260,28 @@ export default function ArticlePage({ params }: Props) {
               </div>
             </aside>
           </div>
+
+          {/* Related reading */}
+          {relatedArticles.length > 0 && (
+            <div className="mt-12 max-w-4xl">
+              <h2 className="text-navy text-xl font-bold mb-5">Related reading</h2>
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+                {relatedArticles.map((rel) => (
+                  <Link
+                    key={rel.slug}
+                    href={`/thinking/${rel.slug}`}
+                    className="group border border-grey-mid rounded p-5 hover:border-orange transition-colors duration-150"
+                  >
+                    <span className="eyebrow text-xs mb-2 block">{rel.tag}</span>
+                    <p className="text-navy font-semibold text-sm group-hover:text-orange transition-colors leading-snug">
+                      {rel.title}
+                    </p>
+                    <p className="text-grey-dark text-xs mt-2">{rel.readTime}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          )}
 
           {/* Back link */}
           <div className="mt-10">

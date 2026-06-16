@@ -6,6 +6,7 @@ export interface Article {
   date: string;
   readTime: string;
   body: string;
+  relatedSlugs?: string[];
 }
 
 const articles: Article[] = [
@@ -39,7 +40,14 @@ Audience measurement in NZ outdoor is improving but remains imprecise. Eye-track
 
 Digital billboards outperform static for flexibility and creative impact. Bus advertising is underused and well-priced for urban reach. Street posters work in specific contexts — events, launches, youth-skewing campaigns — but require volume to work, and volume adds cost quickly.
 
-The best outdoor campaigns do one thing well, in the right location, for long enough to build genuine recognition. The worst ones say six things on a poster no one reads twice.`,
+The best outdoor campaigns do one thing well, in the right location, for long enough to build genuine recognition. The worst ones say six things on a poster no one reads twice.
+
+For current OOH rate benchmarks — digital billboards, bus advertising, and street formats — see the [NZ Media Rate Benchmarking Guide](/resources/nz-media-rates).`,
+    relatedSlugs: [
+      "nz-digital-ad-market-3-billion-what-it-means",
+      "how-to-read-a-media-plan-if-you-didnt-go-to-media-school",
+      "what-volume-rebates-actually-mean-for-your-media-budget",
+    ],
   },
   {
     slug: "nz-digital-ad-market-3-billion-what-it-means",
@@ -81,7 +89,14 @@ If your business is among the advertisers contributing to this $3 billion, the q
 
 In a market that grows 12% per year, it's easy for problems to hide inside growth. Rate increases, audience measurement changes, and new channel launches all create cover for inefficiency that would otherwise be visible.
 
-The number is good news for the industry. Whether it's good news for your budget depends on what's being done with it.`,
+The number is good news for the industry. Whether it's good news for your budget depends on what's being done with it.
+
+For a 30-second independent read on how your digital spend stacks up, try [Superscan](/superscan).`,
+    relatedSlugs: [
+      "is-search-advertising-dead",
+      "why-nz-advertisers-pay-too-much-for-digital-display",
+      "outdoor-media-nz-strengths-weaknesses",
+    ],
   },
   {
     slug: "is-search-advertising-dead",
@@ -125,7 +140,12 @@ Search advertising isn't dead. But "search" as a monolithic, Google-shaped behav
 
 The question isn't whether to keep investing in search. It's whether your media plan reflects where your audience is actually going to find you.
 
-If you'd like an honest conversation about where your current search investment sits, get in touch — no agenda, no obligation.`,
+If you'd like an honest conversation about where your current search investment sits, [get in touch](/contact) — no agenda, no obligation.`,
+    relatedSlugs: [
+      "nz-digital-ad-market-3-billion-what-it-means",
+      "superscan-how-ai-reads-your-media-mix",
+      "the-case-for-independent-media-oversight",
+    ],
   },
   {
     slug: "why-your-advertising-isnt-working-nz-small-business",
@@ -167,7 +187,7 @@ Ask yourself: did the report tell you how many of those impressions led to an en
 
 **4. The advice wasn't independent**
 
-Most NZ advertising agencies have financial relationships with the media they buy. These take different forms — volume rebates from broadcasters, margin on programmatic buys, incentive arrangements with platforms — but the effect is similar: the recommendation your agency makes isn't purely about what's best for your campaign. It's also influenced, sometimes unconsciously, by what generates the most return for the agency.
+Most NZ advertising agencies have financial relationships with the media they buy. These take different forms — [volume rebates](/thinking/what-volume-rebates-actually-mean-for-your-media-budget) from broadcasters, margin on programmatic buys, incentive arrangements with platforms — but the effect is similar: the recommendation your agency makes isn't purely about what's best for your campaign. It's also influenced, sometimes unconsciously, by what generates the most return for the agency.
 
 This is structural, not personal. The people involved often genuinely believe they're giving you good advice. But the incentive system creates pressure on every recommendation, in a direction that doesn't always point toward your interests.
 
@@ -175,7 +195,7 @@ This is structural, not personal. The people involved often genuinely believe th
 
 If you're spending less than $10,000 a month, you are almost certainly being managed by someone junior. Senior account staff are deployed on accounts that generate serious revenue for the agency. Smaller accounts get the graduates — often capable people, but without the experience to question a plan, push back on a media owner, or recognise when something isn't working.
 
-This isn't unique to any particular agency. It's how the economics of the model work.
+This isn't unique to any particular agency. It's how the economics of the model work. The [senior–junior problem in NZ media agencies](/thinking/the-senior-junior-problem-in-nz-media-agencies) is explained in more detail if you want the full picture.
 
 **What actually helps**
 
@@ -189,7 +209,12 @@ Ask your current agency to show you what results look like in terms of enquiries
 
 The answers you get — and how comfortable or uncomfortable the conversation feels — will tell you a great deal.
 
-If you want a faster read, Superscan will give you an independent analysis of your current media mix in 30 seconds. It's free, it's specific to NZ, and it doesn't end with a sales call. It ends with a question worth asking your agency — and whether they can answer it.`,
+If you want a faster read, [Superscan](/superscan) will give you an independent analysis of your current media mix in 30 seconds. It's free, it's specific to NZ, and it doesn't end with a sales call. It ends with a question worth asking your agency — and whether they can answer it.`,
+    relatedSlugs: [
+      "what-volume-rebates-actually-mean-for-your-media-budget",
+      "the-senior-junior-problem-in-nz-media-agencies",
+      "superscan-how-ai-reads-your-media-mix",
+    ],
   },
   {
     slug: "what-volume-rebates-actually-mean-for-your-media-budget",
@@ -221,7 +246,14 @@ Ask your agency directly: "Do you receive any form of volume rebate, investment 
 
 If the answer is yes, ask for a full disclosure of which media owners pay rebates and at what rate. Then ask how those relationships are managed when making recommendations on your account.
 
-The answer you get — and how comfortable the conversation feels — will tell you a lot.`,
+The answer you get — and how comfortable the conversation feels — will tell you a lot.
+
+This issue sits alongside [the senior–junior problem](/thinking/the-senior-junior-problem-in-nz-media-agencies) as one of the two most common structural conflicts in NZ agency relationships. Both are worth understanding.`,
+    relatedSlugs: [
+      "the-senior-junior-problem-in-nz-media-agencies",
+      "the-case-for-independent-media-oversight",
+      "why-your-advertising-isnt-working-nz-small-business",
+    ],
   },
   {
     slug: "the-senior-junior-problem-in-nz-media-agencies",
@@ -257,7 +289,14 @@ This is where your budget gets eroded — not through bad intentions, but throug
 
 When you work with Super, you work with me. Not a team. Not a strategy director plus three account managers. Me.
 
-That's a deliberate constraint on how many clients I work with. It's also the core of the proposition. Senior judgement isn't a feature — it's the only thing on offer.`,
+That's a deliberate constraint on how many clients I work with. It's also the core of the proposition. Senior judgement isn't a feature — it's the only thing on offer.
+
+It's worth reading this alongside how [volume rebates](/thinking/what-volume-rebates-actually-mean-for-your-media-budget) work — a related structural issue that compounds the junior servicing problem.`,
+    relatedSlugs: [
+      "what-volume-rebates-actually-mean-for-your-media-budget",
+      "the-case-for-independent-media-oversight",
+      "why-your-advertising-isnt-working-nz-small-business",
+    ],
   },
   {
     slug: "how-to-read-a-media-plan-if-you-didnt-go-to-media-school",
@@ -297,7 +336,14 @@ If there are no guarantees, ask why. If the terms are entirely favourable to the
 
 2. "What did you test this against?" A recommendation is stronger when there's a benchmark — a previous campaign, an industry average, an independent audience study.
 
-3. "What does success look like at 90 days?" If the answer is vague, the plan probably is too.`,
+3. "What does success look like at 90 days?" If the answer is vague, the plan probably is too.
+
+For context on what fair rates look like across NZ channels, the [NZ Media Rate Benchmarking Guide](/resources/nz-media-rates) gives CPM and CPP ranges to compare against what's in your plan.`,
+    relatedSlugs: [
+      "what-volume-rebates-actually-mean-for-your-media-budget",
+      "the-senior-junior-problem-in-nz-media-agencies",
+      "superscan-how-ai-reads-your-media-mix",
+    ],
   },
   {
     slug: "superscan-how-ai-reads-your-media-mix",
@@ -327,7 +373,12 @@ $150K in annual media spend feels like a lot if it's your budget. It feels like 
 
 Superscan works from the inputs you provide. It doesn't have access to your actual campaign data, your buying terms, or your media owner relationships. It reads the mix you describe, not the mix you have.
 
-A Superscan is a starting point — a structured independent read that raises the right questions. What comes next is a conversation, if you want one.`,
+A [Superscan](/superscan) is a starting point — a structured independent read that raises the right questions. What comes next is a conversation, if you want one.`,
+    relatedSlugs: [
+      "the-case-for-independent-media-oversight",
+      "why-your-advertising-isnt-working-nz-small-business",
+      "is-search-advertising-dead",
+    ],
   },
   {
     slug: "why-nz-advertisers-pay-too-much-for-digital-display",
@@ -364,7 +415,14 @@ Impressions served and impressions seen are not the same number. Most plans are 
 
 Ask your agency for a complete fee disclosure on your programmatic spend. Ask them to separate the media cost from the tech and service fees. Ask what they're paying for inventory at the DSP level versus what you're being charged.
 
-If they can't answer those questions specifically, the display line in your media plan deserves more scrutiny.`,
+If they can't answer those questions specifically, the display line in your media plan deserves more scrutiny.
+
+For a benchmark on what you should be paying, the [NZ Media Rate Benchmarking Guide](/resources/nz-media-rates) has current CPM ranges for NZ digital display and programmatic.`,
+    relatedSlugs: [
+      "what-volume-rebates-actually-mean-for-your-media-budget",
+      "how-to-read-a-media-plan-if-you-didnt-go-to-media-school",
+      "the-case-for-independent-media-oversight",
+    ],
   },
   {
     slug: "the-case-for-independent-media-oversight",
@@ -384,7 +442,7 @@ For some clients, independent oversight means a full audit — a line-by-line re
 
 For others, it's a lighter-touch arrangement: a senior independent voice available monthly to review agency proposals, sanity-check recommendations, and flag anything that needs more scrutiny. Not replacing the agency — adding a layer of accountability to it.
 
-For a growing number of clients, it starts with Superscan.
+For a growing number of clients, it starts with [Superscan](/superscan).
 
 **Why now?**
 
@@ -401,6 +459,11 @@ I want to be clear about something: most people working in network agencies are 
 The problem is structural. When your media buying, your audience data, your creative, and your technology are all provided by subsidiaries of the same holding company, the incentive to recommend the right answer and the incentive to recommend the house answer are the same incentive.
 
 Independent oversight doesn't fix that structure. But it adds a check on it.`,
+    relatedSlugs: [
+      "superscan-how-ai-reads-your-media-mix",
+      "what-volume-rebates-actually-mean-for-your-media-budget",
+      "why-your-advertising-isnt-working-nz-small-business",
+    ],
   },
 ];
 
@@ -410,4 +473,11 @@ export function getArticles(): Article[] {
 
 export function getArticleBySlug(slug: string): Article | undefined {
   return articles.find((a) => a.slug === slug);
+}
+
+export function getRelatedArticles(slugs: string[]): Article[] {
+  return slugs
+    .map((s) => articles.find((a) => a.slug === s))
+    .filter((a): a is Article => a !== undefined)
+    .slice(0, 3);
 }

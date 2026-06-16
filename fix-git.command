@@ -1,7 +1,7 @@
 #!/bin/bash
 cd ~/supermedia-website
 git add -A
-git commit -m "content: restore outdoor media and IAB data articles to Thinking section"
+git commit -m "feat: on-site backlink strategy — related reading, contextual links, NZ media rates in nav, share/cite section"
 git push origin main
 echo ""
 echo "Done! Press any key to close."
