@@ -181,6 +181,53 @@ const channels = [
     ],
     watchFor: "Print has the longest purchase lead times of any medium. Ensure you're buying based on verified circulation, not claimed reach. Ask for the most recent ABC audit figure.",
   },
+  {
+    name: "Cinema",
+    rows: [
+      {
+        label: "30s spot, national cinema network (Event/Reading)",
+        benchmark: "$12,000–$28,000 per week",
+        notes: "Rates based on national footprint. Regional-only buys are significantly cheaper and often underutilised.",
+      },
+      {
+        label: "CPM, cinema audience",
+        benchmark: "$35–$65 CPM",
+        notes: "High-attention, captive environment. Effective CPM is often better than headline figure suggests.",
+      },
+      {
+        label: "Branded content / pre-show sponsorship",
+        benchmark: "$15,000–$50,000",
+        notes: "Premium positions around major releases. Lead times of 6–10 weeks required.",
+      },
+    ],
+    watchFor: "Cinema is one of the few channels with genuine captive attention. The CPM looks high but the attention quality is strong — compare on attention-adjusted CPM, not raw cost. Avoid booking against weak release schedules.",
+  },
+  {
+    name: "Influencer / Content Creator",
+    rows: [
+      {
+        label: "Micro-influencer (10k–50k NZ followers), single post",
+        benchmark: "$300–$1,500 per post",
+        notes: "High engagement rates relative to cost. Authenticity is the primary value — brief loosely, not tightly.",
+      },
+      {
+        label: "Mid-tier influencer (50k–200k NZ followers), single post",
+        benchmark: "$1,500–$6,000 per post",
+        notes: "Stronger reach, lower engagement rate. Negotiate exclusivity periods for competitive categories.",
+      },
+      {
+        label: "Top-tier NZ creator (200k+ followers), campaign",
+        benchmark: "$8,000–$30,000+ per campaign",
+        notes: "Includes content production value. Ensure usage rights for paid amplification are included in the contract.",
+      },
+      {
+        label: "Agency management fee (influencer campaign)",
+        benchmark: "15–25% of talent spend",
+        notes: "Covers talent sourcing, briefing, and reporting. DIY is possible for small programmes; agency adds value at scale.",
+      },
+    ],
+    watchFor: "Follower counts mean nothing without engagement rate and audience authenticity checks. Always request a media kit with engagement data, and use a tool like HypeAuditor to verify NZ audience composition before committing.",
+  },
 ];
 
 export default function NZMediaRatesPage() {
@@ -194,11 +241,21 @@ export default function NZMediaRatesPage() {
           <h1 className="text-white text-4xl md:text-5xl font-bold max-w-3xl mb-6">
             NZ Media Rate Benchmarks 2026
           </h1>
-          <p className="text-white/70 text-xl max-w-2xl" style={{ lineHeight: 1.65 }}>
+          <p className="text-white/70 text-xl max-w-2xl mb-8" style={{ lineHeight: 1.65 }}>
             What you should expect to pay — across every major channel in the
             New Zealand market. Based on 35 years of independent NZ media
             buying experience.
           </p>
+          <a
+            href="/resources/nz-media-rates-2026.pdf"
+            download
+            className="inline-flex items-center gap-2 bg-orange hover:bg-orange-dark text-white font-semibold px-5 py-3 rounded transition-colors text-sm"
+          >
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+              <path d="M21 15v4a2 2 0 01-2 2H5a2 2 0 01-2-2v-4M7 10l5 5 5-5M12 15V3"/>
+            </svg>
+            Download PDF guide
+          </a>
         </div>
       </section>
 
