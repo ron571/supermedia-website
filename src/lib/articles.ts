@@ -11,6 +11,55 @@ export interface Article {
 
 const articles: Article[] = [
   {
+    slug: "retail-front-window-advertising-nz",
+    title: "Your shop window is your best ad. Most retailers don't treat it that way.",
+    description:
+      "NZ retailers spend thousands on paid media while their most valuable advertising asset faces the street every day — unmanaged, unchanged, and doing nothing.",
+    tag: "Retail",
+    date: "19 Jun 2026",
+    readTime: "4 min read",
+    body: `Most NZ retailers are paying for advertising while ignoring the most powerful media they already own.
+
+Your front window is always-on. It never gets invoiced. It's targeted to people who are physically present in your location — the highest-intent audience you'll ever reach. And in most retail businesses, it gets updated twice a year if someone remembers.
+
+**The window is a media channel, not a decoration**
+
+Think about what a front window actually does. It intercepts people mid-journey. It communicates your offer at the exact moment they have the option to walk in. It creates or destroys brand impression in under five seconds.
+
+That's not a display exercise. That's media.
+
+The businesses that understand this treat their window the way a good media planner treats a campaign: with a clear objective, a single message, a defined timeframe, and a reason to change.
+
+**What makes a window work**
+
+The same principles that kill outdoor advertising campaigns kill retail windows. Too many messages. Creative that requires reading. No obvious call to action.
+
+A window that works does one thing. "New arrivals — in now." "Sale ends Sunday." "Open until 7." One message, readable at walking pace, visible from across the street.
+
+The second thing that makes a window work is change. A window that never changes becomes wallpaper to the people who walk past your store every day. Your regulars stop seeing it. New passersby assume you're not worth a second look. Frequency without change is waste.
+
+The businesses that get this right treat the window like a campaign flight — it runs for two to four weeks, then it changes. The change itself is a signal: something new is happening here.
+
+**What NZ retailers get wrong**
+
+The most common mistake is treating the window as a job for whoever's working that morning rather than a managed asset with an owner.
+
+The second most common mistake is competing with paid media for the same message. If you're running a Google Ad that says "summer sale on now," your window should be reinforcing that, not running a different message about a different promotion.
+
+Your window and your paid advertising should be in conversation. When they're not, you're paying twice to say two different things to the same customer.
+
+**The practical question**
+
+Walk out of your store, stand on the street, and look at your window. Can you read it? Does it give someone a reason to come in? Would you know, from the street, what kind of business this is?
+
+If the answer to any of those is no, you've found your highest-return marketing opportunity — and it costs nothing but attention.`,
+    relatedSlugs: [
+      "outdoor-media-nz-strengths-weaknesses",
+      "why-your-advertising-isnt-working-nz-small-business",
+      "how-to-read-a-media-plan-if-you-didnt-go-to-media-school",
+    ],
+  },
+  {
     slug: "outdoor-media-nz-strengths-weaknesses",
     title: "Outdoor media in NZ: what works, what doesn't, and what to watch",
     description:
