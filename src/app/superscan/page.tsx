@@ -20,7 +20,6 @@ export const metadata: Metadata = {
   description:
     "Tell Superscan what channels you're running. Get an independent read on where the risk is, where the opportunity is, and one question worth asking your agency. Free, instant, no sales call.",
   alternates: { canonical: "/superscan" },
-  robots: { index: false, follow: false },
 };
 
 export default function SuperscanPage() {

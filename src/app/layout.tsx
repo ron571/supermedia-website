@@ -17,10 +17,8 @@ export const metadata: Metadata = {
   },
   description:
     "Super Media is an independent NZ media consultancy. No network. No commissions. No conflicts. Senior media judgement from Ron Sneddon — 35 years of NZ experience.",
-  metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.supermedia.co.nz"
-  ),
-  alternates: { canonical: "/" },
+  metadataBase: new URL("https://www.supermedia.co.nz"),
+  alternates: { canonical: "https://www.supermedia.co.nz/" },
   keywords: [
     "NZ media consultancy",
     "independent media consultant New Zealand",
@@ -31,7 +29,7 @@ export const metadata: Metadata = {
     "media buying NZ",
     "programmatic advertising New Zealand",
   ],
-  authors: [{ name: "Ron Sneddon", url: "https://supermedia.co.nz/about" }],
+  authors: [{ name: "Ron Sneddon", url: "https://www.supermedia.co.nz/about" }],
   openGraph: {
     siteName: "Super Media",
     locale: "en_NZ",
