@@ -47,6 +47,11 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     images: ["/api/og"],
   },
+  verification: {
+    other: {
+      "msvalidate.01": "99DA7F468EB14CE311E569E8CBCE2C6C",
+    },
+  },
 };
 
 export default function RootLayout({
