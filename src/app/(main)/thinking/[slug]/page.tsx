@@ -93,7 +93,7 @@ export default function ArticlePage({ params }: Props) {
   const calendlyUrl =
     process.env.NEXT_PUBLIC_CALENDLY_URL ?? "/contact";
 
-  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://supermedia.co.nz";
+  const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.supermedia.co.nz";
 
   const jsonLd = {
     "@context": "https://schema.org",
@@ -101,26 +101,59 @@ export default function ArticlePage({ params }: Props) {
     headline: article.title,
     description: article.description,
     url: `${BASE_URL}/thinking/${article.slug}`,
+    mainEntityOfPage: {
+      "@type": "WebPage",
+      "@id": `${BASE_URL}/thinking/${article.slug}`,
+    },
     datePublished: article.date,
+    dateModified: article.date,
+    inLanguage: "en-NZ",
+    keywords: article.tag,
+    articleSection: article.tag,
+    image: {
+      "@type": "ImageObject",
+      url: `${BASE_URL}/assets/og-default.png`,
+      width: 1200,
+      height: 630,
+    },
     author: {
       "@type": "Person",
+      "@id": `${BASE_URL}/about#ron`,
       name: "Ron Sneddon",
       url: `${BASE_URL}/about`,
       jobTitle: "Founder & Independent Media Consultant",
+      description: "Independent NZ media consultant with 35 years of experience in the New Zealand advertising market.",
+      sameAs: [
+        "https://www.linkedin.com/in/ron-sneddon",
+        "https://www.facebook.com/supermedialtd/",
+      ],
       worksFor: {
         "@type": "Organization",
+        "@id": `${BASE_URL}/#business`,
         name: "Super Media",
         url: BASE_URL,
       },
     },
     publisher: {
       "@type": "Organization",
+      "@id": `${BASE_URL}/#business`,
       name: "Super Media",
       url: BASE_URL,
+      logo: {
+        "@type": "ImageObject",
+        url: `${BASE_URL}/assets/og-default.png`,
+      },
     },
-    keywords: article.tag,
-    articleSection: article.tag,
-    inLanguage: "en-NZ",
+    speakable: {
+      "@type": "SpeakableSpecification",
+      cssSelector: ["h1", "h3", "p"],
+    },
+    isPartOf: {
+      "@type": "Blog",
+      "@id": `${BASE_URL}/thinking`,
+      name: "Super Media Thinking",
+      publisher: { "@id": `${BASE_URL}/#business` },
+    },
   };
 
   return (

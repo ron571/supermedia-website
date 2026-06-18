@@ -11,11 +11,46 @@ export const metadata: Metadata = {
   alternates: { canonical: "/thinking" },
 };
 
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.supermedia.co.nz";
+
 export default function ThinkingPage() {
   const articles = getArticles();
 
+  const jsonLd = {
+    "@context": "https://schema.org",
+    "@type": "Blog",
+    "@id": `${BASE_URL}/thinking`,
+    name: "Super Media Thinking",
+    description: "Independent analysis on NZ media buying, agency models, digital advertising, and how AI is changing the industry. Written by Ron Sneddon.",
+    url: `${BASE_URL}/thinking`,
+    inLanguage: "en-NZ",
+    publisher: {
+      "@type": "Organization",
+      "@id": `${BASE_URL}/#business`,
+      name: "Super Media",
+      url: BASE_URL,
+    },
+    author: {
+      "@type": "Person",
+      "@id": `${BASE_URL}/about#ron`,
+      name: "Ron Sneddon",
+    },
+    blogPost: articles.map((a) => ({
+      "@type": "BlogPosting",
+      headline: a.title,
+      description: a.description,
+      url: `${BASE_URL}/thinking/${a.slug}`,
+      datePublished: a.date,
+      keywords: a.tag,
+    })),
+  };
+
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* ─── Hero ─── */}
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />

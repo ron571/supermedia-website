@@ -14,12 +14,12 @@ const jsonLd = {
   "@type": "Person",
   name: "Ron Sneddon",
   jobTitle: "Founder, Super Media",
-  url: "https://supermedia.co.nz/about",
+  url: "https://www.supermedia.co.nz/about",
   sameAs: ["https://linkedin.com/in/ron-sneddon"],
   worksFor: {
     "@type": "Organization",
     name: "Super Media",
-    url: "https://supermedia.co.nz",
+    url: "https://www.supermedia.co.nz",
   },
   description:
     "Independent NZ media consultant with 35 years of experience across agency, broadcast, and consultancy roles.",

@@ -1,7 +1,7 @@
 #!/bin/bash
 cd ~/supermedia-website
 git add -A
-git commit -m "content: add retail front window blog post to Thinking section"
+git commit -m "seo: fix www canonical URL, strengthen entity schema for Google and AI search"
 git push origin main
 echo ""
 echo "Done! Press any key to close."

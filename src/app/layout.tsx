@@ -18,7 +18,7 @@ export const metadata: Metadata = {
   description:
     "Super Media is an independent NZ media consultancy. No network. No commissions. No conflicts. Senior media judgement from Ron Sneddon — 35 years of NZ experience.",
   metadataBase: new URL(
-    process.env.NEXT_PUBLIC_SITE_URL ?? "https://supermedia.co.nz"
+    process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.supermedia.co.nz"
   ),
   alternates: { canonical: "/" },
   keywords: [

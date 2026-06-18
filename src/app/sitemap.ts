@@ -2,7 +2,7 @@ import type { MetadataRoute } from "next";
 import { getArticles } from "@/lib/articles";
 
 const BASE_URL =
-  process.env.NEXT_PUBLIC_SITE_URL ?? "https://supermedia.co.nz";
+  process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.supermedia.co.nz";
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const articles = getArticles();
