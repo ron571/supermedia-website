@@ -11,6 +11,74 @@ export interface Article {
 
 const articles: Article[] = [
   {
+    slug: "iab-nz-2025-digital-advertising-data-what-it-means",
+    title: "NZ digital advertising hit $2.97 billion in 2025. Here's what the data actually tells you.",
+    description: "The IAB NZ full-year 2025 numbers are out. Video up 27%, display flat, search still dominant. What the headlines miss — and what NZ advertisers should take from it.",
+    tag: "Industry Data",
+    date: "19 Jun 2026",
+    readTime: "5 min read",
+    body: `The IAB New Zealand full-year 2025 digital advertising revenue report landed in March. The headline: $2.967 billion spent on digital advertising in New Zealand last year, up 12% on 2024.
+
+That's a large number. And like most large numbers in media, it requires some unpacking before it's useful to anyone trying to make decisions about where to put their budget.
+
+**What the data actually says**
+
+The $2.967 billion breaks down roughly like this: search takes the biggest slice at $1.44 billion (49% of total spend). Video grew 27% to $653.8 million and now accounts for 22% of the market. Classifieds and directories — think Trade Me — came in at $389.5 million. Display advertising, excluding video, was flat.
+
+Read that last line again. Display advertising, excluding video, was flat. In a market that grew 12% overall, standard display went nowhere.
+
+That's the most significant data point in the report, and it's the one that gets the least attention in the coverage.
+
+**Why display is flat and why it matters**
+
+There are two ways to read flat display revenue. The optimistic read is that budgets are rotating into more effective formats — video, search — and that flat display represents rational reallocation. The pessimistic read is that standard display has a credibility problem and advertisers are quietly losing confidence in it.
+
+Both are partially true.
+
+What we know from auditing NZ media accounts is that display is the channel most likely to be running with measurement problems — viewability issues, brand safety gaps, CPM markups that don't survive scrutiny. When advertisers actually look at what they're getting, they frequently find the results don't justify the spend. The flat performance in the IAB data may be the market arriving at the same conclusion, account by account.
+
+If you're still running meaningful budget in standard display and you haven't interrogated the data recently, this is your prompt.
+
+**The video story is more complicated than it looks**
+
+Video growing 27% sounds like a strong endorsement of the format. And video has genuine strengths — completion rates, attention, the quality of the environment. But 27% growth in spend doesn't tell you anything about whether that spend is working.
+
+What's driving video growth in NZ is partly a shift in where video is being consumed — connected TV and streaming are up 20% for the year — and partly agencies finding it easier to sell video than to defend flat display performance. Video looks good in a deck. It's hard to argue against reach and completion rates in a meeting.
+
+The question NZ advertisers should be asking is not whether video is growing. It's whether their video is reaching the right people at the right cost. [Connected TV rates in NZ](/resources/nz-media-rates) are still maturing, and the measurement frameworks are less developed than linear TV. Strong growth in spend doesn't mean strong returns.
+
+**Search at $1.44 billion is its own story**
+
+Search's dominance — nearly half of all digital spend — reflects something real: search works, it's measurable, and it's hard to argue against when someone is actively looking for what you sell.
+
+But $1.44 billion is also almost entirely Google. And Google's dominance in NZ search advertising has pricing consequences. When there's one meaningful supplier in a channel, negotiating leverage disappears. The question isn't whether to be in search — it's whether you're managing your search account well enough to justify what you're spending.
+
+Most NZ advertisers aren't. Poor keyword hygiene, overbroad match types, and agency management structures that create no incentive to improve efficiency are endemic in NZ search accounts. The IAB numbers show what the market is spending on search. They say nothing about how efficiently that money is being used.
+
+**The global comparison**
+
+IAB UK reported 10% growth to £40.5 billion. IAB Australia reported 11.5% growth to AUD $18.4 billion. New Zealand's 12% sits in the same band. The consistent theme across all three markets: video leading, display lagging, search stable.
+
+The takeaway from the global comparison isn't that NZ is performing well or poorly — it's that the same dynamics are playing out everywhere. Digital is not a magic channel. It's a set of channels with varying effectiveness, varying transparency, and varying levels of measurement maturity. The market growing 12% tells you digital is still attracting investment. It doesn't tell you that investment is well-placed.
+
+**What to do with this**
+
+If you're an NZ advertiser reading this data, three questions are worth asking:
+
+First, what's your display doing? If you can't answer that question with confidence — if you can't tell me your viewable CPM, your brand safety settings, your actual audience delivery — then you're probably in the camp of advertisers who are contributing to flat display without getting much back.
+
+Second, is your video justified? Not whether video is a good channel in the abstract, but whether your specific video buy, at your specific CPM, reaching your specific audience, is earning its place in the mix.
+
+Third, is your search account actually being managed? Not just running. Managed — with regular keyword reviews, negative keyword hygiene, and reporting that connects spend to outcomes, not just clicks.
+
+The $2.967 billion headline is the market in aggregate. Your advertising budget is not the market in aggregate. What matters is whether your piece of that number is working.`,
+    relatedSlugs: [
+      "why-nz-advertisers-pay-too-much-for-digital-display",
+      "what-volume-rebates-actually-mean-for-your-media-budget",
+      "how-to-read-a-media-plan-if-you-didnt-go-to-media-school",
+    ],
+  },
+  {
     slug: "retail-front-window-advertising-nz",
     title: "Your shop window is your best ad. Most retailers don't treat it that way.",
     description:
