@@ -5,13 +5,13 @@ import NewsletterForm from "@/components/NewsletterForm";
 
 
 export const metadata: Metadata = {
-  title: "Thinking",
+  title: "NZ Media Thinking & Analysis",
   description:
     "The Super view on NZ media — independent analysis on media buying, agency models, digital display, and how AI is changing the industry.",
   alternates: { canonical: "/thinking" },
 };
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.supermedia.co.nz";
+const BASE_URL = "https://www.supermedia.co.nz";
 
 export default function ThinkingPage() {
   const articles = getArticles();

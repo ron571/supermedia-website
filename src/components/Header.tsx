@@ -69,6 +69,7 @@ export default function Header() {
             style={{ opacity: 0.4 }}
             onMouseEnter={(e) => (e.currentTarget.style.opacity = "1")}
             onMouseLeave={(e) => (e.currentTarget.style.opacity = "0.4")}
+            rel="nofollow"
           >
             Admin
           </Link>

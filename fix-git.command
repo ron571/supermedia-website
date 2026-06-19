@@ -1,7 +1,7 @@
 #!/bin/bash
 cd ~/supermedia-website
 git add -A
-git commit -m "content: add IAB NZ 2025 data commentary article"
+git commit -m "seo: fix robots www, title deduplication, schema fixes, admin nofollow"
 git push origin main
 echo ""
 echo "Done! Press any key to close."

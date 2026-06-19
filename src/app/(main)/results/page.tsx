@@ -3,7 +3,7 @@ import Link from "next/link";
 
 
 export const metadata: Metadata = {
-  title: "Results",
+  title: "Client Results & Case Studies",
   description:
     "Three case studies from Super Media — media audits, strategy, and retained advisory that found real savings and better outcomes for NZ advertisers.",
   alternates: { canonical: "/results" },

@@ -3,7 +3,7 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About Ron Sneddon — Super Media",
+  title: "About Ron Sneddon",
   description:
     "Ron Sneddon spent 35 years buying media, selling it, and running an agency. He watched from the inside how advertising budgets get wasted. Super exists because he decided to stop watching it happen.",
   alternates: { canonical: "/about" },
@@ -15,7 +15,7 @@ const jsonLd = {
   name: "Ron Sneddon",
   jobTitle: "Founder, Super Media",
   url: "https://www.supermedia.co.nz/about",
-  sameAs: ["https://linkedin.com/in/ron-sneddon"],
+  sameAs: ["https://www.linkedin.com/in/ron-sneddon"],
   worksFor: {
     "@type": "Organization",
     name: "Super Media",
