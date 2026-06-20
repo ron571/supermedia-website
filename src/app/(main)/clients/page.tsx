@@ -18,8 +18,8 @@ type Client = {
 const clients: Client[] = [
   {
     name: "Tilda Rice NZ",
+    logo: "/logos/tilda.svg",
     url: "https://www.tilda.com/en-nz/",
-    darkBg: true,
   },
   {
     name: "Trident Noodles & Sauces",
@@ -67,6 +67,7 @@ const clients: Client[] = [
     name: "Metrics Media",
     logo: "https://metricsmedia.co.nz/wp-content/uploads/2026/02/metrics-media.svg",
     url: "https://metricsmedia.co.nz/",
+    darkBg: true,
   },
   {
     name: "Frame Workshop & Gallery",
