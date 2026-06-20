@@ -7,7 +7,7 @@ import { getArticles } from "@/lib/articles";
 export const metadata: Metadata = {
   title: "Super Media — Independent NZ Media Consultancy",
   description:
-    "Super Media is an independent NZ media consultancy. No agency relationships. No commissions. Just an honest read on whether your advertising spend is working — and how to fix it if it isn't.",
+    "Super Media is an independent NZ media consultancy. No agency relationships. No conflicts. Just an honest read on whether your advertising spend is working — and how to fix it if it isn't.",
   alternates: { canonical: "/" },
 };
 
@@ -58,7 +58,7 @@ const jsonLd = {
       name: "Super Media",
       alternateName: ["Super Media NZ", "SuperMedia"],
       description:
-        "Super Media is an independent New Zealand media consultancy founded by Ron Sneddon. We provide media strategy, media audits, and programmatic buying with no agency conflicts, no volume rebates, and no commissions from media owners. Based in New Zealand, serving NZ advertisers nationwide.",
+        "Super Media is an independent New Zealand media consultancy founded by Ron Sneddon. We provide media strategy, media audits, and programmatic buying with no agency conflicts and no volume rebates. Based in New Zealand, serving NZ advertisers nationwide.",
       url: "https://www.supermedia.co.nz",
       email: "ron@supermedia.co.nz",
       logo: {
@@ -166,7 +166,7 @@ const jsonLd = {
           name: "How is this different from working with an agency?",
           acceptedAnswer: {
             "@type": "Answer",
-            text: "An agency executes campaigns. Super Media gives you an independent read on whether those campaigns make sense — before, during, or after. We don't take commissions from media owners.",
+            text: "An agency executes campaigns. Super Media gives you an independent read on whether those campaigns make sense — before, during, or after. No preferred suppliers, no conflicts.",
           },
         },
         {

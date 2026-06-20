@@ -99,7 +99,7 @@ export async function GET() {
                 maxWidth: "800px",
               }}
             >
-              No network. No commissions. No conflicts.
+              No network. No conflicts. No agenda.
             </span>
           </div>
 
