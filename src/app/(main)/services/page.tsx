@@ -110,7 +110,7 @@ const services = [
     title: "Media Strategy & Planning",
     tag: "Strategy",
     description:
-      "A complete, independent media plan from scratch or as a second opinion. Every recommendation made on merit.",
+      "A complete, independent media plan from scratch or as a second opinion. Every recommendation made on merit. Covers Search, Display, AI-driven media, and traditional channels including Linear TV, radio, print, and Out of Home.",
     detail:
       "For advertisers who want a plan built without conflicts of interest.",
   },
