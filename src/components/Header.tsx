@@ -11,6 +11,7 @@ const navLinks = [
   { href: "/thinking", label: "Thinking" },
   { href: "/resources/nz-media-rates", label: "NZ Media Rates" },
   { href: "/results", label: "Results" },
+  { href: "/clients", label: "Clients" },
   { href: "/contact", label: "Contact" },
 ];
 
