@@ -587,7 +587,8 @@ function startForm() { showScreen('s-form'); }
 
 // Checkbox interactions
 document.querySelectorAll('.cb-item').forEach(item => {
-  item.addEventListener('click', () => {
+  item.addEventListener('click', (e) => {
+    e.preventDefault();
     item.classList.toggle('on');
     item.querySelector('input').checked = item.classList.contains('on');
   });
