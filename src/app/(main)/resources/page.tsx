@@ -45,6 +45,20 @@ const resources = [
     updated: "June 2026",
   },
   {
+    href: "/resources/nz-cinema-advertising",
+    title: "NZ Cinema Advertising",
+    description: "Val Morgan network data — 350+ screens across Hoyts, Reading, Event and independents. Audience profiles, buying formats (MAP, Follow Film, Roadblock), and fact-checks on cinema seller claims.",
+    tags: ["Val Morgan", "Hoyts", "Reading", "Cinema"],
+    updated: "June 2026",
+  },
+  {
+    href: "/resources/nz-influencer-marketing",
+    title: "NZ Influencer Marketing",
+    description: "Creator tier definitions and NZ rate benchmarks by platform. What to verify before signing a creator, platform-by-platform guide, and fact-checks on industry claims.",
+    tags: ["Instagram", "TikTok", "YouTube", "Creator tiers"],
+    updated: "June 2026",
+  },
+  {
     href: "/resources/nz-media-rates",
     title: "NZ Media Rate Benchmarks",
     description: "What you should expect to pay across TV, radio, digital, programmatic, social, search, and outdoor. Based on 35 years of NZ media buying experience.",

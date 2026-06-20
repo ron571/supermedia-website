@@ -13,7 +13,7 @@ if [ -f "$HOME/Downloads/tilda-logo.svg" ]; then
 fi
 
 git add -A
-git commit -m "feat: update nav Resources link to hub page"
+git commit -m "feat: add cinema and influencer marketing resource pages"
 git push origin main
 echo ""
 echo "Done! Press any key to close."
