@@ -247,8 +247,7 @@ select:focus{outline:none;border-color:var(--orange);}
           <label class="lbl">Age range</label>
           <div class="sel-wrap"><select id="f-age">
             <option value="">Select age range</option>
-            <option>18–24</option><option>25–34</option><option>35–44</option>
-            <option>45–54</option><option>55–64</option><option>65+</option>
+            <option>Under 18</option><option>18–29</option><option>30–54</option><option>55+</option>
           </select></div>
         </div>
         <div class="field">
@@ -519,18 +518,18 @@ let DATA = {
     'Radio':            54,
     'Print / Magazines': 19
   },
-  // Age modifiers (index: 0=18-24, 1=25-34, 2=35-44, 3=45-54, 4=55-64, 5=65+)
+  // Age modifiers (index: 0=Under 18, 1=18-29, 2=30-54, 3=55+)
   ageModifiers: {
-    'Linear TV':        [-30,-18,-8,+8,+20,+28],
-    'YouTube':          [+12,+8,+4,-8,-26,-44],
-    'Facebook':         [-24,-12,+0,+6,+2,-4],
-    'Instagram / TikTok': [+34,+22,+4,-16,-32,-42],
-    'Podcasts':         [-4,+10,+6,+2,-12,-26],
-    'Streaming (Netflix/Prime)': [+14,+10,+5,-2,-18,-36],
-    'Online News':      [-10,-2,+5,+5,+4,+2],
-    'LinkedIn':         [-6,+16,+20,+18,+4,-16],
-    'Radio':            [-16,-8,+0,+6,+10,+12],
-    'Print / Magazines': [-10,-6,-2,+6,+18,+30]
+    'Linear TV':        [-38,-24,0,+24],
+    'YouTube':          [+20,+10,-2,-35],
+    'Facebook':         [-36,-18,+3,0],
+    'Instagram / TikTok': [+48,+28,-6,-37],
+    'Podcasts':         [-10,+3,+4,-19],
+    'Streaming (Netflix/Prime)': [+22,+12,+2,-27],
+    'Online News':      [-22,-6,+5,+3],
+    'LinkedIn':         [-22,+5,+19,-6],
+    'Radio':            [-28,-12,+3,+11],
+    'Print / Magazines': [-18,-8,+2,+24]
   },
   ai: { overall: 33, wcMultiplier: 1.55, pgMultiplier: 1.4, youngMultiplier: 1.35 },
   superTakeTemplate: `{audience} are not where most NZ agencies are putting the money. <strong>This audience scores {score}% alignment</strong> between typical media recommendations and where they actually spend their attention. The biggest single gap is {biggest_gap_channel} — agencies over-recommend it by {biggest_gap_pct} percentage points relative to actual NZ 2026 consumption data. That's not a rounding error. It's a structural problem that independent intelligence is designed to fix.`,
@@ -538,7 +537,7 @@ let DATA = {
 };
 
 const CHANNELS = Object.keys(DATA.reach);
-const AGE_GROUPS = ['18–24','25–34','35–44','45–54','55–64','65+'];
+const AGE_GROUPS = ['Under 18','18–29','30–54','55+'];
 
 // ═══════════════════════════════════════════════════════════
 // NAVIGATION
@@ -615,10 +614,10 @@ function getAgencyAssumption() {
   const ageIdx = AGE_GROUPS.indexOf(profile.age);
 
   // Age adjustments to agency assumptions (agencies are even more traditional for older demos)
-  if (ageIdx >= 3) { // 45+
+  if (ageIdx === 3) { // 55+
     w['Linear TV'] += 12; w['Radio'] += 8; w['Print / Magazines'] += 6;
     w['YouTube'] -= 6; w['Instagram / TikTok'] -= 8; w['Podcasts'] -= 2;
-  } else if (ageIdx <= 1) { // Under 35
+  } else if (ageIdx <= 1) { // Under 30
     w['Instagram / TikTok'] += 12; w['YouTube'] += 8;
     w['Linear TV'] -= 14; w['Print / Magazines'] -= 6; w['Radio'] -= 6;
   }
@@ -747,7 +746,7 @@ function calcAISearch() {
   const ageIdx = AGE_GROUPS.indexOf(profile.age);
   let rate = DATA.ai.overall;
   if (ageIdx <= 1) rate *= DATA.ai.youngMultiplier;
-  if (ageIdx >= 4) rate *= 0.55;
+  if (ageIdx === 3) rate *= 0.55;
   if (profile.occupation === 'white_collar' || profile.occupation === 'business_owner') rate *= DATA.ai.wcMultiplier;
   if (profile.education === 'postgrad') rate *= DATA.ai.pgMultiplier;
   if (profile.education === 'secondary') rate *= 0.62;
@@ -911,11 +910,11 @@ function buildInsights(assumed, actual, score, aiRate, bg, ageIdx) {
 }
 
 function calcDevices(ageIdx) {
-  // Base NZ device reach, adjusted by age
-  const mobile = Math.max(72, Math.min(98, 96 - ageIdx * 4));
-  const desktop = Math.max(45, Math.min(82, 62 + (ageIdx - 2) * 4));
-  const smartTV = Math.max(28, Math.min(78, 74 - ageIdx * 5));
-  const tablet = Math.max(22, Math.min(55, 40 + ageIdx * 2));
+  // Base NZ device reach, adjusted by age (index: 0=Under 18, 1=18-29, 2=30-54, 3=55+)
+  const mobile = Math.max(74, Math.min(96, 96 - ageIdx * 7));
+  const desktop = Math.max(52, Math.min(76, 52 + ageIdx * 8));
+  const smartTV = Math.max(44, Math.min(72, 72 - ageIdx * 8));
+  const tablet = Math.max(40, Math.min(50, 40 + ageIdx * 3));
   return [
     { icon: '📱', pct: mobile, name: 'Smartphone' },
     { icon: '💻', pct: desktop, name: 'Desktop / Laptop' },
