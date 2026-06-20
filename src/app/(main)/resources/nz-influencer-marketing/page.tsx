@@ -97,8 +97,8 @@ const platformBreakdown = [
 const whatToCheck = [
   {
     check: "Audience location",
-    why: "A creator with 50K followers may have only 8K NZ-based followers — the rest being Australian, US, or UK. You&apos;re paying for NZ reach.",
-    howTo: "Request an Instagram/TikTok Insights screenshot showing top countries for followers and reach. If a creator won&apos;t provide this, don&apos;t proceed.",
+    why: "A creator with 50K followers may have only 8K NZ-based followers — the rest being Australian, US, or UK. You're paying for NZ reach.",
+    howTo: "Request an Instagram/TikTok Insights screenshot showing top countries for followers and reach. If a creator won't provide this, don't proceed.",
   },
   {
     check: "Engagement rate vs followers",
@@ -107,7 +107,7 @@ const whatToCheck = [
   },
   {
     check: "Content fit and brand safety",
-    why: "Brand-adjacent influencer controversies do create brand risk. A creator&apos;s full content history matters.",
+    why: "Brand-adjacent influencer controversies do create brand risk. A creator's full content history matters.",
     howTo: "Review 60+ days of content before contracting. Check comment sections — they reveal real audience sentiment. Use brand safety screening tools for larger spend.",
   },
   {
@@ -118,7 +118,7 @@ const whatToCheck = [
   {
     check: "Disclosure compliance",
     why: "NZ Commerce Commission requires clear disclosure when content is paid or gifted. Non-disclosure creates regulatory risk for the brand.",
-    howTo: "Require #ad or #sponsored disclosure in all posts. Do not accept posts where the paid nature is ambiguous. This is the brand&apos;s responsibility — not just the creator&apos;s.",
+    howTo: "Require #ad or #sponsored disclosure in all posts. Do not accept posts where the paid nature is ambiguous. This is the brand's responsibility — not just the creator's.",
   },
 ];
 
