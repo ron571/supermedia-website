@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ResourceSchema from "@/components/ResourceSchema";
 
 export const metadata: Metadata = {
   title: "NZ Television Ratings 2026 — Linear TV Reach & Channel Data",
@@ -80,6 +81,7 @@ export default function NZTVRatingsPage() {
 
   return (
     <>
+      <ResourceSchema slug="nz-tv-ratings" title="NZ Television Ratings 2026 — Linear TV Reach & Channel Data" description="Independent Nielsen TAM data for NZ linear television. Channel reach, weekly audiences, demographic breakdowns, and fact-checks on ThinkTV supplier claims." about="NZ television ratings" />
       {/* Hero */}
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />

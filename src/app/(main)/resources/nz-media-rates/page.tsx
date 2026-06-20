@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ResourceSchema from "@/components/ResourceSchema";
 
 export const metadata: Metadata = {
   title: "NZ Media Rate Benchmarks 2026 — What You Should Expect to Pay",
@@ -233,6 +234,7 @@ const channels = [
 export default function NZMediaRatesPage() {
   return (
     <>
+      <ResourceSchema slug="nz-media-rates" title="NZ Media Rate Benchmarks 2026 — What You Should Expect to Pay" description="Independent benchmarks for NZ media rates across TV, radio, digital display, programmatic, social, search, and out of home. Based on 35 years of NZ media buying experience." about="NZ media advertising rates and benchmarks" />
       {/* ─── Hero ─── */}
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />

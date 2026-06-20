@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import AudienceFilters from "./AudienceFilters";
+import ResourceSchema from "@/components/ResourceSchema";
 
 export const metadata: Metadata = {
   title: "NZ Digital Audiences 2026 — Top Websites, Social Media & News Sites",
@@ -57,6 +58,7 @@ function IndexBadge({ index }: { index: number }) {
 export default function NZDigitalAudiencesPage() {
   return (
     <>
+      <ResourceSchema slug="nz-digital-audiences" title="NZ Digital Audiences 2026 — Top Websites, Social Media & News Sites" description="Nielsen and SemRush data — top NZ websites and social platforms by monthly reach, filtered by age and gender. Plus digital news audience fact-checks on publisher claims." about="NZ digital audiences and website traffic" />
       {/* Hero */}
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />

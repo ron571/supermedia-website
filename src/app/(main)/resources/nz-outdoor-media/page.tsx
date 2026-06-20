@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ResourceSchema from "@/components/ResourceSchema";
 
 export const metadata: Metadata = {
   title: "NZ Outdoor Advertising 2026 — OOH Companies by Sites, Reach & Format",
@@ -182,6 +183,7 @@ const flagStyles = {
 export default function NZOutdoorMediaPage() {
   return (
     <>
+      <ResourceSchema slug="nz-outdoor-media" title="NZ Outdoor Advertising 2026 — OOH Companies by Sites, Reach & Format" description="Independent guide to New Zealand's out-of-home advertising companies ranked by network size, impressions, and reach. Digital billboards, static billboards, bus shelters, buses, and street posters — national and Auckland." about="NZ outdoor advertising and out-of-home media" />
       {/* Hero */}
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />

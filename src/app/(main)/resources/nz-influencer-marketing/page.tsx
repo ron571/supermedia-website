@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ResourceSchema from "@/components/ResourceSchema";
 
 export const metadata: Metadata = {
   title: "NZ Influencer Marketing 2026 — Rates, Tiers & Platform Data",
@@ -151,6 +152,7 @@ const flagStyles = {
 export default function NZInfluencerMarketingPage() {
   return (
     <>
+      <ResourceSchema slug="nz-influencer-marketing" title="NZ Influencer Marketing 2026 — Rates, Tiers & Platform Data" description="Independent guide to influencer marketing in New Zealand. Creator tier definitions, platform-by-platform rate benchmarks, audience data, and what to watch for when briefing NZ influencers." about="NZ influencer marketing" />
       {/* Hero */}
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />

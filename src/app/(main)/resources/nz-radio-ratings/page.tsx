@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ResourceSchema from "@/components/ResourceSchema";
 
 export const metadata: Metadata = {
   title: "NZ Radio Audience Ratings 2026 — GfK Survey Data by Network",
@@ -123,6 +124,7 @@ export default function NZRadioRatingsPage() {
 
   return (
     <>
+      <ResourceSchema slug="nz-radio-ratings" title="NZ Radio Audience Ratings 2026 — GfK Survey Data by Network" description="Independent GfK radio survey data for New Zealand. Auckland and national audiences broken down by NZME and Mediaworks networks, with fact-checks on supplier claims." about="NZ radio audience ratings" />
       {/* Hero */}
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />

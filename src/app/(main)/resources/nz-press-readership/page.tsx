@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ResourceSchema from "@/components/ResourceSchema";
 
 export const metadata: Metadata = {
   title: "NZ Press Readership 2026 — Newspaper & Magazine Audience Data",
@@ -108,6 +109,7 @@ export default function NZPressReadership() {
 
   return (
     <>
+      <ResourceSchema slug="nz-press-readership" title="NZ Press Readership 2026 — Newspaper & Magazine Audience Data" description="Independent Nielsen CMI and Roy Morgan readership data for New Zealand newspapers and magazines. Auckland newspaper audiences, national magazine readership, and fact-checks on publisher claims." about="NZ newspaper and magazine readership" />
       {/* Hero */}
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />

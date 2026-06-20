@@ -13,7 +13,7 @@ if [ -f "$HOME/Downloads/tilda-logo.svg" ]; then
 fi
 
 git add -A
-git commit -m "seo: fix sitemap, robots.txt, meta titles, add homepage resources link"
+git commit -m "seo: add JSON-LD Article schema to all 8 resource pages"
 git push origin main
 echo ""
 echo "Done! Press any key to close."

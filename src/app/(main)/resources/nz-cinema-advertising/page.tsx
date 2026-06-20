@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import ResourceSchema from "@/components/ResourceSchema";
 
 export const metadata: Metadata = {
   title: "NZ Cinema Advertising 2026 — Audience, Reach & Rates",
@@ -116,6 +117,7 @@ const flagStyles = {
 export default function NZCinemaAdvertisingPage() {
   return (
     <>
+      <ResourceSchema slug="nz-cinema-advertising" title="NZ Cinema Advertising 2026 — Audience, Reach & Rates" description="Independent guide to cinema advertising in New Zealand. Val Morgan network, admissions data, audience profile, buying formats, CPM benchmarks, and fact-checks on cinema seller claims." about="NZ cinema advertising" />
       {/* Hero */}
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />
