@@ -215,9 +215,17 @@ select:focus{outline:none;border-color:var(--orange);}
   #s-welcome, #s-form, #s-loading { display: none !important; }
   #s-results { display: flex !important; }
 
-  /* Darken all light/transparent text so it's readable on white */
-  .sc-label { color: #444 !important; }
-  .sc-desc { color: #333 !important; }
+  /* Navy background sections — text must be white/near-white */
+  .sc-label { color: rgba(255,255,255,0.75) !important; }
+  .sc-desc { color: #ffffff !important; }
+  .sc-desc strong { color: #ffffff !important; }
+  .ai-panel .ai-text { color: #ffffff !important; }
+  .ai-panel .ai-text strong { color: #ffffff !important; }
+  .st-label { color: rgba(255,255,255,0.85) !important; }
+  .st-text { color: #ffffff !important; }
+  .st-text strong { color: #ffffff !important; }
+
+  /* White/light background sections — text must be dark */
   .audience-pill { color: #333 !important; border-color: #999 !important; }
   .card-h { color: var(--navy) !important; }
   .leg { color: #333 !important; }
@@ -228,8 +236,6 @@ select:focus{outline:none;border-color:var(--orange);}
   .ins-title { color: var(--navy) !important; }
   .dev-name { color: #444 !important; }
   .dev-pct { color: var(--navy) !important; }
-  .ai-panel .ai-text { color: #eee !important; }
-  .st-label { color: rgba(255,255,255,0.85) !important; }
   .results-cta p { color: #333 !important; }
   .ftr-text { color: #555 !important; }
   p[style*="color:var(--grey-dark)"] { color: #333 !important; }
