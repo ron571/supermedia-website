@@ -13,7 +13,7 @@ if [ -f "$HOME/Downloads/tilda-logo.svg" ]; then
 fi
 
 git add -A
-git commit -m "feat: upgrade resources hub hero with stats and stronger headline"
+git commit -m "fix: remove broken nz-social-media link from influencer page"
 git push origin main
 echo ""
 echo "Done! Press any key to close."

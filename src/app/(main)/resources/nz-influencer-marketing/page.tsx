@@ -353,7 +353,7 @@ export default function NZInfluencerMarketingPage() {
             {[
               { href: "/resources/nz-digital-audiences", label: "NZ Digital Audiences" },
               { href: "/resources/nz-cinema-advertising", label: "NZ Cinema Advertising" },
-              { href: "/resources/nz-social-media", label: "NZ Social Media" },
+              { href: "/resources/nz-digital-audiences", label: "NZ Digital & Social Audiences" },
               { href: "/resources/nz-media-rates", label: "NZ Media Rate Benchmarks" },
             ].map(({ href, label }) => (
               <Link key={href} href={href} className="inline-flex items-center gap-1 text-sm text-navy border border-navy/30 rounded px-4 py-2 hover:bg-navy hover:text-white transition-colors">
