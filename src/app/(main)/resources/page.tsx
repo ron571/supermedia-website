@@ -88,13 +88,28 @@ export default function ResourcesPage() {
       {/* Hero */}
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />
-        <div className="section-container relative py-20 lg:py-28">
-          <h1 className="text-white text-4xl md:text-5xl font-bold max-w-3xl mb-4">
-            NZ Media Intelligence
+        <div className="section-container relative py-24 lg:py-36">
+          <p className="eyebrow mb-5">Independent NZ Media Data</p>
+          <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold max-w-3xl mb-6">
+            What NZ media actually delivers — not what sellers claim.
           </h1>
-          <p className="text-white/70 text-xl max-w-2xl" style={{ lineHeight: 1.65 }}>
-            Independent audience data, rate benchmarks, and market intelligence for New Zealand media. No agency spin — just the numbers and what they mean.
+          <p className="text-white/70 text-xl max-w-2xl mb-12" style={{ lineHeight: 1.65 }}>
+            GfK, Nielsen, Roy Morgan and SemRush data across every major NZ media channel. Fact-checked against publisher and supplier claims. Updated 2026.
           </p>
+          {/* Quick stat row */}
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4 max-w-3xl">
+            {[
+              { stat: "8", label: "media channels covered" },
+              { stat: "4+", label: "independent data sources" },
+              { stat: "35yrs", label: "NZ market experience" },
+              { stat: "Free", label: "no registration required" },
+            ].map(({ stat, label }) => (
+              <div key={label} className="border border-white/20 rounded p-4">
+                <div className="text-white text-2xl font-bold mb-1">{stat}</div>
+                <div className="text-white/60 text-xs">{label}</div>
+              </div>
+            ))}
+          </div>
         </div>
       </section>
 
