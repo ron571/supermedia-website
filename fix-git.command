@@ -13,7 +13,7 @@ if [ -f "$HOME/Downloads/tilda-logo.svg" ]; then
 fi
 
 git add -A
-git commit -m "feat: update clients page logos"
+git commit -m "feat: add NZ media audience data pages (radio, TV, press, digital, outdoor)"
 git push origin main
 echo ""
 echo "Done! Press any key to close."

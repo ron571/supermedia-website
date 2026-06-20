@@ -1,0 +1,322 @@
+import type { Metadata } from "next";
+import Link from "next/link";
+
+export const metadata: Metadata = {
+  title: "NZ Press Readership 2026 — Newspaper & Magazine Audience Data",
+  description:
+    "Independent Nielsen CMI and Roy Morgan readership data for New Zealand newspapers and magazines. Auckland newspaper audiences, national magazine readership, and fact-checks on publisher claims.",
+  alternates: { canonical: "/resources/nz-press-readership" },
+};
+
+const aucklandNewspapers = [
+  {
+    title: "New Zealand Herald (daily)",
+    publisher: "NZME",
+    format: "Print",
+    readers: 404000,
+    notes: "Average issue readership (Nielsen CMI Q4 2024). Print edition still NZ's highest-circulated daily.",
+  },
+  {
+    title: "NZ Herald (brand, weekly)",
+    publisher: "NZME",
+    format: "Print + Digital brand",
+    readers: 2300000,
+    notes: "Combined brand audience across print, digital, and video. Not a single-issue figure — don't compare directly to print-only numbers.",
+  },
+  {
+    title: "Herald on Sunday",
+    publisher: "NZME",
+    format: "Print (Sunday)",
+    readers: 303000,
+    notes: "Average issue readership (Nielsen CMI Q4 2024). NZ's most-read Sunday paper.",
+  },
+  {
+    title: "Sunday Star-Times",
+    publisher: "Stuff",
+    format: "Print (Sunday)",
+    readers: 159000,
+    notes: "Roy Morgan mid-2025. Down from historic highs; readership declined ~30% over 5 years.",
+  },
+];
+
+const nationalMagazines = [
+  { rank: 1, title: "AA Directions", publisher: "AA (NZ Automobile Association)", readers: 388000, ageSkew: "35–60+", notes: "Member magazine; high loyalty readership" },
+  { rank: 2, title: "NZ Woman's Weekly", publisher: "Are Media", readers: 365000, ageSkew: "35–65+ female", notes: "Longest-running NZ consumer magazine; female-skewed" },
+  { rank: 3, title: "NZ House & Garden", publisher: "Are Media", readers: 295000, ageSkew: "35–60 female", notes: "Premium lifestyle; affluent female audience" },
+  { rank: 4, title: "NZ Listener", publisher: "Are Media", readers: 218000, ageSkew: "45–65+", notes: "TV guide + current affairs; declining but loyal older base" },
+  { rank: 5, title: "Next", publisher: "Are Media", readers: 198000, ageSkew: "25–44 female", notes: "Younger female lifestyle" },
+  { rank: 6, title: "Dish", publisher: "Are Media", readers: 174000, ageSkew: "30–55", notes: "Food/cooking; broad adult appeal" },
+  { rank: 7, title: "NZ Gardener", publisher: "Are Media", readers: 152000, ageSkew: "45–65+", notes: "Niche but loyal; strong regional reach" },
+  { rank: 8, title: "Fish & Game NZ", publisher: "Fish & Game NZ", readers: 130000, ageSkew: "30–55 male", notes: "Member publication; highly engaged niche" },
+  { rank: 9, title: "Kia Ora (Air NZ)", publisher: "Air New Zealand", readers: 114000, ageSkew: "25–54", notes: "Inflight magazine; readership estimated from passenger volumes" },
+  { rank: 10, title: "NZ Life & Leisure", publisher: "Are Media", readers: 96000, ageSkew: "40–60", notes: "Upmarket lifestyle; strong AB demographic index" },
+];
+
+const publisherTotals = [
+  { publisher: "Are Media", titles: ["NZ Woman's Weekly", "NZ House & Garden", "NZ Listener", "Next", "Dish", "NZ Gardener", "Kia Ora", "NZ Life & Leisure", "+ others"], totalMonthlyCume: 1620000, notes: "Largest magazine publisher in NZ by readership. Formerly Bauer Media." },
+  { publisher: "NZME", titles: ["NZ Herald", "Herald on Sunday", "+ regionals"], totalMonthlyCume: 2300000, notes: "Largest NZ newspaper group by audience. Monthly brand figure, not weekly." },
+  { publisher: "Stuff", titles: ["Dominion Post", "The Press", "Sunday Star-Times", "+ regionals"], totalMonthlyCume: 1800000, notes: "Second-largest NZ newspaper group; primarily Wellington and South Island strength." },
+];
+
+const factChecks = [
+  {
+    claim: "\"The New Zealand Herald reaches 1.2 million people daily\" (NZME advertising collateral)",
+    verdict: "Misleading framing",
+    flag: "orange" as const,
+    independent: "NZME's 'daily brand audience' of 1.2M combines print readers (~404,000/day), website unique visitors (averaged daily from 1.96M monthly uniques), video streams, and email newsletter opens. Each of these is measured differently. The print readership figure (Nielsen CMI) is the most rigorously measured. The combined number is real but should not be read as 1.2M people reading the physical Herald each day.",
+  },
+  {
+    claim: "\"NZ Herald on Sunday is New Zealand's most read Sunday paper\" (NZME)",
+    verdict: "Confirmed",
+    flag: "green" as const,
+    independent: "True per Nielsen CMI Q4 2024. Herald on Sunday readership (~303,000) exceeds Sunday Star-Times by approximately 144,000 readers. The gap has widened as Sunday Star-Times circulation has declined.",
+  },
+  {
+    claim: "\"2.7 million New Zealanders read newspapers\" (Stuff / NZME joint industry claim)",
+    verdict: "Plausible — based on Roy Morgan",
+    flag: "green" as const,
+    independent: "Roy Morgan mid-2025 puts total newspaper readership (print and digital editions) at approximately 2.7M. This uses 12-month cumulative readership, not average-issue figures. Average-issue figures are significantly lower. Make sure you know which metric your agency is buying against.",
+  },
+  {
+    claim: "\"1.65 million New Zealanders read magazines\" (Are Media / industry)",
+    verdict: "Confirmed within range",
+    flag: "green" as const,
+    independent: "Roy Morgan December 2025 survey estimates approximately 1.65M NZers read at least one magazine per month (print or digital). Are Media accounts for the largest share of this. Readership has declined from ~2.1M in 2019 but appears to be stabilising.",
+  },
+];
+
+const flagStyles = {
+  green: { bg: "bg-emerald-50", border: "border-emerald-200", badge: "bg-emerald-100 text-emerald-800", icon: "✓" },
+  orange: { bg: "bg-amber-50", border: "border-amber-200", badge: "bg-amber-100 text-amber-800", icon: "⚠" },
+  red: { bg: "bg-red-50", border: "border-red-200", badge: "bg-red-100 text-red-800", icon: "✗" },
+};
+
+function ReachBar({ value, max, color = "#1B2B5E" }: { value: number; max: number; color?: string }) {
+  return (
+    <div className="flex items-center gap-2">
+      <div className="flex-1 bg-grey-mid/30 rounded h-2 min-w-[100px]">
+        <div className="h-2 rounded" style={{ width: `${(value / max) * 100}%`, backgroundColor: color }} />
+      </div>
+      <span className="text-xs text-grey-dark w-20 text-right">{value.toLocaleString()}</span>
+    </div>
+  );
+}
+
+export default function NZPressReadership() {
+  const maxNewspaper = Math.max(...aucklandNewspapers.map(n => n.readers));
+  const maxMag = Math.max(...nationalMagazines.map(m => m.readers));
+
+  return (
+    <>
+      {/* Hero */}
+      <section className="relative bg-navy overflow-hidden">
+        <div className="absolute inset-0 grid-overlay" aria-hidden="true" />
+        <div className="section-container relative py-20 lg:py-28">
+          <div className="flex items-center gap-2 mb-4">
+            <Link href="/resources" className="text-white/50 hover:text-white text-sm transition-colors">Resources</Link>
+            <span className="text-white/30 text-sm">/</span>
+            <span className="text-white/70 text-sm">NZ Press Readership</span>
+          </div>
+          <h1 className="text-white text-4xl md:text-5xl font-bold max-w-3xl mb-4">
+            NZ Press Readership
+          </h1>
+          <p className="text-white/70 text-xl max-w-2xl" style={{ lineHeight: 1.65 }}>
+            Nielsen CMI and Roy Morgan data for NZ newspapers and magazines. Auckland focus for press; national for magazines. Readership figures — not circulation.
+          </p>
+          <div className="flex flex-wrap gap-4 mt-8 text-sm text-white/50">
+            <span>Sources: Nielsen CMI Q4 2024 · Roy Morgan December 2025</span>
+            <span>·</span>
+            <span>Updated June 2026</span>
+          </div>
+        </div>
+      </section>
+
+      {/* Data Caveat */}
+      <section className="bg-white border-b border-grey-mid py-4">
+        <div className="section-container">
+          <p className="text-xs text-grey-dark leading-relaxed">
+            <strong className="text-navy">Data sources & caveat:</strong> Statistics on this page combine independently-measured survey data (Nielsen CMI Q4 2024, Roy Morgan December 2025) and publisher-reported figures. Readership methodologies differ between Nielsen CMI (average-issue readership) and Roy Morgan (monthly survey-based). Publisher brand audience figures combine multiple formats measured differently and should not be compared directly to single-format survey data. Always verify data with your agency or directly with the research organisations before making investment decisions.
+          </p>
+        </div>
+      </section>
+
+      {/* Key Numbers */}
+      <section className="bg-grey-light py-10">
+        <div className="section-container">
+          <div className="grid grid-cols-2 sm:grid-cols-4 gap-4">
+            {[
+              { value: "2.7M", label: "NZers read newspapers monthly (Roy Morgan)" },
+              { value: "1.65M", label: "NZers read magazines monthly" },
+              { value: "404K", label: "Daily NZ Herald print readers" },
+              { value: "388K", label: "AA Directions — top magazine" },
+            ].map(({ value, label }) => (
+              <div key={label} className="bg-white rounded border border-grey-mid p-5">
+                <div className="text-3xl font-bold text-navy mb-1">{value}</div>
+                <div className="text-sm text-grey-dark">{label}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Readership vs Circulation box */}
+      <section className="bg-white py-10 border-b border-grey-mid">
+        <div className="section-container">
+          <div className="bg-amber-50 border border-amber-200 rounded p-5 max-w-3xl">
+            <h3 className="font-semibold text-amber-900 mb-2">Readership vs Circulation — why this matters</h3>
+            <p className="text-sm text-amber-800 leading-relaxed">
+              <strong>Circulation</strong> = number of copies sold or distributed. <strong>Readership</strong> = number of people who read it (each copy is typically read by 2–5 people). Media sellers default to circulation when readership is unavailable or lower. Always ask for <em>readership</em> figures — specifically Nielsen CMI average issue readership or Roy Morgan survey data — not just copies distributed. The gap between the two can be 2–4x.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Auckland Newspapers */}
+      <section className="bg-white py-16 lg:py-20">
+        <div className="section-container">
+          <h2 className="text-navy text-2xl font-bold mb-2">Auckland newspaper readership</h2>
+          <p className="text-grey-dark mb-8">Average issue readership (how many people read each individual edition). Nielsen CMI Q4 2024 unless noted.</p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b-2 border-navy">
+                  <th className="text-left py-3 pr-4 text-navy font-semibold">Title</th>
+                  <th className="text-left py-3 pr-4 text-navy font-semibold">Publisher</th>
+                  <th className="text-left py-3 pr-4 text-navy font-semibold">Format</th>
+                  <th className="text-left py-3 pr-4 text-navy font-semibold min-w-[200px]">Readers per issue</th>
+                  <th className="text-left py-3 text-navy font-semibold">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {aucklandNewspapers.map((n) => (
+                  <tr key={n.title} className="border-b border-grey-mid hover:bg-grey-light/50 transition-colors">
+                    <td className="py-3 pr-4 font-semibold text-navy">{n.title}</td>
+                    <td className="py-3 pr-4 text-grey-dark">{n.publisher}</td>
+                    <td className="py-3 pr-4">
+                      <span className="text-xs px-2 py-0.5 rounded-full bg-grey-light text-grey-dark">{n.format}</span>
+                    </td>
+                    <td className="py-3 pr-4">
+                      <ReachBar value={n.readers} max={maxNewspaper} />
+                    </td>
+                    <td className="py-3 text-grey-dark text-xs">{n.notes}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+          <p className="text-xs text-grey-dark mt-4">The NZ Herald brand weekly figure (2.3M) combines multiple formats measured by different methodologies — do not compare directly to the 404,000 average-issue print figure.</p>
+        </div>
+      </section>
+
+      {/* National Magazines */}
+      <section className="bg-grey-light py-16 lg:py-20">
+        <div className="section-container">
+          <h2 className="text-navy text-2xl font-bold mb-2">National magazine readership — top 10</h2>
+          <p className="text-grey-dark mb-8">Monthly readership (number of different people who read the magazine in a month). Roy Morgan December 2025. Readership, not circulation.</p>
+          <div className="overflow-x-auto">
+            <table className="w-full text-sm border-collapse">
+              <thead>
+                <tr className="border-b-2 border-navy">
+                  <th className="text-left py-3 pr-3 text-navy font-semibold w-8">#</th>
+                  <th className="text-left py-3 pr-4 text-navy font-semibold">Title</th>
+                  <th className="text-left py-3 pr-4 text-navy font-semibold">Publisher</th>
+                  <th className="text-left py-3 pr-4 text-navy font-semibold min-w-[200px]">Monthly readers</th>
+                  <th className="text-left py-3 pr-4 text-navy font-semibold">Age skew</th>
+                  <th className="text-left py-3 text-navy font-semibold">Notes</th>
+                </tr>
+              </thead>
+              <tbody>
+                {nationalMagazines.map((m) => (
+                  <tr key={m.title} className="border-b border-grey-mid hover:bg-white transition-colors">
+                    <td className="py-3 pr-3 text-grey-dark font-mono">{m.rank}</td>
+                    <td className="py-3 pr-4 font-semibold text-navy">{m.title}</td>
+                    <td className="py-3 pr-4 text-grey-dark text-xs">{m.publisher}</td>
+                    <td className="py-3 pr-4"><ReachBar value={m.readers} max={maxMag} /></td>
+                    <td className="py-3 pr-4 text-grey-dark text-xs">{m.ageSkew}</td>
+                    <td className="py-3 text-grey-dark text-xs">{m.notes}</td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </section>
+
+      {/* Publisher Network Totals */}
+      <section className="bg-white py-16 lg:py-20">
+        <div className="section-container">
+          <h2 className="text-navy text-2xl font-bold mb-2">Publisher network reach</h2>
+          <p className="text-grey-dark mb-8">Combined monthly audience across each publisher's portfolio. Unduplicated — readers of multiple titles counted once per publisher.</p>
+          <div className="grid sm:grid-cols-3 gap-4">
+            {publisherTotals.map((p) => (
+              <div key={p.publisher} className="bg-grey-light rounded border border-grey-mid p-5">
+                <div className="font-bold text-navy text-lg mb-1">{p.publisher}</div>
+                <div className="text-3xl font-bold text-navy mb-2">{p.totalMonthlyCume.toLocaleString()}</div>
+                <div className="text-xs text-grey-dark mb-3">monthly brand reach</div>
+                <div className="text-xs text-grey-dark mb-3">{p.titles.slice(0, 4).join(", ")}{p.titles.length > 4 ? ` + ${p.titles.length - 4} more` : ""}</div>
+                <p className="text-xs text-grey-dark border-t border-grey-mid pt-3">{p.notes}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Fact Check */}
+      <section className="bg-grey-light py-16 lg:py-20">
+        <div className="section-container">
+          <h2 className="text-navy text-2xl font-bold mb-2">Fact-checking publisher claims</h2>
+          <p className="text-grey-dark mb-8 max-w-2xl">What newspaper and magazine publishers say vs what Nielsen CMI and Roy Morgan data shows.</p>
+          <div className="space-y-4">
+            {factChecks.map((item, i) => {
+              const style = flagStyles[item.flag];
+              return (
+                <div key={i} className={`rounded border ${style.bg} ${style.border} p-5`}>
+                  <div className="flex items-start gap-3 mb-3">
+                    <span className={`text-xs font-bold px-2 py-0.5 rounded-full shrink-0 mt-0.5 ${style.badge}`}>
+                      {style.icon} {item.verdict}
+                    </span>
+                  </div>
+                  <p className="text-sm text-grey-dark italic mb-3">{item.claim}</p>
+                  <p className="text-sm text-navy">{item.independent}</p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Super Media View */}
+      <section className="bg-navy py-16">
+        <div className="section-container">
+          <div className="max-w-2xl">
+            <h2 className="text-white text-2xl font-bold mb-4">Super Media view</h2>
+            <div className="space-y-4 text-white/80 text-sm leading-relaxed">
+              <p>Print press audiences have declined materially over the past decade, but the readers who remain are disproportionately valuable. NZ Herald print readers skew 45+, higher-income, and are decision-makers at a rate above the general population. For the right advertiser, print still delivers quality over quantity.</p>
+              <p>Magazine readership has held up better than press. Are Media's portfolio continues to deliver engaged, category-loyal audiences. The key buying question is not reach — it's context. A reader in NZ House & Garden is in a different mindset than the same person scrolling Facebook. Media pricing rarely accounts for this.</p>
+              <p>The most common error we see with press buying is comparing a publisher's brand reach figure with a competing channel's rated reach — these are apples to oranges. Always ask: same metric, same measurement methodology, same time period.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Related */}
+      <section className="bg-grey-light py-12">
+        <div className="section-container">
+          <h3 className="text-navy font-semibold mb-4 text-sm uppercase tracking-wide">Related resources</h3>
+          <div className="flex flex-wrap gap-3">
+            {[
+              { href: "/resources/nz-radio-ratings", label: "NZ Radio Ratings" },
+              { href: "/resources/nz-tv-ratings", label: "NZ TV Ratings" },
+              { href: "/resources/nz-digital-audiences", label: "NZ Digital Audiences" },
+              { href: "/resources/nz-media-rates", label: "NZ Media Rate Benchmarks" },
+            ].map(({ href, label }) => (
+              <Link key={href} href={href} className="inline-flex items-center gap-1 text-sm text-navy border border-navy/30 rounded px-4 py-2 hover:bg-navy hover:text-white transition-colors">
+                {label} →
+              </Link>
+            ))}
+          </div>
+        </div>
+      </section>
+    </>
+  );
+}
