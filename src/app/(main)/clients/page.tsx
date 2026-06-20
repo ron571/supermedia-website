@@ -76,6 +76,7 @@ const clients: Client[] = [
   },
   {
     name: "Cornerstone Media",
+    logo: "/logos/cornerstone.svg",
     url: "https://www.cornerstonemedia.com.au/",
     darkBg: true,
   },
