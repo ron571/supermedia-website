@@ -610,6 +610,21 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ─── Section 9b: Resources Promo ─── */}
+      <section className="bg-grey-light py-14 lg:py-16">
+        <div className="section-container">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-6">
+            <div>
+              <h2 className="text-navy text-xl font-bold mb-1">NZ media audience data — independent</h2>
+              <p className="text-grey-dark text-sm max-w-xl">Radio ratings, TV reach, digital audiences, outdoor, cinema, influencer. Fact-checked against what sellers actually claim.</p>
+            </div>
+            <Link href="/resources" className="btn-primary shrink-0">
+              View NZ media data →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ─── Section 10: Final CTA ─── */}
       <section className="bg-navy py-20 lg:py-28">
         <div className="section-container text-center">

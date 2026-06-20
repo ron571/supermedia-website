@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "Clients",
+  title: "NZ Media Clients — Businesses Super Media Has Worked With",
   description:
-    "Some of the New Zealand businesses Super Media has worked with across strategy, media planning, auditing and advisory.",
+    "New Zealand businesses Super Media has worked with across media strategy, media planning, auditing and advisory — retail, professional services, financial services, and property.",
   alternates: { canonical: "/clients" },
 };
 
