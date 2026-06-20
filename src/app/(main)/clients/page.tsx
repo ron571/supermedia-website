@@ -19,6 +19,7 @@ const clients: Client[] = [
   {
     name: "Tilda Rice NZ",
     url: "https://www.tilda.com/en-nz/",
+    darkBg: true,
   },
   {
     name: "Trident Noodles & Sauces",
@@ -27,6 +28,7 @@ const clients: Client[] = [
   },
   {
     name: "Hutchinsons Foods",
+    logo: "https://www.hutchinsons.co.nz/wp-content/uploads/2017/09/hutchinsons-logo-clear-cut-red.png",
     url: "https://www.hutchinsons.co.nz/",
   },
   {
@@ -57,7 +59,8 @@ const clients: Client[] = [
     darkBg: true,
   },
   {
-    name: "Steinway Pianos",
+    name: "Steinway & Sons",
+    logo: "https://www.steinway.com/.resources/steinway-main-webapp/resources/assets/svg/ss-logo2.svg",
     url: "https://www.steinway.com/",
   },
   {
@@ -73,6 +76,7 @@ const clients: Client[] = [
   {
     name: "Cornerstone Media",
     url: "https://www.cornerstonemedia.com.au/",
+    darkBg: true,
   },
 ];
 
