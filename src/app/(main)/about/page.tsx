@@ -211,7 +211,7 @@ export default function AboutPage() {
               className="absolute left-0 top-0 bottom-0 w-px bg-grey-mid ml-[52px] hidden sm:block"
               aria-hidden="true"
             />
-            <ol className="space-y-8">
+            <ol className="space-y-8 list-none">
               {timelineItems.map(({ year, role }) => (
                 <li key={year + role} className="flex items-start gap-6 sm:gap-10">
                   <div className="flex-shrink-0 w-[52px] text-right">
@@ -219,7 +219,7 @@ export default function AboutPage() {
                   </div>
                   <div className="relative">
                     <span
-                      className="absolute -left-[42px] top-1.5 w-2.5 h-2.5 rounded-full bg-navy hidden sm:block"
+                      className="absolute -left-[38px] top-1.5 w-3 h-3 rounded-full bg-orange border-2 border-white hidden sm:block"
                       aria-hidden="true"
                     />
                     <p className="text-body text-lg">{role}</p>
