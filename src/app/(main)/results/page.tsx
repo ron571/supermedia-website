@@ -50,10 +50,15 @@ const cases = [
   {
     sector: "Retail",
     service: "Media Audit",
+    spend: "$600K/year",
     situation:
-      "National retailer, $600K/year in media spend, no channel performance data and no independent view on whether the buy was efficient.",
+      "A national retailer had been with the same agency for four years. Media spend had grown steadily but sales response had plateaued. No one inside the business had an independent view on whether the buy was efficient — reporting came entirely from the agency.",
+    methodology:
+      "Line-by-line audit of channel allocations, CPMs, audience delivery, and response attribution. Each channel benchmarked against independent NZ market data for comparable retail advertisers.",
     finding:
-      "Digital display was consuming 34% of the media budget and delivering 8% of measurable response. The channel had never been independently benchmarked.",
+      "Digital display was consuming 34% of the media budget and delivering 8% of measurable response. The channel had never been independently benchmarked — the CPMs being paid were 40% above market rate for comparable placements. Two OOH formats were retained for 'brand presence' with no audience rationale.",
+    recommendation:
+      "Reallocate display budget into search and connected TV, renegotiate OOH terms, and set independent measurement benchmarks before next planning cycle.",
     outcomes: [
       { stat: "19%", label: "reduction in total media spend" },
       { stat: "+12%", label: "increase in audience reach" },
@@ -62,22 +67,32 @@ const cases = [
   {
     sector: "Financial Services",
     service: "Media Strategy",
+    spend: "$280K launch budget",
     situation:
-      "New product launch required an independent media plan to compare against the incumbent agency recommendation.",
+      "A financial services business was launching a new lending product aimed at under-45 borrowers. Their incumbent agency submitted a media plan. Before approving it, they wanted an independent second opinion on whether it was the right channel mix for the audience.",
+    methodology:
+      "Independent media plan built from audience data up — Nielsen demographic consumption data for the target audience, layered against CPM benchmarks and response data from comparable product launches in NZ.",
     finding:
-      "The agency plan over-indexed on broadcast for an under-45 audience. The recommended channel mix was rebuilt from audience behaviour up, using NZ-specific consumption data.",
+      "The agency plan allocated 58% of budget to linear TV and print — channels that heavily over-index for 55+ audiences. The under-45 target was largely on connected TV, digital audio, and search. The plan would have delivered reach, but to the wrong people at the wrong times.",
+    recommendation:
+      "Rebuild the channel mix: shift to connected TV, Spotify, YouTube pre-roll and search. Negotiate broadcast TV rate as remnant only. Retain print for brand credibility at reduced weight.",
     outcomes: [
       { stat: "31%", label: "lower CPM vs agency plan" },
-      { stat: "2×", label: "qualified enquiry rate" },
+      { stat: "2×", label: "qualified enquiry rate vs forecast" },
     ],
   },
   {
     sector: "Property",
     service: "Retained Advisory",
+    spend: "$420K/year across 4 channels",
     situation:
-      "Ongoing media spend across multiple channels, with a desire for independent oversight without replacing the incumbent agency.",
+      "A property business was running media across digital, radio, print, and OOH with an agency managing the buy. They wanted independent oversight — not to replace the agency, but to have someone in their corner when reviewing proposals and annual rate negotiations.",
+    methodology:
+      "Monthly review of media schedules, placements, and buying terms. Quarterly benchmarking of CPMs against market rates. Annual audit of agency performance against original plan.",
     finding:
-      "Overpriced digital inventory had been undetected for 18 months. Two major buys lacked audience rationale. Buying terms on radio had not been reviewed or renegotiated in three years.",
+      "Overpriced digital inventory had been running undetected for 18 months — CPMs on two major placements were between 35–50% above independent benchmark. Radio buying terms had not been renegotiated in three years despite significant audience shifts post-COVID. Two sponsorship packages were renewed automatically without performance review.",
+    recommendation:
+      "Renegotiate digital and radio terms immediately, require audience rationale on all future sponsorship renewals, and introduce independent reporting benchmarks for agency accountability.",
     outcomes: [
       { stat: "$140K", label: "in savings identified, year one" },
       { stat: "Ongoing", label: "retained advisory relationship" },
@@ -108,42 +123,52 @@ export default function ResultsPage() {
       {/* ─── Case Studies ─── */}
       <section className="bg-white py-20 lg:py-28">
         <div className="section-container">
-          <div className="space-y-12">
-            {cases.map(({ sector, service, situation, finding, outcomes }) => (
-              <div
-                key={sector}
-                className="grid grid-cols-1 lg:grid-cols-3 border border-grey-mid rounded overflow-hidden"
-              >
-                {/* Sector panel */}
-                <div className="bg-navy p-8 flex flex-col justify-between">
-                  <div>
-                    <p className="eyebrow mb-3">{service}</p>
+          <div className="space-y-16">
+            {cases.map(({ sector, service, spend, situation, methodology, finding, recommendation, outcomes }) => (
+              <div key={sector} className="border border-grey-mid rounded overflow-hidden">
+                {/* Header bar */}
+                <div className="bg-navy px-8 py-6 grid grid-cols-1 sm:grid-cols-3 gap-6 items-start">
+                  <div className="sm:col-span-2">
+                    <p className="eyebrow mb-2">{service}</p>
                     <h2 className="text-white text-2xl font-bold">{sector}</h2>
+                    <p className="text-white/50 text-sm mt-1">Media spend: {spend}</p>
                   </div>
-                  <div className="mt-8 space-y-4">
+                  <div className="flex sm:flex-col gap-6 sm:gap-4 sm:items-end">
                     {outcomes.map(({ stat, label }) => (
-                      <div key={label}>
-                        <p className="text-orange text-3xl font-bold">{stat}</p>
-                        <p className="text-white/60 text-sm">{label}</p>
+                      <div key={label} className="sm:text-right">
+                        <p className="text-orange text-3xl font-bold leading-none">{stat}</p>
+                        <p className="text-white/60 text-xs mt-1">{label}</p>
                       </div>
                     ))}
                   </div>
                 </div>
 
-                {/* Body */}
-                <div className="lg:col-span-2 p-8">
-                  <div className="mb-6">
-                    <p className="text-xs font-bold uppercase tracking-eyebrow text-grey-dark mb-2">
-                      Situation
-                    </p>
-                    <p className="text-body">{situation}</p>
+                {/* Body — four labelled sections */}
+                <div className="grid grid-cols-1 lg:grid-cols-2 divide-y lg:divide-y-0 lg:divide-x divide-grey-mid">
+                  <div className="p-8 space-y-6">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-eyebrow text-grey-dark mb-2">Situation</p>
+                      <p className="text-body text-sm leading-relaxed">{situation}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-eyebrow text-grey-dark mb-2">Methodology</p>
+                      <p className="text-body text-sm leading-relaxed">{methodology}</p>
+                    </div>
                   </div>
-                  <div className="mb-6">
-                    <p className="text-xs font-bold uppercase tracking-eyebrow text-grey-dark mb-2">
-                      Finding
-                    </p>
-                    <p className="text-body">{finding}</p>
+                  <div className="p-8 space-y-6">
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-eyebrow text-grey-dark mb-2">What we found</p>
+                      <p className="text-body text-sm leading-relaxed">{finding}</p>
+                    </div>
+                    <div>
+                      <p className="text-xs font-bold uppercase tracking-eyebrow text-grey-dark mb-2">Recommendation</p>
+                      <p className="text-body text-sm leading-relaxed">{recommendation}</p>
+                    </div>
                   </div>
+                </div>
+
+                {/* Footer link */}
+                <div className="border-t border-grey-mid px-8 py-4 bg-grey-light/50">
                   <Link
                     href={`/services#${service === "Media Audit" ? "audit" : service === "Media Strategy" ? "strategy" : "advisory"}`}
                     className="text-orange text-sm font-medium hover:underline"

@@ -235,15 +235,81 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* ─── Who This Is For ─── */}
+      <section className="bg-grey-light py-20 lg:py-28">
+        <div className="section-container">
+          <div className="max-w-4xl mx-auto">
+            <h2 className="text-navy text-2xl md:text-3xl font-bold mb-3">Who Super Media is for</h2>
+            <p className="text-body mb-10 max-w-2xl">Not every business is a good fit. Here&apos;s an honest picture of where the work makes sense — and where it doesn&apos;t.</p>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-10">
+              {/* Good fit */}
+              <div className="bg-white border border-grey-mid rounded p-8">
+                <h3 className="text-navy font-bold text-lg mb-5 flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">✓</span>
+                  Good fit
+                </h3>
+                <ul className="space-y-4 text-body text-sm">
+                  <li className="flex items-start gap-3">
+                    <span className="text-emerald-500 font-bold mt-0.5 flex-shrink-0">→</span>
+                    <span><strong className="text-navy">$2,000–$20,000/month in advertising</strong> — enough spend that independent advice changes the economics. Below $1,500/month the savings rarely justify the fee.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-emerald-500 font-bold mt-0.5 flex-shrink-0">→</span>
+                    <span><strong className="text-navy">You have an agency but want a second opinion</strong> — the most common situation. Something feels off, results have plateaued, or a renewal is coming up.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-emerald-500 font-bold mt-0.5 flex-shrink-0">→</span>
+                    <span><strong className="text-navy">You&apos;re planning a significant campaign</strong> — launching a product, entering a new market, or making a media decision that matters enough to get right.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-emerald-500 font-bold mt-0.5 flex-shrink-0">→</span>
+                    <span><strong className="text-navy">You want straight answers</strong> — not a deck full of reach and frequency curves that don&apos;t connect to your actual business outcomes.</span>
+                  </li>
+                </ul>
+              </div>
+
+              {/* Not a fit */}
+              <div className="bg-white border border-grey-mid rounded p-8">
+                <h3 className="text-navy font-bold text-lg mb-5 flex items-center gap-2">
+                  <span className="w-6 h-6 rounded-full bg-red-400 flex items-center justify-center text-white text-xs font-bold flex-shrink-0">×</span>
+                  Probably not a fit
+                </h3>
+                <ul className="space-y-4 text-body text-sm">
+                  <li className="flex items-start gap-3">
+                    <span className="text-grey-dark font-bold mt-0.5 flex-shrink-0">→</span>
+                    <span><strong className="text-navy">Under $1,500/month total ad spend</strong> — at this level, redirecting budget is more valuable than auditing it. Ron will tell you this upfront rather than take the engagement.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-grey-dark font-bold mt-0.5 flex-shrink-0">→</span>
+                    <span><strong className="text-navy">You want campaigns managed for you</strong> — Super Media provides strategy, oversight, and programmatic buying. Full-service campaign execution is not the offer.</span>
+                  </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-grey-dark font-bold mt-0.5 flex-shrink-0">→</span>
+                    <span><strong className="text-navy">You need a yes-person</strong> — the value here is an honest read, including when the honest read is uncomfortable. If you want someone to validate a decision already made, this isn&apos;t the right fit.</span>
+                  </li>
+                </ul>
+              </div>
+            </div>
+
+            <div className="bg-navy/5 border border-navy/20 rounded p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <p className="text-navy font-medium">Not sure if it makes sense for your situation?</p>
+              <Link href="/superscan" className="btn-primary flex-shrink-0">
+                Run a free Superscan →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* ─── Bottom CTA ─── */}
-      <section className="bg-grey-light py-16">
+      <section className="bg-navy py-16">
         <div className="section-container text-center">
-          <p className="text-navy text-xl font-medium mb-6 max-w-xl mx-auto">
-            Not sure which fits? Run a Superscan and we&apos;ll work it out
-            together.
+          <p className="text-white text-xl font-medium mb-6 max-w-xl mx-auto">
+            Ready to talk? The first conversation is free and there&apos;s no obligation.
           </p>
-          <Link href="/superscan" className="btn-primary">
-            Run your Superscan →
+          <Link href="/contact" className="btn-outline-white">
+            Book a call with Ron →
           </Link>
         </div>
       </section>

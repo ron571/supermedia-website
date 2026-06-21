@@ -52,6 +52,74 @@ export default function SuperscanPage() {
         </div>
       </section>
 
+      {/* What Superscan does */}
+      <section className="bg-white py-12 border-b border-grey-mid">
+        <div className="section-container">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-4xl mx-auto">
+            <div className="text-center">
+              <div className="w-10 h-10 rounded-full bg-orange/10 flex items-center justify-center mx-auto mb-4">
+                <span className="text-orange font-bold text-lg">1</span>
+              </div>
+              <h3 className="text-navy font-bold mb-2">Tell us your mix</h3>
+              <p className="text-body text-sm">Which channels you&apos;re running, roughly what you&apos;re spending, and how long you&apos;ve been at it. Takes about 90 seconds.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-10 h-10 rounded-full bg-orange/10 flex items-center justify-center mx-auto mb-4">
+                <span className="text-orange font-bold text-lg">2</span>
+              </div>
+              <h3 className="text-navy font-bold mb-2">Get an independent read</h3>
+              <p className="text-body text-sm">Superscan benchmarks your mix against NZ market data and 35 years of media buying experience. You get a plain-English assessment — not a dashboard.</p>
+            </div>
+            <div className="text-center">
+              <div className="w-10 h-10 rounded-full bg-orange/10 flex items-center justify-center mx-auto mb-4">
+                <span className="text-orange font-bold text-lg">3</span>
+              </div>
+              <h3 className="text-navy font-bold mb-2">One question worth asking</h3>
+              <p className="text-body text-sm">Every Superscan ends with a specific question to ask your agency or supplier — based on what your mix actually shows, not a generic checklist.</p>
+            </div>
+          </div>
+
+          {/* Sample output preview */}
+          <div className="mt-12 max-w-2xl mx-auto">
+            <p className="text-xs font-bold uppercase tracking-eyebrow text-grey-dark mb-4 text-center">Sample output</p>
+            <div className="border border-grey-mid rounded bg-grey-light overflow-hidden">
+              <div className="bg-navy px-6 py-4 flex items-center justify-between">
+                <span className="text-white font-semibold text-sm">Superscan — Media Mix Assessment</span>
+                <span className="text-white/40 text-xs">Example only</span>
+              </div>
+              <div className="p-6 space-y-4">
+                <div className="flex items-start gap-3">
+                  <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-amber-400 flex items-center justify-center text-white text-xs font-bold">!</span>
+                  <div>
+                    <p className="text-navy font-semibold text-sm">Digital display — worth checking</p>
+                    <p className="text-grey-dark text-sm">Display at 35% of budget is above the NZ benchmark for your category. Without independent viewability data, this allocation carries risk.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center text-white text-xs font-bold">✓</span>
+                  <div>
+                    <p className="text-navy font-semibold text-sm">Search — reasonable allocation</p>
+                    <p className="text-grey-dark text-sm">Your search weighting is in range for a business at this spend level. The question is how actively the account is being managed.</p>
+                  </div>
+                </div>
+                <div className="flex items-start gap-3">
+                  <span className="mt-0.5 flex-shrink-0 w-5 h-5 rounded-full bg-red-500 flex items-center justify-center text-white text-xs font-bold">×</span>
+                  <div>
+                    <p className="text-navy font-semibold text-sm">No independent measurement</p>
+                    <p className="text-grey-dark text-sm">You&apos;re relying entirely on agency reporting. That&apos;s the most common issue we see — and the easiest to fix.</p>
+                  </div>
+                </div>
+                <div className="border-t border-grey-mid pt-4 mt-2">
+                  <p className="text-xs font-bold uppercase tracking-eyebrow text-grey-dark mb-2">The one question to ask your agency</p>
+                  <p className="text-navy text-sm font-medium italic">&ldquo;Can you show me the viewable CPM on our display placements, independently verified — not from your own platform?&rdquo;</p>
+                </div>
+              </div>
+            </div>
+            <p className="text-xs text-grey-dark text-center mt-3">Your Superscan will reflect your actual channels and spend — this is an illustrative example.</p>
+          </div>
+        </div>
+      </section>
+
       {/* Form */}
       <section className="bg-grey-light py-12 lg:py-16 flex-1">
         <div className="section-container">
