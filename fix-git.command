@@ -13,7 +13,7 @@ if [ -f "$HOME/Downloads/tilda-logo.svg" ]; then
 fi
 
 git add -A
-git commit -m "fix: sitemap quarterly→monthly, data layer imports, TikTok article"
+git commit -m "fix: career timeline list markers and dot styling"
 git push origin main
 echo ""
 echo "Done! Press any key to close."
