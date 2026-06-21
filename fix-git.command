@@ -13,7 +13,7 @@ if [ -f "$HOME/Downloads/tilda-logo.svg" ]; then
 fi
 
 git add -A
-git commit -m "feat: improve demographic filter UX — rank change arrows, est. reach column"
+git commit -m "refactor: remove duplicate homepage services section, keep /services page"
 git push origin main
 echo ""
 echo "Done! Press any key to close."

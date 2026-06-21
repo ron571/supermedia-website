@@ -361,61 +361,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Section 5: Services ─── */}
-      <section className="bg-white py-20 lg:py-28">
-        <div className="section-container">
-          <div className="max-w-xl mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold text-navy mb-4">
-              What Super Media does
-            </h2>
-            <p className="text-body text-lg" style={{ lineHeight: 1.65 }}>
-              We work across the full media picture — not just one channel.
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-            {[
-              {
-                heading: "Media Strategy & Planning",
-                body: "Where your budget should go, and why. Built from audience behaviour up, not from what a supplier wants to sell.",
-              },
-              {
-                heading: "Media Audit & Review",
-                body: "An independent read on whether your current spend is performing. Most audits identify at least one material issue in the first session.",
-              },
-              {
-                heading: "Programmatic Buying",
-                body: "Precision audience buying without agency markup or preferred supplier relationships shaping the buy.",
-              },
-              {
-                heading: "Social Media Strategy",
-                body: "Channel strategy and audience targeting — not just content scheduling.",
-              },
-              {
-                heading: "Superscan",
-                body: "A free 30-second AI diagnosis of your current media mix. The fastest independent read available to NZ businesses.",
-              },
-              {
-                heading: "Retained Advisory",
-                body: "Ongoing independent guidance for businesses that want a media-literate voice in the room — without replacing their current agency.",
-              },
-            ].map(({ heading, body }) => (
-              <div key={heading} className="border border-grey-mid rounded p-6">
-                <h3 className="text-navy text-lg font-bold mb-2">{heading}</h3>
-                <p className="text-body text-sm" style={{ lineHeight: 1.65 }}>{body}</p>
-              </div>
-            ))}
-          </div>
-          <div className="mt-8">
-            <Link
-              href="/services"
-              className="text-orange font-semibold hover:text-orange-dark transition-colors"
-            >
-              Full service details →
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* ─── Section 6: About Ron ─── */}
       <section className="bg-grey-light py-20 lg:py-28">
         <div className="section-container">
