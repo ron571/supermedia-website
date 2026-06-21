@@ -582,6 +582,114 @@ Independent oversight doesn't fix that structure. But it adds a check on it.`,
       "why-your-advertising-isnt-working-nz-small-business",
     ],
   },
+  {
+    slug: "tiktok-advertising-nz-guide",
+    title: "TikTok in New Zealand: who's on it, why it works, and how to advertise without wasting money",
+    description: "1.9 million New Zealanders use TikTok. The under-30s are dominant, but the platform is aging fast. Here's what NZ advertisers need to know — audience data, ad formats, what works, and the pitfalls most brands walk straight into.",
+    tag: "Platform Guide",
+    date: "21 Jun 2026",
+    readTime: "7 min read",
+    body: `TikTok is not a niche youth platform anymore. It has 1.9 million users in New Zealand — roughly 36% of the total population, and about 60% of everyone aged 18–29 uses it every week. That's a meaningful reach number, and it's still growing.
+
+But the way most NZ advertisers approach TikTok is wrong. Either they dismiss it as a platform for teenagers dancing, or they throw budget at it without understanding how it's different from every other channel in their mix. Both approaches tend to waste money.
+
+This is a guide to doing it properly.
+
+**Who's actually on TikTok in NZ**
+
+The [NZ digital audiences data](/resources/nz-digital-audiences) gives a clear picture. TikTok has approximately 1.9 million New Zealand users. The age skew is steep: the 18–29 cohort over-indexes at more than double the all-adult average (index 224 vs 100). The 30–54 group is growing but still below average (index 72). The 55+ group is barely present (index 18).
+
+Gender skew is mild — slightly female (index 118 female vs 82 male) but not dramatically so.
+
+What this means in practice: if your target audience is under 35, TikTok has genuine reach. If you're targeting 45+, it doesn't. That's not a value judgement on the platform — it's just a fact that should determine whether TikTok belongs in your mix at all.
+
+The other thing worth knowing: TikTok's NZ audience is growing in the 25–44 bracket. The platform is aging up, as every social platform does. What's a youth platform today is a broad-reach platform in five years. That's happened with Facebook, Instagram, and YouTube. It will happen with TikTok.
+
+**Why TikTok is different from every other platform you're buying**
+
+Every other social platform you're buying — Meta, LinkedIn, YouTube — lets you push content at an audience. You define a target, you serve an ad, the platform finds the people who fit your criteria.
+
+TikTok's algorithm works differently. It prioritises content discovery over social graphs. Users don't primarily see content from accounts they follow — they see content the algorithm predicts they'll engage with. This means a piece of content from a brand account with 500 followers can reach 50,000 people if the algorithm decides it's interesting.
+
+That's the opportunity. The algorithm rewards content quality more than ad spend.
+
+The implication: creative is the variable that matters most on TikTok. On Meta, you can run a mediocre creative and compensate with precise targeting. On TikTok, mediocre creative just dies. The algorithm ignores it, your CPM effectively skyrockets, and you conclude TikTok doesn't work. Usually it does work — just not with your creative.
+
+**Ad formats worth knowing**
+
+TikTok's core ad formats for NZ advertisers:
+
+**In-Feed Ads** are the standard format — video ads that appear in the For You Page feed between organic content. They look like organic posts. They auto-play with sound. They can be 5–60 seconds, though 15–30 seconds is the practical sweet spot for most objectives. These are where most NZ advertisers should start.
+
+**TopView** is the premium format — the first thing a user sees when they open the app. High impact, high cost, typically reserved for major campaign moments. Not appropriate for most NZ advertisers at most times, but worth knowing exists for brand launches or significant seasonal pushes.
+
+**Branded Hashtag Challenges** ask users to create content around a theme. These work when the brief is genuinely interesting and the category allows participation. They don't work for insurance, B2B, financial services, or anything that doesn't have a clear creative answer to "why would someone make a video about this?"
+
+**Spark Ads** let you boost existing organic content — either your own or a creator's, with their permission. This is often the highest-performing format because you're amplifying content that has already proven it resonates. If you're running influencer campaigns on TikTok (which you should be), Spark Ads are how you get more out of them.
+
+**What it costs**
+
+NZ TikTok CPMs run roughly $10–$25 for standard In-Feed placements. That's cheaper than Meta on average, though TikTok's CPMs have been rising as more advertisers enter the platform.
+
+The benchmark that matters more than CPM on TikTok is cost per result — whether that's cost per click, cost per view, or cost per conversion. TikTok's measurement is still maturing, and attribution is less robust than Google or Meta. Set your measurement framework before you start, not after.
+
+TikTok has a minimum campaign spend requirement (around NZD $50/day for most campaign types), which makes it accessible even for smaller advertisers.
+
+**What works — and what doesn't**
+
+After running TikTok campaigns for NZ clients, the pattern is consistent:
+
+**What works:** Content that looks like it belongs on the platform. Native-feeling video, often filmed vertically on a phone, that participates in how people actually use TikTok. Strong hook in the first two seconds — users scroll fast and the algorithm tracks completion rates. Clear, simple message. Sound-on creative (unlike Meta where most users scroll muted).
+
+**What doesn't work:** Repurposed TV or YouTube ads. Overly polished brand films that look like advertising. Content that starts with your logo. Anything longer than 30 seconds that doesn't earn the watch time by the 5-second mark. Ads that talk about the product rather than showing it in context.
+
+The most common mistake: taking a $50,000 TV production and cutting it to 15 seconds for TikTok. The format, the framing, the pacing — none of it is designed for TikTok. What works on TikTok usually costs a fraction of what a TV production costs to make. A creator with a phone and a clear brief will outperform a studio-produced spot most of the time.
+
+**Influencer marketing on TikTok in NZ**
+
+TikTok influencer marketing in NZ works differently from Instagram. Because the algorithm can amplify any content regardless of follower count, nano and micro creators (1K–50K followers) can drive meaningful reach if their content hits. You don't need to go to the top of the NZ creator market to get results.
+
+What you do need: creators whose content style matches the brief, whose audience is genuinely NZ-based, and who understand how to make content that performs on TikTok specifically. Many Instagram creators make poor TikTok content and vice versa. They're different skills.
+
+Check engagement rates before contracting. On TikTok, unlike Instagram, engagement rate can be misleading because viral content distorts the averages. Look at consistent performance across recent posts, not just peak posts. And always verify NZ audience composition — many NZ TikTok creators have significant Australian or international followings.
+
+**The pitfalls**
+
+A few things NZ advertisers consistently get wrong on TikTok:
+
+**Treating it as a reach channel when the audience doesn't fit.** If your target is 45+, TikTok is not the right channel today. Don't run it because you feel like you should be there.
+
+**Running the wrong creative.** Platform-native content is not optional on TikTok — it's the prerequisite. If you're not prepared to make content that actually fits the platform, your budget will underperform.
+
+**Measurement gaps.** TikTok's attribution model is less mature than Google or Meta. View-through attribution on TikTok is set at a 7-day default, which means TikTok takes credit for conversions that happened a week after someone watched your ad. Treat this with appropriate scepticism. Cross-reference against incrementality data where possible.
+
+**Conflating TikTok views with engagement.** A view on TikTok can be as short as 1–2 seconds. View volume looks impressive in a report. It's a weak signal. Ask for completion rates and video-through-rate at the 25%, 50%, and 75% marks.
+
+**The brand safety question**
+
+Some NZ advertisers have concerns about brand safety on TikTok — both the content adjacency question (what does your ad appear next to?) and the broader geopolitical concerns about the platform's Chinese ownership.
+
+On content adjacency: TikTok offers brand safety controls including category exclusions and inventory filters. These are less mature than Google and Meta's but are improving. If brand safety is a genuine concern for your category, discuss inventory filter options with TikTok directly or through your agency.
+
+On the ownership question: this is a legitimate consideration that each advertiser needs to assess for their own circumstances. The data handling questions around TikTok are not fully resolved. For advertisers in sensitive categories — government, financial services, healthcare — this deserves more scrutiny than a standard consumer goods advertiser would need to apply.
+
+**Where TikTok fits in an NZ media mix**
+
+TikTok is not a standalone channel. For most NZ advertisers, it's an addition to a broader digital mix — most often alongside Meta and YouTube — targeted at under-35 audiences. It rarely replaces something; it extends reach into a demographic that's harder to reach on other platforms.
+
+If you're spending on Meta already and your target skews under 35, TikTok deserves a test. If you haven't run it before, start with In-Feed Ads, brief properly for the platform, set a 4–8 week test period, and evaluate against defined outcome metrics — not impressions.
+
+The 1.9 million NZ users are real. The reach is real. Whether TikTok belongs in your specific mix depends on who you're trying to reach, what you're prepared to invest in creative, and whether your measurement framework is solid enough to know what's working.
+
+**Further reading**
+
+The audience data behind this article comes from our [NZ Digital Audiences page](/resources/nz-digital-audiences), which shows monthly traffic, demographic indices, and social platform user data for New Zealand's top websites and social platforms. For context on what TikTok advertising should cost relative to other channels, see the [NZ Media Rate Benchmarks](/resources/nz-media-rates).`,
+    relatedSlugs: [
+      "iab-nz-2025-digital-advertising-data-what-it-means",
+      "why-nz-advertisers-pay-too-much-for-digital-display",
+      "why-your-advertising-isnt-working-nz-small-business",
+    ],
+  },
 ];
 
 export function getArticles(): Article[] {

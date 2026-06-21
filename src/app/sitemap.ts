@@ -20,14 +20,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     // Resources hub
     { url: `${BASE_URL}/resources`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     // Resource pages
-    { url: `${BASE_URL}/resources/nz-radio-ratings`, lastModified: new Date(), changeFrequency: "quarterly", priority: 0.8 },
-    { url: `${BASE_URL}/resources/nz-tv-ratings`, lastModified: new Date(), changeFrequency: "quarterly", priority: 0.8 },
-    { url: `${BASE_URL}/resources/nz-press-readership`, lastModified: new Date(), changeFrequency: "quarterly", priority: 0.8 },
-    { url: `${BASE_URL}/resources/nz-digital-audiences`, lastModified: new Date(), changeFrequency: "quarterly", priority: 0.8 },
-    { url: `${BASE_URL}/resources/nz-outdoor-media`, lastModified: new Date(), changeFrequency: "quarterly", priority: 0.8 },
-    { url: `${BASE_URL}/resources/nz-cinema-advertising`, lastModified: new Date(), changeFrequency: "quarterly", priority: 0.7 },
-    { url: `${BASE_URL}/resources/nz-influencer-marketing`, lastModified: new Date(), changeFrequency: "quarterly", priority: 0.7 },
-    { url: `${BASE_URL}/resources/nz-media-rates`, lastModified: new Date(), changeFrequency: "quarterly", priority: 0.8 },
+    { url: `${BASE_URL}/resources/nz-radio-ratings`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/resources/nz-tv-ratings`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/resources/nz-press-readership`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/resources/nz-digital-audiences`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/resources/nz-outdoor-media`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/resources/nz-cinema-advertising`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/resources/nz-influencer-marketing`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/resources/nz-media-rates`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
   ];
 
   const articleRoutes: MetadataRoute.Sitemap = articles.map((article) => ({
