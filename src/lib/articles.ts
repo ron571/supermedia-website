@@ -692,8 +692,10 @@ The audience data behind this article comes from our [NZ Digital Audiences page]
   },
 ];
 
+const parseDate = (d: string) => new Date(d.replace(/(\d+) (\w+) (\d+)/, "$2 $1 $3"));
+
 export function getArticles(): Article[] {
-  return articles;
+  return [...articles].sort((a, b) => parseDate(b.date).getTime() - parseDate(a.date).getTime());
 }
 
 export function getArticleBySlug(slug: string): Article | undefined {
