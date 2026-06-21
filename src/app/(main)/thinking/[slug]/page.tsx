@@ -27,7 +27,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       authors: ["Ron Sneddon"],
       images: [
         {
-          url: "/og-default.png",
+          url: "/api/og",
           width: 1200,
           height: 630,
           alt: article.title,
@@ -112,7 +112,7 @@ export default function ArticlePage({ params }: Props) {
     articleSection: article.tag,
     image: {
       "@type": "ImageObject",
-      url: `${BASE_URL}/assets/og-default.png`,
+      url: `${BASE_URL}/api/og`,
       width: 1200,
       height: 630,
     },
@@ -141,7 +141,7 @@ export default function ArticlePage({ params }: Props) {
       url: BASE_URL,
       logo: {
         "@type": "ImageObject",
-        url: `${BASE_URL}/assets/og-default.png`,
+        url: `${BASE_URL}/api/og`,
       },
     },
     speakable: {

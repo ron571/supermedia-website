@@ -1,6 +1,8 @@
 import type { MetadataRoute } from "next";
 import { getArticles } from "@/lib/articles";
 
+const parseDate = (d: string) => new Date(d.replace(/(\d+) (\w+) (\d+)/, "$2 $1 $3"));
+
 const BASE_URL =
   process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.supermedia.co.nz";
 
@@ -28,11 +30,14 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/resources/nz-cinema-advertising`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/resources/nz-influencer-marketing`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
     { url: `${BASE_URL}/resources/nz-media-rates`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    // Superscan tool pages
+    { url: `${BASE_URL}/audience-reality-check`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
+    { url: `${BASE_URL}/audience-reality-check/tool`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.7 },
   ];
 
   const articleRoutes: MetadataRoute.Sitemap = articles.map((article) => ({
     url: `${BASE_URL}/thinking/${article.slug}`,
-    lastModified: new Date(article.date),
+    lastModified: parseDate(article.date),
     changeFrequency: "monthly" as const,
     priority: 0.6,
   }));

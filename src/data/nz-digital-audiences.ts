@@ -66,6 +66,34 @@ export const websites: WebsiteRow[] = [
   { domain: "countdown.co.nz", category: "Retail / Grocery", monthlyVisits: 8.4, notes: "Grocery online shopping; female-skewed; peaks 30–54", ageIndex: { all: 100, "18-29": 76, "30-54": 122, "55plus": 102 }, genderIndex: { all: 100, female: 132, male: 64 } },
 ];
 
+export interface DigitalNewsSite {
+  title: string;
+  owner: string;
+  monthlyUniques: number;
+  publisherClaim: string;
+  independent: string;
+  flag: "green" | "orange";
+}
+
+export const digitalNewsSites: DigitalNewsSite[] = [
+  {
+    title: "Stuff.co.nz",
+    owner: "Stuff Ltd",
+    monthlyUniques: 2230000,
+    publisherClaim: "3.4M+ monthly audience (cross-platform)",
+    independent: "2.23M unique browsers/month (Nielsen Digital Ratings). The 3.4M 'cross-platform' figure adds email, app, and social reach — different metrics measured differently.",
+    flag: "orange",
+  },
+  {
+    title: "NZHerald.co.nz",
+    owner: "NZME",
+    monthlyUniques: 1960000,
+    publisherClaim: "2.4M+ monthly digital audience",
+    independent: "1.96M unique browsers/month (Nielsen). NZME's higher figure includes video streams, app sessions, and newsletter opens counted as separate 'audiences'.",
+    flag: "orange",
+  },
+];
+
 export const socialPlatforms: SocialRow[] = [
   { platform: "Facebook", users: 4624500, ageIndex: { all: 100, "18-29": 72, "30-54": 108, "55plus": 118 }, genderIndex: { all: 100, female: 112, male: 87 }, notes: "87.5% of NZ population. Largest NZ social platform by users." },
   { platform: "YouTube", users: 4000000, ageIndex: { all: 100, "18-29": 142, "30-54": 106, "55plus": 68 }, genderIndex: { all: 100, female: 91, male: 112 }, notes: "~85% of online NZers use YouTube. Not purely social but dominant video platform." },

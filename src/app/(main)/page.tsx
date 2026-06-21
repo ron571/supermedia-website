@@ -5,7 +5,7 @@ import { getArticles } from "@/lib/articles";
 
 
 export const metadata: Metadata = {
-  title: "Super Media — Independent NZ Media Consultancy",
+  title: "Super Media — Independent NZ Media Intelligence",
   description:
     "Super Media is an independent NZ media consultancy. No agency relationships. No conflicts. Just an honest read on whether your advertising spend is working — and how to fix it if it isn't.",
   alternates: { canonical: "/" },
@@ -63,7 +63,7 @@ const jsonLd = {
       email: "ron@supermedia.co.nz",
       logo: {
         "@type": "ImageObject",
-        url: "https://www.supermedia.co.nz/assets/og-default.png",
+        url: "https://www.supermedia.co.nz/api/og",
         width: 1200,
         height: 630,
       },

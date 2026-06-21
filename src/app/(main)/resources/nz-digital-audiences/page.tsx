@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import AudienceFilters from "./AudienceFilters";
 import ResourceSchema from "@/components/ResourceSchema";
+import { websites, digitalNewsSites } from "@/data/nz-digital-audiences";
 
 export const metadata: Metadata = {
   title: "NZ Digital Audiences 2026 — Top Websites, Social Media & News Sites",
@@ -10,37 +11,10 @@ export const metadata: Metadata = {
   alternates: { canonical: "/resources/nz-digital-audiences" },
 };
 
-const digitalNewsSites = [
-  {
-    title: "Stuff.co.nz",
-    owner: "Stuff Ltd",
-    monthlyUniques: 2230000,
-    publisherClaim: "3.4M+ monthly audience (cross-platform)",
-    independent: "2.23M unique browsers/month (Nielsen Digital Ratings). The 3.4M 'cross-platform' figure adds email, app, and social reach — different metrics measured differently.",
-    flag: "orange" as const,
-  },
-  {
-    title: "NZHerald.co.nz",
-    owner: "NZME",
-    monthlyUniques: 1960000,
-    publisherClaim: "2.4M+ monthly digital audience",
-    independent: "1.96M unique browsers/month (Nielsen). NZME's higher figure includes video streams, app sessions, and newsletter opens counted as separate 'audiences'.",
-    flag: "orange" as const,
-  },
-];
-
-const websitesOverall = [
-  { rank: 1, domain: "google.com", category: "Search", monthlyVisits: 403.1, notes: "Dominant across all demographics — no meaningful age or gender skew" },
-  { rank: 2, domain: "youtube.com", category: "Video", monthlyVisits: 161.2, notes: "Strong 18–39; declining with age but still top-3 for 55+" },
-  { rank: 3, domain: "facebook.com", category: "Social", monthlyVisits: 41.6, notes: "Older skew vs other social platforms; broad reach 30–65+" },
-  { rank: 4, domain: "trademe.co.nz", category: "Marketplace", monthlyVisits: 22.7, notes: "NZ-owned; strong across all adult groups, slight 35–54 peak" },
-  { rank: 5, domain: "stuff.co.nz", category: "News", monthlyVisits: 18.4, notes: "Broad NZ news audience; strongest with 30–54 and 45+ skew" },
-  { rank: 6, domain: "nzherald.co.nz", category: "News", monthlyVisits: 16.3, notes: "Auckland-centric; strong 35–60; premium advertiser audience" },
-  { rank: 7, domain: "instagram.com", category: "Social", monthlyVisits: 12.8, notes: "Strong 18–34; female-skewed; visual content platform" },
-  { rank: 8, domain: "wikipedia.org", category: "Reference", monthlyVisits: 10.6, notes: "Consistent across all ages; slight male and 18–44 skew" },
-  { rank: 9, domain: "reddit.com", category: "Social / Forums", monthlyVisits: 9.2, notes: "Strongly male-skewed; peaks 18–34; niche but highly engaged" },
-  { rank: 10, domain: "countdown.co.nz", category: "Retail / Grocery", monthlyVisits: 8.4, notes: "Grocery online shopping; female-skewed; peaks 30–54" },
-];
+// Derive the overall top-10 table from the data file (sorted by total monthly visits)
+const websitesOverall = [...websites]
+  .sort((a, b) => b.monthlyVisits - a.monthlyVisits)
+  .map((site, i) => ({ rank: i + 1, ...site }));
 
 const flagStyles = {
   green: { bg: "bg-emerald-50", border: "border-emerald-200", badge: "bg-emerald-100 text-emerald-800", icon: "✓" },
