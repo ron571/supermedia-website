@@ -5,9 +5,9 @@ import { getArticles } from "@/lib/articles";
 
 
 export const metadata: Metadata = {
-  title: "Super Media — Independent NZ Media Intelligence",
+  title: { absolute: "Independent NZ Media Consultant | Super Media" },
   description:
-    "Super Media is an independent NZ media consultancy. No agency relationships. No conflicts. Just an honest read on whether your advertising spend is working — and how to fix it if it isn't.",
+    "Independent NZ media consultant. No agency conflicts, no rebates. Media audits, strategy, and programmatic for NZ advertisers. Get a free media audit today.",
   alternates: { canonical: "/" },
 };
 
@@ -61,6 +61,12 @@ const jsonLd = {
         "Super Media is an independent New Zealand media consultancy founded by Ron Sneddon. We provide media strategy, media audits, and programmatic buying with no agency conflicts and no volume rebates. Based in New Zealand, serving NZ advertisers nationwide.",
       url: "https://www.supermedia.co.nz",
       email: "ron@supermedia.co.nz",
+      telephone: "+64-21-393-946",
+      address: {
+        "@type": "PostalAddress",
+        addressCountry: "NZ",
+        addressRegion: "New Zealand",
+      },
       logo: {
         "@type": "ImageObject",
         url: "https://www.supermedia.co.nz/api/og",
@@ -204,10 +210,10 @@ export default function HomePage() {
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />
         <div className="section-container relative py-24 lg:py-36">
-          <p className="eyebrow mb-5">Independent NZ Media Consultancy</p>
-          <h1 className="text-white text-4xl md:text-5xl lg:text-6xl font-bold max-w-3xl mb-6">
+          <h1 className="eyebrow mb-5">Independent NZ Media Consultancy</h1>
+          <p className="text-white text-4xl md:text-5xl lg:text-6xl font-bold max-w-3xl mb-6">
             Your media budget works harder when someone independent is watching it.
-          </h1>
+          </p>
           <p
             className="text-white text-lg max-w-2xl mb-4"
             style={{ opacity: 0.72, lineHeight: 1.65 }}

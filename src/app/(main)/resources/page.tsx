@@ -2,9 +2,9 @@ import type { Metadata } from "next";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "NZ Media Resources — Audience Data, Rates & Market Intelligence",
+  title: "NZ Media Audience Data & Rate Benchmarks",
   description:
-    "Independent NZ media audience data, rate benchmarks, and market intelligence. Radio, TV, press, digital, outdoor — what the sellers say vs what independent data shows.",
+    "Independent NZ media audience data and rate benchmarks. GfK, Nielsen, Roy Morgan across radio, TV, digital, outdoor and press. Free, no registration required.",
   alternates: { canonical: "/resources" },
 };
 

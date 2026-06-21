@@ -1,21 +1,49 @@
 import type { Metadata } from "next";
 
+const BASE_URL = "https://www.supermedia.co.nz";
+
 export const metadata: Metadata = {
-  title: "Contact Super Media — NZ Independent Media Consultancy",
+  title: "Contact Ron Sneddon — NZ Media Consultant",
   description:
-    "Book a 30-minute call with Ron Sneddon or send a message. The first conversation is free, and if Super Media isn't the right fit, Ron will tell you.",
+    "Talk to Ron Sneddon — NZ independent media consultant. Free 30-minute call, no agenda. If Super Media isn't the right fit, he'll tell you.",
   alternates: { canonical: "/contact" },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@type": "ContactPage",
+  "@id": `${BASE_URL}/contact`,
+  url: `${BASE_URL}/contact`,
+  name: "Contact Super Media",
+  description: "Contact Ron Sneddon for independent NZ media consultancy — free 30-minute call, no obligation.",
+  mainEntity: {
+    "@type": "Person",
+    "@id": `${BASE_URL}/about#ron`,
+    name: "Ron Sneddon",
+    telephone: "+64-21-393-946",
+    email: "ron@supermedia.co.nz",
+    jobTitle: "Founder & Independent Media Consultant",
+    worksFor: {
+      "@type": "Organization",
+      name: "Super Media",
+      url: BASE_URL,
+    },
+  },
 };
 
 export default function ContactPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* ─── Hero ─── */}
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />
         <div className="section-container relative py-20 lg:py-28">
           <h1 className="text-white text-4xl md:text-5xl font-bold max-w-xl">
-            Let&apos;s talk
+            Talk to Super Media — NZ Independent Media Consultant
           </h1>
         </div>
       </section>

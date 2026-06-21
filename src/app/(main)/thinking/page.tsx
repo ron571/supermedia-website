@@ -5,9 +5,9 @@ import NewsletterForm from "@/components/NewsletterForm";
 
 
 export const metadata: Metadata = {
-  title: "NZ Media Thinking & Analysis",
+  title: "NZ Media Analysis & Advertising Insights",
   description:
-    "The Super view on NZ media — independent analysis on media buying, agency models, digital display, and how AI is changing the industry.",
+    "Independent NZ advertising and media analysis. Insights on media buying, agency models, digital display, programmatic, and AI — written by Ron Sneddon.",
   alternates: { canonical: "/thinking" },
 };
 
@@ -56,7 +56,7 @@ export default function ThinkingPage() {
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />
         <div className="section-container relative py-20 lg:py-28">
           <h1 className="text-white text-4xl md:text-5xl font-bold max-w-2xl mb-4">
-            The Super view on NZ media
+            NZ Advertising &amp; Media Analysis
           </h1>
           <p className="text-white/70 text-xl max-w-xl" style={{ lineHeight: 1.65 }}>
             Direct, independent analysis — not opinion dressed up as expertise.

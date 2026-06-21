@@ -1,12 +1,49 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+const BASE_URL = "https://www.supermedia.co.nz";
 
 export const metadata: Metadata = {
-  title: "Client Results & Case Studies",
+  title: "NZ Media Audit Results & Case Studies",
   description:
-    "Three case studies from Super Media — media audits, strategy, and retained advisory that found real savings and better outcomes for NZ advertisers.",
+    "Real NZ media audit results — 19% cost reduction, 31% lower CPM, $140K savings identified. Three case studies across retail, financial services, and property.",
   alternates: { canonical: "/results" },
+};
+
+const jsonLd = {
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "FAQPage",
+      "@id": `${BASE_URL}/results#faq`,
+      mainEntity: [
+        {
+          "@type": "Question",
+          name: "How much can a media audit save?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Most Super Media audits identify 15–30% savings without any reduction in reach. Real results include a 19% reduction in total media spend for a national retailer and $140K in savings identified for a property client in year one.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "What does an independent media audit involve?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "An independent media audit is a line-by-line review of your advertising spend, channel mix, buying terms, and audience delivery — benchmarked against what the media should be delivering for a business like yours. Most audits deliver a clear diagnosis within one to two weeks.",
+          },
+        },
+        {
+          "@type": "Question",
+          name: "Are these real NZ case studies?",
+          acceptedAnswer: {
+            "@type": "Answer",
+            text: "Yes. These are real Super Media client engagements. Sectors and some details are anonymised on request, but the outcomes and methodologies are real.",
+          },
+        },
+      ],
+    },
+  ],
 };
 
 const cases = [
@@ -51,15 +88,19 @@ const cases = [
 export default function ResultsPage() {
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
       {/* ─── Hero ─── */}
       <section className="relative bg-navy overflow-hidden">
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />
         <div className="section-container relative py-20 lg:py-28">
           <h1 className="text-white text-4xl md:text-5xl font-bold max-w-2xl mb-4">
-            Work &amp; outcomes
+            NZ Media Audit Results &amp; Case Studies
           </h1>
           <p className="text-white/70 text-xl max-w-xl" style={{ lineHeight: 1.65 }}>
-            Three case studies. Anonymised on request.
+            Three real engagements. Sectors anonymised on request. Outcomes are not.
           </p>
         </div>
       </section>
@@ -97,12 +138,18 @@ export default function ResultsPage() {
                     </p>
                     <p className="text-body">{situation}</p>
                   </div>
-                  <div>
+                  <div className="mb-6">
                     <p className="text-xs font-bold uppercase tracking-eyebrow text-grey-dark mb-2">
                       Finding
                     </p>
                     <p className="text-body">{finding}</p>
                   </div>
+                  <Link
+                    href={`/services#${service === "Media Audit" ? "audit" : service === "Media Strategy" ? "strategy" : "advisory"}`}
+                    className="text-orange text-sm font-medium hover:underline"
+                  >
+                    Learn about {service} →
+                  </Link>
                 </div>
               </div>
             ))}

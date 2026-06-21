@@ -3,9 +3,9 @@ import Link from "next/link";
 
 
 export const metadata: Metadata = {
-  title: "Services — NZ Media Strategy, Audit & Advisory",
+  title: "NZ Media Strategy, Audits & Programmatic",
   description:
-    "Six ways to work with Super Media — from full media strategy and independent audits to programmatic buying, web design, social, and retained advisory.",
+    "Media strategy, media audits, programmatic buying, and retained advisory for NZ advertisers. No conflicts, no rebates. Most audits find 15–30% savings. Book a free audit.",
   alternates: { canonical: "/services" },
 };
 
@@ -174,7 +174,7 @@ export default function ServicesPage() {
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />
         <div className="section-container relative py-20 lg:py-28">
           <h1 className="text-white text-4xl md:text-5xl font-bold max-w-2xl mb-4">
-            Six ways to work with Super
+            NZ Media Strategy, Audits &amp; Independent Advisory
           </h1>
           <p className="text-white/70 text-xl max-w-xl" style={{ lineHeight: 1.65 }}>
             Most clients come with one of these needs. If you&apos;re not sure
@@ -206,9 +206,29 @@ export default function ServicesPage() {
                 </div>
                 <h2 className="text-navy text-xl font-bold mb-3">{title}</h2>
                 <p className="text-body mb-6 flex-1">{description}</p>
-                <p className="text-grey-dark text-sm italic border-t border-grey-mid pt-4">
+                <p className="text-grey-dark text-sm italic border-t border-grey-mid pt-4 mb-4">
                   {detail}
                 </p>
+                {id === "audit" && (
+                  <Link href="/results" className="text-orange text-sm font-medium hover:underline">
+                    See audit results & case studies →
+                  </Link>
+                )}
+                {id === "strategy" && (
+                  <Link href="/thinking/what-volume-rebates-actually-mean-for-your-media-budget" className="text-orange text-sm font-medium hover:underline">
+                    Read: What volume rebates mean for your budget →
+                  </Link>
+                )}
+                {id === "programmatic" && (
+                  <Link href="/thinking/why-nz-advertisers-pay-too-much-for-digital-display" className="text-orange text-sm font-medium hover:underline">
+                    Read: Why NZ advertisers overpay for digital →
+                  </Link>
+                )}
+                {id === "advisory" && (
+                  <Link href="/thinking/the-case-for-independent-media-oversight" className="text-orange text-sm font-medium hover:underline">
+                    Read: The case for independent media oversight →
+                  </Link>
+                )}
               </div>
             ))}
           </div>

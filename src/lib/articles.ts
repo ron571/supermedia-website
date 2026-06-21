@@ -161,63 +161,14 @@ The best outdoor campaigns do one thing well, in the right location, for long en
 
 For current OOH rate benchmarks — digital billboards, bus advertising, and street formats — see the [NZ Media Rate Benchmarking Guide](/resources/nz-media-rates).`,
     relatedSlugs: [
-      "nz-digital-ad-market-3-billion-what-it-means",
+      "iab-nz-2025-digital-advertising-data-what-it-means",
       "how-to-read-a-media-plan-if-you-didnt-go-to-media-school",
       "what-volume-rebates-actually-mean-for-your-media-budget",
     ],
   },
   {
-    slug: "nz-digital-ad-market-3-billion-what-it-means",
-    title: "NZ's digital ad market just hit $3 billion. Here's what the numbers actually mean.",
-    description:
-      "IAB NZ data puts the digital advertising market at $2.967B in 2025 — up 12% in a year. The growth story is real. But the headline hides some things worth understanding.",
-    tag: "Industry Data",
-    date: "13 Jun 2026",
-    readTime: "4 min read",
-    body: `IAB New Zealand's latest data puts the NZ digital advertising market at $2.967 billion in 2025 — effectively $3 billion, up 12% year-on-year. If you're an advertiser, or advising one, there are a few things in these numbers worth looking at carefully.
-
-**The headline is real — but it's a market, not a result**
-
-$3 billion in digital ad spend is a genuine milestone. It reflects an economy that has substantially shifted its advertising investment from traditional to digital channels over the past decade, and it's a number that will keep growing.
-
-But total market size is a measure of where money is going, not whether it's working. NZ advertisers spending more on digital collectively tells you nothing about whether any individual advertiser is getting a return. In fact, a growing market with growing pressure on returns is exactly the environment where inefficiency tends to expand.
-
-**Video is the story within the story**
-
-The most significant channel movement in the data is video, which grew 27% to $653.8 million. That's a substantial acceleration — faster than the overall market — driven by connected TV, BVOD (broadcast video on demand), and short-form social video formats.
-
-For NZ advertisers, this creates a practical question. Video inventory is more expensive than display, more complex to buy, and currently subject to the most aggressive selling pressure from both local broadcasters (pushing BVOD) and global platforms (pushing YouTube and TikTok). The growth rate is real. Whether each dollar in video is placed well is a different question.
-
-**Search remains the floor, not the ceiling**
-
-Search advertising reached $1.44 billion — 12% growth, in line with the market average. That's a meaningful number: nearly half the total digital market runs through Google's auction.
-
-Search doesn't grow the way video does because it's already mature. But it compounds problems faster than other channels when it's not managed well. CPC inflation, keyword bloat, and poor conversion tracking are still the most common findings in NZ search audits. A growing search market at growing prices is particularly unforgiving of accounts that are coasting.
-
-**What this data doesn't tell you**
-
-IAB data measures investment. It doesn't measure return on investment. It doesn't tell you which advertisers are getting value and which are contributing to the total while getting little back.
-
-It also doesn't segment by advertiser type. The $3 billion includes everything from well-resourced national brands with dedicated media teams to SMEs running campaigns they don't fully understand on platforms they can't fully access. Those experiences are not comparable, and the aggregate number blurs the difference.
-
-**The practical read**
-
-If your business is among the advertisers contributing to this $3 billion, the question worth asking isn't whether the market is healthy. It's whether your specific spend is being managed at a level that reflects what you're paying into it.
-
-In a market that grows 12% per year, it's easy for problems to hide inside growth. Rate increases, audience measurement changes, and new channel launches all create cover for inefficiency that would otherwise be visible.
-
-The number is good news for the industry. Whether it's good news for your budget depends on what's being done with it.
-
-For a 30-second independent read on how your digital spend stacks up, try [Superscan](/superscan).`,
-    relatedSlugs: [
-      "is-search-advertising-dead",
-      "why-nz-advertisers-pay-too-much-for-digital-display",
-      "outdoor-media-nz-strengths-weaknesses",
-    ],
-  },
-  {
     slug: "is-search-advertising-dead",
-    title: "Is Search Advertising Dead?",
+    title: "Is Search Advertising Dead in NZ?",
     description:
       "Not quite. But the search it was built on is disappearing faster than most NZ advertisers are ready for.",
     tag: "Search",
@@ -259,7 +210,7 @@ The question isn't whether to keep investing in search. It's whether your media 
 
 If you'd like an honest conversation about where your current search investment sits, [get in touch](/contact) — no agenda, no obligation.`,
     relatedSlugs: [
-      "nz-digital-ad-market-3-billion-what-it-means",
+      "iab-nz-2025-digital-advertising-data-what-it-means",
       "superscan-how-ai-reads-your-media-mix",
       "the-case-for-independent-media-oversight",
     ],
@@ -417,9 +368,9 @@ It's worth reading this alongside how [volume rebates](/thinking/what-volume-reb
   },
   {
     slug: "how-to-read-a-media-plan-if-you-didnt-go-to-media-school",
-    title: "How to read a media plan if you didn't go to media school",
+    title: "How to Read a Media Plan — NZ Advertiser's Guide",
     description:
-      "Most media plans are written to be approved, not questioned. Here's what to look for — and the three questions that uncover most problems.",
+      "Most media plans are written to be approved, not questioned. Here's what NZ advertisers should look for — and the three questions that uncover most problems.",
     tag: "Media Planning",
     date: "22 Mar 2026",
     readTime: "6 min read",

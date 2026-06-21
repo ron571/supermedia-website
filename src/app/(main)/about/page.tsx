@@ -3,26 +3,52 @@ import Image from "next/image";
 import Link from "next/link";
 
 export const metadata: Metadata = {
-  title: "About Ron Sneddon",
+  title: "Ron Sneddon — Independent NZ Media Consultant",
   description:
-    "Ron Sneddon spent 35 years buying media, selling it, and running an agency. He watched from the inside how advertising budgets get wasted. Super exists because he decided to stop watching it happen.",
+    "Ron Sneddon is an independent NZ media consultant with 35 years of experience. Founder of Super Media — conflict-free media strategy, audits, and programmatic. Book a free call.",
   alternates: { canonical: "/about" },
 };
 
 const jsonLd = {
   "@context": "https://schema.org",
   "@type": "Person",
+  "@id": "https://www.supermedia.co.nz/about#ron",
   name: "Ron Sneddon",
-  jobTitle: "Founder, Super Media",
+  givenName: "Ron",
+  familyName: "Sneddon",
+  jobTitle: "Founder & Independent Media Consultant",
   url: "https://www.supermedia.co.nz/about",
-  sameAs: ["https://www.linkedin.com/in/ron-sneddon"],
+  image: "https://www.supermedia.co.nz/assets/headshot-ron.png",
+  email: "ron@supermedia.co.nz",
+  telephone: "+64-21-393-946",
+  sameAs: [
+    "https://www.linkedin.com/in/ron-sneddon",
+    "https://www.facebook.com/supermedialtd/",
+  ],
   worksFor: {
     "@type": "Organization",
+    "@id": "https://www.supermedia.co.nz/#business",
     name: "Super Media",
     url: "https://www.supermedia.co.nz",
   },
   description:
-    "Independent NZ media consultant with 35 years of experience across agency, broadcast, and consultancy roles.",
+    "Independent NZ media consultant with 35 years of experience across agency, broadcast, and consultancy roles. Founder of Super Media.",
+  knowsAbout: [
+    "media planning New Zealand",
+    "media buying New Zealand",
+    "media audit New Zealand",
+    "programmatic advertising New Zealand",
+    "NZ advertising market",
+    "agency conflicts of interest",
+    "volume rebates",
+    "independent media consultancy",
+  ],
+  hasOccupation: {
+    "@type": "Occupation",
+    name: "Independent Media Consultant",
+    occupationLocation: { "@type": "Country", name: "New Zealand" },
+    description: "Independent media strategy, media auditing, and programmatic buying consultancy for New Zealand advertisers",
+  },
 };
 
 const timelineItems = [
@@ -46,11 +72,10 @@ export default function AboutPage() {
         <div className="absolute inset-0 grid-overlay" aria-hidden="true" />
         <div className="section-container relative py-20 lg:py-28">
           <h1 className="text-white text-4xl md:text-5xl font-bold max-w-2xl mb-4">
-            I&apos;ve seen what they do with your money.
+            Ron Sneddon — Independent NZ Media Consultant
           </h1>
           <p className="text-white/70 text-xl max-w-xl" style={{ lineHeight: 1.65 }}>
-            35 years inside NZ media — on every side of the table. That&apos;s
-            why Super exists.
+            I&apos;ve seen what they do with your money. 35 years inside NZ media — on every side of the table. That&apos;s why Super exists.
           </p>
         </div>
       </section>
