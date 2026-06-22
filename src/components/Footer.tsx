@@ -14,6 +14,7 @@ const serviceLinks = [
 
 const companyLinks = [
   { href: "/about", label: "About Ron" },
+  { href: "/press", label: "Press & Media" },
   { href: "/results", label: "Results" },
   { href: "/thinking", label: "Thinking" },
   { href: "/contact", label: "Contact" },

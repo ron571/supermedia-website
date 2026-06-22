@@ -256,6 +256,24 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* ─── Press mentions ─── */}
+      <section className="bg-white py-16 lg:py-20 border-t border-grey-mid">
+        <div className="section-container">
+          <div className="max-w-2xl">
+            <p className="eyebrow mb-3">In the press</p>
+            <h2 className="text-navy text-2xl md:text-3xl font-bold mb-4">
+              Media coverage
+            </h2>
+            <p className="text-body mb-6">
+              Ron has been quoted and profiled by RNZ Mediawatch, the NZ Herald, and StopPress — as a commentator on the NZ media industry and as a founder building independent alternatives to the agency model.
+            </p>
+            <Link href="/press" className="btn-outline inline-flex">
+              View press coverage →
+            </Link>
+          </div>
+        </div>
+      </section>
+
       {/* ─── AI Section ─── */}
       <section className="bg-white py-20 lg:py-24">
         <div className="section-container">
