@@ -11,6 +11,95 @@ export interface Article {
 
 const articles: Article[] = [
   {
+    slug: "how-to-review-your-media-agency-nz",
+    title: "How to Review Your Media Agency — NZ Advertiser's Guide",
+    description:
+      "Most NZ advertisers never formally review their agency relationship. Here's how to do it properly — what to check, what to ask, and what the answers should tell you.",
+    tag: "Agency Review",
+    date: "22 Jun 2026",
+    readTime: "6 min read",
+    body: `Most NZ advertisers have never formally reviewed their media agency. They may have had a few uncomfortable conversations, or quietly wondered if they're getting value, but a structured review — one that actually checks the work against an independent benchmark — almost never happens.
+
+That's a problem. Agency relationships tend to drift. What started as a sharp, attentive arrangement in the first year often settles into routine by year three, with the same channels, the same plan structure, and the same metrics recycled across campaigns. The budget grows. The scrutiny doesn't.
+
+Here's how to change that.
+
+**When to trigger a review**
+
+A formal agency review is warranted at least every two to three years, and immediately in any of these situations:
+
+You're approaching a contract renewal. This is the only moment where you have real leverage, and most advertisers don't use it — they sign without looking. The period six to twelve months before renewal is when a review has the most practical value.
+
+Results have plateaued. If the same channels, same spend, and same strategy are delivering the same or worse results year on year, that's not bad luck. That's a signal the plan needs external scrutiny.
+
+There's been a change in marketing leadership. A new CMO, marketing manager, or CFO has every reason to independently verify what they've inherited. This is the professional equivalent of a new CEO asking for an audit.
+
+Spend has grown significantly. If your media budget has grown 30% or more in the past two years without a corresponding independent review, you're operating on trust alone.
+
+**What a proper review actually covers**
+
+A media agency review isn't a satisfaction survey. It's a structured assessment of whether the agency is delivering against four things: strategy quality, buying efficiency, reporting integrity, and relationship structure.
+
+**Strategy quality** means asking whether the channel mix reflects your actual audience and objectives, or whether it reflects what the agency has always bought. Pull the last two years of media plans and look for pattern — if the plan looks the same year on year with minor adjustments, it probably hasn't been genuinely rebuilt from the brief. Ask: what changed in the audience data this year, and how did the plan respond?
+
+**Buying efficiency** means benchmarking your actual rates against the market. What CPMs are you paying for TV, radio, digital display, and out-of-home? Are those rates in line with what an independent benchmark suggests, or are they above it? If you don't have an independent benchmark, the [NZ Media Rate Benchmarking Guide](/resources/nz-media-rates) provides a starting point. CPMs that are consistently 20–40% above benchmark suggest buying terms haven't been renegotiated in years — or were never competitive to begin with.
+
+**Reporting integrity** means checking whether the numbers in your reports actually connect to business outcomes. Most agency reports are good at showing campaign delivery — reach, frequency, impressions, clicks. They're often much weaker on showing what that delivery produced. Is there a clear line in your reporting from media investment to enquiries, sales, or whatever metric your business cares about? If not, you're being told the media ran, not whether it worked.
+
+**Relationship structure** means asking who is actually working on your account. The people who pitched for your business are often not the people servicing it. Ask your agency: who reviews my plan before it's submitted? Who has sign-off authority on buying decisions? Who is the most senior person who looks at my account every month? The answers — and the honesty of the answers — tell you a great deal. This is [the senior–junior problem](/thinking/the-senior-junior-problem-in-nz-media-agencies) in its most concrete form.
+
+**The conflict of interest question**
+
+Any serious review needs to address whether your agency has financial relationships with the media it's buying on your behalf. This isn't a hostile question — it's a basic governance question that any well-run advertiser should be able to answer.
+
+Ask directly: does the agency receive any form of volume rebate, investment credit, or commercial arrangement from media owners it recommends? Ask for a written disclosure.
+
+[Volume rebates](/thinking/what-volume-rebates-actually-mean-for-your-media-budget) are legal and common in NZ media. They're also a structural conflict of interest that influences recommendations in ways that aren't always visible. Knowing they exist, and on which channels, is a prerequisite for evaluating the advice you're receiving.
+
+**The questions that uncover most problems**
+
+These five questions will surface more useful information than any formal review document:
+
+1. **"Can you show me the buying terms for each channel from the last 12 months?"** If the agency can't produce this quickly, or seems reluctant, that's information. If they can, benchmark what you see.
+
+2. **"What's changed in this plan from last year — and why?"** The answer reveals whether the strategy is being actively managed or recycled. Vague answers ("we've optimised based on performance") deserve follow-up.
+
+3. **"Who worked on my account last month — specifically?"** Not the account structure in theory. The actual people, the actual hours. This tells you where you sit in the agency's priority stack.
+
+4. **"What would make this plan wrong?"** Ask what assumptions, if incorrect, would change the channel recommendations materially. If the answer is vague, the assumptions haven't been tested.
+
+5. **"What does success look like at 90 days — in terms of our actual business outcomes?"** Not impressions, not reach. Sales, enquiries, conversions, or whatever your business runs on. If the answer is in media metrics only, push back.
+
+**Red flags**
+
+Some things are obvious signals that a relationship needs more than a review:
+
+Resistance to sharing buying terms. There's no legitimate reason to withhold the terms at which your media is being bought. If there's resistance, ask why.
+
+Metrics that never connect to outcomes. If every report is full of reach curves and frequency data with no line to commercial result, the reporting structure has been designed to demonstrate activity, not effectiveness.
+
+Creative that never changes. Fresh creative is the most common driver of campaign performance. If the same assets have been running for six months with minor adjustments, someone has stopped fighting for results.
+
+The agency is the only source of performance data. If everything you know about your campaign performance comes from the agency itself, you have no independent verification. Even basic Google Analytics access, managed independently, changes the dynamic.
+
+**What to do with what you find**
+
+A review is only useful if it leads somewhere. The outcomes typically fall into one of three categories:
+
+The relationship is working well and the review confirms it. That's a good outcome — you can renew with confidence and use the benchmarks to set clearer expectations going forward.
+
+There are gaps that can be fixed within the existing relationship. Missing benchmarks, junior servicing issues, reporting that needs to connect to outcomes — most of these can be addressed without changing agencies. The review gives you a structured basis for that conversation.
+
+The relationship has structural problems that won't be resolved by a conversation. Undisclosed conflicts of interest, persistent rate issues, strategy that's clearly not being rebuilt each year — these point toward a competitive review.
+
+If you want an independent read on where your current media mix sits before starting a formal agency review, [Superscan](/superscan) takes 30 seconds and gives you a specific starting point. Or if you'd prefer a direct conversation, [get in touch](/contact) — the first call is free.`,
+    relatedSlugs: [
+      "the-senior-junior-problem-in-nz-media-agencies",
+      "what-volume-rebates-actually-mean-for-your-media-budget",
+      "how-to-read-a-media-plan-if-you-didnt-go-to-media-school",
+    ],
+  },
+  {
     slug: "iab-nz-2025-digital-advertising-data-what-it-means",
     title: "NZ digital advertising hit $2.97 billion in 2025. Here's what the data actually tells you.",
     description: "The IAB NZ full-year 2025 numbers are out. Video up 27%, display flat, search still dominant. What the headlines miss — and what NZ advertisers should take from it.",
