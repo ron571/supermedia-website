@@ -33,6 +33,35 @@ const jsonLd = {
   },
   description:
     "Independent NZ media consultant with 35 years of experience across agency, broadcast, and consultancy roles. Founder of Super Media.",
+  subjectOf: [
+    {
+      "@type": "NewsArticle",
+      headline: "Polarising presenter sparks a backlash",
+      url: "https://www.rnz.co.nz/national/programmes/mediawatch/audio/201805459/polarising-presenter-sparks-a-backlash",
+      datePublished: "2016-06-26",
+      publisher: { "@type": "Organization", name: "RNZ Mediawatch", url: "https://www.rnz.co.nz" },
+    },
+    {
+      "@type": "NewsArticle",
+      headline: "TV resignation a gift for radio",
+      url: "https://www.nzherald.co.nz/nz/tv-resignation-a-gift-for-radio/7XQACLDWE7XFN5PPBH5E6OUIAE/",
+      publisher: { "@type": "Organization", name: "New Zealand Herald", url: "https://www.nzherald.co.nz" },
+    },
+    {
+      "@type": "NewsArticle",
+      headline: "Cool Story, bro: Jarvis and Sneddon launch new digital content marketing agency",
+      url: "https://stoppress.co.nz/news/story-launches/",
+      datePublished: "2014-09-11",
+      publisher: { "@type": "Organization", name: "StopPress", url: "https://stoppress.co.nz" },
+    },
+    {
+      "@type": "NewsArticle",
+      headline: "Super is born: Sneddon launches independent media strategy agency",
+      url: "https://stoppress.co.nz/news/super/",
+      datePublished: "2014-05-01",
+      publisher: { "@type": "Organization", name: "StopPress", url: "https://stoppress.co.nz" },
+    },
+  ],
   knowsAbout: [
     "media planning New Zealand",
     "media buying New Zealand",
