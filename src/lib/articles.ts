@@ -11,6 +11,77 @@ export interface Article {
 
 const articles: Article[] = [
   {
+    slug: "how-to-run-a-winning-media-agency-pitch-nz",
+    title: "How to Run a Winning Media Agency Pitch in New Zealand",
+    description:
+      "Running a media agency pitch is one of the most consequential decisions a marketing team will make. Here's how to do it properly — from writing the brief to selecting the right agency.",
+    tag: "Agency Pitch",
+    date: "23 Jun 2026",
+    readTime: "6 min read",
+    body: `Running a **media agency pitch in New Zealand** is one of the most consequential decisions a marketing team will make. Get it right and you gain a strategic partner who stretches every dollar. Get it wrong and you spend twelve months fixing a bad fit while competitors move ahead.
+
+We've sat on all three sides of the table — inside a New Zealand media agency crafting pitch responses, as a media supplier presenting to clients, and as a client reviewing submissions. That combined experience is exactly why clients come to us — and it's what this guide is built on.
+
+**How to Write a Media Brief That Gets Great Responses**
+
+The brief is where most pitches are won or lost — by the client, not the agency. A vague brief produces vague responses. Include: honest business context (not the website version), specific commercial objectives, real audience insight beyond basic demographics, and — critically — your actual budget. Withholding budget doesn't make agencies sharper; it produces recommendations you can't use.
+
+Tell agencies how you'll evaluate them too. Transparency produces better submissions and reduces post-pitch grievances.
+
+**Key Criteria for Selecting a Media Agency in New Zealand**
+
+**Experience across all three sides of the industry.** Ask not just how long an agency has been operating, but where their people have worked. Have they planned campaigns from inside an agency? Have they sat on the media supplier side, understanding how inventory is bought and sold? Have they worked client-side, accountable to a board and a real budget? Agencies whose teams carry all three perspectives bring a depth of judgement that single-track experience simply can't replicate. It's the difference between knowing the theory and knowing how the whole system actually works — and in the New Zealand market, that distinction matters enormously.
+
+**Strategic thinking, not just media planning.** The best agencies challenge your brief, bring external intelligence, and connect media decisions to commercial outcomes. Look for this in their case studies and in how they respond under questioning in the room.
+
+**The actual team on your account.** The biggest risk in any agency engagement is the bait and switch — senior talent in the pitch, junior execution on the day-to-day. Ask directly who will work on your account. Request CVs. Build a contractual right to be consulted on team changes.
+
+**AI as a genuine operational tool.** The media agencies delivering superior outcomes today have embedded AI into their workflow. Ask specifically: how do you use AI in media planning, audience targeting, and real-time campaign optimisation? An agency that can't answer this concretely is already behind. AI enables smarter audience modelling, faster scenario planning, and post-campaign analysis at a depth manual planning can't match.
+
+**Independence from media suppliers — and total transparency.** Some agencies hold rebate arrangements, preferred partner deals, and principal inventory positions with media owners. These create a structural conflict of interest: when an agency benefits financially from recommending Channel A over Channel B, their advice is no longer purely in your interest.
+
+A genuinely independent agency — one with no commercial arrangements with media owners — can tell you that every recommendation is based solely on what's right for your business. Ask every agency directly: do you hold rebates, volume bonuses, or preferred partner arrangements with media owners? Watch how they answer. Hesitation or deflection to "industry standard practice" tells you everything.
+
+Truth and honesty aren't soft values in a media agency relationship — they're the foundation of every dollar you spend.
+
+**Measurement and accountability.** The best agencies build measurement frameworks before a campaign launches, not after. They're accountable to outcomes, not just outputs.
+
+**Big vs Small Media Agency: What New Zealand Clients Need to Know**
+
+Large network agencies offer genuine scale for clients spending tens of millions annually. For most New Zealand businesses, the reality is different: your account is run by less experienced planners while senior talent works on the agency's biggest billers. You're a B-account being sold an A-team pitch.
+
+A specialist independent media agency at your budget level gives you their A-team because you *are* their A-team. The buying-power argument that once justified network scale is largely obsolete — independent agencies access the same programmatic inventory at the same technology layer as the networks.
+
+The real question isn't big vs small. It's: **which agency will make your account a priority, bring their best thinking, and be genuinely accountable to your outcomes?**
+
+**Should You Pay Agencies for the Pitch?**
+
+Yes — at least at the final stage. And more clients should be doing it.
+
+By the time you've shortlisted to two agencies, each of those teams has committed serious hours: research, strategy, channel modelling, remuneration proposals, and presentation preparation. For a complex pitch, that can easily represent 40–80 hours of senior time per agency. That's not a credentials deck — that's real intellectual work done on spec, with no guarantee of return.
+
+Offering a pitch fee to your final two shortlisted agencies — typically in the range of $2,000–$5,000 — does several things. It signals that you're a client worth working for, which attracts better quality thinking. It gives you the moral standing to demand more rigour and deeper responses. It reduces the temptation for agencies to cut corners because the odds are against them. And frankly, it's the right thing to do.
+
+The agency you don't appoint still invested in your business. A pitch fee acknowledges that. In a market as small as New Zealand, how you run a pitch — and how you treat the agencies who lose — travels fast. The best agencies will remember it. So will the media owners they buy from on your behalf.
+
+This is standard practice in many mature markets. It's underutilised in New Zealand and it costs relatively little for the goodwill and quality it generates.
+
+**What New Zealand Clients Consistently Overlook**
+
+Don't let procurement make the final call on cost alone — a marginal fee difference is irrelevant if the strategic quality diverges significantly. Limit your pitch field to three or four agencies; seven responses produce noise, not clarity. Always do reference checks — and call clients in similar categories, not just the ones the agency nominates. Build a sensible contract: 12 months minimum, a structured annual review, and clean exit provisions.
+
+**Why Supermedia — New Zealand's Independent Media Consultancy**
+
+At Supermedia, we've been on every side of this equation — agency, supplier, and client. We know how pitch responses are built, how media is bought and sold, and what clients experience in the years after they sign. No supplier deals. No conflicts. Just honest advice grounded in real experience.
+
+[Get in touch with the Supermedia team](/contact) to discuss your next media agency pitch or review.`,
+    relatedSlugs: [
+      "the-senior-junior-problem-in-nz-media-agencies",
+      "what-volume-rebates-actually-mean-for-your-media-budget",
+      "how-to-review-your-media-agency-nz",
+    ],
+  },
+  {
     slug: "how-to-review-your-media-agency-nz",
     title: "How to Review Your Media Agency — NZ Advertiser's Guide",
     description:
