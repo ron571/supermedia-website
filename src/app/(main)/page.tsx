@@ -234,6 +234,20 @@ export default function HomePage() {
         </div>
       </section>
 
+      {/* ─── Brand Film ─── */}
+      <section className="bg-navy py-12 lg:py-16">
+        <div className="section-container">
+          <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
+            <iframe
+              src="/brand-film.html"
+              title="Super Media Brand Film"
+              className="absolute inset-0 w-full h-full border-0 rounded"
+              allowFullScreen
+            />
+          </div>
+        </div>
+      </section>
+
       {/* ─── Trust Bar ─── */}
       <section className="bg-white border-b border-grey-mid py-5">
         <div className="section-container">
