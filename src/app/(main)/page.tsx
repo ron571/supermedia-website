@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
 import { getArticles } from "@/lib/articles";
+import { BrandFilmEmbed } from "@/components/BrandFilmEmbed";
 
 
 export const metadata: Metadata = {
@@ -237,14 +238,7 @@ export default function HomePage() {
       {/* ─── Brand Film ─── */}
       <section className="bg-navy py-12 lg:py-16">
         <div className="section-container">
-          <div className="relative w-full" style={{ paddingBottom: "56.25%" }}>
-            <iframe
-              src="/brand-film.html"
-              title="Super Media Brand Film"
-              className="absolute inset-0 w-full h-full border-0 rounded"
-              allowFullScreen
-            />
-          </div>
+          <BrandFilmEmbed />
         </div>
       </section>
 
