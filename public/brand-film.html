@@ -186,12 +186,27 @@ document.addEventListener('DOMContentLoaded', async function() {
     setStatus('Rendering...');
 
     if (pageIds.length === 1) {
-      // Single page: the pre-crawl render path. Parse the template and swap the
-      // root element. Scripts inserted via DOMParser/replaceWith are inert per
-      // spec — re-create each with createElement so they execute, awaiting
-      // onload for src scripts to preserve ordering (React before ReactDOM
-      // before Babel before text/babel).
       var template = pages[entryId];
+      // When this bundle is embedded inside a parent iframe, calling replaceWith()
+      // followed by blob-URL script re-execution fails in Chrome (the browser
+      // revokes blob URLs on same-document replacement inside a framed context).
+      // Use the same srcdoc iframe approach as the multi-page path instead: a
+      // same-origin inner iframe loads scripts from the blob URLs without issue.
+      if (window.self !== window.top) {
+        var innerFrame = document.createElement('iframe');
+        innerFrame.setAttribute('style', 'position:fixed;inset:0;width:100%;height:100%;border:0;background:#faf9f5');
+        document.body.appendChild(innerFrame);
+        var th = document.getElementById('__bundler_thumbnail');
+        var ld = document.getElementById('__bundler_loading');
+        if (th) th.remove();
+        if (ld) ld.remove();
+        innerFrame.srcdoc = template;
+        return;
+      }
+      // Single page standalone: parse the template and swap the root element.
+      // Scripts inserted via DOMParser/replaceWith are inert per spec — re-create
+      // each with createElement so they execute, awaiting onload for src scripts
+      // to preserve ordering (React before ReactDOM before Babel before text/babel).
       const doc = new DOMParser().parseFromString(template, 'text/html');
       document.documentElement.replaceWith(doc.documentElement);
       const dead = Array.from(document.scripts);
