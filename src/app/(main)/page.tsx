@@ -649,7 +649,7 @@ export default function HomePage() {
               ))}
             </div>
             <p className="mt-10 text-sm text-body italic">
-              this website was built by Claude AI, Ron Sneddon was built by his parents.
+              This website was built by Claude AI, Ron Sneddon was built by his parents.
             </p>
           </div>
         </div>
