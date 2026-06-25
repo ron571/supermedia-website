@@ -82,6 +82,7 @@ export async function POST(req: NextRequest) {
         <tr><td style="padding:6px 0;font-weight:600;color:#1B2A4A;">Email:</td><td style="padding:6px 0;"><a href="mailto:${data.email}">${data.email}</a></td></tr>
         ${data.phone ? `<tr><td style="padding:6px 0;font-weight:600;color:#1B2A4A;">Phone:</td><td style="padding:6px 0;">${data.phone}</td></tr>` : ""}
         ${data.organisation ? `<tr><td style="padding:6px 0;font-weight:600;color:#1B2A4A;">Organisation:</td><td style="padding:6px 0;">${data.organisation}</td></tr>` : ""}
+        ${data.serviceInterest ? `<tr><td style="padding:6px 0;font-weight:600;color:#1B2A4A;">Service interest:</td><td style="padding:6px 0;font-weight:700;color:#E8621A;">${{ full_report: "Full Scan Report", ai_footprint: "AI Footprint Audit", content_strategy: "Content Strategy", benchmarking: "Benchmarking Report" }[data.serviceInterest] ?? data.serviceInterest}</td></tr>` : ""}
       </table>
 
       ${data.message ? `
@@ -110,6 +111,14 @@ export async function POST(req: NextRequest) {
 
       <p style="margin:0 0 4px;"><strong>Media coverage:</strong> ${scanResult.mediaCoverage.status} — ${scanResult.mediaCoverage.finding}${scanResult.mediaCoverage.utilizationGap ? " <em>(Utilization gap identified)</em>" : ""}</p>
 
+      ${scanResult.aiVisibility ? `
+      <p style="margin:12px 0 4px;"><strong>AI visibility:</strong> Citation readiness — <strong>${scanResult.aiVisibility.citationReadiness}</strong>. ${scanResult.aiVisibility.aiSearchFinding}</p>
+      <p style="margin:0 0 4px;">${scanResult.aiVisibility.contentIndexability}</p>` : ""}
+
+      ${scanResult.benchmarking ? `
+      <p style="margin:12px 0 4px;"><strong>Benchmarking (${scanResult.benchmarking.sector}):</strong> NZ peers — <strong>${scanResult.benchmarking.nzPeerRating}</strong>. ${scanResult.benchmarking.nzPeerContext}</p>
+      <p style="margin:0 0 4px;">${scanResult.benchmarking.globalStandardGap}</p>` : ""}
+
       <p style="margin:16px 0 4px;font-weight:600;color:#1B2A4A;">Headline findings shown to user:</p>
       <ul style="margin:0;padding-left:20px;">${headlineFindingsHtml}</ul>
       ` : ""}
@@ -128,7 +137,7 @@ export async function POST(req: NextRequest) {
       from: process.env.RESEND_FROM_EMAIL ?? "superscan@supermedia.co.nz",
       to: "ron@supermedia.co.nz",
       replyTo: data.email,
-      subject: `Social Scan enquiry — ${data.scanName} · ${data.contactName}`,
+      subject: `Social Scan — ${data.scanName} · ${data.contactName}${data.serviceInterest && data.serviceInterest !== "full_report" ? ` · ${{ ai_footprint: "AI Footprint Audit", content_strategy: "Content Strategy", benchmarking: "Benchmarking Report" }[data.serviceInterest] ?? ""}` : ""}`,
       html,
     });
   } catch (err) {

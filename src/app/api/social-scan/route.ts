@@ -24,6 +24,7 @@ Required searches (conduct each one):
 5. YouTube — "[name] YouTube channel" — presence and activity
 6. NZ news and media — "[name] NZ Herald" OR "[name] Stuff.co.nz" OR "[name] StopPress" OR "[name] RNZ" — press coverage
 ${entityType === "business" ? '7. Google Business Profile — search for their listing' : ''}
+8. AI search visibility — search for "[name]" to assess whether they appear in knowledge panels, featured snippets, or AI-generated answers. Note whether their website/content structure appears well-indexed and citation-ready for AI tools.
 If a website URL is provided, note whether it has a blog, insights section, or thought leadership content.
 
 STATUS DEFINITIONS:
@@ -43,6 +44,24 @@ SCORING GUIDE (0–10):
 OVERALL GRADE:
 88–100 = A+, 80–87 = A, 73–79 = B+, 65–72 = B, 57–64 = C+, 50–56 = C, 35–49 = D, <35 = F
 
+PROFILE COMPLETENESS (for each platform found):
+Score 0–10 on how complete the profile setup is. List specific missing elements (e.g. "profile photo", "banner image", "bio/about section", "website link", "featured content", "contact details", "location"). Only include completeness data for platforms where a profile was found.
+
+CONTENT METRICS (for active or present platforms):
+Note the posting frequency (e.g. "daily", "3x weekly", "weekly", "monthly", "sporadic — less than monthly", "not posting"). Identify the main topic focus — what themes or subjects dominate their content. Score consistency 0–10.
+
+BENCHMARKING:
+Based on the entity's industry/sector and what you found, assess how they compare to:
+(a) Typical NZ peers in their sector — rate as "top quartile", "above average", "average", "below average", or "bottom quartile"
+(b) Global best practice for their sector/role — describe the gap in one sentence and give one example of what world-class looks like.
+
+AI VISIBILITY / CITATION READINESS:
+Based on search results and content structure observed:
+- "strong": Appears in knowledge panels or AI-generated answers; content well-structured for citation
+- "partial": Some authoritative content visible but gaps in structure or coverage
+- "weak": Present online but content not structured for AI discovery
+- "absent": Minimal indexable content found
+
 Media utilization gap = true if press coverage exists but they do not appear to be amplifying it on social media.
 
 HEADLINE FINDINGS: Three specific, actionable observations — one strength, one gap, one opportunity. Be direct. No buzzwords.
@@ -58,7 +77,11 @@ RETURN ONLY valid JSON with no text before or after the JSON block:
       "name": "LinkedIn",
       "status": "active|present|inactive|absent",
       "score": number,
-      "finding": "One specific sentence. Include data points where found."
+      "finding": "One specific sentence. Include data points where found.",
+      "completenessScore": number or null,
+      "missingElements": ["list of specific missing profile elements"] or [],
+      "postingFrequency": "frequency string or null if absent",
+      "topicFocus": "main topic themes or null if absent/no content"
     }
   ],
   "mediaCoverage": {
@@ -70,10 +93,22 @@ RETURN ONLY valid JSON with no text before or after the JSON block:
     "Finding 1 — specific and direct",
     "Finding 2 — specific and direct",
     "Finding 3 — specific and direct"
-  ]
+  ],
+  "aiVisibility": {
+    "citationReadiness": "strong|partial|weak|absent",
+    "aiSearchFinding": "One sentence on how this entity appears in AI-generated results and search features.",
+    "contentIndexability": "One sentence on whether their content structure supports AI discovery and citation."
+  },
+  "benchmarking": {
+    "sector": "the sector or industry used for comparison",
+    "nzPeerRating": "top quartile|above average|average|below average|bottom quartile",
+    "nzPeerContext": "One sentence comparing their presence to typical NZ peers in the same sector.",
+    "globalStandardGap": "One sentence on what separates their current presence from global best practice.",
+    "globalBestPracticeExample": "One sentence describing what a world-class presence looks like in their sector."
+  }
 }
 
-Always include all of: LinkedIn, Facebook, Instagram, X/Twitter, YouTube${entityType === "business" ? ", Google Business" : ""} in the platforms array. Add any other significant platform if found.`;
+Always include all of: LinkedIn, Facebook, Instagram, X/Twitter, YouTube${entityType === "business" ? ", Google Business" : ""} in the platforms array. Add any other significant platform if found. Set completenessScore and missingElements to null/[] for absent platforms.`;
 }
 
 function buildUserPrompt(data: SocialScanInput): string {

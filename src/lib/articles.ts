@@ -11,6 +11,67 @@ export interface Article {
 
 const articles: Article[] = [
   {
+    slug: "digital-billboard-direct-vs-programmatic-nz",
+    title: "Two ways to buy a digital billboard. Here's what each one actually costs you.",
+    description:
+      "New Zealand now has more than 3,700 programmatically enabled digital billboard screens. That growth creates a real choice — one most advertisers don't fully understand until they've been burned by the wrong option.",
+    tag: "Out of Home",
+    date: "26 Jun 2026",
+    readTime: "5 min read",
+    body: `New Zealand is now one of the most heavily digitised out-of-home markets in the world. Three-quarters of all OOH ad spend in this country goes on digital inventory. The number of programmatically enabled screens has grown from 226 in 2020 to more than 3,700 today.
+
+That growth creates a real choice — one most advertisers don't fully understand until they've been burned by the wrong option.
+
+You can buy a digital billboard directly from the operator. Or you can buy it programmatically through a demand-side platform. Both approaches put your message on a screen. What they give you in return is very different.
+
+**Buying direct: what you get and what you give up**
+
+When you buy a digital billboard directly from a network like LUMO, QMS, JCDecaux, or oOh!media, you're buying a specific screen for a specific period. You know exactly where your ad will appear, at what times, for how long.
+
+That certainty has real value. For a brand that needs to own a particular location — a key intersection, a site near a competitor, a screen that your audience passes daily — direct is often the right call. The operator's sales team will work with you on placement strategy, share what they know about the site's audience, and help you build a campaign around confirmed, locked inventory.
+
+The costs are fixed upfront. The panel is yours for the run, regardless of how many people see it on a given day.
+
+The limitations are real, though.
+
+You're buying time, not audiences. If your target customer mostly commutes on Tuesday mornings, you're paying for Monday night and Wednesday afternoon as well. You negotiate with each operator separately, which means separate conversations with LUMO, QMS, JCDecaux, and oOh!media if you want spread. Minimum commitment periods can run to weeks or months. And measurement tells you what screen you had, not precisely who saw it.
+
+For brand campaigns where presence and location matter more than audience precision, direct is clean and effective. For campaigns where flexibility and efficiency matter more, it starts to cost you.
+
+**Buying programmatically: what you get and what you give up**
+
+Programmatic DOOH works differently. You buy impressions through a demand-side platform, and the technology places your ad across available inventory from multiple operators in real time. You can target by time of day, location, weather conditions, or audience segment data. You can set daily spend caps. You can pause or redirect a campaign mid-flight.
+
+The growth in this channel reflects genuine advertiser demand. Monthly programmatic DOOH impressions in New Zealand have grown from 79 million in 2020 to 1.5 billion today. That's the market telling you something.
+
+The efficiency case is strong. One buy, one platform, multiple operators, impression-level reporting. Dynamic creative can trigger automatically — a coffee brand running warm-drink ads when the temperature drops, a retailer switching to a weekend promotion at 4pm on Friday. You're paying for the audience, not the panel.
+
+The limitations matter just as much, though.
+
+You don't control which specific screens carry your ad. You can set parameters, but the platform will spread your buy across available inventory to hit the impression target. Premium sites — particularly high-traffic corner locations or special formats — are often held back from programmatic supply by operators who want to sell them at full rate direct. What's available programmatically tends to be secondary inventory.
+
+Programmatic also adds layers. A DSP, a technology fee, and often a managed service margin if you're not running the platform yourself. Those costs sit between your budget and the impressions you're buying. And creative specifications across multiple operators need to be managed carefully — different screen ratios, different loop lengths, different technical requirements.
+
+**What the choice actually comes down to**
+
+The IAB NZ 2025 Programmatic DOOH Buyer's Guide notes that 81% of brands globally now combine direct and programmatic buys. That's not indecision — that's strategy.
+
+Direct buying makes sense when the specific location is the point. When you need guaranteed presence at a site that matters, for a duration that matters, with a known cost.
+
+Programmatic makes sense when flexibility and scale are the point. When you want to follow your audience across multiple environments, react to real-world conditions, or test and adjust creative without committing to a fixed panel.
+
+The mistake I see most often is advertisers defaulting to one approach without asking what they actually need from the channel. A local business launching near a specific site should probably buy that site directly. A national retailer running a weather-triggered promotion should probably be in programmatic.
+
+Both have earned their place. The work is knowing which one fits your campaign — not which one your media partner happens to sell.
+
+Super Media provides independent OOH and programmatic media advice. We have no financial relationship with any OOH operator or DSP platform. If you want to know what your OOH budget is actually delivering, [get in touch](/contact).`,
+    relatedSlugs: [
+      "outdoor-media-nz-strengths-weaknesses",
+      "why-nz-advertisers-pay-too-much-for-digital-display",
+      "what-volume-rebates-actually-mean-for-your-media-budget",
+    ],
+  },
+  {
     slug: "how-to-run-a-winning-media-agency-pitch-nz",
     title: "How to Run a Winning Media Agency Pitch in New Zealand",
     description:

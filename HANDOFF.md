@@ -1,5 +1,27 @@
 # Super Media Website — Handoff Document
 
+---
+
+## Session: 24 June 2026
+
+### Brand film embedded on homepage
+- Uploaded Super Media Brand Film (standalone).html — a Claude Design bundled HTML file (1.49MB)
+- Copied to /public/brand-film.html
+- Added brand film section to homepage (src/app/(main)/page.tsx) immediately below the hero section
+- Fixed X-Frame-Options: DENY blocking iframe — added SAMEORIGIN override in next.config.mjs for /brand-film.html only
+- Fixed [bundle] error in iframe: the bundler uses document.documentElement.replaceWith() then re-executes scripts from blob URLs. Chrome revokes blob URLs in a nested iframe context after document replacement. Patch in /public/brand-film.html (around the `if (pageIds.length === 1)` block): when window.self !== window.top, convert all blob URLs to base64 data URIs first, then write a self-contained srcdoc inner iframe
+- Created /src/components/BrandFilmEmbed.tsx — client component, IntersectionObserver, lazy-loads iframe only when user scrolls to it, shows SVG placeholder until then
+
+### Voice and rules files created
+- /RON_RULES.md — master rules file. MUST be pasted into Cowork → Settings → Project Instructions to take effect. File on disk is the editable master.
+- /MY_VOICE_RON.md — full voice card, anti-AI writing patterns, banned vocabulary, opening hook patterns, writing samples. Claude reads this before writing anything for Ron.
+
+### Git
+- All changes pushed to main, deployed via Vercel
+- Recurring issue: HEAD.lock or index.lock appear if sandbox and Terminal both try git at the same time. Fix: rm ~/supermedia-website/.git/HEAD.lock (or index.lock) then retry.
+
+---
+
 **Project:** supermedia.co.nz  
 **Stack:** Next.js (App Router), TypeScript, Tailwind CSS, Vercel, Resend, Upstash Redis, Anthropic API  
 **Repo:** https://github.com/ron571/supermedia-website  

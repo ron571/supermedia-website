@@ -84,6 +84,7 @@ export const SocialScanEnquirySchema = z.object({
   organisation: z.string().max(200).optional(),
   message: z.string().max(1000).optional(),
   scanResultJson: z.string().max(20000).optional(),
+  serviceInterest: z.enum(["full_report", "ai_footprint", "content_strategy", "benchmarking"]).optional(),
 });
 
 export type SocialScanEnquiry = z.infer<typeof SocialScanEnquirySchema>;
@@ -93,6 +94,24 @@ export interface PlatformResult {
   status: "active" | "present" | "inactive" | "absent";
   score: number;
   finding: string;
+  completenessScore?: number;    // 0-10 — how complete the profile setup is
+  missingElements?: string[];    // e.g. ["profile photo", "website link", "featured section"]
+  postingFrequency?: string;     // e.g. "3x weekly", "monthly", "not posting"
+  topicFocus?: string;           // e.g. "NZ business and leadership commentary" or "no clear theme"
+}
+
+export interface AIVisibility {
+  citationReadiness: "strong" | "partial" | "weak" | "absent";
+  aiSearchFinding: string;       // one sentence on how they appear in AI-generated results
+  contentIndexability: string;   // one sentence on content structure for AI discovery
+}
+
+export interface BenchmarkComparison {
+  sector: string;                // the sector/industry used for comparison
+  nzPeerRating: "top quartile" | "above average" | "average" | "below average" | "bottom quartile";
+  nzPeerContext: string;         // one sentence comparing to NZ peers in the same sector
+  globalStandardGap: string;     // one sentence on the gap to global best practice
+  globalBestPracticeExample: string; // one sentence on what world-class looks like in this sector
 }
 
 export interface SocialScanResult {
@@ -107,6 +126,8 @@ export interface SocialScanResult {
     utilizationGap: boolean;
   };
   headlineFindings: string[];
+  aiVisibility?: AIVisibility;
+  benchmarking?: BenchmarkComparison;
 }
 
 export const SuperscanSchema = z.object({

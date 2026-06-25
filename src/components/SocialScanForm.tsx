@@ -19,7 +19,9 @@ const SCAN_MESSAGES = [
   "Checking Facebook and Instagram…",
   "Scanning X and YouTube…",
   "Looking for news and media coverage…",
-  "Assessing content quality…",
+  "Checking AI search visibility…",
+  "Assessing content quality and profile completeness…",
+  "Benchmarking against NZ peers…",
   "Building your presence report…",
 ];
 
@@ -152,12 +154,22 @@ function ScanningSpinner({ message }: { message: string }) {
 
 // ── Main component ───────────────────────────────────────────────────────────
 
+type ServiceInterest = "full_report" | "ai_footprint" | "content_strategy" | "benchmarking";
+
+const SERVICE_LABELS: Record<ServiceInterest, string> = {
+  full_report: "Request full report",
+  ai_footprint: "AI Footprint Audit",
+  content_strategy: "Content Strategy",
+  benchmarking: "Benchmarking Report",
+};
+
 export default function SocialScanForm() {
   const [step, setStep] = useState<Step>("form");
   const [result, setResult] = useState<SocialScanResult | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [scanMessage, setScanMessage] = useState(SCAN_MESSAGES[0]);
   const [enquirySent, setEnquirySent] = useState(false);
+  const [serviceInterest, setServiceInterest] = useState<ServiceInterest>("full_report");
 
   const scanForm = useForm<SocialScanInput>({
     resolver: zodResolver(SocialScanInputSchema),
@@ -211,11 +223,18 @@ export default function SocialScanForm() {
       enquiryForm.setValue("scanName", data.name);
       enquiryForm.setValue("scanEntityType", data.entityType);
       enquiryForm.setValue("scanResultJson", JSON.stringify(json));
+      enquiryForm.setValue("serviceInterest", "full_report");
     } catch {
       clearInterval(interval);
       setErrorMessage("Something went wrong. Please try again or email ron@supermedia.co.nz.");
       setStep("error");
     }
+  };
+
+  const openEnquiry = (service: ServiceInterest = "full_report") => {
+    setServiceInterest(service);
+    enquiryForm.setValue("serviceInterest", service);
+    setStep("enquiry");
   };
 
   const onEnquirySubmit = async (data: SocialScanEnquiry) => {
@@ -284,7 +303,7 @@ export default function SocialScanForm() {
         {/* Platform matrix */}
         <div className="bg-white rounded shadow-md p-6">
           <p className="eyebrow mb-4">Platform presence</p>
-          <div className="space-y-3">
+          <div className="space-y-4">
             {result.platforms.map((p) => (
               <div key={p.name} className="flex items-start gap-3">
                 <PlatformIcon name={p.name} />
@@ -295,8 +314,24 @@ export default function SocialScanForm() {
                     {p.status !== "absent" && (
                       <span className="text-xs text-grey-dark">{p.score}/10</span>
                     )}
+                    {p.completenessScore != null && p.status !== "absent" && (
+                      <span className="text-xs text-grey-dark border border-grey-mid rounded px-1.5 py-0.5">
+                        Profile complete: {p.completenessScore}/10
+                      </span>
+                    )}
                   </div>
                   <p className="text-body text-sm">{p.finding}</p>
+                  {p.postingFrequency && (
+                    <p className="text-grey-dark text-xs mt-1">
+                      Posting: {p.postingFrequency}
+                      {p.topicFocus ? ` · ${p.topicFocus}` : ""}
+                    </p>
+                  )}
+                  {p.missingElements && p.missingElements.length > 0 && (
+                    <p className="text-orange text-xs mt-0.5">
+                      Missing: {p.missingElements.join(", ")}
+                    </p>
+                  )}
                 </div>
               </div>
             ))}
@@ -322,6 +357,64 @@ export default function SocialScanForm() {
             </div>
           </div>
         </div>
+
+        {/* AI visibility */}
+        {result.aiVisibility && (
+          <div className="bg-white rounded shadow-md p-6">
+            <p className="eyebrow mb-3">AI search visibility</p>
+            <div className="flex items-start gap-3">
+              <div className="flex-shrink-0 mt-0.5">
+                <span className={`inline-flex items-center gap-1.5 px-2 py-0.5 rounded-full text-xs font-semibold ${
+                  result.aiVisibility.citationReadiness === "strong" ? "bg-green-50 text-green-700" :
+                  result.aiVisibility.citationReadiness === "partial" ? "bg-amber-50 text-amber-700" :
+                  result.aiVisibility.citationReadiness === "weak" ? "bg-orange-50 text-orange-700" :
+                  "bg-gray-100 text-gray-500"
+                }`}>
+                  <span className={`w-1.5 h-1.5 rounded-full ${
+                    result.aiVisibility.citationReadiness === "strong" ? "bg-green-500" :
+                    result.aiVisibility.citationReadiness === "partial" ? "bg-amber-500" :
+                    result.aiVisibility.citationReadiness === "weak" ? "bg-orange-500" :
+                    "bg-gray-400"
+                  }`} />
+                  {result.aiVisibility.citationReadiness === "strong" ? "Citation ready" :
+                   result.aiVisibility.citationReadiness === "partial" ? "Partial" :
+                   result.aiVisibility.citationReadiness === "weak" ? "Weak" : "Not indexed"}
+                </span>
+              </div>
+              <div>
+                <p className="text-body text-sm">{result.aiVisibility.aiSearchFinding}</p>
+                <p className="text-grey-dark text-sm mt-1">{result.aiVisibility.contentIndexability}</p>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* Benchmarking */}
+        {result.benchmarking && (
+          <div className="bg-white rounded shadow-md p-6">
+            <p className="eyebrow mb-3">How they compare — {result.benchmarking.sector}</p>
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+              <div className="border border-grey-mid rounded p-4">
+                <p className="text-xs font-semibold text-grey-dark uppercase tracking-wide mb-2">NZ peers</p>
+                <p className={`font-bold text-base mb-1 ${
+                  result.benchmarking.nzPeerRating === "top quartile" ? "text-green-600" :
+                  result.benchmarking.nzPeerRating === "above average" ? "text-emerald-600" :
+                  result.benchmarking.nzPeerRating === "average" ? "text-amber-600" :
+                  result.benchmarking.nzPeerRating === "below average" ? "text-orange-600" :
+                  "text-red-600"
+                }`}>
+                  {result.benchmarking.nzPeerRating.charAt(0).toUpperCase() + result.benchmarking.nzPeerRating.slice(1)}
+                </p>
+                <p className="text-body text-sm">{result.benchmarking.nzPeerContext}</p>
+              </div>
+              <div className="border border-grey-mid rounded p-4">
+                <p className="text-xs font-semibold text-grey-dark uppercase tracking-wide mb-2">Global standard</p>
+                <p className="text-body text-sm mb-1">{result.benchmarking.globalStandardGap}</p>
+                <p className="text-grey-dark text-xs">{result.benchmarking.globalBestPracticeExample}</p>
+              </div>
+            </div>
+          </div>
+        )}
 
         {/* Headline findings */}
         <div className="bg-navy rounded shadow-lg p-6">
@@ -357,10 +450,57 @@ export default function SocialScanForm() {
               Platform-by-platform recommendations, priority actions, and Ron&apos;s expert read on what to fix first.
             </p>
             <button
-              onClick={() => setStep("enquiry")}
+              onClick={() => openEnquiry("full_report")}
               className="btn-primary"
             >
               Request full report →
+            </button>
+          </div>
+        </div>
+
+        {/* Service promos */}
+        <div className="space-y-4">
+          <p className="text-navy font-semibold text-sm px-1">What Super can do from here</p>
+
+          {/* AI Footprint Audit */}
+          <div className="bg-white rounded shadow-md p-6 border-l-4 border-orange">
+            <p className="text-navy font-bold text-base mb-2">How visible are you to AI?</p>
+            <p className="text-body text-sm mb-1">
+              ChatGPT, Perplexity, and Google&apos;s AI Overviews are answering questions that used to send people to a search results page. If your content isn&apos;t structured to appear in those answers, you&apos;re not in the conversation.
+            </p>
+            <p className="text-body text-sm mb-4">
+              The AI Footprint Audit identifies exactly what needs to change, with a specific set of actions to improve your AI discoverability.
+            </p>
+            <button onClick={() => openEnquiry("ai_footprint")} className="btn-primary text-sm">
+              Request AI Footprint Audit →
+            </button>
+          </div>
+
+          {/* Content Strategy */}
+          <div className="bg-white rounded shadow-md p-6 border-l-4 border-navy">
+            <p className="text-navy font-bold text-base mb-2">A posting plan that does something</p>
+            <p className="text-body text-sm mb-1">
+              Consistent posting is the baseline. What you post, and who it&apos;s for, is what separates presence from noise.
+            </p>
+            <p className="text-body text-sm mb-4">
+              Super will develop a 90-day content strategy for your most important platform, built around what works in your sector and what your audience is actually looking for.
+            </p>
+            <button onClick={() => openEnquiry("content_strategy")} className="btn-outline-navy text-sm">
+              Request content strategy →
+            </button>
+          </div>
+
+          {/* Benchmarking Report */}
+          <div className="bg-white rounded shadow-md p-6 border-l-4 border-emerald-500">
+            <p className="text-navy font-bold text-base mb-2">See where you actually stand</p>
+            <p className="text-body text-sm mb-1">
+              Your scan includes an overview of where you sit against NZ peers and global best practice.
+            </p>
+            <p className="text-body text-sm mb-4">
+              The full benchmarking report goes deeper, platform by platform, naming the specific gaps and showing what the leaders in your sector are doing differently.
+            </p>
+            <button onClick={() => openEnquiry("benchmarking")} className="btn-outline-navy text-sm">
+              Request benchmarking report →
             </button>
           </div>
         </div>
@@ -394,17 +534,24 @@ export default function SocialScanForm() {
           ← Back to results
         </button>
 
-        <p className="eyebrow mb-2">Request full report</p>
+        <p className="eyebrow mb-2">{SERVICE_LABELS[serviceInterest]}</p>
         <h2 className="text-navy text-2xl font-bold mb-1">Get the complete read</h2>
         <p className="text-body text-sm mb-6">
-          Ron will review your scan results and send through a detailed report with specific recommendations.
-          No obligation, no sales call.
+          {serviceInterest === "ai_footprint"
+            ? "Ron will review your scan and send through a specific set of actions to improve how your content appears to AI tools."
+            : serviceInterest === "content_strategy"
+            ? "Ron will review your scan and send through a 90-day content strategy for your most important platform."
+            : serviceInterest === "benchmarking"
+            ? "Ron will send through the full benchmarking report with platform-by-platform comparisons against NZ peers and global best practice."
+            : "Ron will review your scan results and send through a detailed report with specific recommendations."}
+          {" "}No obligation, no sales call.
         </p>
 
         {/* Hidden fields */}
         <input type="hidden" {...enquiryForm.register("scanName")} />
         <input type="hidden" {...enquiryForm.register("scanEntityType")} />
         <input type="hidden" {...enquiryForm.register("scanResultJson")} />
+        <input type="hidden" {...enquiryForm.register("serviceInterest")} />
 
         <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-4">
           <div>
