@@ -225,11 +225,11 @@ export default function HomePage() {
             <Link href="/contact" className="btn-primary">
               Get a Free Media Audit →
             </Link>
-            <Link href="/superscan" className="btn-outline-white">
-              Run Superscan — 30 seconds, free →
+            <Link href="/social-scan" className="btn-outline-white">
+              Run Social Scan — free →
             </Link>
-            <Link href="/audience-reality-check" className="btn-outline-white">
-              Audience Reality Check →
+            <Link href="/superscan" className="btn-outline-white">
+              Superscan your media →
             </Link>
           </div>
         </div>
@@ -302,26 +302,46 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ─── Section 3: Small Business Entry Point ─── */}
-      <section className="bg-orange py-16 lg:py-20">
+      {/* ─── Section 3: Super Tools ─── */}
+      <section className="bg-navy py-16 lg:py-24">
         <div className="section-container">
-          <div className="max-w-3xl">
-            <p className="text-white/80 text-sm font-bold uppercase tracking-eyebrow mb-4">
-              You don&apos;t need a big budget to need independent advice
-            </p>
-            <h2 className="text-white text-2xl md:text-3xl font-bold mb-3 leading-snug">
-              Most of the businesses that come to Super are spending between
-              $2,000 and $20,000 a month on advertising.
+          <div className="mb-10">
+            <p className="eyebrow mb-3">Free tools</p>
+            <h2 className="text-white text-3xl md:text-4xl font-bold max-w-xl leading-snug">
+              Two free tools. Two questions worth answering.
             </h2>
-            <p className="text-white/85 text-lg mb-8" style={{ lineHeight: 1.65 }}>
-              The Superscan tool was built specifically for this situation. It
-              takes 30 seconds, costs nothing, and gives you an independent read
-              on whether your current advertising makes sense — without a sales
-              call, a contract, or any obligation.
-            </p>
-            <Link href="/superscan" className="inline-flex items-center gap-2 bg-white text-orange font-bold px-6 py-3 rounded hover:bg-grey-light transition-colors">
-              Run your free Superscan →
-            </Link>
+          </div>
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Social Scan */}
+            <div className="bg-white/5 border border-white/15 rounded-lg p-8 flex flex-col">
+              <div className="mb-2">
+                <span className="inline-block bg-orange/20 text-orange text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full mb-4">New</span>
+              </div>
+              <h3 className="text-white text-2xl font-bold mb-3">Social Scan</h3>
+              <p className="text-white/70 mb-2" style={{ lineHeight: 1.65 }}>
+                What does a prospect find when they Google you? Social Scan searches your name or business across LinkedIn, Facebook, Instagram, X, YouTube, and NZ media, then tells you exactly what&apos;s visible, what&apos;s missing, and where the gaps are.
+              </p>
+              <p className="text-white/50 text-sm mb-8">For individuals and businesses. No account access needed.</p>
+              <div className="mt-auto">
+                <Link href="/social-scan" className="inline-flex items-center gap-2 bg-orange text-white font-bold px-6 py-3 rounded hover:opacity-90 transition-opacity">
+                  Run Social Scan — free →
+                </Link>
+              </div>
+            </div>
+            {/* Superscan */}
+            <div className="bg-white/5 border border-white/15 rounded-lg p-8 flex flex-col">
+              <div className="mb-6" />
+              <h3 className="text-white text-2xl font-bold mb-3">Superscan</h3>
+              <p className="text-white/70 mb-2" style={{ lineHeight: 1.65 }}>
+                Is your advertising budget actually working? Superscan gives you an independent read on your media mix in 30 seconds, benchmarked against the NZ market and 35 years of buying experience. No agency spin, no sales call.
+              </p>
+              <p className="text-white/50 text-sm mb-8">For businesses spending $2K–$20K/month on advertising.</p>
+              <div className="mt-auto">
+                <Link href="/superscan" className="inline-flex items-center gap-2 bg-white/10 border border-white/30 text-white font-bold px-6 py-3 rounded hover:bg-white/20 transition-colors">
+                  Run Superscan — free →
+                </Link>
+              </div>
+            </div>
           </div>
         </div>
       </section>
@@ -414,7 +434,7 @@ export default function HomePage() {
               <li>35 years buying and selling NZ media across TV, radio, print, digital, and programmatic</li>
               <li>Worked with clients across retail, professional services, financial services, and property</li>
               <li>Founded and ran a media agency before building Super</li>
-              <li>Created Superscan — the only free independent AI media diagnostic available to NZ businesses</li>
+              <li>Created Superscan and Social Scan — two free independent AI tools for NZ businesses and leaders</li>
             </ul>
             <blockquote className="italic text-navy font-medium text-lg mb-8 border-l-4 border-orange pl-4">
               &ldquo;If the advice would be different depending on who&apos;s paying for it, it&apos;s not independent advice.&rdquo;
@@ -605,8 +625,11 @@ export default function HomePage() {
             >
               Get a Free Media Audit
             </a>
+            <Link href="/social-scan" className="btn-outline-white">
+              Run Social Scan first →
+            </Link>
             <Link href="/superscan" className="btn-outline-white">
-              Run Superscan first →
+              Superscan your media →
             </Link>
           </div>
         </div>

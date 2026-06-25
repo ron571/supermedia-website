@@ -11,8 +11,8 @@ const navLinks = [
   { href: "/thinking", label: "Thinking" },
   { href: "/resources", label: "Resources" },
   { href: "/results", label: "Results" },
-  { href: "/clients", label: "Clients" },
   { href: "/contact", label: "Contact" },
+  { href: "/superscan", label: "Superscan" },
 ];
 
 export default function Header() {
@@ -61,8 +61,8 @@ export default function Header() {
               </Link>
             );
           })}
-          <Link href="/superscan" className="btn-primary text-sm py-2 px-4">
-            Superscan →
+          <Link href="/social-scan" className="btn-primary text-sm py-2 px-4">
+            Social Scan →
           </Link>
           <Link
             href="/admin"
@@ -108,8 +108,8 @@ export default function Header() {
                 {label}
               </Link>
             ))}
-            <Link href="/superscan" className="btn-primary text-sm self-start">
-              Superscan →
+            <Link href="/social-scan" className="btn-primary text-sm self-start">
+              Social Scan →
             </Link>
             <Link href="/admin" className="text-sm font-medium text-navy opacity-40 hover:opacity-100">
               Admin
