@@ -5,6 +5,21 @@ import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { SocialScanInputSchema, type SocialScanInput, type SocialScanResult } from "@/lib/schemas";
 
+/** Extract and parse the first valid JSON object from a response that may contain prose. */
+function extractJson(text: string): SocialScanResult {
+  // Strip code fences if present
+  const stripped = text.replace(/^```(?:json)?\s*/m, "").replace(/\s*```\s*$/m, "").trim();
+  // Try the whole string first
+  try { return JSON.parse(stripped) as SocialScanResult; } catch { /* fall through */ }
+  // Find the first { and last } and parse that substring
+  const start = stripped.indexOf("{");
+  const end = stripped.lastIndexOf("}");
+  if (start !== -1 && end > start) {
+    return JSON.parse(stripped.slice(start, end + 1)) as SocialScanResult;
+  }
+  throw new Error("No JSON object found in response");
+}
+
 export const maxDuration = 120;
 
 function buildSystemPrompt(entityType: string): string {
@@ -215,8 +230,7 @@ async function runScanWithWebSearch(data: SocialScanInput): Promise<SocialScanRe
     }
   }
 
-  const cleaned = finalText.replace(/^```(?:json)?\n?/, "").replace(/\n?```$/, "").trim();
-  return JSON.parse(cleaned) as SocialScanResult;
+  return extractJson(finalText);
 }
 
 async function runScanFallback(data: SocialScanInput): Promise<SocialScanResult> {
@@ -227,15 +241,14 @@ async function runScanFallback(data: SocialScanInput): Promise<SocialScanResult>
 
   const message = await anthropic.messages.create({
     model: "claude-sonnet-4-6",
-    max_tokens: 2048,
+    max_tokens: 4096,
     temperature: 0.3,
     system,
     messages: [{ role: "user", content: buildUserPrompt(data) }],
   });
 
   const text = message.content[0].type === "text" ? message.content[0].text : "";
-  const cleaned = text.replace(/^```(?:json)?\n?/, "").replace(/\n?```$/, "").trim();
-  return JSON.parse(cleaned) as SocialScanResult;
+  return extractJson(text);
 }
 
 export async function POST(req: NextRequest) {
