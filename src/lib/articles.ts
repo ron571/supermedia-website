@@ -11,6 +11,53 @@ export interface Article {
 
 const articles: Article[] = [
   {
+    slug: "is-linear-tv-still-worth-buying-nz",
+    title: "Is linear TV still worth buying for your New Zealand campaign?",
+    description:
+      "Linear TV still reaches 47 percent of New Zealanders every day. The question is whether it's the audience you actually need.",
+    tag: "Television",
+    date: "29 Jun 2026",
+    readTime: "4 min read",
+    body: `I've sat on both sides of the NZ media table. That's the reason I can tell you what the audience data actually means, as distinct from what the sales deck says it means.
+
+Linear TV reaches 47 percent of all New Zealanders daily, according to NZ On Air's Where Are The Audiences? 2024 research. It commands the 6pm to 8:30pm primetime window more effectively than any streaming or social platform. Among viewers aged 60 and over, it reaches more than seven in ten people who spend three and a half hours a day with it.
+
+Those numbers are real. The question is whether they describe your audience.
+
+**The ten-year decline in younger demographics**
+
+The 15 to 39 age group tells a different story. NZ On Air's 2024 data puts linear TV daily reach for that group at 27 percent. BVOD platforms like TVNZ+ and ThreeNow now reach more of them at 30 percent per day. Analysis of Nielsen data published by The Spinoff puts the youngest linear TV cohorts at less than a third of their peak audience from around 2010.
+
+The 25 to 54 trading demographic holds up better in aggregate. But November 2024 figures show 1News at Six reaching 122,600 linear viewers in that group. Outside news, no other linear programme drew more than 90,000 in 25 to 54.
+
+**Where linear TV still has structural advantage**
+
+The 6 to 8:30pm window is where linear TV retains a real lead. TV reaches 44 percent of the total NZ population in that slot, against 36 percent for global video platforms and 35 percent for SVOD. After 8pm that advantage disappears, with all three platforms sitting at roughly 28 to 31 percent reach.
+
+Off-peak dayparts deliver a smaller, older audience. For some categories that works. For anything chasing 25 to 54, the numbers rarely support it.
+
+**The programmes and genres that still perform**
+
+Nine of TVNZ's top ten shows in 2025 were locally made. Five were property and lifestyle content. 1News at Six held the number one spot, Country Calendar has been in the top three every year since 2017, and The Chase NZ made the list at 7:30pm while the UK version at 5pm did not. The audience still shows up for local stories and early evening appointment viewing.
+
+The genres that overperform against 25 to 54 and 40 to 59 are news and current affairs, local factual, property-based lifestyle, and NZ-hosted game shows airing before 8pm. International drama and reality formats, which dominate TVNZ+ streaming, consistently underperform in linear.
+
+**What this means for your media plan**
+
+For advertisers whose customers skew 45-plus, linear TV in the right environment is a defensible buy. The audiences are loyal, viewing time is substantial, and local content carries a different quality of attention.
+
+For 18 to 39, linear television is the wrong channel. Buying it to reach younger Kiwis means paying for audience that largely is not there.
+
+For 25 to 54, the answer depends on where in the schedule you land. News adjacency in the early evening window still works. Local factual and property content still works. Off-peak buys against international formats rarely deliver the demographic in sufficient numbers.
+
+The question I put to every client who asks about TV: which specific Kiwis do you need to reach, and what does the verified contact cost look like against every other option available? Linear TV earns a yes in specific situations. A SuperScan will show you whether your current investment is one of them.`,
+    relatedSlugs: [
+      "what-volume-rebates-actually-mean-for-your-media-budget",
+      "how-to-review-your-media-agency-nz",
+      "digital-billboard-direct-vs-programmatic-nz",
+    ],
+  },
+  {
     slug: "digital-billboard-direct-vs-programmatic-nz",
     title: "Two ways to buy a digital billboard. Here's what each one actually costs you.",
     description:
