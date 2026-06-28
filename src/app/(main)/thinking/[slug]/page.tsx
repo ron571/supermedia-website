@@ -2,7 +2,8 @@ import type { Metadata } from "next";
 import { notFound } from "next/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { getArticleBySlug, getArticles, getRelatedArticles } from "@/lib/articles";
+import { getArticleBySlug, getArticles, getRelatedArticles, type ArticleChartConfig } from "@/lib/articles";
+import ArticleChart from "@/components/ArticleChart";
 import NewsletterForm from "@/components/NewsletterForm";
 
 interface Props {
@@ -67,7 +68,7 @@ function renderInline(text: string) {
   });
 }
 
-function renderBody(body: string) {
+function renderBody(body: string, charts?: ArticleChartConfig[]) {
   const paragraphs = body.split("\n\n");
   return paragraphs.map((para, i) => {
     if (para.startsWith("**") && para.endsWith("**")) {
@@ -76,6 +77,24 @@ function renderBody(body: string) {
           {para.replace(/\*\*/g, "")}
         </h3>
       );
+    }
+    const chartMatch = para.match(/^\[CHART:([^\]]+)\]$/);
+    if (chartMatch && charts) {
+      const chart = charts.find((c) => c.id === chartMatch[1]);
+      if (chart) {
+        return (
+          <ArticleChart
+            key={i}
+            title={chart.title}
+            source={chart.source}
+            labels={chart.labels}
+            datasets={chart.datasets}
+            unit={chart.unit}
+            max={chart.max}
+            horizontal={chart.horizontal}
+          />
+        );
+      }
     }
     return (
       <p key={i} className="text-body mb-5" style={{ lineHeight: 1.7 }}>
@@ -208,7 +227,7 @@ export default function ArticlePage({ params }: Props) {
                 {article.description}
               </p>
 
-              {renderBody(article.body)}
+              {renderBody(article.body, article.charts)}
 
               {/* End of article CTA */}
               <div className="mt-12 pt-8 border-t border-grey-mid space-y-8">

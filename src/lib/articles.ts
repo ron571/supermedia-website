@@ -1,3 +1,20 @@
+export interface ArticleChartDataset {
+  label: string;
+  data: (number | null)[];
+  color: string;
+}
+
+export interface ArticleChartConfig {
+  id: string;
+  title: string;
+  source: string;
+  labels: string[];
+  datasets: ArticleChartDataset[];
+  unit: string;
+  max?: number;
+  horizontal?: boolean;
+}
+
 export interface Article {
   slug: string;
   title: string;
@@ -6,6 +23,7 @@ export interface Article {
   date: string;
   readTime: string;
   body: string;
+  charts?: ArticleChartConfig[];
   relatedSlugs?: string[];
 }
 
@@ -30,17 +48,23 @@ The 15 to 39 age group tells a different story. NZ On Air's 2024 data puts linea
 
 The 25 to 54 trading demographic holds up better in aggregate. But November 2024 figures show 1News at Six reaching 122,600 linear viewers in that group. Outside news, no other linear programme drew more than 90,000 in 25 to 54.
 
+[CHART:1]
+
 **Where linear TV still has structural advantage**
 
 The 6 to 8:30pm window is where linear TV retains a real lead. TV reaches 44 percent of the total NZ population in that slot, against 36 percent for global video platforms and 35 percent for SVOD. After 8pm that advantage disappears, with all three platforms sitting at roughly 28 to 31 percent reach.
 
 Off-peak dayparts deliver a smaller, older audience. For some categories that works. For anything chasing 25 to 54, the numbers rarely support it.
 
+[CHART:2]
+
 **The programmes and genres that still perform**
 
 Nine of TVNZ's top ten shows in 2025 were locally made. Five were property and lifestyle content. 1News at Six held the number one spot, Country Calendar has been in the top three every year since 2017, and The Chase NZ made the list at 7:30pm while the UK version at 5pm did not. The audience still shows up for local stories and early evening appointment viewing.
 
 The genres that overperform against 25 to 54 and 40 to 59 are news and current affairs, local factual, property-based lifestyle, and NZ-hosted game shows airing before 8pm. International drama and reality formats, which dominate TVNZ+ streaming, consistently underperform in linear.
+
+[CHART:3]
 
 **What this means for your media plan**
 
@@ -51,6 +75,46 @@ For 18 to 39, linear television is the wrong channel. Buying it to reach younger
 For 25 to 54, the answer depends on where in the schedule you land. News adjacency in the early evening window still works. Local factual and property content still works. Off-peak buys against international formats rarely deliver the demographic in sufficient numbers.
 
 The question I put to every client who asks about TV: which specific Kiwis do you need to reach, and what does the verified contact cost look like against every other option available? Linear TV earns a yes in specific situations. A SuperScan will show you whether your current investment is one of them.`,
+    charts: [
+      {
+        id: '1',
+        title: 'Linear TV daily reach by age group (2024)',
+        source: 'Source: NZ On Air Where Are The Audiences? 2024',
+        labels: ['15–39', '40–59', '60+'],
+        datasets: [
+          { label: 'Linear TV', data: [27, null, 72], color: '#185FA5' },
+          { label: 'BVOD (on-demand)', data: [30, null, 38], color: '#1D9E75' },
+          { label: 'Total TV', data: [45, 64, 80], color: '#534AB7' },
+        ],
+        unit: '%',
+        max: 100,
+      },
+      {
+        id: '2',
+        title: 'Platform reach during evening peak hours (2024)',
+        source: 'Source: NZ On Air Where Are The Audiences? 2024',
+        labels: ['Full peak  6–10:30pm', 'Early peak  6–8:30pm', 'Late peak  8–10:30pm'],
+        datasets: [
+          { label: 'Linear TV', data: [49, 44, 29], color: '#185FA5' },
+          { label: 'Global video (YouTube/social)', data: [44, 36, 31], color: '#D85A30' },
+          { label: 'SVOD (Netflix/Neon etc)', data: [42, 35, 28], color: '#BA7517' },
+        ],
+        unit: '%',
+        max: 60,
+      },
+      {
+        id: '3',
+        title: 'Top linear programmes: 25–54 audience (November 2024)',
+        source: 'Source: Nielsen TAM via The Spinoff, November 2024',
+        horizontal: true,
+        labels: ['1News at Six', 'ThreeNews 6pm', 'Other shows (ceiling)'],
+        datasets: [
+          { label: '25–54 viewers', data: [122600, 46200, 90000], color: '#185FA5' },
+        ],
+        unit: 'k',
+        max: 140000,
+      },
+    ],
     relatedSlugs: [
       "what-volume-rebates-actually-mean-for-your-media-budget",
       "how-to-review-your-media-agency-nz",
