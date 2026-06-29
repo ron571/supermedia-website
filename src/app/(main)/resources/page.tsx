@@ -80,6 +80,12 @@ const tools = [
     description: "Audit your media plan. Paste in your schedule and get an independent read on whether you're reaching the right people at the right price.",
     badge: "Free tool",
   },
+  {
+    href: "/social-scan",
+    title: "Social Scan",
+    description: "Audit your digital footprint in 30 seconds. Get an independent read on how your brand shows up across social platforms — what's working, what's missing, and what to fix.",
+    badge: "Free tool",
+  },
 ];
 
 export default function ResourcesPage() {
@@ -154,7 +160,7 @@ export default function ResourcesPage() {
       <section className="bg-grey-light py-16 lg:py-20">
         <div className="section-container">
           <h2 className="text-navy text-2xl font-bold mb-8">Planning tools</h2>
-          <div className="grid sm:grid-cols-2 gap-5">
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {tools.map((t) => (
               <Link
                 key={t.href}
