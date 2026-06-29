@@ -282,10 +282,6 @@ export default function ServicesPage() {
                   </li>
                   <li className="flex items-start gap-3">
                     <span className="text-grey-dark font-bold mt-0.5 flex-shrink-0">→</span>
-                    <span><strong className="text-navy">You want campaigns managed for you</strong> — Super Media provides strategy, oversight, and programmatic buying. Full-service campaign execution is not the offer.</span>
-                  </li>
-                  <li className="flex items-start gap-3">
-                    <span className="text-grey-dark font-bold mt-0.5 flex-shrink-0">→</span>
                     <span><strong className="text-navy">You need a yes-person</strong> — the value here is an honest read, including when the honest read is uncomfortable. If you want someone to validate a decision already made, this isn&apos;t the right fit.</span>
                   </li>
                 </ul>
