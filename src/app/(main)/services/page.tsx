@@ -284,6 +284,10 @@ export default function ServicesPage() {
                     <span className="text-grey-dark font-bold mt-0.5 flex-shrink-0">→</span>
                     <span><strong className="text-navy">You need a yes-person</strong> — the value here is an honest read, including when the honest read is uncomfortable. If you want someone to validate a decision already made, this isn&apos;t the right fit.</span>
                   </li>
+                  <li className="flex items-start gap-3">
+                    <span className="text-grey-dark font-bold mt-0.5 flex-shrink-0">→</span>
+                    <span><strong className="text-navy">You want a full agency roster billing by the hour</strong> — expensive suits in the pitch, your business migrated to a junior by month two. That model exists and some clients prefer it. Super Media is one senior person working directly on your account, start to finish.</span>
+                  </li>
                 </ul>
               </div>
             </div>
