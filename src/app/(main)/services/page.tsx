@@ -107,7 +107,7 @@ const jsonLd = {
 const services = [
   {
     id: "strategy",
-    title: "Media Strategy & Planning",
+    title: "Media Strategy, Planning & Buying",
     tag: "Strategy",
     description:
       "A complete, independent media plan from scratch or as a second opinion. Every recommendation made on merit. Covers Search, Display, AI-driven media, and traditional channels including Linear TV, radio, print, and Out of Home.",
