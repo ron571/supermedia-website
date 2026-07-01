@@ -117,8 +117,7 @@ export default function NZMediaRatesPage() {
             <p className="text-body text-sm mb-3" style={{ lineHeight: 1.75 }}>
               These are independent benchmarks, not rate cards. Actual costs vary based
               on buying volume, audience specifications, seasonality, and negotiating
-              position. A large agency buying at scale will achieve different rates than
-              a small business buying direct.
+              position.
             </p>
             <p className="text-body text-sm mb-3" style={{ lineHeight: 1.75 }}>
               These benchmarks are updated annually. If you&apos;re seeing rates

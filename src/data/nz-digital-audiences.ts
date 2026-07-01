@@ -25,8 +25,8 @@
  */
 
 export const dataInfo = {
-  lastUpdated: "2026-06-21",
-  surveyPeriod: "SemRush April 2026 / NapoleonCat December 2025",
+  lastUpdated: "2026-07-01",
+  surveyPeriod: "SemRush April 2026 / NapoleonCat May 2026",
   primarySource: "SemRush (traffic) / Nielsen Digital Ratings (index) / NapoleonCat (social users)",
   sourceUrl: "https://napoleoncat.com/stats/social-media-users-in-new_zealand/",
   updateSchedule: "Quarterly — SemRush traffic data and NapoleonCat social user counts",
@@ -95,9 +95,9 @@ export const digitalNewsSites: DigitalNewsSite[] = [
 ];
 
 export const socialPlatforms: SocialRow[] = [
-  { platform: "Facebook", users: 4624500, ageIndex: { all: 100, "18-29": 72, "30-54": 108, "55plus": 118 }, genderIndex: { all: 100, female: 112, male: 87 }, notes: "87.5% of NZ population. Largest NZ social platform by users." },
+  { platform: "Facebook", users: 4688100, ageIndex: { all: 100, "18-29": 72, "30-54": 108, "55plus": 118 }, genderIndex: { all: 100, female: 112, male: 87 }, notes: "88.4% of NZ population. Largest NZ social platform by users." },
   { platform: "YouTube", users: 4000000, ageIndex: { all: 100, "18-29": 142, "30-54": 106, "55plus": 68 }, genderIndex: { all: 100, female: 91, male: 112 }, notes: "~85% of online NZers use YouTube. Not purely social but dominant video platform." },
-  { platform: "Instagram", users: 2780600, ageIndex: { all: 100, "18-29": 168, "30-54": 92, "55plus": 32 }, genderIndex: { all: 100, female: 124, male: 74 }, notes: "52.6% of NZ population. 25–34s are the largest Instagram group." },
+  { platform: "Instagram", users: 2844000, ageIndex: { all: 100, "18-29": 168, "30-54": 92, "55plus": 32 }, genderIndex: { all: 100, female: 124, male: 74 }, notes: "53.6% of NZ population. 25–34s are the largest Instagram group." },
   { platform: "TikTok", users: 1900000, ageIndex: { all: 100, "18-29": 224, "30-54": 72, "55plus": 18 }, genderIndex: { all: 100, female: 118, male: 82 }, notes: "60% weekly usage among 18–29s. Rapidly growing. Under-30s dominant." },
   { platform: "LinkedIn", users: 1800000, ageIndex: { all: 100, "18-29": 96, "30-54": 128, "55plus": 74 }, genderIndex: { all: 100, female: 98, male: 103 }, notes: "B2B-skewed; strong 30–54 professional audience. Growing in NZ." },
 ];
