@@ -696,7 +696,7 @@ export default function SocialScanForm() {
       {/* Website */}
       <div className="mb-5">
         <label htmlFor="scanWebsite" className="block text-navy font-semibold text-sm mb-1">
-          Website <span className="text-grey-dark font-normal">(strongly recommended)</span>
+          Website
         </label>
         <input
           id="scanWebsite"
@@ -706,14 +706,14 @@ export default function SocialScanForm() {
           className="w-full px-4 py-3 border border-grey-mid rounded text-body text-sm focus:outline-none focus:border-orange"
         />
         <p className="text-grey-dark text-xs mt-1">
-          Without this, common or generic names may return results for the wrong entity.
+          Used to anchor the scan to the correct entity. Common or shared names may return inaccurate results without this.
         </p>
       </div>
 
       {/* Industry */}
       <div className="mb-5">
         <label htmlFor="scanIndustry" className="block text-navy font-semibold text-sm mb-1">
-          Industry or sector <span className="text-grey-dark font-normal">(optional)</span>
+          Industry or sector
         </label>
         <input
           id="scanIndustry"
@@ -730,8 +730,7 @@ export default function SocialScanForm() {
       {/* LinkedIn — visible by default */}
       <div className="mb-5">
         <label htmlFor="linkedinHandle" className="block text-navy font-semibold text-sm mb-1">
-          LinkedIn {entityType === "individual" ? "profile" : "company page"}{" "}
-          <span className="text-grey-dark font-normal">(optional — improves accuracy)</span>
+          LinkedIn {entityType === "individual" ? "profile" : "company page"}
         </label>
         <input
           id="linkedinHandle"
@@ -740,6 +739,9 @@ export default function SocialScanForm() {
           placeholder={entityType === "individual" ? "linkedin.com/in/yourname or username" : "linkedin.com/company/yourcompany or company name"}
           className="w-full px-4 py-3 border border-grey-mid rounded text-body text-sm focus:outline-none focus:border-orange"
         />
+        <p className="text-grey-dark text-xs mt-1">
+          Helps the scan find the correct profile and check for LinkedIn articles.
+        </p>
       </div>
 
       {/* Other handles — collapsible */}
@@ -748,7 +750,7 @@ export default function SocialScanForm() {
           <svg className="w-4 h-4 transition-transform group-open:rotate-90" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          Add Facebook, Instagram, or X handles (optional)
+          Add Facebook, Instagram, or X handles
         </summary>
         <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
           {([
@@ -773,7 +775,7 @@ export default function SocialScanForm() {
       {/* Additional context */}
       <div className="mb-6">
         <label htmlFor="scanContext" className="block text-navy font-semibold text-sm mb-1">
-          Anything else the scan should know? <span className="text-grey-dark font-normal">(optional)</span>
+          Anything else the scan should know?
         </label>
         <textarea
           id="scanContext"
