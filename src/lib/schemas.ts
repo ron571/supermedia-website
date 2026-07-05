@@ -66,6 +66,7 @@ export const SocialScanInputSchema = z.object({
   entityType: z.enum(["individual", "business"]),
   name: z.string().min(2, "Please enter a name").max(200),
   website: z.string().max(500).optional(),
+  industry: z.string().max(200).optional(),
   linkedinHandle: z.string().max(100).optional(),
   facebookHandle: z.string().max(100).optional(),
   instagramHandle: z.string().max(100).optional(),

@@ -696,7 +696,7 @@ export default function SocialScanForm() {
       {/* Website */}
       <div className="mb-5">
         <label htmlFor="scanWebsite" className="block text-navy font-semibold text-sm mb-1">
-          Website <span className="text-grey-dark font-normal">(optional — helps accuracy)</span>
+          Website <span className="text-grey-dark font-normal">(strongly recommended)</span>
         </label>
         <input
           id="scanWebsite"
@@ -705,19 +705,53 @@ export default function SocialScanForm() {
           placeholder="https://yoursite.co.nz"
           className="w-full px-4 py-3 border border-grey-mid rounded text-body text-sm focus:outline-none focus:border-orange"
         />
+        <p className="text-grey-dark text-xs mt-1">
+          Without this, common or generic names may return results for the wrong entity.
+        </p>
       </div>
 
-      {/* Known handles — collapsible */}
+      {/* Industry */}
+      <div className="mb-5">
+        <label htmlFor="scanIndustry" className="block text-navy font-semibold text-sm mb-1">
+          Industry or sector <span className="text-grey-dark font-normal">(optional)</span>
+        </label>
+        <input
+          id="scanIndustry"
+          type="text"
+          {...scanForm.register("industry")}
+          placeholder={entityType === "individual" ? "e.g. NZ professional services, law, accounting, consulting" : "e.g. NZ retail, construction, financial services, technology"}
+          className="w-full px-4 py-3 border border-grey-mid rounded text-body text-sm focus:outline-none focus:border-orange"
+        />
+        <p className="text-grey-dark text-xs mt-1">
+          Used to benchmark against the right NZ peers.
+        </p>
+      </div>
+
+      {/* LinkedIn — visible by default */}
+      <div className="mb-5">
+        <label htmlFor="linkedinHandle" className="block text-navy font-semibold text-sm mb-1">
+          LinkedIn {entityType === "individual" ? "profile" : "company page"}{" "}
+          <span className="text-grey-dark font-normal">(optional — improves accuracy)</span>
+        </label>
+        <input
+          id="linkedinHandle"
+          type="text"
+          {...scanForm.register("linkedinHandle")}
+          placeholder={entityType === "individual" ? "linkedin.com/in/yourname or username" : "linkedin.com/company/yourcompany or company name"}
+          className="w-full px-4 py-3 border border-grey-mid rounded text-body text-sm focus:outline-none focus:border-orange"
+        />
+      </div>
+
+      {/* Other handles — collapsible */}
       <details className="mb-5 group">
         <summary className="cursor-pointer text-sm text-grey-dark hover:text-navy font-medium select-none list-none flex items-center gap-1">
           <svg className="w-4 h-4 transition-transform group-open:rotate-90" viewBox="0 0 16 16" fill="none" aria-hidden="true">
             <path d="M6 4l4 4-4 4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
           </svg>
-          Add known social handles (optional — speeds up the scan)
+          Add Facebook, Instagram, or X handles (optional)
         </summary>
         <div className="mt-3 grid grid-cols-1 sm:grid-cols-2 gap-3">
           {([
-            { field: "linkedinHandle", label: "LinkedIn", placeholder: "username or URL" },
             { field: "facebookHandle", label: "Facebook", placeholder: "page name or URL" },
             { field: "instagramHandle", label: "Instagram", placeholder: "@handle" },
             { field: "xHandle", label: "X / Twitter", placeholder: "@handle" },
@@ -739,17 +773,17 @@ export default function SocialScanForm() {
       {/* Additional context */}
       <div className="mb-6">
         <label htmlFor="scanContext" className="block text-navy font-semibold text-sm mb-1">
-          Additional context <span className="text-grey-dark font-normal">(optional)</span>
+          Anything else the scan should know? <span className="text-grey-dark font-normal">(optional)</span>
         </label>
         <textarea
           id="scanContext"
           {...scanForm.register("additionalContext")}
           rows={2}
-          placeholder="e.g. This is the CEO of a NZ construction company based in Auckland."
+          placeholder="e.g. We're preparing for a rebrand and want to understand our current digital footprint. Auckland-based B2B consultancy."
           className="w-full px-4 py-2.5 border border-grey-mid rounded text-body text-sm focus:outline-none focus:border-orange resize-none"
         />
         <p className="text-grey-dark text-xs mt-1">
-          Industry, location, or role helps the scan interpret results in context.
+          Location, role, or what you&apos;re trying to understand — anything that helps identify the right entity or focus the analysis.
         </p>
       </div>
 

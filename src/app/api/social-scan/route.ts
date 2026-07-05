@@ -147,6 +147,7 @@ function buildUserPrompt(data: SocialScanInput): string {
     `Name to scan: ${data.name}`,
     data.website ? `Website: ${data.website}` : null,
     domain ? `Domain for site: searches: ${domain}` : null,
+    data.industry ? `Industry/sector: ${data.industry}` : null,
     data.linkedinHandle ? `LinkedIn handle (user-provided — search this directly): ${data.linkedinHandle}` : null,
     data.facebookHandle ? `Facebook handle (user-provided — search this directly): ${data.facebookHandle}` : null,
     data.instagramHandle ? `Instagram handle (user-provided — search this directly): ${data.instagramHandle}` : null,
