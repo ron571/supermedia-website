@@ -29,18 +29,29 @@ function buildSystemPrompt(entityType: string): string {
 Your job is to research this ${entityLabel}'s publicly visible social media and digital footprint using web search, then return a structured JSON assessment. You assess what an outsider — a prospect, journalist, or investor — can actually see. You are specific and honest. You report what you find, not what you assume.
 
 SEARCH INSTRUCTIONS:
-Search for each platform below and note what you find. Include specific data points where visible (follower counts, post frequency, date of most recent post, content quality, profile completeness).
+Search for each item below. Be specific — use the website URL and/or "New Zealand" to anchor searches when the name is common or ambiguous. Include specific data points where visible (follower counts, post frequency, date of most recent post, bio completeness).
+
+CRITICAL: If a website URL is provided, use the domain to anchor ALL searches. For example if the website is "supermedia.co.nz", search "Super Media site:linkedin.com" AND "site:supermedia.co.nz" to find content indexed from the actual site.
 
 Required searches (conduct each one):
-1. LinkedIn — "[name] LinkedIn" — profile (individual) or company page (business)
-2. Facebook — "[name] Facebook" — page or profile
-3. Instagram — "[name] Instagram" — account
-4. X / Twitter — "[name] Twitter" OR "[name] site:x.com" — account
-5. YouTube — "[name] YouTube channel" — presence and activity
+0. Website content — if a website URL is provided:
+   a. Search "site:[domain]" to find all publicly indexed pages (blog posts, articles, thought leadership)
+   b. Search "[domain]/thinking" OR "[domain]/blog" OR "[domain]/articles" OR "[domain]/news" — check for a content/insight section
+   c. Note the most recent article or post date if visible in search results
+1. LinkedIn — "[name] LinkedIn New Zealand" OR "[name] site:linkedin.com" — look for both company page AND personal profiles. Specifically check for LinkedIn Articles (long-form posts under the Articles tab). Note follower count, post frequency, most recent post date.
+2. Facebook — "[name] Facebook New Zealand" — check the page. Also look for long-form Facebook posts or articles/notes. Note follower/like count and most recent post.
+3. Instagram — "[name] Instagram" — account, follower count, post frequency
+4. X / Twitter — "[name] Twitter New Zealand" OR "[name] site:x.com" — account and activity
+5. YouTube — "[name] YouTube New Zealand" — channel presence and activity
 6. NZ news and media — "[name] NZ Herald" OR "[name] Stuff.co.nz" OR "[name] StopPress" OR "[name] RNZ" — press coverage
-${entityType === "business" ? '7. Google Business Profile — search for their listing' : ''}
-8. AI search visibility — search for "[name]" to assess whether they appear in knowledge panels, featured snippets, or AI-generated answers. Note whether their website/content structure appears well-indexed and citation-ready for AI tools.
-If a website URL is provided, note whether it has a blog, insights section, or thought leadership content.
+${entityType === "business" ? '7. Google Business Profile — search for "[name] New Zealand" Google Business listing' : ''}
+8. AI search visibility — search for "[name] New Zealand [industry]" to assess whether they appear in knowledge panels, featured snippets, or AI-generated answers.
+
+IMPORTANT — ACCURACY RULES:
+- If a website URL is given, that URL is authoritative. Do not report "no blog found" without first searching the domain directly.
+- If the name is generic (e.g. "Super Media", "Smith Consulting"), always add "New Zealand" or the domain to searches to ensure you find the correct entity, not a similarly-named company elsewhere.
+- Report only what you actually find in searches. Do not guess or fill in gaps. If you cannot confirm something, say so explicitly in the finding.
+- A website with a "Thinking", "Insights", "Articles", or "Blog" section IS an active blog/content presence — report it as such.
 
 STATUS DEFINITIONS:
 - "active": Profile found, posts or activity visible within the last 90 days
@@ -127,17 +138,25 @@ Always include all of: LinkedIn, Facebook, Instagram, X/Twitter, YouTube${entity
 }
 
 function buildUserPrompt(data: SocialScanInput): string {
+  const domain = data.website
+    ? data.website.replace(/^https?:\/\//, "").replace(/\/.*$/, "")
+    : null;
+
   const lines = [
     `Entity type: ${data.entityType === "individual" ? "Individual / business leader" : "Business or brand"}`,
     `Name to scan: ${data.name}`,
     data.website ? `Website: ${data.website}` : null,
-    data.linkedinHandle ? `LinkedIn handle (user-provided): ${data.linkedinHandle}` : null,
-    data.facebookHandle ? `Facebook handle (user-provided): ${data.facebookHandle}` : null,
-    data.instagramHandle ? `Instagram handle (user-provided): ${data.instagramHandle}` : null,
-    data.xHandle ? `X / Twitter handle (user-provided): ${data.xHandle}` : null,
+    domain ? `Domain for site: searches: ${domain}` : null,
+    data.linkedinHandle ? `LinkedIn handle (user-provided — search this directly): ${data.linkedinHandle}` : null,
+    data.facebookHandle ? `Facebook handle (user-provided — search this directly): ${data.facebookHandle}` : null,
+    data.instagramHandle ? `Instagram handle (user-provided — search this directly): ${data.instagramHandle}` : null,
+    data.xHandle ? `X / Twitter handle (user-provided — search this directly): ${data.xHandle}` : null,
     data.additionalContext ? `Additional context: ${data.additionalContext}` : null,
     "",
-    "Use web search to find their presence on each platform. Then return the structured JSON assessment.",
+    domain
+      ? `IMPORTANT: Start by searching "site:${domain}" to find all indexed content from their website. This will show blog posts, articles, and insight pages that may not be immediately obvious from the homepage.`
+      : "",
+    "Use web search to find their presence on each platform. Anchor all searches to New Zealand context unless the entity is clearly international. Then return the structured JSON assessment.",
   ];
   return lines.filter(Boolean).join("\n");
 }
