@@ -22,7 +22,7 @@ const jsonLd = {
   email: "ron@supermedia.co.nz",
   telephone: "+64-21-393-946",
   sameAs: [
-    "https://www.linkedin.com/in/ron-sneddon",
+    "https://nz.linkedin.com/in/ron-sneddon-624ba592",
     "https://www.facebook.com/supermedialtd/",
   ],
   worksFor: {

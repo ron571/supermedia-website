@@ -143,7 +143,7 @@ export default function ArticlePage({ params }: Props) {
       jobTitle: "Founder & Independent Media Consultant",
       description: "Independent NZ media consultant with 35 years of experience in the New Zealand advertising market.",
       sameAs: [
-        "https://www.linkedin.com/in/ron-sneddon",
+        "https://nz.linkedin.com/in/ron-sneddon-624ba592",
         "https://www.facebook.com/supermedialtd/",
       ],
       worksFor: {

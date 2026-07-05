@@ -28,7 +28,7 @@ const jsonLd = {
       email: "ron@supermedia.co.nz",
       image: "https://www.supermedia.co.nz/assets/headshot-ron.png",
       sameAs: [
-        "https://www.linkedin.com/in/ron-sneddon",
+        "https://nz.linkedin.com/in/ron-sneddon-624ba592",
         "https://www.facebook.com/supermedialtd/",
       ],
       worksFor: { "@id": "https://www.supermedia.co.nz/#business" },
@@ -75,6 +75,10 @@ const jsonLd = {
         height: 630,
       },
       image: "https://www.supermedia.co.nz/assets/headshot-ron.png",
+      sameAs: [
+        "https://www.facebook.com/supermedialtd/",
+        // Add LinkedIn company page URL here once created: "https://www.linkedin.com/company/super-media-nz"
+      ],
       founder: { "@id": "https://www.supermedia.co.nz/about#ron" },
       employee: { "@id": "https://www.supermedia.co.nz/about#ron" },
       areaServed: {
