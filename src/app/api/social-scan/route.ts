@@ -38,8 +38,15 @@ Required searches (conduct each one):
    a. Search "site:[domain]" to find all publicly indexed pages (blog posts, articles, thought leadership)
    b. Search "[domain]/thinking" OR "[domain]/blog" OR "[domain]/articles" OR "[domain]/news" — check for a content/insight section
    c. Note the most recent article or post date if visible in search results
-1. LinkedIn — "[name] LinkedIn New Zealand" OR "[name] site:linkedin.com" — look for both company page AND personal profiles. Specifically check for LinkedIn Articles (long-form posts under the Articles tab). Note follower count, post frequency, most recent post date.
-2. Facebook — "[name] Facebook New Zealand" — check the page. Also look for long-form Facebook posts or articles/notes. Note follower/like count and most recent post.
+1. LinkedIn — conduct TWO separate searches:
+   ${entityType === "business"
+     ? `a. Company page: search "[name] site:linkedin.com/company" AND "[name] LinkedIn company page New Zealand". The goal is the official company page, not a founder's or employee's personal profile. If a domain is provided, also search "linkedin.com [domain]" to find the page linked to the website.
+   b. Founder/key person profile (secondary): note if a personal profile for the founder or principal is found, but assess it separately from the company page. A personal profile is NOT a substitute for a company page.
+   c. If you find only personal profiles and no company page, report the company page as absent or unconfirmed — and note which personal profiles were found.`
+     : `a. Personal profile: search "[name] site:linkedin.com/in" OR "[name] LinkedIn New Zealand".
+   b. LinkedIn Articles: check whether the profile has a visible Articles section (long-form thought leadership posts). Note the most recent article if visible.`}
+   For whichever profile type is primary, note: follower/connection count, posting frequency, most recent post date, and whether LinkedIn Articles are present.
+2. Facebook — "[name] Facebook New Zealand" — check the ${entityType === "business" ? "page (not a personal profile)" : "profile or page"}. Note follower/like count, most recent post, and any long-form articles or notes.
 3. Instagram — "[name] Instagram" — account, follower count, post frequency
 4. X / Twitter — "[name] Twitter New Zealand" OR "[name] site:x.com" — account and activity
 5. YouTube — "[name] YouTube New Zealand" — channel presence and activity
@@ -52,6 +59,9 @@ IMPORTANT — ACCURACY RULES:
 - If the name is generic (e.g. "Super Media", "Smith Consulting"), always add "New Zealand" or the domain to searches to ensure you find the correct entity, not a similarly-named company elsewhere.
 - Report only what you actually find in searches. Do not guess or fill in gaps. If you cannot confirm something, say so explicitly in the finding.
 - A website with a "Thinking", "Insights", "Articles", or "Blog" section IS an active blog/content presence — report it as such.
+- For BUSINESS scans: do not count a founder's or employee's personal LinkedIn profile as the company's LinkedIn presence. If you find personal profiles but no company page, report the company LinkedIn as absent or unconfirmed and note the personal profiles separately in the finding text.
+- For BUSINESS scans: if LinkedIn search returns multiple profiles (e.g. two profiles for the same person, or a founder's profile vs. a company page), identify which is the company page and assess that specifically. Note the discrepancy in the finding.
+- When a profile or page is found but key metrics (follower count, post frequency) are not publicly visible in search results, state what WAS found (the page exists, the URL, any visible detail) rather than marking everything unknown. "Present but metrics not publicly visible" is more useful than "unknown".
 
 STATUS DEFINITIONS:
 - "active": Profile found, posts or activity visible within the last 90 days
@@ -134,7 +144,9 @@ RETURN ONLY valid JSON with no text before or after the JSON block:
   }
 }
 
-Always include all of: LinkedIn, Facebook, Instagram, X/Twitter, YouTube${entityType === "business" ? ", Google Business" : ""} in the platforms array. Add any other significant platform if found. Set completenessScore and missingElements to null/[] for absent platforms.`;
+Always include all of: LinkedIn, Facebook, Instagram, X/Twitter, YouTube${entityType === "business" ? ", Google Business" : ""} in the platforms array. Add any other significant platform if found. Set completenessScore and missingElements to null/[] for absent platforms.
+${entityType === "business" ? `
+For LinkedIn specifically: if you found a company page, assess that. If you found only personal profiles, set status to "absent" or "present" (as appropriate) and explain in the finding that a company page was not confirmed — and name any personal profiles that were found. Do NOT silently substitute a personal profile in place of the company page assessment.` : ""}`;
 }
 
 function buildUserPrompt(data: SocialScanInput): string {
