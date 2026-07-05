@@ -77,7 +77,7 @@ const jsonLd = {
       image: "https://www.supermedia.co.nz/assets/headshot-ron.png",
       sameAs: [
         "https://www.facebook.com/supermedialtd/",
-        // Add LinkedIn company page URL here once created: "https://www.linkedin.com/company/super-media-nz"
+        "https://www.linkedin.com/company/super-media-nz",
       ],
       founder: { "@id": "https://www.supermedia.co.nz/about#ron" },
       employee: { "@id": "https://www.supermedia.co.nz/about#ron" },
