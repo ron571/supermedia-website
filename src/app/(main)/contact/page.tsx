@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import ContactForm from "@/components/ContactForm";
 
 const BASE_URL = "https://www.supermedia.co.nz";
 
@@ -128,6 +129,22 @@ export default function ContactPage() {
               </p>
             </div>
 
+          </div>
+        </div>
+      </section>
+
+      {/* ─── Form ─── */}
+      <section className="bg-grey-light py-20 lg:py-28">
+        <div className="section-container">
+          <div className="max-w-2xl mx-auto">
+            <p className="eyebrow mb-4 text-center">Or send the details directly</p>
+            <h2 className="text-navy text-2xl font-bold mb-4 text-center">
+              Tell Ron what's going on
+            </h2>
+            <p className="text-body mb-10 text-center" style={{ lineHeight: 1.7 }}>
+              A few lines is enough. Ron reads every message himself.
+            </p>
+            <ContactForm />
           </div>
         </div>
       </section>

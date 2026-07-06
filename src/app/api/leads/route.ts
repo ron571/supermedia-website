@@ -2,12 +2,12 @@ import { NextRequest, NextResponse } from "next/server";
 import { Redis } from "@upstash/redis";
 
 function getRedis(): Redis | null {
-  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+  if (!process.env.UPSTASH_REDIS_REST_KV_REST_API_URL || !process.env.UPSTASH_REDIS_REST_KV_REST_API_TOKEN) {
     return null;
   }
   return new Redis({
-    url: process.env.UPSTASH_REDIS_REST_URL,
-    token: process.env.UPSTASH_REDIS_REST_TOKEN,
+    url: process.env.UPSTASH_REDIS_REST_KV_REST_API_URL,
+    token: process.env.UPSTASH_REDIS_REST_KV_REST_API_TOKEN,
   });
 }
 
@@ -55,23 +55,25 @@ export async function GET(req: NextRequest) {
       socialScanRuns: [],
       socialScanEnquiries: [],
       newsletter: [],
+      contact: [],
       error: "Upstash Redis not configured — nothing to show.",
     });
   }
 
   try {
-    const [superscan, socialScanRuns, socialScanEnquiries, newsletter] = await Promise.all([
+    const [superscan, socialScanRuns, socialScanEnquiries, newsletter, contact] = await Promise.all([
       fetchList(redis, "sm:superscan:submissions", "sm:superscan:submission:"),
       fetchList(redis, "sm:socialscan:submissions", "sm:socialscan:submission:"),
       fetchList(redis, "sm:socialscan:enquiries", "sm:socialscan:enquiry:"),
       fetchList(redis, "sm:newsletter:subscribers", "sm:newsletter:subscriber:"),
+      fetchList(redis, "sm:contact:submissions", "sm:contact:submission:"),
     ]);
 
-    return NextResponse.json({ superscan, socialScanRuns, socialScanEnquiries, newsletter });
+    return NextResponse.json({ superscan, socialScanRuns, socialScanEnquiries, newsletter, contact });
   } catch (err) {
     console.error("Leads GET error:", err);
     return NextResponse.json(
-      { superscan: [], socialScanRuns: [], socialScanEnquiries: [], newsletter: [], error: "Failed to load leads" },
+      { superscan: [], socialScanRuns: [], socialScanEnquiries: [], newsletter: [], contact: [], error: "Failed to load leads" },
       { status: 500 }
     );
   }

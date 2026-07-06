@@ -39,13 +39,24 @@ interface NewsletterSub {
   signedUpAtNZ?: string;
 }
 
-type Tab = "superscan" | "socialscan" | "enquiries" | "newsletter";
+interface ContactLead {
+  id: string;
+  submittedAtNZ?: string;
+  name?: string;
+  email?: string;
+  company?: string | null;
+  message?: string;
+  howHeard?: string | null;
+}
+
+type Tab = "superscan" | "socialscan" | "enquiries" | "newsletter" | "contact";
 
 const TABS: { id: Tab; label: string }[] = [
   { id: "superscan", label: "Superscan" },
   { id: "socialscan", label: "Social Scan Runs" },
   { id: "enquiries", label: "Social Scan Enquiries" },
   { id: "newsletter", label: "Newsletter" },
+  { id: "contact", label: "Contact Form" },
 ];
 
 export default function LeadsPage() {
@@ -54,6 +65,7 @@ export default function LeadsPage() {
   const [socialScanRuns, setSocialScanRuns] = useState<SocialScanRun[]>([]);
   const [enquiries, setEnquiries] = useState<SocialScanEnquiry[]>([]);
   const [newsletter, setNewsletter] = useState<NewsletterSub[]>([]);
+  const [contact, setContact] = useState<ContactLead[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState("");
 
@@ -66,6 +78,7 @@ export default function LeadsPage() {
       setSocialScanRuns(data.socialScanRuns ?? []);
       setEnquiries(data.socialScanEnquiries ?? []);
       setNewsletter(data.newsletter ?? []);
+      setContact(data.contact ?? []);
       if (data.error) setError(data.error);
     } catch {
       setError("Failed to load leads");
@@ -82,6 +95,7 @@ export default function LeadsPage() {
     socialscan: socialScanRuns.length,
     enquiries: enquiries.length,
     newsletter: newsletter.length,
+    contact: contact.length,
   };
 
   return (
@@ -171,6 +185,21 @@ export default function LeadsPage() {
           empty="No newsletter subscribers yet."
           headers={["Email", "Signed up"]}
           rows={newsletter.map((n) => [n.email, n.signedUpAtNZ || "—"])}
+        />
+      )}
+
+      {!loading && tab === "contact" && (
+        <LeadsTable
+          empty="No contact form submissions yet."
+          headers={["Name", "Email", "Company", "Message", "How they heard", "Submitted"]}
+          rows={contact.map((c) => [
+            c.name || "—",
+            c.email || "—",
+            c.company || "—",
+            c.message || "—",
+            c.howHeard || "—",
+            c.submittedAtNZ || "—",
+          ])}
         />
       )}
     </div>

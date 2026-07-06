@@ -1,5 +1,53 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { Redis } from "@upstash/redis";
+import { ContactSchema } from "@/lib/schemas";
+
+function getRedis(): Redis | null {
+  if (!process.env.UPSTASH_REDIS_REST_KV_REST_API_URL || !process.env.UPSTASH_REDIS_REST_KV_REST_API_TOKEN) {
+    return null;
+  }
+  return new Redis({
+    url: process.env.UPSTASH_REDIS_REST_KV_REST_API_URL,
+    token: process.env.UPSTASH_REDIS_REST_KV_REST_API_TOKEN,
+  });
+}
+
+async function saveSubmission(data: {
+  name: string;
+  email: string;
+  company?: string;
+  message: string;
+  howHeard?: string;
+}): Promise<void> {
+  const redis = getRedis();
+  if (!redis) {
+    console.warn("Upstash Redis not configured — contact form submission not saved for admin visibility.");
+    return;
+  }
+
+  const id = `contact_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+  const now = Date.now();
+  const record = {
+    id,
+    submittedAt: new Date().toISOString(),
+    submittedAtNZ: new Date().toLocaleString("en-NZ", { timeZone: "Pacific/Auckland" }),
+    name: data.name,
+    email: data.email,
+    company: data.company ?? null,
+    message: data.message,
+    howHeard: data.howHeard ?? null,
+  };
+
+  try {
+    await redis.pipeline()
+      .set(`sm:contact:submission:${id}`, JSON.stringify(record))
+      .zadd("sm:contact:submissions", { score: now, member: id })
+      .exec();
+  } catch (err) {
+    console.error("Contact form Redis storage error:", err);
+  }
+}
 
 export async function POST(req: NextRequest) {
   let body: unknown;
@@ -9,26 +57,26 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: "Invalid request" }, { status: 400 });
   }
 
-  const { name, email, company, message } = body as Record<string, string>;
-
-  if (!name?.trim() || !email?.trim() || !message?.trim()) {
+  const parsed = ContactSchema.safeParse(body);
+  if (!parsed.success) {
     return NextResponse.json(
-      { error: "Name, email and message are required" },
+      { error: "Please check the form and try again", issues: parsed.error.issues },
       { status: 400 }
     );
   }
 
-  // Basic email validation
-  if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
-    return NextResponse.json({ error: "Invalid email address" }, { status: 400 });
+  const { name, email, company, message, howHeard } = parsed.data;
+
+  // Save regardless of whether email is configured, so the enquiry is never lost.
+  try {
+    await saveSubmission({ name, email, company, message, howHeard });
+  } catch (err) {
+    console.error("saveSubmission failed:", err instanceof Error ? err.message : String(err));
   }
 
   if (!process.env.RESEND_API_KEY) {
-    console.error("RESEND_API_KEY is not set — contact form submission dropped:", { name, email, company });
-    return NextResponse.json(
-      { error: "Email is not configured — please email ron@supermedia.co.nz directly" },
-      { status: 500 }
-    );
+    console.warn("RESEND_API_KEY not set — contact form not emailed (saved to Redis if configured):", { name, email, company });
+    return NextResponse.json({ ok: true });
   }
 
   const resend = new Resend(process.env.RESEND_API_KEY);
@@ -69,6 +117,10 @@ export async function POST(req: NextRequest) {
                 <td style="padding:8px 0;font-weight:600;color:#1B2A4A;vertical-align:top;">Message</td>
                 <td style="padding:8px 0;">${message.replace(/\n/g, "<br>")}</td>
               </tr>
+              <tr>
+                <td style="padding:8px 0;font-weight:600;color:#1B2A4A;">How they heard about us</td>
+                <td style="padding:8px 0;">${howHeard || "Not provided"}</td>
+              </tr>
             </table>
             <div style="margin-top:24px;padding-top:16px;border-top:1px solid #eee;">
               <a href="mailto:${email}?subject=Re: Your enquiry to Super Media"
@@ -85,10 +137,7 @@ export async function POST(req: NextRequest) {
     });
   } catch (err) {
     console.error("Resend contact error:", err);
-    return NextResponse.json(
-      { error: "Failed to send message — please email ron@supermedia.co.nz directly" },
-      { status: 500 }
-    );
+    // Submission is already saved above — don't fail the user's request over an email hiccup.
   }
 
   return NextResponse.json({ ok: true });

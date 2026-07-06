@@ -6,12 +6,12 @@ import { Redis } from "@upstash/redis";
 import { SocialScanInputSchema, type SocialScanInput, type SocialScanResult } from "@/lib/schemas";
 
 function getStorageRedis(): Redis | null {
-  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+  if (!process.env.UPSTASH_REDIS_REST_KV_REST_API_URL || !process.env.UPSTASH_REDIS_REST_KV_REST_API_TOKEN) {
     return null;
   }
   return new Redis({
-    url: process.env.UPSTASH_REDIS_REST_URL,
-    token: process.env.UPSTASH_REDIS_REST_TOKEN,
+    url: process.env.UPSTASH_REDIS_REST_KV_REST_API_URL,
+    token: process.env.UPSTASH_REDIS_REST_KV_REST_API_TOKEN,
   });
 }
 
@@ -233,13 +233,13 @@ let ratelimitHour: Ratelimit | null = null;
 let ratelimitDay: Ratelimit | null = null;
 
 function getRateLimiters() {
-  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+  if (!process.env.UPSTASH_REDIS_REST_KV_REST_API_URL || !process.env.UPSTASH_REDIS_REST_KV_REST_API_TOKEN) {
     return { hour: null, day: null };
   }
   if (!ratelimitHour) {
     const redis = new Redis({
-      url: process.env.UPSTASH_REDIS_REST_URL,
-      token: process.env.UPSTASH_REDIS_REST_TOKEN,
+      url: process.env.UPSTASH_REDIS_REST_KV_REST_API_URL,
+      token: process.env.UPSTASH_REDIS_REST_KV_REST_API_TOKEN,
     });
     ratelimitHour = new Ratelimit({ redis, limiter: Ratelimit.slidingWindow(3, "1 h"), prefix: "socialscan:hour" });
     ratelimitDay = new Ratelimit({ redis, limiter: Ratelimit.slidingWindow(10, "24 h"), prefix: "socialscan:day" });

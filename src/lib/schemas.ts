@@ -74,6 +74,21 @@ export const HOW_HEARD_OPTIONS = [
 
 export type HowHeard = (typeof HOW_HEARD_OPTIONS)[number];
 
+// ── Contact form ────────────────────────────────────────────────────────────
+
+export const ContactSchema = z.object({
+  name: z.string().min(2, "Please enter your name").max(200),
+  email: z.string().email("Please enter a valid email address"),
+  company: z.string().max(200).optional(),
+  message: z
+    .string()
+    .min(10, "Please add a few words about what you need (at least 10 characters)")
+    .max(2000),
+  howHeard: z.string().max(100).optional(),
+});
+
+export type ContactInput = z.infer<typeof ContactSchema>;
+
 // ── Social Scan ────────────────────────────────────────────────────────────
 
 export const SocialScanInputSchema = z.object({
