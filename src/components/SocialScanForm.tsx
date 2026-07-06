@@ -6,6 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod";
 import {
   SocialScanInputSchema,
   SocialScanEnquirySchema,
+  HOW_HEARD_OPTIONS,
   type SocialScanInput,
   type SocialScanEnquiry,
   type SocialScanResult,
@@ -630,6 +631,25 @@ export default function SocialScanForm() {
             placeholder="e.g. We're planning a brand refresh and want to understand where our digital presence stands."
             className="w-full px-4 py-2.5 border border-grey-mid rounded text-sm focus:outline-none focus:border-orange resize-none"
           />
+        </div>
+
+        <div className="mb-6">
+          <label htmlFor="enqHowHeard" className="block text-navy font-semibold text-sm mb-1">
+            How did you hear about us? <span className="text-grey-dark font-normal">(optional)</span>
+          </label>
+          <select
+            id="enqHowHeard"
+            {...enquiryForm.register("howHeard")}
+            className="w-full px-4 py-2.5 border border-grey-mid rounded text-sm focus:outline-none focus:border-orange bg-white"
+            defaultValue=""
+          >
+            <option value="">Prefer not to say</option>
+            {HOW_HEARD_OPTIONS.map((option) => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
         </div>
 
         <button type="submit" className="btn-primary w-full justify-center">

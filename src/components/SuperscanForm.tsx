@@ -3,7 +3,7 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { SuperscanSchema, CHANNELS, SPEND_PERIODS, SPEND_RANGES_BY_PERIOD, type SuperscanInput } from "@/lib/schemas";
+import { SuperscanSchema, CHANNELS, SPEND_PERIODS, SPEND_RANGES_BY_PERIOD, HOW_HEARD_OPTIONS, type SuperscanInput } from "@/lib/schemas";
 import type { SuperscanResult } from "@/lib/schemas";
 import SuperscanResults from "./SuperscanResults";
 
@@ -304,6 +304,28 @@ export default function SuperscanForm() {
                 {errors.email.message}
               </p>
             )}
+          </div>
+
+          <div className="mb-8">
+            <label
+              htmlFor="howHeard"
+              className="block text-navy font-semibold text-sm mb-1"
+            >
+              How did you hear about us? <span className="text-grey-dark font-normal">(optional)</span>
+            </label>
+            <select
+              id="howHeard"
+              {...register("howHeard")}
+              className="w-full px-4 py-3 border border-grey-mid rounded text-body text-sm focus:outline-none focus:border-orange bg-white"
+              defaultValue=""
+            >
+              <option value="">Prefer not to say</option>
+              {HOW_HEARD_OPTIONS.map((option) => (
+                <option key={option} value={option}>
+                  {option}
+                </option>
+              ))}
+            </select>
           </div>
 
           <button type="submit" className="btn-primary w-full justify-center">

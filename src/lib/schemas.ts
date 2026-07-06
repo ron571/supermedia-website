@@ -60,6 +60,20 @@ export const SPEND_RANGES_BY_PERIOD: Record<SpendPeriod, readonly string[]> = {
 // Backward-compat alias
 export const SPEND_RANGES = SPEND_RANGES_BY_PERIOD.Annual;
 
+// ── Source tracking ("how did you hear about us") ──────────────────────────
+
+export const HOW_HEARD_OPTIONS = [
+  "Google search",
+  "LinkedIn",
+  "Referral / word of mouth",
+  "Press or media mention",
+  "Instagram / Facebook",
+  "Already a Super Media client",
+  "Other",
+] as const;
+
+export type HowHeard = (typeof HOW_HEARD_OPTIONS)[number];
+
 // ── Social Scan ────────────────────────────────────────────────────────────
 
 export const SocialScanInputSchema = z.object({
@@ -86,6 +100,7 @@ export const SocialScanEnquirySchema = z.object({
   message: z.string().max(1000).optional(),
   scanResultJson: z.string().max(20000).optional(),
   serviceInterest: z.enum(["full_report", "ai_footprint", "content_strategy", "benchmarking"]).optional(),
+  howHeard: z.string().max(100).optional(),
 });
 
 export type SocialScanEnquiry = z.infer<typeof SocialScanEnquirySchema>;
@@ -143,6 +158,7 @@ export const SuperscanSchema = z.object({
     .min(10, "Please describe your audience (at least 10 characters)")
     .max(500),
   email: z.string().email("Please enter a valid email address"),
+  howHeard: z.string().max(100).optional(),
 });
 
 export type SuperscanInput = z.infer<typeof SuperscanSchema>;

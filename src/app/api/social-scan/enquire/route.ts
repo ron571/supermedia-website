@@ -83,6 +83,7 @@ export async function POST(req: NextRequest) {
         ${data.phone ? `<tr><td style="padding:6px 0;font-weight:600;color:#1B2A4A;">Phone:</td><td style="padding:6px 0;">${data.phone}</td></tr>` : ""}
         ${data.organisation ? `<tr><td style="padding:6px 0;font-weight:600;color:#1B2A4A;">Organisation:</td><td style="padding:6px 0;">${data.organisation}</td></tr>` : ""}
         ${data.serviceInterest ? `<tr><td style="padding:6px 0;font-weight:600;color:#1B2A4A;">Service interest:</td><td style="padding:6px 0;font-weight:700;color:#E8621A;">${{ full_report: "Full Scan Report", ai_footprint: "AI Footprint Audit", content_strategy: "Content Strategy", benchmarking: "Benchmarking Report" }[data.serviceInterest] ?? data.serviceInterest}</td></tr>` : ""}
+        <tr><td style="padding:6px 0;font-weight:600;color:#1B2A4A;">How they heard about us:</td><td style="padding:6px 0;">${data.howHeard || "Not provided"}</td></tr>
       </table>
 
       ${data.message ? `

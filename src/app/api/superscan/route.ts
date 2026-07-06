@@ -96,7 +96,7 @@ function getRateLimiters() {
 }
 
 async function sendLeadNotification(
-  data: { channels: string[]; channelsOther?: string; spendPeriod: string; spendRange: string; audience: string; email: string },
+  data: { channels: string[]; channelsOther?: string; spendPeriod: string; spendRange: string; audience: string; email: string; howHeard?: string },
   result: SuperscanResult
 ): Promise<void> {
   if (!process.env.RESEND_API_KEY) return;
@@ -119,6 +119,7 @@ async function sendLeadNotification(
       <p><strong>Spend period:</strong> ${data.spendPeriod}</p>
       <p><strong>Spend range:</strong> ${data.spendRange}</p>
       <p><strong>Audience:</strong> ${data.audience}</p>
+      <p><strong>How they heard about us:</strong> ${data.howHeard || "Not provided"}</p>
       <hr/>
       <h3>Results delivered</h3>
       <p><strong>Mix summary:</strong> ${result.currentMix}</p>
