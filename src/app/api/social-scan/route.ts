@@ -5,6 +5,48 @@ import { Ratelimit } from "@upstash/ratelimit";
 import { Redis } from "@upstash/redis";
 import { SocialScanInputSchema, type SocialScanInput, type SocialScanResult } from "@/lib/schemas";
 
+function getStorageRedis(): Redis | null {
+  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+    return null;
+  }
+  return new Redis({
+    url: process.env.UPSTASH_REDIS_REST_URL,
+    token: process.env.UPSTASH_REDIS_REST_TOKEN,
+  });
+}
+
+async function saveScanRecord(data: SocialScanInput, result: SocialScanResult): Promise<void> {
+  const redis = getStorageRedis();
+  if (!redis) {
+    console.warn("Upstash Redis not configured — Social Scan run not saved for admin visibility.");
+    return;
+  }
+
+  const id = `socialscan_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+  const now = Date.now();
+  const record = {
+    id,
+    scannedAt: new Date().toISOString(),
+    scannedAtNZ: new Date().toLocaleString("en-NZ", { timeZone: "Pacific/Auckland" }),
+    entityType: data.entityType,
+    name: data.name,
+    website: data.website ?? null,
+    industry: data.industry ?? null,
+    overallGrade: result.overallGrade,
+    overallScore: result.overallScore,
+    summary: result.summary,
+  };
+
+  try {
+    await redis.pipeline()
+      .set(`sm:socialscan:submission:${id}`, JSON.stringify(record))
+      .zadd("sm:socialscan:submissions", { score: now, member: id })
+      .exec();
+  } catch (err) {
+    console.error("Social Scan Redis storage error:", err);
+  }
+}
+
 /** Extract and parse the first valid JSON object from a response that may contain prose. */
 function extractJson(text: string): SocialScanResult {
   // Strip code fences if present
@@ -330,6 +372,12 @@ export async function POST(req: NextRequest) {
       console.error("Fallback scan also failed:", fallbackMsg);
       return NextResponse.json({ error: "Scan failed — please try again", detail: msg }, { status: 500 });
     }
+  }
+
+  try {
+    await saveScanRecord(data, result);
+  } catch (err) {
+    console.error("saveScanRecord failed:", err instanceof Error ? err.message : String(err));
   }
 
   return NextResponse.json(result);

@@ -64,6 +64,52 @@ function getClientIp(req: NextRequest): string {
   );
 }
 
+function getRedis(): Redis | null {
+  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+    return null;
+  }
+  return new Redis({
+    url: process.env.UPSTASH_REDIS_REST_URL,
+    token: process.env.UPSTASH_REDIS_REST_TOKEN,
+  });
+}
+
+async function saveSubmission(
+  data: { channels: string[]; channelsOther?: string; spendPeriod: string; spendRange: string; audience: string; email: string; howHeard?: string },
+  result: SuperscanResult
+): Promise<void> {
+  const redis = getRedis();
+  if (!redis) {
+    console.warn("Upstash Redis not configured — Superscan submission not saved for admin visibility.");
+    return;
+  }
+
+  const id = `superscan_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+  const now = Date.now();
+  const record = {
+    id,
+    submittedAt: new Date().toISOString(),
+    submittedAtNZ: new Date().toLocaleString("en-NZ", { timeZone: "Pacific/Auckland" }),
+    email: data.email,
+    channels: data.channels,
+    channelsOther: data.channelsOther ?? null,
+    spendPeriod: data.spendPeriod,
+    spendRange: data.spendRange,
+    audience: data.audience,
+    howHeard: data.howHeard ?? null,
+    result,
+  };
+
+  try {
+    await redis.pipeline()
+      .set(`sm:superscan:submission:${id}`, JSON.stringify(record))
+      .zadd("sm:superscan:submissions", { score: now, member: id })
+      .exec();
+  } catch (err) {
+    console.error("Superscan Redis storage error:", err);
+  }
+}
+
 let ratelimitHour: Ratelimit | null = null;
 let ratelimitDay: Ratelimit | null = null;
 
@@ -99,7 +145,10 @@ async function sendLeadNotification(
   data: { channels: string[]; channelsOther?: string; spendPeriod: string; spendRange: string; audience: string; email: string; howHeard?: string },
   result: SuperscanResult
 ): Promise<void> {
-  if (!process.env.RESEND_API_KEY) return;
+  if (!process.env.RESEND_API_KEY) {
+    console.warn("RESEND_API_KEY not set — Superscan lead notification not emailed (lead is still saved to Redis if configured):", data.email);
+    return;
+  }
 
   const resend = new Resend(process.env.RESEND_API_KEY);
   const scanDate = new Date().toLocaleString("en-NZ", { timeZone: "Pacific/Auckland" });
@@ -134,7 +183,10 @@ async function sendResultsEmail(
   email: string,
   result: SuperscanResult
 ): Promise<void> {
-  if (!process.env.RESEND_API_KEY) return;
+  if (!process.env.RESEND_API_KEY) {
+    console.warn("RESEND_API_KEY not set — Superscan results email not sent to:", email);
+    return;
+  }
 
   const resend = new Resend(process.env.RESEND_API_KEY);
   const calendlyUrl =
@@ -286,6 +338,9 @@ export async function POST(req: NextRequest) {
     ),
     sendLeadNotification(data, resultJson).catch((err) =>
       console.error("sendLeadNotification failed:", err instanceof Error ? err.message : String(err))
+    ),
+    saveSubmission(data, resultJson).catch((err) =>
+      console.error("saveSubmission failed:", err instanceof Error ? err.message : String(err))
     ),
   ]);
 

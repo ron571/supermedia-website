@@ -25,6 +25,12 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
                 Cowork Tool
               </Link>
               <Link
+                href="/admin/leads"
+                className="text-white/70 hover:text-white text-sm font-medium transition-colors"
+              >
+                Leads
+              </Link>
+              <Link
                 href="/admin/briefs"
                 className="text-white/70 hover:text-white text-sm font-medium transition-colors"
               >

@@ -1,8 +1,63 @@
 import { NextRequest, NextResponse } from "next/server";
 import { Resend } from "resend";
+import { Redis } from "@upstash/redis";
 import { SocialScanEnquirySchema, type SocialScanResult } from "@/lib/schemas";
 
 export const maxDuration = 30;
+
+function getRedis(): Redis | null {
+  if (!process.env.UPSTASH_REDIS_REST_URL || !process.env.UPSTASH_REDIS_REST_TOKEN) {
+    return null;
+  }
+  return new Redis({
+    url: process.env.UPSTASH_REDIS_REST_URL,
+    token: process.env.UPSTASH_REDIS_REST_TOKEN,
+  });
+}
+
+async function saveEnquiry(data: {
+  scanName: string;
+  scanEntityType: string;
+  contactName: string;
+  email: string;
+  phone?: string;
+  organisation?: string;
+  message?: string;
+  serviceInterest?: string;
+  howHeard?: string;
+}): Promise<void> {
+  const redis = getRedis();
+  if (!redis) {
+    console.warn("Upstash Redis not configured — Social Scan enquiry not saved for admin visibility.");
+    return;
+  }
+
+  const id = `socialscan_enq_${Date.now()}_${Math.random().toString(36).slice(2, 8)}`;
+  const now = Date.now();
+  const record = {
+    id,
+    submittedAt: new Date().toISOString(),
+    submittedAtNZ: new Date().toLocaleString("en-NZ", { timeZone: "Pacific/Auckland" }),
+    scanName: data.scanName,
+    scanEntityType: data.scanEntityType,
+    contactName: data.contactName,
+    email: data.email,
+    phone: data.phone ?? null,
+    organisation: data.organisation ?? null,
+    message: data.message ?? null,
+    serviceInterest: data.serviceInterest ?? null,
+    howHeard: data.howHeard ?? null,
+  };
+
+  try {
+    await redis.pipeline()
+      .set(`sm:socialscan:enquiry:${id}`, JSON.stringify(record))
+      .zadd("sm:socialscan:enquiries", { score: now, member: id })
+      .exec();
+  } catch (err) {
+    console.error("Social Scan enquiry Redis storage error:", err);
+  }
+}
 
 export async function POST(req: NextRequest) {
   let body: unknown;
@@ -19,9 +74,16 @@ export async function POST(req: NextRequest) {
 
   const data = parsed.data;
 
+  // Save regardless of whether email is configured, so the enquiry is never lost.
+  try {
+    await saveEnquiry(data);
+  } catch (err) {
+    console.error("saveEnquiry failed:", err instanceof Error ? err.message : String(err));
+  }
+
   if (!process.env.RESEND_API_KEY) {
     // No email configured — still return success so the user gets confirmation
-    console.warn("RESEND_API_KEY not set — Social Scan enquiry not emailed");
+    console.warn("RESEND_API_KEY not set — Social Scan enquiry not emailed (saved to Redis if configured)");
     return NextResponse.json({ ok: true });
   }
 
