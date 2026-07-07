@@ -20,6 +20,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { url: `${BASE_URL}/privacy`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.3 },
     { url: `${BASE_URL}/press`, lastModified: new Date(), changeFrequency: "yearly", priority: 0.7 },
     { url: `${BASE_URL}/auckland`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
+    { url: `${BASE_URL}/media-buyer`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.8 },
     // Resources hub
     { url: `${BASE_URL}/resources`, lastModified: new Date(), changeFrequency: "monthly", priority: 0.9 },
     // Resource pages

@@ -5,6 +5,7 @@ import Logo from "./Logo";
 
 const serviceLinks = [
   { href: "/services#strategy", label: "Media Strategy & Planning" },
+  { href: "/media-buyer", label: "Media Buying" },
   { href: "/services#audit", label: "Media Audit & Review" },
   { href: "/services#programmatic", label: "Programmatic Buying" },
   { href: "/services#web", label: "Website Design & Build" },

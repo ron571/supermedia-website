@@ -215,9 +215,14 @@ export default function ServicesPage() {
                   </Link>
                 )}
                 {id === "strategy" && (
-                  <Link href="/thinking/what-volume-rebates-actually-mean-for-your-media-budget" className="text-orange text-sm font-medium hover:underline">
-                    Read: What volume rebates mean for your budget →
-                  </Link>
+                  <>
+                    <Link href="/media-buyer" className="text-orange text-sm font-medium hover:underline mb-2">
+                      Looking for a media buyer or strategist? →
+                    </Link>
+                    <Link href="/thinking/what-volume-rebates-actually-mean-for-your-media-budget" className="text-orange text-sm font-medium hover:underline">
+                      Read: What volume rebates mean for your budget →
+                    </Link>
+                  </>
                 )}
                 {id === "programmatic" && (
                   <Link href="/thinking/why-nz-advertisers-pay-too-much-for-digital-display" className="text-orange text-sm font-medium hover:underline">

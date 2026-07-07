@@ -190,9 +190,12 @@ export default function AucklandPage() {
               </div>
             ))}
           </div>
-          <div className="mt-10">
+          <div className="mt-10 flex flex-wrap gap-4">
             <Link href="/services" className="btn-primary">
               Full service details →
+            </Link>
+            <Link href="/media-buyer" className="btn-outline">
+              Just need a media buyer? →
             </Link>
           </div>
         </div>
